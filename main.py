@@ -1,6 +1,7 @@
 # TODO:
 # 2. Add shared entities i.e. shared device hashes, ip hashes and card hashes
 # 3. Add null values
+# 4. change to device and application dictionaries to python classes
 
 import pandas as pd
 import numpy as np
@@ -12,7 +13,10 @@ from datetime import datetime
 
 # generate random devices
 device_props_dict = utl.cnt2prop_dict(utl.gen_device_type(n_device_types = 20))
-application_hashes_props_dict = utl.cnt2prop_dict(utl.gen_application_hash(n_application_hashes = 1000))
+
+application_hashes_dict = utl.gen_application_hash(n_application_hashes = 1000)
+application_hashes_props_dict = utl.cnt2prop_dict(application_hashes_dict)
+applicationhash_prices_dict = utl.gen_application_prices(application_hashes_dict)
 
 # set number of users to random generate
 n = 1000

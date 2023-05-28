@@ -30,6 +30,13 @@ def gen_application_hash(n_application_hashes = 1000):
         app_hashes_dict[app_hash] = np.random.poisson(lam = 20, size = 1)[0]
     return app_hashes_dict
 
+def gen_application_prices(app_hashes_dict):
+    """"""
+    app_prices_dict = {}
+    for key, val in app_hashes_dict.items():
+        app_prices_dict[key] = np.round(np.random.normal(loc = 1, scale = 2, size = 1)[0]**2, 2)
+    return app_prices_dict
+
 def gen_random_hash(size, nbytes = 16):
     """"""
     random_hashes = []
