@@ -22,6 +22,14 @@ def gen_device_type(n_device_types = 20):
         device_types_dict[device_type] = np.random.poisson(lam = 20, size = 1)[0]
     return device_types_dict
 
+def gen_application_hash(n_application_hashes = 1000):
+    """"""
+    app_hashes_dict = {}
+    for i in range(n_application_hashes):
+        app_hash = gen_random_hash(size = 1, nbytes = 16)[0]
+        app_hashes_dict[app_hash] = np.random.poisson(lam = 20, size = 1)[0]
+    return app_hashes_dict
+
 def gen_random_hash(size, nbytes = 16):
     """"""
     random_hashes = []
