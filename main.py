@@ -16,7 +16,7 @@ device_props_dict = utl.cnt2prop_dict(utl.gen_device_type(n_device_types = 20))
 
 application_hashes_dict = utl.gen_application_hash(n_application_hashes = 1000)
 application_hashes_props_dict = utl.cnt2prop_dict(application_hashes_dict)
-applicationhash_prices_dict = utl.gen_application_prices(application_hashes_dict)
+application_hash_prices_dict = utl.gen_application_prices(application_hashes_dict)
 
 # set number of users to random generate
 n = 1000
@@ -53,11 +53,15 @@ trans_data['application_hash'] = trans_data['application_hash'].apply(lambda x: 
 trans_data = trans_data.sample(n = trans_data.shape[0], replace = False)
 
 # add transaction amount
-trans_data['transaction_amount'] = trans_data.apply(lambda s: np.round(np.random.normal(loc = 1, scale = 2, size = 1)[0]**2, 2), axis = 1)
+trans_data['transaction_amount'] = trans_data['application_hash'].replace(application_hash_prices_dict)
 # add payment channel
 trans_data['payment_channel'] = trans_data.apply(lambda s: np.random.choice(a = list(cons.payment_channels.keys()), p = list(cons.payment_channels.values()), replace = True, size = 1)[0], axis = 1)
 # add transaction date
 dates = pd.date_range(datetime.strptime('2021-01-01', '%Y-%m-%d'), datetime.strptime('2021-12-31', '%Y-%m-%d') - pd.Timedelta(days=1),freq='d')
 trans_data['transaction_date'] = trans_data.apply(lambda s: np.random.choice(a = dates, replace = True, size = 1)[0], axis = 1)
+
+# set up
+trans_data['transaction_date']
+
 
 trans_data.head()
