@@ -5,6 +5,7 @@ from datetime import datetime
 import cons
 from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
+from utilities.gen_dates_dict import gen_dates_dict
 
 class Transaction():
 
@@ -16,17 +17,9 @@ class Transaction():
         self.transaction_status = cons.transaction_status
         self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_transaction_hashes)
         self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
-        self.transaction_hashes_dates_dict = self.gen_transaction_date(self.transaction_hashes_cnts_dict, start_date = self.start_date, end_date = self.end_date)
+        self.transaction_hashes_dates_dict = gen_dates_dict(self.transaction_hashes_cnts_dict, start_date = self.start_date, end_date = self.end_date)
         self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(self.transaction_hashes_cnts_dict, self.payment_channels)
         self.transaction_hashes_status_dict = self.gen_transaction_status(self.transaction_hashes_cnts_dict, self.transaction_status)
-
-    def gen_transaction_date(self, transaction_hashes_cnts_dict, start_date, end_date):
-        """"""
-        transaction_hashes = list(transaction_hashes_cnts_dict.keys())
-        dates = pd.date_range(datetime.strptime(start_date, '%Y-%m-%d'), datetime.strptime(end_date, '%Y-%m-%d') - pd.Timedelta(days=1),freq='d')
-        transaction_dates = list(np.random.choice(a = dates, replace = True, size = len(transaction_hashes)))
-        transaction_hashes_dates_dict = dict(zip(transaction_hashes, transaction_dates))
-        return transaction_hashes_dates_dict
 
     def gen_transaction_payment_channel(self, transaction_hashes_cnts_dict, payment_channels):
         """"""

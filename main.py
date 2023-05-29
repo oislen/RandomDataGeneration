@@ -37,7 +37,7 @@ card_obj = Card(n_card_hashes = n_cards)
 device_obj = Device(n_device_hashes = n_devices, n_device_types = n_device_types)
 ip_obj = Ip(n_ip_hashes = n_ips)
 transaction_obj = Transaction(n_transaction_hashes = n_transactions, start_date = start_date, end_date = end_date)
-user_obj = User(n_user_ids = n_users)
+user_obj = User(n_user_ids = n_users, start_date = start_date, end_date = end_date)
 
 # generate counts per entity at user level
 user_agg_data = gen_user_agg_data(user_obj, cons.user_config)
@@ -54,4 +54,8 @@ trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: random.choice(shar
 trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: random.choice(shared_ip) if random.uniform(0, 1) <= cons.shared_entities_dict['card'] else x)
 trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: random.choice(shared_ip) if random.uniform(0, 1) <= cons.shared_entities_dict['device'] else x)
 
+# print out head of data
 trans_data.head()
+
+# write data to disk
+trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)

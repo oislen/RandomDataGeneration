@@ -12,7 +12,7 @@ class Card():
         self.card_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_card_hashes)
         self.card_hashes_props_dict = cnt2prop_dict(self.card_hashes_cnts_dict)
         self.card_hashes_type_dict = self.gen_card_type(self.card_hashes_cnts_dict, self.card_types)
-        self.card_hashes_country_codes = gen_country_codes(self.card_hashes_cnts_dict)
+        self.card_hashes_country_code_dict = gen_country_codes(self.card_hashes_cnts_dict)
     
     def gen_card_type(self, card_hashes_cnts_dict, card_types):
         """"""
