@@ -13,6 +13,7 @@ from objects.Card import Card
 from objects.Device import Device
 from objects.Ip import Ip
 from objects.Transaction import Transaction
+from objects.User import User
 # load utility functions
 from utilities.gen_user_agg_data import gen_user_agg_data
 from utilities.gen_user_data import gen_user_data
@@ -36,11 +37,12 @@ card_obj = Card(n_card_hashes = n_cards)
 device_obj = Device(n_device_hashes = n_devices, n_device_types = n_device_types)
 ip_obj = Ip(n_ip_hashes = n_ips)
 transaction_obj = Transaction(n_transaction_hashes = n_transactions, start_date = start_date, end_date = end_date)
+user_obj = User(n_user_ids = n_users)
 
 # generate counts per entity at user level
-user_agg_data = gen_user_agg_data(n_users, cons.user_config)
+user_agg_data = gen_user_agg_data(user_obj, cons.user_config)
 # generate user level data 
-user_data =  gen_user_data(user_agg_data, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
+user_data =  gen_user_data(user_agg_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
 # generate transaction level data
 trans_data = gen_trans_data(user_data, device_obj, card_obj, application_obj, transaction_obj)
 

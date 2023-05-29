@@ -3,7 +3,7 @@ import pandas as pd
 import pandas as pd
 from datetime import datetime
 import cons
-from utilities.gen_hash_dict import gen_hash_dict
+from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 
 class Transaction():
@@ -13,7 +13,7 @@ class Transaction():
         self.start_date = start_date
         self.end_date = end_date
         self.payment_channels = cons.payment_channels
-        self.transaction_hashes_cnts_dict = gen_hash_dict(n_hashes = self.n_transaction_hashes)
+        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_transaction_hashes)
         self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
         self.transaction_hashes_dates_dict = self.gen_transaction_date(self.transaction_hashes_cnts_dict, start_date = self.start_date, end_date = self.end_date)
         self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(self.transaction_hashes_cnts_dict, self.payment_channels)

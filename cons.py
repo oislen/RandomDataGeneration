@@ -8,3 +8,7 @@ shared_entities_dict = {'ip':0.05, 'card':0.01, 'device':0.01}
 card_types = {'visa':0.5, 'mastercard':0.5}
 # set payment channels
 payment_channels = {'paypal':0.4, 'adyen':0.3, 'worldpay':0.2, 'docomo':0.1}
+# set flat files
+iso_country_codes_url = 'https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv'
+first_names_url = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/first-names.txt'
+last_names_url = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/last-names.txt'

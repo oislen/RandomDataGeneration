@@ -1,6 +1,6 @@
 import string
 import numpy as np
-from utilities.gen_hash_dict import gen_hash_dict
+from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 
 class Device():
@@ -8,7 +8,7 @@ class Device():
     def __init__(self, n_device_hashes, n_device_types):
         self.n_device_hashes = n_device_hashes
         self.n_device_types = n_device_types
-        self.device_hashes_cnts_dict = gen_hash_dict(n_hashes = self.n_device_hashes)
+        self.device_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_device_hashes)
         self.device_hashes_props_dict = cnt2prop_dict(self.device_hashes_cnts_dict)
         self.device_hashes_type_dict = self.gen_device_type(self.device_hashes_cnts_dict, n_device_types = self.n_device_types)
     
