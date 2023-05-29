@@ -12,7 +12,7 @@ class Application():
     
     def gen_application_prices(self, app_hashes_dict):
         """"""
-        app_prices_dict = {}
-        for key, val in app_hashes_dict.items():
-            app_prices_dict[key] = np.round(np.random.normal(loc = 1, scale = 2, size = 1)[0]**2, 2)
+        app_hashes = list(app_hashes_dict.keys())
+        app_prices = np.round(np.random.normal(loc = 0, scale = 2, size = len(app_hashes))**2, 2)
+        app_prices_dict = dict(zip(app_hashes, app_prices))
         return app_prices_dict

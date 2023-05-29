@@ -44,7 +44,7 @@ user_agg_data = gen_user_agg_data(user_obj, cons.user_config)
 # generate user level data 
 user_data =  gen_user_data(user_agg_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
 # generate transaction level data
-trans_data = gen_trans_data(user_data, device_obj, card_obj, application_obj, transaction_obj)
+trans_data = gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
 
 # add shared entities
 shared_ip = np.random.choice(a = trans_data['ip_hash'].unique(), size = int(np.round(trans_data['ip_hash'].nunique() * cons.shared_entities_dict['ip'])))
