@@ -28,16 +28,18 @@ n_applications = int(np.round(n_users * 1.8))
 n_transactions = int(np.round(n_users * 5.3))
 n_ips = int(np.round(n_users * 1.5))
 n_device_types = 53
-start_date = '2021-01-01'
-end_date = '2021-12-31'
+registration_start_date = '2020-01-01'
+registration_end_date = '2021-12-31'
+transaction_start_date = '2021-01-01'
+transaction_end_date = '2021-12-31'
 
 # generate Device and Application objects
 application_obj = Application(n_application_hashes = n_applications)
 card_obj = Card(n_card_hashes = n_cards)
 device_obj = Device(n_device_hashes = n_devices, n_device_types = n_device_types)
 ip_obj = Ip(n_ip_hashes = n_ips)
-transaction_obj = Transaction(n_transaction_hashes = n_transactions, start_date = start_date, end_date = end_date)
-user_obj = User(n_user_ids = n_users, start_date = start_date, end_date = end_date)
+transaction_obj = Transaction(n_transaction_hashes = n_transactions, start_date = transaction_start_date, end_date = transaction_end_date)
+user_obj = User(n_user_ids = n_users, start_date = registration_start_date, end_date = registration_end_date)
 
 # generate counts per entity at user level
 user_agg_data = gen_user_agg_data(user_obj, cons.user_config)
