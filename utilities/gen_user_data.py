@@ -5,10 +5,10 @@ def gen_user_data(user_agg_data, user_obj, device_obj, card_obj, ip_obj, transac
     user_data = user_agg_data.copy()
     user_data['firstname'] = user_data['uid'].replace(user_obj.user_ids_firstname_dict)
     user_data['lastname'] = user_data['uid'].replace(user_obj.user_ids_lastname_dict)
-    user_data['registration_dates'] = user_data['uid'].replace(user_obj.user_ids_dates_dict)
+    user_data['registration_date'] = user_data['uid'].replace(user_obj.user_ids_dates_dict)
     user_data['registration_country_code'] = user_data['uid'].replace(user_obj.user_ids_country_code_dict)
     user_data['email_domain'] = user_data['uid'].replace(user_obj.user_ids_email_domain_dict)
-    user_data['userid'] = user_data['registration_dates'].dt.year.astype(str) + user_data['registration_country_code'].astype(str) + user_data['uid'].astype(str).str[-9:]
+    user_data['userid'] = user_data['registration_date'].dt.year.astype(str) + user_data['registration_country_code'].astype(str) + user_data['uid'].astype(str).str[-9:]
     user_data['device_hash'] = user_data['n_devices'].apply(lambda x: np.random.choice(a = list(device_obj.device_hashes_props_dict.keys()), p = list(device_obj.device_hashes_props_dict.values()), replace = True, size = x))
     user_data['card_hash'] = user_data['n_cards'].apply(lambda x: np.random.choice(a = list(card_obj.card_hashes_props_dict.keys()), p = list(card_obj.card_hashes_props_dict.values()), replace = True, size = x))
     user_data['ip_hash'] = user_data['n_ips'].apply(lambda x: np.random.choice(a = list(ip_obj.ip_hashes_props_dict.keys()), p = list(ip_obj.ip_hashes_props_dict.values()), replace = True, size = x))
