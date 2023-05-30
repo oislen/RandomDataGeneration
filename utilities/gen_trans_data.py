@@ -39,19 +39,18 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     missing_card_hash_filter = (trans_data['card_hash'].isnull())
     trans_data.loc[zero_transaction_amount_filter | missing_card_hash_filter, ['payment_channel']] = np.nan
     trans_data.loc[zero_transaction_amount_filter, ['card_hash', 'card_type', 'card_country_code']] = np.nan
-
+    
     # align country codes for user, ip and card
     country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
     trans_data[country_code_columns] = trans_data[country_code_columns].apply(lambda series: align_country_codes(series), axis = 1)
     agg_aligned_ips = trans_data.groupby(by = ['ip_hash', 'ip_country_code'], as_index = False).size().sort_values(by = ['ip_hash', 'ip_country_code'], ascending = [True, False]).drop_duplicates(subset = ['ip_hash'], keep = 'first').drop(columns = ['size'])
     agg_aligned_cards = trans_data.groupby(by = ['card_hash', 'card_country_code'], as_index = False).size().sort_values(by = ['card_hash', 'card_country_code'], ascending = [True, False]).drop_duplicates(subset = ['card_hash'], keep = 'first').drop(columns = ['size'])
-    trans_data = pd.merge(left = trans_data.drop(columns = ['ip_country_code']), right = agg_aligned_ips, on = 'ip_hash', how = 'inner')
-    trans_data = pd.merge(left = trans_data.drop(columns = ['card_country_code']), right = agg_aligned_cards, on = 'card_hash', how = 'inner')
-
+    trans_data = pd.merge(left = trans_data.drop(columns = ['ip_country_code']), right = agg_aligned_ips, on = 'ip_hash', how = 'left')
+    trans_data = pd.merge(left = trans_data.drop(columns = ['card_country_code']), right = agg_aligned_cards, on = 'card_hash', how = 'left')
     # align registration and transaction dates
     date_columns = ['registration_date', 'transaction_date']
     trans_data[date_columns] = trans_data[date_columns].apply(lambda s: s.sort_values().to_list(), result_type = 'expand', axis = 1).copy()
-    
+
     # map iso numeric country codes to iso alpha country codes
     country_codes_map = gen_country_codes_map()
     trans_data['registration_country_code']  = trans_data['registration_country_code'].replace(country_codes_map)
