@@ -12,10 +12,11 @@ class Transaction():
     def __init__(self, n_transaction_hashes, start_date, end_date):
         self.n_transaction_hashes = n_transaction_hashes
         self.start_date = start_date
-        self.end_date = end_date
+        self.end_date = end_date 
+        self.lam = cons.user_config['lambda']['transaction']
         self.payment_channels = cons.payment_channels
         self.transaction_status = cons.transaction_status
-        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_transaction_hashes)
+        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_transaction_hashes, lam = self.lam)
         self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
         self.transaction_hashes_dates_dict = gen_dates_dict(self.transaction_hashes_cnts_dict, start_date = self.start_date, end_date = self.end_date)
         self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(self.transaction_hashes_cnts_dict, self.payment_channels)
