@@ -5,8 +5,6 @@ import sys
 
 # set file path for custom python modules
 sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
-# load constants
-import cons
 # load object classes
 from objects.Application import Application
 from objects.Card import Card
@@ -20,7 +18,7 @@ from utilities.gen_user_data import gen_user_data
 from utilities.gen_trans_data import gen_trans_data
 
 # set number of users to random generate
-factor = 1
+factor = 0.5
 n_users = int(np.round(1372 * factor))
 n_cards = int(np.round(n_users * 1.3))
 n_devices = int(np.round(n_users * 2.5))
