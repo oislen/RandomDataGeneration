@@ -60,4 +60,4 @@ trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: random.cho
 trans_data.head()
 
 # write data to disk
-trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
+#trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
