@@ -24,9 +24,9 @@ factor = 1
 n_users = int(np.round(1372 * factor))
 n_cards = int(np.round(n_users * 1.3))
 n_devices = int(np.round(n_users * 2.5))
-n_applications = int(np.round(n_users * 1.8))
 n_transactions = int(np.round(n_users * 5.3))
-n_ips = int(np.round(n_users * 1.5))
+n_ips = int(np.round(n_users * 4.3))
+n_applications = 16472
 n_device_types = 53
 registration_start_date = '2020-01-01'
 registration_end_date = '2021-12-31'
@@ -42,19 +42,11 @@ transaction_obj = Transaction(n_transaction_hashes = n_transactions, start_date 
 user_obj = User(n_user_ids = n_users, start_date = registration_start_date, end_date = registration_end_date)
 
 # generate counts per entity at user level
-user_agg_data = gen_user_agg_data(user_obj, cons.user_config)
+user_agg_data = gen_user_agg_data(user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
 # generate user level data 
 user_data =  gen_user_data(user_agg_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
 # generate transaction level data
 trans_data = gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
-
-# add shared entities
-shared_ip = np.random.choice(a = trans_data['ip_hash'].unique(), size = int(np.round(trans_data['ip_hash'].nunique() * cons.shared_entities_dict['ip'])))
-shared_card = np.random.choice(a = trans_data['card_hash'].unique(), size = int(np.round(trans_data['card_hash'].nunique() * cons.shared_entities_dict['card'])))
-shared_device = np.random.choice(a = trans_data['device_hash'].unique(), size = int(np.round(trans_data['device_hash'].nunique() * cons.shared_entities_dict['device'])))
-trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: random.choice(shared_ip) if random.uniform(0, 1) <= cons.shared_entities_dict['ip'] else x)
-trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: random.choice(shared_ip) if random.uniform(0, 1) <= cons.shared_entities_dict['card'] else x)
-trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: random.choice(shared_ip) if random.uniform(0, 1) <= cons.shared_entities_dict['device'] else x)
 
 # print out head of data
 trans_data.head()
