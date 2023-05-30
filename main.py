@@ -5,6 +5,8 @@ import sys
 
 # set file path for custom python modules
 sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
+# import cons
+import cons
 # load object classes
 from objects.Application import Application
 from objects.Card import Card
@@ -50,4 +52,4 @@ trans_data = gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction
 trans_data.head()
 
 # write data to disk
-#trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
+trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
