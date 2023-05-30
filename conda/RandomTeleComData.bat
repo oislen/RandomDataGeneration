@@ -4,7 +4,7 @@ call conda env list
 :: create and activate new environment
 call conda env remove --name RandomTeleComData --yes
 call conda env list
-call conda create --name RandomTeleComData
+call conda create --name RandomTeleComData --yes
 call conda activate RandomTeleComData
 call conda list
 
