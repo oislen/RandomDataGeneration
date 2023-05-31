@@ -6,6 +6,8 @@ randomtelecomdata_fpath = os.path.join('.', 'RandomTeleComData', 'data','RandomT
 user_config = {'lambda':{'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}}
 # set proportion of shared entities
 shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
+# set null rates
+null_rates = {'ip':0.07, 'card':0.05,'device':0.05}
 # set card types
 card_types = {'visa':0.5, 'mastercard':0.5}
 # set payment channels
