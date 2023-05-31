@@ -68,10 +68,11 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     country_code_trans_reject_rate_dict = europecountrycrimeindex.set_index('ISO alpha 2')['trans_reject_rate'].to_dict()
     country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
     trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if country_code_trans_reject_rate_dict[np.random.choice(a = series[country_code_columns].dropna().to_list(), size = 1)[0]] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    # add rejections based on inconsistent country codes
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if cons.inconsistent_country_codes_rejection_rate[series[country_code_columns].dropna().nunique()] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
     # add transaction status and error codes
     trans_data['transaction_error_code'] = gen_trans_error_codes(trans_data = trans_data, trans_status_col = 'transaction_status', rejection_codes = transaction_obj.rejection_codes)
     
-
     # sort data by transaction date
     trans_data = trans_data.sort_values(by = 'transaction_date').reset_index(drop = True)
     return trans_data
