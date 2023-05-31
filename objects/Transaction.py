@@ -16,6 +16,7 @@ class Transaction():
         self.lam = cons.user_config['lambda']['transaction']
         self.payment_channels = cons.payment_channels
         self.transaction_status = cons.transaction_status
+        self.rejection_codes = cons.rejection_codes
         self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_transaction_hashes, lam = self.lam)
         self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
         self.transaction_hashes_dates_dict = gen_dates_dict(self.transaction_hashes_cnts_dict, start_date = self.start_date, end_date = self.end_date)
