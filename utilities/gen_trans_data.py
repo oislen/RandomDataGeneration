@@ -21,6 +21,10 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(a = list(ip_obj.ip_hashes_shared_props_dict.keys()), p = list(ip_obj.ip_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.shared_entities_dict['ip'] else x)
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(a = list(card_obj.card_hashes_shared_props_dict.keys()), p = list(card_obj.card_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.shared_entities_dict['card'] else x)
     trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(a = list(device_obj.device_hashes_shared_props_dict.keys()), p = list(device_obj.device_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.shared_entities_dict['device'] else x)
+    # add null rates
+    trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.null_rates['ip'] else x)
+    trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.null_rates['card'] else x)
+    trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.null_rates['device'] else x)
     # add type data
     trans_data['device_type'] = trans_data['device_hash'].replace(device_obj.device_hashes_type_dict)
     trans_data['card_type'] = trans_data['card_hash'].replace(card_obj.card_hashes_type_dict)
