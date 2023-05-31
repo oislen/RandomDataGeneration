@@ -2,6 +2,8 @@ import os
 # set file locations
 domain_email_fpath = os.path.join('.', 'RandomTeleComData', 'data','email-domains.csv')
 randomtelecomdata_fpath = os.path.join('.', 'RandomTeleComData', 'data','RandomTeleComData.csv')
+countrycrimeindex_fpath = os.path.join('.', 'RandomTeleComData', 'data','country_crime_index.csv')
+countrieseurope_fpath = os.path.join('.', 'RandomTeleComData', 'data','Countries-Europe.csv')
 # set user level poisson lambda values 
 user_config = {'lambda':{'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}}
 # set proportion of shared entities
