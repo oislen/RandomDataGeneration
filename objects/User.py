@@ -10,7 +10,7 @@ class User():
 
     def __init__(self, n_user_ids, start_date, end_date):
         self.n_user_ids = n_user_ids
-        self.lam = cons.user_config['lambda']['transaction']
+        self.lam = cons.user_config['lambda']['user']
         self.start_date = start_date
         self.end_date = end_date
         self.user_ids_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'id', n = self.n_user_ids, lam = self.lam)
