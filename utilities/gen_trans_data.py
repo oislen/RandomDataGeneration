@@ -35,12 +35,7 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data['transaction_amount'] = trans_data['application_hash'].replace(application_obj.application_hashes_prices_dict)
     trans_data['payment_channel'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_payment_channel_dict)
     trans_data['transaction_date'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_dates_dict)
-    
-    # TODO: code underlying transaction success / failure relationships
-    # add transaction status and error codes
-    trans_data['transaction_status'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_status_dict)
-    trans_data['transaction_error_code'] = gen_trans_error_codes(trans_data = trans_data, trans_status_col = 'transaction_status', rejection_codes = transaction_obj.rejection_codes)
-    
+
     # align payment channel with missing card hashes and 0 transaction amounts
     zero_transaction_amount_filter = (trans_data['transaction_amount'] == 0.0)
     missing_card_hash_filter = (trans_data['card_hash'].isnull())
@@ -61,6 +56,21 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data['registration_country_code']  = trans_data['registration_country_code'].replace(country_codes_map)
     trans_data['card_country_code']  = trans_data['card_country_code'].replace(country_codes_map)
     trans_data['ip_country_code']  = trans_data['ip_country_code'].replace(country_codes_map)
+
+    # TODO: code underlying transaction success / failure relationships
+    # create initial transaction status
+    trans_data['transaction_status'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_status_dict)
+    # add rejections based on crime rates within country codes
+    countrieseurope = pd.read_csv(cons.countrieseurope_fpath, usecols = ['ISO numeric', 'ISO alpha 2'])
+    countrycrimeindex = pd.read_csv(cons.countrycrimeindex_fpath, usecols = ['country_code', 'crime_index'])
+    europecountrycrimeindex = pd.merge(left = countrieseurope, right = countrycrimeindex, left_on = 'ISO alpha 2', right_on = 'country_code', how = 'left')
+    europecountrycrimeindex['trans_reject_rate'] = europecountrycrimeindex['crime_index'].divide(europecountrycrimeindex['crime_index'].sum())
+    country_code_trans_reject_rate_dict = europecountrycrimeindex.set_index('ISO alpha 2')['trans_reject_rate'].to_dict()
+    country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if country_code_trans_reject_rate_dict[np.random.choice(a = series[country_code_columns].dropna().to_list(), size = 1)[0]] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    # add transaction status and error codes
+    trans_data['transaction_error_code'] = gen_trans_error_codes(trans_data = trans_data, trans_status_col = 'transaction_status', rejection_codes = transaction_obj.rejection_codes)
+    
 
     # sort data by transaction date
     trans_data = trans_data.sort_values(by = 'transaction_date').reset_index(drop = True)
