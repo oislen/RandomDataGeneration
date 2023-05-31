@@ -3,7 +3,7 @@ import os
 domain_email_fpath = os.path.join('.', 'RandomTeleComData', 'data','email-domains.csv')
 randomtelecomdata_fpath = os.path.join('.', 'RandomTeleComData', 'data','RandomTeleComData.csv')
 # set user level poisson lambda values 
-user_config = {'lambda':{'user':20, 'device':0.3, 'card':0.8, 'ip':15, 'country':0.2, 'application':3, 'transaction':5}}
+user_config = {'lambda':{'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}}
 # set proportion of shared entities
 shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
 # set card types
