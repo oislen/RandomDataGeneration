@@ -27,7 +27,7 @@ class Device():
             suffix = ''.join(np.random.choice(digits, size = 3, replace = False))
             device_type = f'{prefix}-{suffix}'
             device_types_list.append(device_type)
-        device_types_dict = {}
-        for key, val in device_hashes_dict.items():
-            device_types_dict[key] = np.random.choice(a = device_types_list, size = 1)[0]
-        return device_types_dict
+        device_hashes_list = list(device_hashes_dict.keys())
+        device_types_list = list(np.random.choice(a = device_types_list, size = len(device_hashes_list)))
+        device_hashes_type_dict = dict(zip(device_hashes_list, device_types_list))
+        return device_hashes_type_dict
