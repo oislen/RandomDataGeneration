@@ -18,6 +18,8 @@ payment_channels = {'paypal':0.4, 'adyen':0.3, 'worldpay':0.2, 'docomo':0.1}
 transaction_status = {'successful':0.94, 'pending':0.03, 'rejected':0.03}
 # set rejection codes
 rejection_codes = {'E900:ConnectionTimeout':0.2, 'E901:SuspectedFraud':0.2, 'E902:AuthenicationFailure':0.2, 'E903:UserCancelled':0.2, 'E904:InsufficientFunds':0.2}
+# set rejection rates based on inconsistent country codes
+inconsistent_country_codes_rejection_rate = {1:0.001, 2:0.005, 3:0.01}
 # set flat files
 european_populations_url = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries-Europe.csv'
 first_names_url = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/first-names.txt'
