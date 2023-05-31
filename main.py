@@ -2,6 +2,7 @@ import random
 import numpy as np
 import os
 import sys
+from time import time
 
 # set file path for custom python modules
 sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
@@ -33,6 +34,9 @@ registration_end_date = '2021-12-31'
 transaction_start_date = '2021-01-01'
 transaction_end_date = '2021-12-31'
 
+# start timer
+t0 = time()
+
 # generate Device and Application objects
 application_obj = Application(n_application_hashes = n_applications)
 card_obj = Card(n_card_hashes = n_cards)
@@ -47,6 +51,11 @@ user_agg_data = gen_user_agg_data(user_obj, device_obj, card_obj, ip_obj, transa
 user_data =  gen_user_data(user_agg_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
 # generate transaction level data
 trans_data = gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, application_obj)
+
+# end timer
+t1 = time()
+total_runtime_seconds = round(t1 - t0, 2)
+print(f'Total Runtime: {total_runtime_seconds} seconds')
 
 # print out head of data
 trans_data.head()
