@@ -33,7 +33,10 @@ registration_start_date = '2020-01-01'
 registration_end_date = '2021-12-31'
 transaction_start_date = '2021-01-01'
 transaction_end_date = '2021-12-31'
+randomseed = None
 
+# set random seed
+np.random.seed(seed = randomseed)
 # start timer
 t0 = time()
 
@@ -57,8 +60,9 @@ t1 = time()
 total_runtime_seconds = round(t1 - t0, 2)
 print(f'Total Runtime: {total_runtime_seconds} seconds')
 
-# print out head of data
+# print out head and shape of data
 trans_data.head()
+trans_data.shape
 
 # write data to disk
 trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
