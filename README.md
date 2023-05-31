@@ -2,15 +2,14 @@
 
 ## TODO:
 1. code underlying relationships between transaction status and user behaviour for non-zero transactions
-   1. Country codes / email domains (different levels of risk across different values)
-   2. Inconsistent country codes indicate higher risk
-   3. Excess number of devices, ips, cards
+   1. Inconsistent country codes indicate higher risk
+   2. Excess number of devices, ips, cards
    4. Shared devices, ips and cards
 2. add command line interface
 3. add documentation
-5. containerise
-6. add multiprocessing through dask to scale performance up with dataset size
-7. add new hire tasks
+4. containerise
+5. add multiprocessing through dask to scale performance up with dataset size
+6. add new hire tasks
 
 gen_user_data execution times
 factor,n_users,pandas,dask
