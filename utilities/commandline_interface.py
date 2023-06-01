@@ -3,6 +3,7 @@ import argparse
 def commandline_interface():
     """
     python RandomTeleComData\main.py --factor 0.5 --randomseed 1 --nitr 3
+    python3 RandomTeleComData/main.py --factor 0.5 --randomseed 1 --nitr 3
     """
     # define argument parser object
     parser = argparse.ArgumentParser(description = 'Execute Random TeleCom Data Programme.')
