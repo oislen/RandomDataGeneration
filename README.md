@@ -5,9 +5,8 @@
    1. wrap all logic within a single function and call over .apply with lambda
 2. expand to include other countries and continents (possibly combine all country information into a single file)
 3. add unittests
-4. deploy on aws ec2 instance
-5. add documentation to repo and code
-6. add new hire tasks
+4. add documentation to repo and code
+5. add new hire tasks
    1. network analysis
    2. cluster
    3. feature engineering
