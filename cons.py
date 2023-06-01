@@ -1,4 +1,6 @@
 import os
+# set debug mode
+debug_mode = True
 # set file locations
 domain_email_fpath = os.path.join('.', 'RandomTeleComData', 'data','email-domains.csv')
 randomtelecomdata_fpath = os.path.join('.', 'RandomTeleComData', 'data','RandomTeleComData.csv')
