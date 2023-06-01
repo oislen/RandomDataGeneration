@@ -8,10 +8,9 @@
 2. add input parameter error handling
 3. expand to include other countries and continents (possibly combine all country information into a single file)
 4. add unittests
-5. containerise application
-6. deploy on aws ec2 instance
-7. add documentation to repo and code
-8. add new hire tasks
+5. deploy on aws ec2 instance
+6. add documentation to repo and code
+7. add new hire tasks
    1. network analysis
    2. cluster
    3. feature engineering
