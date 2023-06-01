@@ -5,10 +5,12 @@ import pandas as pd
 
 # set file path for custom python modules
 sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
+sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData', 'scripts'))
 # import cons
 import cons
 # load utility functions
 from utilities.commandline_interface import commandline_interface
+from utilities.input_error_handling import input_error_handling
 from utilities.multiprocess import multiprocess
 from utilities.gen_random_telecom_data import gen_random_telecom_data
 
@@ -23,6 +25,9 @@ if __name__ == '__main__':
         input_params_dict['nitr'] = 3
     else:
         input_params_dict = commandline_interface()
+
+    # run input error handling
+    res = input_error_handling(input_params_dict)
 
     print(f'Input Parameters: {input_params_dict}')
 
