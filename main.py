@@ -8,20 +8,29 @@ sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
 # import cons
 import cons
 # load utility functions
+from utilities.commandline_interface import commandline_interface
 from utilities.multiprocess import multiprocess
 from utilities.gen_random_telecom_data import gen_random_telecom_data
 
 if __name__ == '__main__':
 
-    # set user parameters
-    factor = 0.5
-    randomseed = None
-    nitr = 1
+    if cons.debug_mode:
+        print(f'Debug Mode: {cons.debug_mode}')
+        # set user parameters
+        input_params_dict = {}
+        input_params_dict['factor'] = 0.5
+        input_params_dict['randomseed'] = 1
+        input_params_dict['nitr'] = 3
+    else:
+        input_params_dict = commandline_interface()
+
+    print(f'Input Parameters: {input_params_dict}')
 
     # start timer
     t0 = time()
     # generate random telecom data via multiprocess call
-    results = multiprocess(func = gen_random_telecom_data, args = [(factor, randomseed) for itr in range(nitr)], ncpu = os.cpu_count())
+    args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr) for itr in range(input_params_dict['nitr'])]
+    results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     # concatenate random telecom datasets into a single file
     trans_data = pd.concat(objs = results, axis = 0, ignore_index = True)
     # end timer
@@ -30,8 +39,7 @@ if __name__ == '__main__':
     print(f'Total Runtime: {total_runtime_seconds} seconds')
 
     # print out head and shape of data
-    trans_data.head()
-    trans_data.shape
+    print(f'RandomTeleComData.shape: {trans_data.shape}')
 
     # write data to disk
     trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
