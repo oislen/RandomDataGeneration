@@ -68,8 +68,33 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     country_code_trans_reject_rate_dict = europecountrycrimeindex.set_index('ISO alpha 2')['trans_reject_rate'].to_dict()
     country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
     trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if country_code_trans_reject_rate_dict[np.random.choice(a = series[country_code_columns].dropna().to_list(), size = 1)[0]] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    # add rejections based on domain frequencies
+    domain_email = pd.read_csv(cons.domain_email_fpath, usecols = ['domain', 'proportion'])
+    domain_email['trans_reject_rate'] = (1 - domain_email['proportion']) / (1 - domain_email['proportion']).sum()
+    domain_email_trans_reject_rate_dict = domain_email.set_index('domain')['trans_reject_rate'].to_dict()
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if domain_email_trans_reject_rate_dict[series['email_domain']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
     # add rejections based on inconsistent country codes
     trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if cons.inconsistent_country_codes_rejection_rate[series[country_code_columns].dropna().nunique()] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    # add rejections based on shared ips, cards and devices
+    shared_devices = trans_data.groupby(by = 'device_hash').agg({'userid':'nunique'}).sort_values(by = 'userid')
+    shared_ips = trans_data.groupby(by = 'ip_hash').agg({'userid':'nunique'}).sort_values(by = 'userid')
+    shared_cards = trans_data.groupby(by = 'card_hash').agg({'userid':'nunique'}).sort_values(by = 'userid')
+    shared_devices_reject_rate_dict = shared_devices.divide(shared_devices['userid'].sum()).to_dict()['userid']
+    shared_ips_reject_rate_dict = shared_ips.divide(shared_ips['userid'].sum()).to_dict()['userid']
+    shared_cards_reject_rate_dict = shared_cards.divide(shared_cards['userid'].sum()).to_dict()['userid']
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if series['device_hash'] == series['device_hash'] and shared_devices_reject_rate_dict[series['device_hash']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if series['ip_hash'] == series['ip_hash'] and shared_ips_reject_rate_dict[series['ip_hash']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if series['card_hash'] == series['card_hash'] and shared_cards_reject_rate_dict[series['card_hash']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    # add rejections based on counts of devices, ips and cards
+    count_devices = trans_data.groupby(by = 'userid').agg({'device_hash':'nunique'}).sort_values(by = 'device_hash')
+    count_ips = trans_data.groupby(by = 'userid').agg({'ip_hash':'nunique'}).sort_values(by = 'ip_hash')
+    count_cards = trans_data.groupby(by = 'userid').agg({'card_hash':'nunique'}).sort_values(by = 'card_hash')
+    count_devices_reject_rate_dict = count_devices.divide(count_devices['device_hash'].sum()).to_dict()['device_hash']
+    count_ips_reject_rate_dict = count_ips.divide(count_ips['ip_hash'].sum()).to_dict()['ip_hash']
+    count_cards_reject_rate_dict = count_cards.divide(count_cards['card_hash'].sum()).to_dict()['card_hash']
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if count_devices_reject_rate_dict[series['userid']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if count_ips_reject_rate_dict[series['userid']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
+    trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if count_cards_reject_rate_dict[series['userid']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
     # add transaction status and error codes
     trans_data['transaction_error_code'] = gen_trans_error_codes(trans_data = trans_data, trans_status_col = 'transaction_status', rejection_codes = transaction_obj.rejection_codes)
     
