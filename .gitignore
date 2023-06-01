@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 # Data Files
-data/RandomTeleComData.csv
+data
 .creds
