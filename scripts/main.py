@@ -46,5 +46,10 @@ if __name__ == '__main__':
     # print out head and shape of data
     print(f'RandomTeleComData.shape: {trans_data.shape}')
 
+    # check output data directory exists
+    data_fdir = os.path.dirname(cons.randomtelecomdata_fpath) 
+    if not os.path.exists(data_fdir):
+        os.mkdir(data_fdir)
+
     # write data to disk
     trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
