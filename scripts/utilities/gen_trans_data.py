@@ -57,7 +57,7 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data['card_country_code']  = trans_data['card_country_code'].replace(country_codes_map)
     trans_data['ip_country_code']  = trans_data['ip_country_code'].replace(country_codes_map)
 
-    # TODO: code underlying transaction success / failure relationships
+    # TODO: wrap all rejection logic within a single function and call over .apply with lambda
     # create initial transaction status
     trans_data['transaction_status'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_status_dict)
     # add rejections based on crime rates within country codes
