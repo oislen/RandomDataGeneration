@@ -1,10 +1,8 @@
 # RandomDataGeneration
 
 ## TODO:
-1. code underlying relationships between transaction status and user behaviour for non-zero transactions (possibly wrap within a single function call applied over lambda)
-   1. Users with excess number of devices, ips, cards
-   2. Users with shared devices, ips and cards
-   3. Infrequent domain names
+1. revise underlying relationships between transaction status and user behaviour for non-zero transactions 
+   1. wrap all logic within a single function and call over .apply with lambda
 2. expand to include other countries and continents (possibly combine all country information into a single file)
 3. add unittests
 4. deploy on aws ec2 instance
@@ -14,9 +12,3 @@
    2. cluster
    3. feature engineering
    4. predictive modelling
-
-gen_user_data execution times
-factor,n_users,pandas,dask
-1,1372,11.75,18.44
-2,2744,35.69,41.23
-3,4116,69.84,78.91
