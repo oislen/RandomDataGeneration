@@ -6,12 +6,13 @@
    2. Users with shared devices, ips and cards
    3. Infrequent domain names
 2. add command line interface
-3. expand to include other countries and continents (possibly combine all country information into a single file)
-4. add unittests
-5. containerise application
-6. deploy on aws ec2 instance
-7. add documentation to repo and code
-8. add new hire tasks
+3. add input parameter error handling
+4. expand to include other countries and continents (possibly combine all country information into a single file)
+5. add unittests
+6. containerise application
+7. deploy on aws ec2 instance
+8. add documentation to repo and code
+9. add new hire tasks
    1. network analysis
    2. cluster
    3. feature engineering
