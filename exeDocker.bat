@@ -15,3 +15,13 @@ call docker build --no-cache -t %DOCKER_IMAGE% .
 :: run docker container
 SET UBUNTU_DIR=/home/ubuntu
 call docker run -it %DOCKER_IMAGE%
+
+:: useful docker commands
+:: docker images
+:: docker ps -a
+:: docker exec -it {container_hash} /bin/bash
+:: docker stop {container_hash}
+:: docker start -ai {container_hash}
+:: docker rm {container_hash}
+:: docker image rm {docker_image}
+:: docker push {docker_image}
