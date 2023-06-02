@@ -30,7 +30,7 @@ def gen_idhash_cnt_dict(idhash_type, n, lam, nbytes=16):
     elif idhash_type == "id":
         idhash_list = gen_random_id(size=n, nbytes=nbytes)
     # randomly sample n counts from a squared poisson distribution with given lam value
-    cnts_list = list(random_poisson(lam=lam, size=n))
+    cnts_list = list(random_poisson_sq(lam=lam, size=n))
     # return a dictionary of idhashes and counts
     idhash_dict = dict(zip(idhash_list, cnts_list))
     return idhash_dict
