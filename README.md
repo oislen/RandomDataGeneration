@@ -12,9 +12,3 @@ This application simulates telecommunication payments using random number genera
 2. expand to include other countries and continents (possibly combine all country information into a single file)
 3. add unittests
 4. add documentation to repo and code
-5. add new hire tasks
-   1. network analysis
-   2. cluster
-   3. feature engineering
-   4. predictive modelling
-   5. anomaly detection
