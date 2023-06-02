@@ -5,7 +5,7 @@ This application simulates telecommunication payments using random number genera
 
      python3 RandomTeleComData/scripts/main.py --factor 0.5 --randomseed 1 --nitr 3
 
-![Entity Relationship Diagram](./doc/entity_relationship_diagram.png)
+![Entity Relationship Diagram](doc/entity_relationship_diagram.jpg)
 
 ## TODO:
 1. revise underlying relationships between transaction status and user behaviour for non-zero transactions 
