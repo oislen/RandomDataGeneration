@@ -12,7 +12,7 @@ import cons
 from utilities.commandline_interface import commandline_interface
 from utilities.input_error_handling import input_error_handling
 from utilities.multiprocess import multiprocess
-from utilities.gen_random_telecom_data import gen_random_telecom_data
+from app.gen_random_telecom_data import gen_random_telecom_data
 
 if __name__ == '__main__':
 

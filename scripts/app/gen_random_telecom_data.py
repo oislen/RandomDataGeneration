@@ -1,14 +1,14 @@
 import numpy as np
-from ProgrammeParams import ProgrammeParams
+from app.ProgrammeParams import ProgrammeParams
+from app.gen_user_agg_data import gen_user_agg_data
+from app.gen_user_data import gen_user_data
+from app.gen_trans_data import gen_trans_data
 from objects.Application import Application
 from objects.Card import Card
 from objects.Device import Device
 from objects.Ip import Ip
 from objects.Transaction import Transaction
 from objects.User import User
-from utilities.gen_user_agg_data import gen_user_agg_data
-from utilities.gen_user_data import gen_user_data
-from utilities.gen_trans_data import gen_trans_data
 
 
 def gen_random_telecom_data(factor=1, randomseed=None):
