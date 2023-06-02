@@ -2,7 +2,6 @@
 
 This application simulates telecommunication payments using random number generation. 
 
-
      python3 RandomTeleComData/scripts/main.py --factor 0.5 --randomseed 1 --nitr 3
 
 ![Entity Relationship Diagram](doc/entity_relationship_diagram.jpg)
@@ -18,3 +17,4 @@ This application simulates telecommunication payments using random number genera
    2. cluster
    3. feature engineering
    4. predictive modelling
+   5. anomaly detection
