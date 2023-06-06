@@ -5,12 +5,12 @@ from utilities.cnt2prop_dict import cnt2prop_dict
 
 class Application():
     """The randomly generated application data model object 
-
+    
     Parameters
     ----------
     n_application_hashes : int
         The number of application hashes to generate
-
+    
     Attributes
     ----------
     n_application_hashes : int
@@ -34,7 +34,7 @@ class Application():
     
     def gen_application_prices(self, application_hashes, loc = 0, scale = 2):
         """Generates a dictionary of random application hash prices
-
+        
         Parameters
         ----------
         application_hashes : list
