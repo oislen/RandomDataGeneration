@@ -71,16 +71,12 @@ class Device:
         # create an empty list to hold the different device types
         device_types = []
         # define a list of letters and digits
-        letters = list(set(string.ascii_letters.upper()))
+        letters = list(string.ascii_uppercase)
         digits = list(string.digits)
-        # iterate up to the number of devices
-        for i in range(n_device_types):
-            # generate a device type name
-            prefix = "".join(np.random.choice(letters, size=3, replace=False))
-            suffix = "".join(np.random.choice(digits, size=3, replace=False))
-            device_type = f"{prefix}-{suffix}"
-            # append device type name to device types list
-            device_types.append(device_type)
+        # generate a device type name
+        prefixes = np.random.choice(letters, size=(n_device_types, 3), replace=True)
+        suffixes = np.random.choice(digits, size=(n_device_types, 3), replace=True)
+        device_types = [''.join(list(prefixes[i])) + '-' + ''.join(list(suffixes[i])) for i in range(n_device_types)]
         # randomly choose different device types
         device_types = list(np.random.choice(a=device_types, size=len(device_hashes)))
         # return device hashes and types
