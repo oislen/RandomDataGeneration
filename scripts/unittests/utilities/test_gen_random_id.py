@@ -9,8 +9,14 @@ from utilities.gen_random_id import gen_random_id
 
 np.random.seed(42)
 
-exp_random_id = ["6374692674377254", "1751409580926382", "4264861381989413", "6720317315593519"]
+exp_random_id = [
+    "6374692674377254",
+    "1751409580926382",
+    "4264861381989413",
+    "6720317315593519",
+]
 obs_random_id = gen_random_id(size=4, nbytes=16)
+
 
 class Test_gen_random_id(unittest.TestCase):
     """"""

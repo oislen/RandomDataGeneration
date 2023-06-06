@@ -10,7 +10,8 @@ from utilities.gen_random_poisson_sq import gen_random_poisson_sq
 np.random.seed(42)
 
 exp_random_poisson = np.array([5, 7, 1, 1])
-obs_random_poisson = gen_random_poisson_sq(lam = 1, size = 4)
+obs_random_poisson = gen_random_poisson_sq(lam=1, size=4)
+
 
 class Test_gen_random_poisson_sq(unittest.TestCase):
     """"""
