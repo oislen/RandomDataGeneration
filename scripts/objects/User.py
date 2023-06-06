@@ -6,7 +6,8 @@ from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_country_codes_dict import gen_country_codes_dict
 from utilities.gen_dates_dict import gen_dates_dict
 
-class User():
+
+class User:
     """The randomly generated user data model object 
 
     Parameters
@@ -48,15 +49,21 @@ class User():
         self.n_user_ids = n_user_ids
         self.start_date = start_date
         self.end_date = end_date
-        self.lam = cons.poisson_lambda_params['user']
-        self.user_ids_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'id', n = self.n_user_ids, lam = self.lam)
+        self.lam = cons.poisson_lambda_params["user"]
+        self.user_ids_cnts_dict = gen_idhash_cnt_dict(
+            idhash_type="id", n=self.n_user_ids, lam=self.lam
+        )
         self.user_ids_props_dict = cnt2prop_dict(self.user_ids_cnts_dict)
         self.user_ids_firstname_dict = self.gen_user_firstname(cons)
         self.user_ids_lastname_dict = self.gen_user_lastname(cons)
-        self.user_ids_country_code_dict = gen_country_codes_dict(self.user_ids_cnts_dict)
+        self.user_ids_country_code_dict = gen_country_codes_dict(
+            self.user_ids_cnts_dict
+        )
         self.user_ids_email_domain_dict = self.gen_user_email_domain(cons)
-        self.user_ids_dates_dict = gen_dates_dict(self.user_ids_cnts_dict, start_date = self.start_date, end_date = self.end_date)
-    
+        self.user_ids_dates_dict = gen_dates_dict(
+            self.user_ids_cnts_dict, start_date=self.start_date, end_date=self.end_date
+        )
+
     def gen_user_firstname(self, cons):
         """Generates a dictionary of random user id first names
         
@@ -71,11 +78,11 @@ class User():
             A dictionary of user id first names
         """
         # load in list of first names
-        first_name_data = pd.read_csv(cons.firstnames_fpath, header = None)
+        first_name_data = pd.read_csv(cons.firstnames_fpath, header=None)
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly sample the first name list
-        user_firstname_list = first_name_data[0].sample(n = self.n_user_ids, replace = True)
+        user_firstname_list = first_name_data[0].sample(n=self.n_user_ids, replace=True)
         # return the user ids first names
         user_ids_firstname_dict = dict(zip(user_ids_list, user_firstname_list))
         return user_ids_firstname_dict
@@ -94,15 +101,15 @@ class User():
             A dictionary of user id last names
         """
         # load in list of last names
-        last_name_data = pd.read_csv(cons.last_names_url, header = None)
+        last_name_data = pd.read_csv(cons.last_names_url, header=None)
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly sample the last name list
-        user_lastname_list = last_name_data[0].sample(n = self.n_user_ids, replace = True)
+        user_lastname_list = last_name_data[0].sample(n=self.n_user_ids, replace=True)
         # return the user ids last names
         user_ids_lastname_dict = dict(zip(user_ids_list, user_lastname_list))
         return user_ids_lastname_dict
-    
+
     def gen_user_email_domain(self, cons):
         """Generates a dictionary of random user id email domains
         
@@ -117,15 +124,26 @@ class User():
             A dictionary of user id email domains
         """
         # load domain names data
-        email_domain_data = pd.read_csv(cons.domain_email_fpath, index_col = 0)
+        email_domain_data = pd.read_csv(cons.domain_email_fpath, index_col=0)
         # calculate the proportion of email domains
-        email_domain_data['proportion'] = email_domain_data['proportion'].divide(email_domain_data['proportion'].sum())
+        email_domain_data["proportion"] = email_domain_data["proportion"].divide(
+            email_domain_data["proportion"].sum()
+        )
         # convert email domain proportions to a dictionary
-        email_domain_dict = email_domain_data.set_index('domain').to_dict()['proportion']
+        email_domain_dict = email_domain_data.set_index("domain").to_dict()[
+            "proportion"
+        ]
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly choose the email domains based on proportions
-        user_email_domain_list = list(np.random.choice(a = list(email_domain_dict.keys()), p = list(email_domain_dict.values()), replace = True, size = len(user_ids_list)))
+        user_email_domain_list = list(
+            np.random.choice(
+                a=list(email_domain_dict.keys()),
+                p=list(email_domain_dict.values()),
+                replace=True,
+                size=len(user_ids_list),
+            )
+        )
         # return the user ids email domains
         user_ids_email_domain_dict = dict(zip(user_ids_list, user_email_domain_list))
         return user_ids_email_domain_dict

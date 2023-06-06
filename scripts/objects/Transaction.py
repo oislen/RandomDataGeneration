@@ -7,7 +7,8 @@ from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_dates_dict import gen_dates_dict
 
-class Transaction():
+
+class Transaction:
     """The randomly generated transaction data model object 
 
     Parameters
@@ -50,16 +51,28 @@ class Transaction():
     def __init__(self, n_transaction_hashes, start_date, end_date):
         self.n_transaction_hashes = n_transaction_hashes
         self.start_date = start_date
-        self.end_date = end_date 
-        self.lam = cons.poisson_lambda_params['transaction']
+        self.end_date = end_date
+        self.lam = cons.poisson_lambda_params["transaction"]
         self.payment_channels = cons.payment_channels
         self.transaction_status = cons.transaction_status
         self.rejection_codes = cons.rejection_codes
-        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_transaction_hashes, lam = self.lam)
-        self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
-        self.transaction_hashes_dates_dict = gen_dates_dict(self.transaction_hashes_cnts_dict, start_date = self.start_date, end_date = self.end_date)
-        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels)
-        self.transaction_hashes_status_dict = self.gen_transaction_status(list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status)
+        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(
+            idhash_type="hash", n=self.n_transaction_hashes, lam=self.lam
+        )
+        self.transaction_hashes_props_dict = cnt2prop_dict(
+            self.transaction_hashes_cnts_dict
+        )
+        self.transaction_hashes_dates_dict = gen_dates_dict(
+            self.transaction_hashes_cnts_dict,
+            start_date=self.start_date,
+            end_date=self.end_date,
+        )
+        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(
+            list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels
+        )
+        self.transaction_hashes_status_dict = self.gen_transaction_status(
+            list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status
+        )
 
     def gen_transaction_payment_channel(self, transaction_hashes, payment_channels):
         """Generates a dictionary of random transaction payment channels
@@ -77,9 +90,18 @@ class Transaction():
             A dictionary of transaction payment channels
         """
         # randomly sample payment channels based on population proportions
-        transactoin_payment_channels = list(np.random.choice(a = list(payment_channels.keys()), p = list(payment_channels.values()), replace = True, size = len(transaction_hashes)))
+        transactoin_payment_channels = list(
+            np.random.choice(
+                a=list(payment_channels.keys()),
+                p=list(payment_channels.values()),
+                replace=True,
+                size=len(transaction_hashes),
+            )
+        )
         # return payment channels and transaction hashes
-        transaction_hashes_payment_channels_dict = dict(zip(transaction_hashes, transactoin_payment_channels))
+        transaction_hashes_payment_channels_dict = dict(
+            zip(transaction_hashes, transactoin_payment_channels)
+        )
         return transaction_hashes_payment_channels_dict
 
     def gen_transaction_status(self, transaction_hashes, transaction_status):
@@ -98,7 +120,16 @@ class Transaction():
             A dictionary of transaction statuses
         """
         # randomly sample transaction status based on population proportions
-        transaction_status = list(np.random.choice(a = list(transaction_status.keys()), p = list(transaction_status.values()), replace = True, size = len(transaction_hashes)))
+        transaction_status = list(
+            np.random.choice(
+                a=list(transaction_status.keys()),
+                p=list(transaction_status.values()),
+                replace=True,
+                size=len(transaction_hashes),
+            )
+        )
         # return transaction hashes and statuses
-        transaction_hashes_status_dict = dict(zip(transaction_hashes, transaction_status))
+        transaction_hashes_status_dict = dict(
+            zip(transaction_hashes, transaction_status)
+        )
         return transaction_hashes_status_dict
