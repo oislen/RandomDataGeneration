@@ -9,8 +9,10 @@ randomtelecomdata_fpath = os.path.join(root_dir, 'RandomTeleComData', 'data','Ra
 domain_email_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'email-domains.csv')
 countrycrimeindex_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'country_crime_index.csv')
 countrieseurope_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'Countries-Europe.csv')
+# set entities to users ratios
+entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
 # set user level poisson lambda values 
-user_config = {'lambda':{'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}}
+poisson_lambda_params = {'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}
 # set proportion of shared entities
 shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
 # set null rates
