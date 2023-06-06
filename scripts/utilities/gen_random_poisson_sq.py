@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def random_poisson_sq(lam, size):
+def gen_random_poisson_sq(lam, size):
     """Generates data from a square random poisson variable
 
     Parameters
