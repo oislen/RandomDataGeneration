@@ -1,5 +1,5 @@
 import numpy as np
-from utilities.gen_ranom_hash import gen_random_hash
+from utilities.gen_random_hash import gen_random_hash
 from utilities.gen_random_id import gen_random_id
 from utilities.random_poisson_sq import random_poisson_sq
 
