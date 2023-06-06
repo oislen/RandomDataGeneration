@@ -21,7 +21,7 @@ def gen_random_id(size, nbytes=16):
     digits = list(string.digits)
     # randomly sample nbytes digits, string concatenate and convert to integers
     random_ids = [
-        int("".join(np.random.choice(a=digits, size=nbytes, replace=True)))
+        "".join(np.random.choice(a=digits, size=nbytes, replace=True))
         for i in range(size)
     ]
     return random_ids
