@@ -18,7 +18,7 @@ RUN useradd ${user}
 RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
 
 # clone git repo
-RUN git clone https://github.com/oislen/RandomTeleComData.git /home/ubuntu/RandomTeleComData
+RUN git clone https://github.com/oislen/RandomTelecomPayments.git /home/ubuntu/RandomTelecomPayments
 
 WORKDIR /home/${user}
 CMD ["bash"]

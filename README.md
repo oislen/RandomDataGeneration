@@ -1,4 +1,4 @@
-# Random Telecom Data Generation
+# Random Telecom Payments Generation
 
 Randomly simulated data is particularly useful when it's real world counterpart is hard to come by due to complexity, privacy and security reasons. This application aims to simulate telecommunication payments using random number generation. It includes typical transaction level relationships and behaviours amongst user, device, ip, and card entities. It can be used inplace of real world telecommunication payments for prototyping solutions and as an education tool.
 

@@ -5,12 +5,12 @@ debug_mode = True
 # set root directory
 root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
 # set file locations
-randomtelecomdata_fpath = os.path.join(root_dir, 'RandomTeleComData', 'data','RandomTeleComData.csv')
-domain_email_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'email-domains.csv')
-countrycrimeindex_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'country_crime_index.csv')
-countrieseurope_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'Countries-Europe.csv')
-firstnames_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'first-names.txt')
-lastnames_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'last-names.txt')
+randomtelecomdata_fpath = os.path.join(root_dir, 'RandomTelecomPayments', 'data','RandomTelecomPayments.csv')
+domain_email_fpath = os.path.join(root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'email-domains.csv')
+countrycrimeindex_fpath = os.path.join(root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'country_crime_index.csv')
+countrieseurope_fpath = os.path.join(root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'Countries-Europe.csv')
+firstnames_fpath = os.path.join(root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'first-names.txt')
+lastnames_fpath = os.path.join(root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'last-names.txt')
 # set entities to users ratios
 entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
 # set user level poisson lambda values 
