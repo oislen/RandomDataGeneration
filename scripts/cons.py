@@ -18,7 +18,7 @@ shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
 # set null rates
 null_rates = {'ip':0.07, 'card':0.05,'device':0.05}
 # set card types
-card_types = {'visa':0.5, 'mastercard':0.5}
+card_types_dict = {'visa':0.5, 'mastercard':0.5}
 # set payment channels
 payment_channels = {'paypal':0.4, 'adyen':0.3, 'worldpay':0.2, 'docomo':0.1}
 # set transaction status
