@@ -5,6 +5,30 @@ from utilities.gen_country_codes_dict import gen_country_codes_dict
 from utilities.gen_shared_idhashes import gen_shared_idhashes
 
 class Ip():
+    """The randomly generated ip data model object 
+
+    Parameters
+    ----------
+    n_ip_hashes : int
+        The number of ip hashes to generate
+
+    Attributes
+    ----------
+    n_ip_hashes : int
+        The number of ip hashes generated
+    lam : float
+        The lambda parameter of the squared poisson distribution used to generate the ip hash counts
+    prop_shared_ip_hashes : float
+        The population proportion of shared ip hashes
+    ip_hashes_cnts_dict : dict
+        The ip hash counts dictionary
+    ip_hashes_props_dict : dict
+        The ip hash proportions dictionary
+    ip_hashes_country_code_dict : dict
+        The ip hash country codes dictionary
+    ip_hashes_shared_props_dict : dict
+        The shared ip hash proportions dictionary
+    """
 
     def __init__(self, n_ip_hashes):
         self.n_ip_hashes = n_ip_hashes
