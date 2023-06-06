@@ -1,6 +1,6 @@
 :: set docker settings
 SET DOCKER_USER=oislen
-SET DOCKER_REPO=randomtelecomdata
+SET DOCKER_REPO=randomtelecompayments
 SET DOCKER_TAG=latest
 SET DOCKER_IMAGE=%DOCKER_USER%/%DOCKER_REPO%:%DOCKER_TAG%
 

@@ -69,8 +69,8 @@ sudo systemctl start docker
 sudo chmod 666 /var/run/docker.sock
 cat ~/.creds/docker | docker login --username oislen --password-stdin
 # pull docker container
-docker pull oislen/randomtelecomdata:latest
+docker pull oislen/randomtelecompayments:latest
 # run pulled docker container
-docker run -it oislen/randomtelecomdata:latest
-#docker run -d oislen/randomtelecomdata:latest
+docker run -it oislen/randomtelecompayments:latest
+#docker run -d oislen/randomtelecompayments:latest
 #docker run -it -d <container_id_or_name> /bin/bash
