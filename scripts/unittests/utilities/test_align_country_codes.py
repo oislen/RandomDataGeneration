@@ -5,24 +5,70 @@ import numpy as np
 import pandas as pd
 import random
 
-sys.path.append(os.path.join(os.getcwd(), 'scripts'))
+sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
 from utilities.align_country_codes import align_country_codes
 
-input_data_df = pd.DataFrame([{'registration_country_code':353, 'ip_country_code':42.0, 'card_country_code':42.0},
-             {'registration_country_code':353, 'ip_country_code':42.0, 'card_country_code':np.nan},
-             {'registration_country_code':42, 'ip_country_code':42.0, 'card_country_code':42},
-             {'registration_country_code':42, 'ip_country_code':np.nan, 'card_country_code':np.nan}])
-exp_data_df = pd.DataFrame([{'registration_country_code':353.0, 'ip_country_code':353, 'card_country_code':353},
-             {'registration_country_code':353, 'ip_country_code':353.0, 'card_country_code':np.nan},
-             {'registration_country_code':42, 'ip_country_code':42.0, 'card_country_code':42.0},
-             {'registration_country_code':42, 'ip_country_code':np.nan, 'card_country_code':np.nan}])
+input_data_df = pd.DataFrame(
+    [
+        {
+            "registration_country_code": 353,
+            "ip_country_code": 42.0,
+            "card_country_code": 42.0,
+        },
+        {
+            "registration_country_code": 353,
+            "ip_country_code": 42.0,
+            "card_country_code": np.nan,
+        },
+        {
+            "registration_country_code": 42,
+            "ip_country_code": 42.0,
+            "card_country_code": 42,
+        },
+        {
+            "registration_country_code": 42,
+            "ip_country_code": np.nan,
+            "card_country_code": np.nan,
+        },
+    ]
+)
+exp_data_df = pd.DataFrame(
+    [
+        {
+            "registration_country_code": 353.0,
+            "ip_country_code": 353,
+            "card_country_code": 353,
+        },
+        {
+            "registration_country_code": 353,
+            "ip_country_code": 353.0,
+            "card_country_code": np.nan,
+        },
+        {
+            "registration_country_code": 42,
+            "ip_country_code": 42.0,
+            "card_country_code": 42.0,
+        },
+        {
+            "registration_country_code": 42,
+            "ip_country_code": np.nan,
+            "card_country_code": np.nan,
+        },
+    ]
+)
 random.seed(42)
-obs_data_df = input_data_df.apply(lambda series: align_country_codes(series, proba_comm_ip=0.95, proba_comm_card=0.99), axis = 1)
+obs_data_df = input_data_df.apply(
+    lambda series: align_country_codes(
+        series, proba_comm_ip=0.95, proba_comm_card=0.99
+    ),
+    axis=1,
+)
 
 
-class Test_align_country_codes(unittest.TestCase): 
-    """""" 
+class Test_align_country_codes(unittest.TestCase):
+    """"""
+
     def setUp(self):
         self.input_data_df = input_data_df
         self.obs_data_df = obs_data_df
@@ -38,7 +84,12 @@ class Test_align_country_codes(unittest.TestCase):
         self.assertTrue((self.obs_data_df.dtypes == self.exp_data_df.dtypes).all())
 
     def test_object(self):
-        self.assertTrue((self.obs_data_df.fillna(-999.0) == self.exp_data_df.fillna(-999.0)).all().all())
+        self.assertTrue(
+            (self.obs_data_df.fillna(-999.0) == self.exp_data_df.fillna(-999.0))
+            .all()
+            .all()
+        )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
