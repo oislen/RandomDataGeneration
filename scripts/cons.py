@@ -1,11 +1,14 @@
 import os
+import platform
 # set debug mode
 debug_mode = True
+# set root directory
+root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
 # set file locations
-randomtelecomdata_fpath = os.path.join('.', 'RandomTeleComData', 'data','RandomTeleComData.csv')
-domain_email_fpath = os.path.join('.', 'RandomTeleComData', 'scripts', 'ref', 'email-domains.csv')
-countrycrimeindex_fpath = os.path.join('.', 'RandomTeleComData', 'scripts', 'ref', 'country_crime_index.csv')
-countrieseurope_fpath = os.path.join('.', 'RandomTeleComData', 'scripts', 'ref', 'Countries-Europe.csv')
+randomtelecomdata_fpath = os.path.join(root_dir, 'RandomTeleComData', 'data','RandomTeleComData.csv')
+domain_email_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'email-domains.csv')
+countrycrimeindex_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'country_crime_index.csv')
+countrieseurope_fpath = os.path.join(root_dir, 'RandomTeleComData', 'scripts', 'ref', 'Countries-Europe.csv')
 # set user level poisson lambda values 
 user_config = {'lambda':{'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}}
 # set proportion of shared entities
