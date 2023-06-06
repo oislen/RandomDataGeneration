@@ -1,1 +1,1 @@
-python -m unittest discover scripts\Unittests
+python -m unittest discover scripts\unittests\utilities
