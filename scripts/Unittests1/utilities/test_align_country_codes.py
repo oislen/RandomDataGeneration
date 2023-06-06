@@ -5,8 +5,7 @@ import numpy as np
 import pandas as pd
 import random
 
-sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
-sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData', 'scripts'))
+sys.path.append(os.path.join(os.getcwd(), 'scripts'))
 
 from utilities.align_country_codes import align_country_codes
 
