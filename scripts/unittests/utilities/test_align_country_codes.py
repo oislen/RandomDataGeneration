@@ -9,6 +9,8 @@ sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
 from utilities.align_country_codes import align_country_codes
 
+random.seed(42)
+
 input_data_df = pd.DataFrame(
     [
         {
@@ -57,7 +59,6 @@ exp_data_df = pd.DataFrame(
         },
     ]
 )
-random.seed(42)
 obs_data_df = input_data_df.apply(
     lambda series: align_country_codes(
         series, proba_comm_ip=0.95, proba_comm_card=0.99

@@ -7,9 +7,10 @@ sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
 from utilities.gen_country_codes_dict import gen_country_codes_dict
 
+np.random.seed(42)
+
 cnt_data = {"a": 1, "b": 2, "c": 3, "d": 4}
 exp_prop_dict = {"a": 276, "b": 756, "c": 642, "d": 826}
-np.random.seed(42)
 obs_prop_dict = gen_country_codes_dict(cnt_data)
 
 

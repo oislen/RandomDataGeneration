@@ -7,6 +7,8 @@ sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
 from utilities.gen_dates_dict import gen_dates_dict
 
+np.random.seed(42)
+
 cnt_data = {"a": 1, "b": 2, "c": 3, "d": 4}
 exp_prop_dict = {
     "a": np.datetime64("2020-04-12T00:00:00.000000000"),
@@ -14,7 +16,6 @@ exp_prop_dict = {
     "c": np.datetime64("2020-09-27T00:00:00.000000000"),
     "d": np.datetime64("2020-04-16T00:00:00.000000000"),
 }
-np.random.seed(42)
 obs_prop_dict = gen_dates_dict(cnt_data, start_date="2020-01-01", end_date="2021-12-31")
 
 
