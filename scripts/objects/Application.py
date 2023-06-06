@@ -7,7 +7,7 @@ class Application():
 
     def __init__(self, n_application_hashes):
         self.n_application_hashes = n_application_hashes
-        self.lam = cons.user_config['lambda']['application']
+        self.lam = cons.poisson_lambda_params['application']
         self.application_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type = 'hash', n = self.n_application_hashes, lam = self.lam)
         self.application_hashes_props_dict = cnt2prop_dict(self.application_hashes_cnts_dict)
         self.application_hashes_prices_dict = self.gen_application_prices(self.application_hashes_cnts_dict)

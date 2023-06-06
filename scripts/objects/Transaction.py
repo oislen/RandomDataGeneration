@@ -13,7 +13,7 @@ class Transaction():
         self.n_transaction_hashes = n_transaction_hashes
         self.start_date = start_date
         self.end_date = end_date 
-        self.lam = cons.user_config['lambda']['transaction']
+        self.lam = cons.poisson_lambda_params['transaction']
         self.payment_channels = cons.payment_channels
         self.transaction_status = cons.transaction_status
         self.rejection_codes = cons.rejection_codes
