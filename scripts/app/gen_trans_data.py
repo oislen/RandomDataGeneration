@@ -7,7 +7,28 @@ from utilities.align_country_codes import align_country_codes
 from utilities.gen_trans_error_codes import gen_trans_error_codes
 
 def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
-    """"""
+    """Generates random transaction level telecom payments data
+
+    Parameters
+    ----------
+    user_data : pandas.DataFrame
+        The random user level data
+    device_obj : class
+        The random device data model object
+    card_obj : class
+        The random card data model object
+    ip_obj : class
+        The random ip data model object
+    transaction_obj : class
+        The random transaction data model object
+    application_obj : class
+        The random application data model object
+
+    Returns
+    -------
+    pandas.DataFrame
+        The random transaction level telecom payments data
+    """
 
     # explode user data to transaction level
     trans_data = user_data.explode('transaction_hash').dropna(subset = ['transaction_hash'])
