@@ -7,6 +7,7 @@ debug_mode = True
 # set file paths and locations with repo
 fpath_root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
 fpath_randomtelecomdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomPayments.csv')
+fpath_arch_randomtelecomdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'arch', 'RandomTelecomPayments.csv')
 fpath_domain_email = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'email-domains.csv')
 fpath_countrycrimeindex = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'country_crime_index.csv')
 fpath_countrieseurope = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'Countries-Europe.csv')
