@@ -7,9 +7,10 @@ import random
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from utilities.align_country_codes import align_country_codes
 
-random.seed(42)
+random.seed(cons.unittest_seed)
 
 input_data_df = pd.DataFrame(
     [

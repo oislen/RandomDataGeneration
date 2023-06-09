@@ -5,9 +5,10 @@ import numpy as np
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from utilities.gen_dates_dict import gen_dates_dict
 
-np.random.seed(42)
+np.random.seed(cons.unittest_seed)
 
 cnt_data = {"a": 1, "b": 2, "c": 3, "d": 4}
 exp_prop_dict = {

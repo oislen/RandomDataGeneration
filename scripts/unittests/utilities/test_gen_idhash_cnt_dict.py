@@ -6,10 +6,11 @@ import numpy as np
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 
-random.seed(42)
-np.random.seed(42)
+random.seed(cons.unittest_seed)
+np.random.seed(cons.unittest_seed)
 
 exp_id_dict = {
     "6374692674377254": 4,

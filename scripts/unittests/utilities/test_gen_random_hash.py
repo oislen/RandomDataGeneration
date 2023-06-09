@@ -5,9 +5,10 @@ import numpy as np
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from utilities.gen_random_hash import gen_random_hash
 
-np.random.seed(42)
+np.random.seed(cons.unittest_seed)
 
 exp_random_hash = [
     "se7kimaanzn2l1nt",

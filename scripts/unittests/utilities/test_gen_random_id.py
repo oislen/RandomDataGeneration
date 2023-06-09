@@ -5,9 +5,10 @@ import numpy as np
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from utilities.gen_random_id import gen_random_id
 
-np.random.seed(42)
+np.random.seed(cons.unittest_seed)
 
 exp_random_id = [
     "6374692674377254",
