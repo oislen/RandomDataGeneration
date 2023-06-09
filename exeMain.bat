@@ -1,0 +1,1 @@
+python3 scripts/main.py --factor 0.5 --randomseed 1 --nitr 3
