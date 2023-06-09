@@ -1,25 +1,43 @@
+import pandas as pd
 import numpy as np
+from utilities.gen_random_poisson_sq import gen_random_poisson_sq
+from utilities.remove_duplicate_idhashes import remove_duplicate_idhashes
 
-def remove_duplicate_idhashes(user_data, idhash):
-    """"""
-    # take deep copy of the data
-    tmp_data = user_data.copy()
-    # define duplicate idhash column name
-    duplicate_idhash = f'duplicate_{idhash}'
-    # explode out the idhashes
-    user_transaction_hashes = tmp_data[idhash].explode().rename(duplicate_idhash)
-    # identify the duplicate idhashes
-    duplicated_user_transaction_hashes = user_transaction_hashes[user_transaction_hashes.duplicated()].reset_index().groupby(by = 'index').agg({duplicate_idhash:list})
-    # join duplicated idhashes to temp data
-    tmp_data = tmp_data.join(duplicated_user_transaction_hashes, how = 'left')
-    # remove duplicate id hashes
-    tmp_data[idhash] = tmp_data.apply(lambda s: s[idhash] if not s[duplicate_idhash] == s[duplicate_idhash] else [v for v in s[idhash] if v not in s[duplicate_idhash]], axis = 1)
-    # drop duplicate id hashes columns
-    tmp_data = tmp_data.drop(columns = [duplicate_idhash])
-    return tmp_data
+def gen_user_data(user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
+    """Generates random user level telecom payments data
 
-def gen_user_data(user_agg_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
-    """"""
+    Parameters
+    ----------
+    user_obj : class
+        The random user data model object
+    device_obj : class
+        The random device data model object
+    card_obj : class
+        The random card data model object
+    ip_obj : class
+        The random ip data model object
+    transaction_obj : class
+        The random transaction data model object
+    application_obj : class
+        The random application data model object
+
+    Returns
+    -------
+    pandas.DataFrame
+        The random user level telecom payments data
+    """
+    # create an empty pandas dataframe to hold the random aggregated data
+    user_agg_data = pd.DataFrame()
+    # extract out the number of users to generate
+    n_users = user_obj.n_user_ids
+    # randomly sample from the random user uids
+    user_agg_data['uid'] = np.random.choice(a = list(user_obj.user_ids_props_dict.keys()), size = n_users, replace = False)
+    # randomly simulate the number of entities per user
+    user_agg_data['n_devices'] = gen_random_poisson_sq(lam = device_obj.lam, size = n_users)
+    user_agg_data['n_cards'] = gen_random_poisson_sq(lam = card_obj.lam, size = n_users)
+    user_agg_data['n_ips'] = gen_random_poisson_sq(lam = ip_obj.lam, size = n_users)
+    user_agg_data['n_transactions'] = gen_random_poisson_sq(lam = transaction_obj.lam, size = n_users)
+    user_agg_data['n_applications'] = gen_random_poisson_sq(lam = application_obj.lam, size = n_users)
     user_data = user_agg_data.copy()
     # add user data
     user_data['firstname'] = user_data['uid'].replace(user_obj.user_ids_firstname_dict)
