@@ -78,7 +78,7 @@ class User:
             A dictionary of user id first names
         """
         # load in list of first names
-        first_name_data = pd.read_csv(cons.firstnames_fpath, header=None)
+        first_name_data = pd.read_csv(cons.fpath_firstnames, header=None)
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly sample the first name list
@@ -101,7 +101,7 @@ class User:
             A dictionary of user id last names
         """
         # load in list of last names
-        last_name_data = pd.read_csv(cons.last_names_url, header=None)
+        last_name_data = pd.read_csv(cons.fpath_lastnames, header=None)
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly sample the last name list
@@ -124,7 +124,7 @@ class User:
             A dictionary of user id email domains
         """
         # load domain names data
-        email_domain_data = pd.read_csv(cons.domain_email_fpath, index_col=0)
+        email_domain_data = pd.read_csv(cons.fpath_domain_email, index_col=0)
         # calculate the proportion of email domains
         email_domain_data["proportion"] = email_domain_data["proportion"].divide(
             email_domain_data["proportion"].sum()
