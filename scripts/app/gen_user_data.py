@@ -53,10 +53,10 @@ def gen_user_data(user_obj, device_obj, card_obj, ip_obj, transaction_obj, appli
     user_data['transaction_hash'] = user_data['n_transactions'].apply(lambda x: list(np.random.choice(a = list(transaction_obj.transaction_hashes_props_dict.keys()), replace = False, size = x)))
     user_data['application_hash'] = user_data['n_applications'].apply(lambda x: list(np.random.choice(a = list(application_obj.application_hashes_props_dict.keys()), p = list(application_obj.application_hashes_props_dict.values()), replace = True, size = x)))
     # remove duplicate idhashes
-    user_data = remove_duplicate_idhashes(user_data, idhash = 'device_hash')
-    user_data = remove_duplicate_idhashes(user_data, idhash = 'card_hash')
-    user_data = remove_duplicate_idhashes(user_data, idhash = 'ip_hash')
-    user_data = remove_duplicate_idhashes(user_data, idhash = 'transaction_hash')
+    user_data = remove_duplicate_idhashes(user_data, idhash_col = 'device_hash')
+    user_data = remove_duplicate_idhashes(user_data, idhash_col = 'card_hash')
+    user_data = remove_duplicate_idhashes(user_data, idhash_col = 'ip_hash')
+    user_data = remove_duplicate_idhashes(user_data, idhash_col = 'transaction_hash')
     # drop excess columns
     drop_columns = ['n_devices', 'n_cards', 'n_ips', 'n_applications', 'n_transactions']
     user_data = user_data.drop(columns = drop_columns)
