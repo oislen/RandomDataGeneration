@@ -6,6 +6,7 @@ import numpy as np
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from objects.Card import Card
 
 exp_card_hashes_cnts_dict = {'se7kimaanzn2l1nt': 1, '1kwbloqrfe26k8h3': 1, 'od8p1jr67ydgz315': 2, '3shpx9zdue7dmkfh': 1}
@@ -13,13 +14,13 @@ exp_card_hashes_type_dict = {'se7kimaanzn2l1nt': 'visa', '1kwbloqrfe26k8h3': 'vi
 exp_card_hashes_props_dict = {'se7kimaanzn2l1nt': 0.2, '1kwbloqrfe26k8h3': 0.2, 'od8p1jr67ydgz315': 0.4, '3shpx9zdue7dmkfh': 0.2}
 exp_card_hashes_country_code_dict = {'se7kimaanzn2l1nt': 642, '1kwbloqrfe26k8h3': 620, 'od8p1jr67ydgz315': 826, '3shpx9zdue7dmkfh': 528}
 exp_card_hashes_shared_props_dict = {}
-exp_card_types_dict = {'visa': 0.5, 'mastercard': 0.5}
-exp_prop_shared_card_hashes = 0.005
-exp_n_card_hashes = 4
-exp_lam = 0.1
+exp_card_types_dict = cons.card_types_dict
+exp_prop_shared_card_hashes = cons.shared_entities_dict['card']
+exp_n_card_hashes = cons.unittest_n_entities
+exp_lam = cons.poisson_lambda_params['card']
 
-random.seed(42)
-np.random.seed(42)
+random.seed(cons.unittest_seed)
+np.random.seed(cons.unittest_seed)
 card_object = Card(n_card_hashes=exp_n_card_hashes)
 
 obs_card_hashes_cnts_dict = card_object.card_hashes_cnts_dict
@@ -32,7 +33,7 @@ obs_prop_shared_card_hashes = card_object.prop_shared_card_hashes
 obs_lam = card_object.lam
 obs_n_card_hashes = card_object.n_card_hashes
 
-class Test_Application(unittest.TestCase):
+class Test_Card(unittest.TestCase):
     """"""
 
     def setUp(self):

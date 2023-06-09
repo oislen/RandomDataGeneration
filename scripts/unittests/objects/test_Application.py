@@ -6,16 +6,17 @@ import numpy as np
 
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
+import cons
 from objects.Application import Application
 
 exp_application_hashes_cnts_dict = {'se7kimaanzn2l1nt': 31, '1kwbloqrfe26k8h3': 5, 'od8p1jr67ydgz315': 9, '3shpx9zdue7dmkfh': 6}
 exp_application_hashes_prices_dict = {'se7kimaanzn2l1nt': 1.51, '1kwbloqrfe26k8h3': 0.44, 'od8p1jr67ydgz315': 7.63, '3shpx9zdue7dmkfh': 0.32}
 exp_application_hashes_props_dict = {'se7kimaanzn2l1nt': 0.6078431372549019, '1kwbloqrfe26k8h3': 0.09803921568627451, 'od8p1jr67ydgz315': 0.17647058823529413, '3shpx9zdue7dmkfh': 0.11764705882352941}
-exp_n_application_hashes = 4
-exp_lam = 3
+exp_n_application_hashes = cons.unittest_n_entities
+exp_lam = cons.poisson_lambda_params['application']
 
-random.seed(42)
-np.random.seed(42)
+random.seed(cons.unittest_seed)
+np.random.seed(cons.unittest_seed)
 application_object = Application(n_application_hashes=exp_n_application_hashes)
 
 obs_application_hashes_cnts_dict = application_object.application_hashes_cnts_dict
