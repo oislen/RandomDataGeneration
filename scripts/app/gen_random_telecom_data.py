@@ -1,6 +1,5 @@
 import numpy as np
 from app.ProgrammeParams import ProgrammeParams
-from app.gen_user_agg_data import gen_user_agg_data
 from app.gen_user_data import gen_user_data
 from app.gen_trans_data import gen_trans_data
 from objects.Application import Application
@@ -64,19 +63,8 @@ def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
         end_date=programmeparams.registration_end_date,
     )
 
-    # generate counts per entity at user level
-    user_agg_data = gen_user_agg_data(
-        user_obj=user_obj,
-        device_obj=device_obj,
-        card_obj=card_obj,
-        ip_obj=ip_obj,
-        transaction_obj=transaction_obj,
-        application_obj=application_obj,
-    )
-
     # generate user level data
     user_data = gen_user_data(
-        user_agg_data=user_agg_data,
         user_obj=user_obj,
         device_obj=device_obj,
         card_obj=card_obj,
