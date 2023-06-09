@@ -76,7 +76,10 @@ class Device:
         # generate a device type name
         prefixes = np.random.choice(letters, size=(n_device_types, 3), replace=True)
         suffixes = np.random.choice(digits, size=(n_device_types, 3), replace=True)
-        device_types = [''.join(list(prefixes[i])) + '-' + ''.join(list(suffixes[i])) for i in range(n_device_types)]
+        device_types = [
+            "".join(list(prefixes[i])) + "-" + "".join(list(suffixes[i]))
+            for i in range(n_device_types)
+        ]
         # randomly choose different device types
         device_types = list(np.random.choice(a=device_types, size=len(device_hashes)))
         # return device hashes and types
