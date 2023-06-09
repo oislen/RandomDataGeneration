@@ -12,6 +12,8 @@ fpath_countrycrimeindex = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 
 fpath_countrieseurope = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'Countries-Europe.csv')
 fpath_firstnames = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'first-names.txt')
 fpath_lastnames = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'last-names.txt')
+fpath_unittest_user_data = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'unittest', 'user_data.pickle')
+fpath_unittest_transaction_data = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'unittest', 'transaction_data.pickle')
 
 # set url links to files available online
 url_european_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries-Europe.csv'
@@ -21,7 +23,7 @@ url_last_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd38744915882
 # set programme parameters
 programme_parameters_factor = 0.5
 programme_parameters_randomseed = 1
-programme_parameters_nitr = 3
+programme_parameters_nitr = 1
 programme_parameters_n_users = 1372
 programme_parameters_n_device_types = 53
 programme_parameters_n_applications = 1642
@@ -34,6 +36,7 @@ programme_parameters_transaction_end_date = '2021-12-31'
 unittest_seed = 42
 unittest_n_entities = 4
 unittest_n_device_types = 10
+unittest_gen_test_dfs = False
 
 # set data model constants
 data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
