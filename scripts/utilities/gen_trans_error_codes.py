@@ -2,7 +2,7 @@ import numpy as np
 
 
 def gen_trans_error_codes(trans_data, trans_status_col, rejection_codes):
-    """Generates transaction error codes 
+    """Generates transaction error codes
 
     Parameters
     ----------
