@@ -8,7 +8,7 @@ from utilities.gen_dates_dict import gen_dates_dict
 
 
 class User:
-    """The randomly generated user data model object 
+    """The randomly generated user data model object
 
     Parameters
     ----------
@@ -66,12 +66,12 @@ class User:
 
     def gen_user_firstname(self, cons):
         """Generates a dictionary of random user id first names
-        
+
         Parameters
         ----------
         cons : list
             The programme cons.py module
-        
+
         Returns
         -------
         dict
@@ -89,12 +89,12 @@ class User:
 
     def gen_user_lastname(self, cons):
         """Generates a dictionary of random user id last names
-        
+
         Parameters
         ----------
         cons : list
             The programme cons.py module
-        
+
         Returns
         -------
         dict
@@ -112,12 +112,12 @@ class User:
 
     def gen_user_email_domain(self, cons):
         """Generates a dictionary of random user id email domains
-        
+
         Parameters
         ----------
         cons : list
             The programme cons.py module
-        
+
         Returns
         -------
         dict

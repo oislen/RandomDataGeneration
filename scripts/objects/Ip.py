@@ -6,13 +6,13 @@ from utilities.gen_shared_idhashes import gen_shared_idhashes
 
 
 class Ip:
-    """The randomly generated ip data model object 
-    
+    """The randomly generated ip data model object
+
     Parameters
     ----------
     n_ip_hashes : int
         The number of ip hashes to generate
-    
+
     Attributes
     ----------
     n_ip_hashes : int

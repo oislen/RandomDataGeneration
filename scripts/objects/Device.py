@@ -7,15 +7,15 @@ from utilities.gen_shared_idhashes import gen_shared_idhashes
 
 
 class Device:
-    """The randomly generated device data model object 
-    
+    """The randomly generated device data model object
+
     Parameters
     ----------
     n_device_hashes : int
         The number of device hashes to generate
     n_device_types : int
         The number of device types to generate
-    
+
     Attributes
     ----------
     n_device_hashes : int
@@ -55,14 +55,14 @@ class Device:
 
     def gen_device_type(self, device_hashes, n_device_types):
         """Generates a dictionary of random device types
-        
+
         Parameters
         ----------
         device_hashes : list
             The device hashes
         n_device_types : int
             The number of available device types to generated
-        
+
         Returns
         -------
         dict

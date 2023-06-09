@@ -9,7 +9,7 @@ from utilities.gen_dates_dict import gen_dates_dict
 
 
 class Transaction:
-    """The randomly generated transaction data model object 
+    """The randomly generated transaction data model object
 
     Parameters
     ----------
@@ -67,8 +67,10 @@ class Transaction:
             start_date=self.start_date,
             end_date=self.end_date,
         )
-        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(
-            list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels
+        self.transaction_hashes_payment_channel_dict = (
+            self.gen_transaction_payment_channel(
+                list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels
+            )
         )
         self.transaction_hashes_status_dict = self.gen_transaction_status(
             list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status
@@ -76,14 +78,14 @@ class Transaction:
 
     def gen_transaction_payment_channel(self, transaction_hashes, payment_channels):
         """Generates a dictionary of random transaction payment channels
-        
+
         Parameters
         ----------
         transaction_hashes : list
             The transaction hashes
         payment_channels : dict
             The population proportion of payment channels
-        
+
         Returns
         -------
         dict
@@ -106,14 +108,14 @@ class Transaction:
 
     def gen_transaction_status(self, transaction_hashes, transaction_status):
         """Generates a dictionary of random transaction statuses
-        
+
         Parameters
         ----------
         transaction_hashes : list
             The transaction hashes
         payment_channels : dict
             The population proportion of transaction statuses
-        
+
         Returns
         -------
         dict

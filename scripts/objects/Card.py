@@ -7,19 +7,19 @@ from utilities.gen_shared_idhashes import gen_shared_idhashes
 
 
 class Card:
-    """The randomly generated card data model object 
-    
+    """The randomly generated card data model object
+
     Parameters
     ----------
     n_card_hashes : int
         The number of card hashes to generate
-    
+
     Attributes
     ----------
     n_card_hashes : int
         The number of card hashes generated
     card_types_dict : dict
-        The population proportions of card types 
+        The population proportions of card types
     lam : float
         The lambda parameter of the squared poisson distribution used to generate the card hash counts
     prop_shared_card_hashes : float
@@ -57,14 +57,14 @@ class Card:
 
     def gen_card_type(self, card_hashes, card_types_dict):
         """Generates a dictionary of random card types
-        
+
         Parameters
         ----------
         card_hashes : list
             The card hashes
         card_types_dict : dict
-            The population proportions of card types 
-        
+            The population proportions of card types
+
         Returns
         -------
         dict
