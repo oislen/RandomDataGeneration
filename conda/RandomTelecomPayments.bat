@@ -3,10 +3,10 @@ call conda env list
 
 :: create and activate new environment
 call conda deactivate
-call conda env remove --name RandomTeleComData --yes
+call conda env remove --name RandomTelecomPayments --yes
 call conda env list
-call conda create --name RandomTeleComData python --yes
-call conda activate RandomTeleComData
+call conda create --name RandomTelecomPayments python --yes
+call conda activate RandomTelecomPayments
 call conda list
 
 :: install relevant libraries
