@@ -33,8 +33,8 @@ class Ip:
 
     def __init__(self, n_ip_hashes):
         self.n_ip_hashes = n_ip_hashes
-        self.lam = cons.poisson_lambda_params["ip"]
-        self.prop_shared_ip_hashes = cons.shared_entities_dict["ip"]
+        self.lam = cons.data_model_poisson_lambda_params["ip"]
+        self.prop_shared_ip_hashes = cons.data_model_shared_entities_dict["ip"]
         self.ip_hashes_cnts_dict = gen_idhash_cnt_dict(
             idhash_type="hash", n=self.n_ip_hashes, lam=self.lam
         )

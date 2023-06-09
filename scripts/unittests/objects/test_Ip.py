@@ -13,9 +13,9 @@ exp_ip_hashes_cnts_dict = {'se7kimaanzn2l1nt': 11, '1kwbloqrfe26k8h3': 3, 'od8p1
 exp_ip_hashes_props_dict = {'se7kimaanzn2l1nt': 0.55, '1kwbloqrfe26k8h3': 0.15, 'od8p1jr67ydgz315': 0.05, '3shpx9zdue7dmkfh': 0.25}
 exp_ip_hashes_country_code_dict = {'se7kimaanzn2l1nt': 703, '1kwbloqrfe26k8h3': 688, 'od8p1jr67ydgz315': 616, '3shpx9zdue7dmkfh': 250}
 exp_ip_hashes_shared_props_dict = {}
-exp_prop_shared_ip_hashes = cons.shared_entities_dict['ip']
+exp_prop_shared_ip_hashes = cons.data_model_shared_entities_dict['ip']
 exp_n_ip_hashes = cons.unittest_n_entities
-exp_lam = cons.poisson_lambda_params['ip']
+exp_lam = cons.data_model_poisson_lambda_params['ip']
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)

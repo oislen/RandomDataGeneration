@@ -35,21 +35,13 @@ unittest_seed = 42
 unittest_n_entities = 4
 unittest_n_device_types = 10
 
-# set entities to users ratios
-entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
-# set user level poisson lambda values 
-poisson_lambda_params = {'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}
-# set proportion of shared entities
-shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
-# set null rates
-null_rates = {'ip':0.07, 'card':0.05,'device':0.05}
-# set card types
-card_types_dict = {'visa':0.5, 'mastercard':0.5}
-# set payment channels
-payment_channels = {'paypal':0.4, 'adyen':0.3, 'worldpay':0.2, 'docomo':0.1}
-# set transaction status
-transaction_status = {'successful':0.94, 'pending':0.03, 'rejected':0.03}
-# set rejection codes
-rejection_codes = {'E900:ConnectionTimeout':0.2, 'E901:SuspectedFraud':0.2, 'E902:AuthenicationFailure':0.2, 'E903:UserCancelled':0.2, 'E904:InsufficientFunds':0.2}
-# set rejection rates based on inconsistent country codes
-inconsistent_country_codes_rejection_rate = {1:0.001, 2:0.005, 3:0.01}
+# set data model constants
+data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
+data_model_poisson_lambda_params = {'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}
+data_model_shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
+data_model_null_rates = {'ip':0.07, 'card':0.05,'device':0.05}
+data_model_card_types_dict = {'visa':0.5, 'mastercard':0.5}
+data_model_payment_channels = {'paypal':0.4, 'adyen':0.3, 'worldpay':0.2, 'docomo':0.1}
+data_model_transaction_status = {'successful':0.94, 'pending':0.03, 'rejected':0.03}
+data_model_rejection_codes = {'E900:ConnectionTimeout':0.2, 'E901:SuspectedFraud':0.2, 'E902:AuthenicationFailure':0.2, 'E903:UserCancelled':0.2, 'E904:InsufficientFunds':0.2}
+data_model_inconsistent_country_codes_rejection_rate = {1:0.001, 2:0.005, 3:0.01}

@@ -28,7 +28,7 @@ class Application:
 
     def __init__(self, n_application_hashes):
         self.n_application_hashes = n_application_hashes
-        self.lam = cons.poisson_lambda_params["application"]
+        self.lam = cons.data_model_poisson_lambda_params["application"]
         self.application_hashes_cnts_dict = gen_idhash_cnt_dict(
             idhash_type="hash", n=self.n_application_hashes, lam=self.lam
         )

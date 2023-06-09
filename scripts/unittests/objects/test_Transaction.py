@@ -13,13 +13,13 @@ exp_transaction_hashes_cnts_dict = {'se7kimaanzn2l1nt': 43, '1kwbloqrfe26k8h3': 
 exp_transaction_hashes_props_dict = {'se7kimaanzn2l1nt': 0.2925170068027211, '1kwbloqrfe26k8h3': 0.047619047619047616, 'od8p1jr67ydgz315': 0.061224489795918366, '3shpx9zdue7dmkfh': 0.5986394557823129}
 exp_transaction_hashes_payment_channel_dict = {'se7kimaanzn2l1nt': 'adyen', '1kwbloqrfe26k8h3': 'worldpay', 'od8p1jr67ydgz315': 'adyen', '3shpx9zdue7dmkfh': 'paypal'}
 exp_transaction_hashes_status_dict = {'se7kimaanzn2l1nt': 'successful', '1kwbloqrfe26k8h3': 'successful', 'od8p1jr67ydgz315': 'successful', '3shpx9zdue7dmkfh': 'successful'}
-exp_payment_channels = cons.payment_channels
-exp_transaction_status = cons.transaction_status
-exp_rejection_codes = cons.rejection_codes
+exp_payment_channels = cons.data_model_payment_channels
+exp_transaction_status = cons.data_model_transaction_status
+exp_rejection_codes = cons.data_model_rejection_codes
 exp_n_transaction_hashes = cons.unittest_n_entities
 exp_start_date = cons.programme_parameters_transaction_start_date
 exp_end_date = cons.programme_parameters_transaction_end_date
-exp_lam = cons.poisson_lambda_params['transaction']
+exp_lam = cons.data_model_poisson_lambda_params['transaction']
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)

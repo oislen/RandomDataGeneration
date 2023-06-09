@@ -38,9 +38,9 @@ class Card:
 
     def __init__(self, n_card_hashes):
         self.n_card_hashes = n_card_hashes
-        self.card_types_dict = cons.card_types_dict
-        self.lam = cons.poisson_lambda_params["card"]
-        self.prop_shared_card_hashes = cons.shared_entities_dict["card"]
+        self.card_types_dict = cons.data_model_card_types_dict
+        self.lam = cons.data_model_poisson_lambda_params["card"]
+        self.prop_shared_card_hashes = cons.data_model_shared_entities_dict["card"]
         self.card_hashes_cnts_dict = gen_idhash_cnt_dict(
             idhash_type="hash", n=self.n_card_hashes, lam=self.lam
         )

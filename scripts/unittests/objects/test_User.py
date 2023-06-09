@@ -19,7 +19,7 @@ exp_user_ids_dates_dict = {'6374692674377254': np.datetime64('2021-05-17T00:00:0
 exp_start_date = cons.programme_parameters_registration_start_date
 exp_end_date = cons.programme_parameters_registration_end_date
 exp_n_user_ids = cons.unittest_n_entities
-exp_lam = cons.poisson_lambda_params['user']
+exp_lam = cons.data_model_poisson_lambda_params['user']
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)

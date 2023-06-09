@@ -13,10 +13,10 @@ exp_device_hashes_cnts_dict = {'se7kimaanzn2l1nt': 1, '1kwbloqrfe26k8h3': 1, 'od
 exp_device_hashes_props_dict = {'se7kimaanzn2l1nt': 0.2, '1kwbloqrfe26k8h3': 0.2, 'od8p1jr67ydgz315': 0.4, '3shpx9zdue7dmkfh': 0.2}
 exp_device_hashes_type_dict = {'se7kimaanzn2l1nt': 'IGI-603', '1kwbloqrfe26k8h3': 'CAE-668', 'od8p1jr67ydgz315': 'CLH-984', '3shpx9zdue7dmkfh': 'HLB-346'}
 exp_device_hashes_shared_props_dict = {}
-exp_prop_shared_device_hashes = cons.shared_entities_dict['device']
+exp_prop_shared_device_hashes = cons.data_model_shared_entities_dict['device']
 exp_n_device_hashes = cons.unittest_n_entities
 exp_n_device_types = cons.unittest_n_device_types
-exp_lam = cons.poisson_lambda_params['device']
+exp_lam = cons.data_model_poisson_lambda_params['device']
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)

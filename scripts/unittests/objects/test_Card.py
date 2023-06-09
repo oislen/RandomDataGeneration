@@ -14,10 +14,10 @@ exp_card_hashes_type_dict = {'se7kimaanzn2l1nt': 'visa', '1kwbloqrfe26k8h3': 'vi
 exp_card_hashes_props_dict = {'se7kimaanzn2l1nt': 0.2, '1kwbloqrfe26k8h3': 0.2, 'od8p1jr67ydgz315': 0.4, '3shpx9zdue7dmkfh': 0.2}
 exp_card_hashes_country_code_dict = {'se7kimaanzn2l1nt': 642, '1kwbloqrfe26k8h3': 620, 'od8p1jr67ydgz315': 826, '3shpx9zdue7dmkfh': 528}
 exp_card_hashes_shared_props_dict = {}
-exp_card_types_dict = cons.card_types_dict
-exp_prop_shared_card_hashes = cons.shared_entities_dict['card']
+exp_card_types_dict = cons.data_model_card_types_dict
+exp_prop_shared_card_hashes = cons.data_model_shared_entities_dict['card']
 exp_n_card_hashes = cons.unittest_n_entities
-exp_lam = cons.poisson_lambda_params['card']
+exp_lam = cons.data_model_poisson_lambda_params['card']
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)

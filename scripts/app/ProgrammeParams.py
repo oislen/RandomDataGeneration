@@ -30,10 +30,10 @@ class ProgrammeParams():
             self.transaction_start_date = transaction_start_date
             self.transaction_end_date = transaction_end_date
         # extract out the entity user ratios
-        self.card_user_ratio = cons.entity_user_ratios['card']
-        self.device_user_ratio = cons.entity_user_ratios['device']
-        self.transaction_user_ratio = cons.entity_user_ratios['transaction']
-        self.ip_user_ratio = cons.entity_user_ratios['ip']
+        self.card_user_ratio = cons.data_model_entity_user_ratios['card']
+        self.device_user_ratio = cons.data_model_entity_user_ratios['device']
+        self.transaction_user_ratio = cons.data_model_entity_user_ratios['transaction']
+        self.ip_user_ratio = cons.data_model_entity_user_ratios['ip']
         # determine the number of each entity
         self.n_cards = int(np.round(self.n_users * self.card_user_ratio))
         self.n_devices = int(np.round(self.n_users * self.device_user_ratio))

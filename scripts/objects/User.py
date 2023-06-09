@@ -49,7 +49,7 @@ class User:
         self.n_user_ids = n_user_ids
         self.start_date = start_date
         self.end_date = end_date
-        self.lam = cons.poisson_lambda_params["user"]
+        self.lam = cons.data_model_poisson_lambda_params["user"]
         self.user_ids_cnts_dict = gen_idhash_cnt_dict(
             idhash_type="id", n=self.n_user_ids, lam=self.lam
         )
