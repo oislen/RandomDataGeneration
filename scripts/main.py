@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # start timer
     t0 = time()
     # generate random telecom data via multiprocess call
-    args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr) for itr in range(input_params_dict['nitr'])]
+    args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr, cons.debug_mode) for itr in range(input_params_dict['nitr'])]
     results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     # concatenate random telecom datasets into a single file
     trans_data = pd.concat(objs = results, axis = 0, ignore_index = True)
