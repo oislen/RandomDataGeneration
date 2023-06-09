@@ -1,4 +1,5 @@
 import numpy as np
+import random
 from app.ProgrammeParams import ProgrammeParams
 from app.gen_user_data import gen_user_data
 from app.gen_trans_data import gen_trans_data
@@ -32,6 +33,7 @@ def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
     programmeparams = ProgrammeParams(factor=factor, randomseed=randomseed, debug_mode=debug_mode)
 
     # set random seed
+    random.seed(programmeparams.randomseed)
     np.random.seed(seed=programmeparams.randomseed)
 
     # generate random applications
