@@ -20,7 +20,7 @@ def gen_country_codes_dict(idhashes_cnts_dict):
 
     # load population data of european countries
     european_populations_cnt_data = pd.read_csv(
-        filepath_or_buffer=cons.countrieseurope_fpath,
+        filepath_or_buffer=cons.fpath_countrieseurope,
         usecols=["ISO numeric", "population"],
     )
     # convert to a dictionary of ISO country codes with population counts

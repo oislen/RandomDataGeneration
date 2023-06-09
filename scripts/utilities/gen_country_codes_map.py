@@ -15,7 +15,7 @@ def gen_country_codes_map():
     """
     # load european county codes data
     country_codes_data = pd.read_csv(
-        filepath_or_buffer=cons.european_populations_url,
+        filepath_or_buffer=cons.fpath_countrieseurope,
         usecols=["ISO numeric", "ISO alpha 2"],
     )
     # convert data to a dictionary of ISO numeric codes mapping to ISO alpha codes
