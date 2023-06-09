@@ -11,7 +11,7 @@ from objects.Transaction import Transaction
 from objects.User import User
 
 
-def gen_random_telecom_data(factor=1, randomseed=None):
+def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
     """Generates random telecommunications data
 
     Parameters
@@ -20,6 +20,8 @@ def gen_random_telecom_data(factor=1, randomseed=None):
         The controls the number of users and corresponding number of data model entities to generate
     randomseed : int
         A random seed for reproducible results, default is None
+    debug_mode : bool
+        Whether to run in debug mode
 
     Returns
     -------
@@ -28,7 +30,7 @@ def gen_random_telecom_data(factor=1, randomseed=None):
     """
 
     # initalise programme parameters
-    programmeparams = ProgrammeParams(factor=factor, randomseed=randomseed)
+    programmeparams = ProgrammeParams(factor=factor, randomseed=randomseed, debug_mode=debug_mode)
 
     # set random seed
     np.random.seed(seed=programmeparams.randomseed)
