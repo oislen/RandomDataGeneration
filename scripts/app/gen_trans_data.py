@@ -61,15 +61,15 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     # create initial transaction status
     trans_data['transaction_status'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_status_dict)
     # add rejections based on crime rates within country codes
-    countrieseurope = pd.read_csv(cons.countrieseurope_fpath, usecols = ['ISO numeric', 'ISO alpha 2'])
-    countrycrimeindex = pd.read_csv(cons.countrycrimeindex_fpath, usecols = ['country_code', 'crime_index'])
+    countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols = ['ISO numeric', 'ISO alpha 2'])
+    countrycrimeindex = pd.read_csv(cons.fpath_countrycrimeindex, usecols = ['country_code', 'crime_index'])
     europecountrycrimeindex = pd.merge(left = countrieseurope, right = countrycrimeindex, left_on = 'ISO alpha 2', right_on = 'country_code', how = 'left')
     europecountrycrimeindex['trans_reject_rate'] = europecountrycrimeindex['crime_index'].divide(europecountrycrimeindex['crime_index'].sum())
     country_code_trans_reject_rate_dict = europecountrycrimeindex.set_index('ISO alpha 2')['trans_reject_rate'].to_dict()
     country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
     trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if country_code_trans_reject_rate_dict[np.random.choice(a = series[country_code_columns].dropna().to_list(), size = 1)[0]] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
     # add rejections based on domain frequencies
-    domain_email = pd.read_csv(cons.domain_email_fpath, usecols = ['domain', 'proportion'])
+    domain_email = pd.read_csv(cons.fpath_domain_email, usecols = ['domain', 'proportion'])
     domain_email['trans_reject_rate'] = (1 - domain_email['proportion']) / (1 - domain_email['proportion']).sum()
     domain_email_trans_reject_rate_dict = domain_email.set_index('domain')['trans_reject_rate'].to_dict()
     trans_data['transaction_status'] = trans_data.apply(lambda series: 'rejected' if domain_email_trans_reject_rate_dict[series['email_domain']] >= random.uniform(0,1) else series['transaction_status'], axis = 1)
