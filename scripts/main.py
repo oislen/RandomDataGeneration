@@ -20,9 +20,9 @@ if __name__ == '__main__':
         print(f'Debug Mode: {cons.debug_mode}')
         # set user parameters
         input_params_dict = {}
-        input_params_dict['factor'] = 0.5
-        input_params_dict['randomseed'] = 1
-        input_params_dict['nitr'] = 3
+        input_params_dict['factor'] = cons.programme_parameters_factor
+        input_params_dict['randomseed'] = cons.programme_parameters_randomseed
+        input_params_dict['nitr'] = cons.programme_parameters_nitr
     else:
         input_params_dict = commandline_interface()
 
@@ -47,9 +47,9 @@ if __name__ == '__main__':
     print(f'RandomTeleComData.shape: {trans_data.shape}')
 
     # check output data directory exists
-    data_fdir = os.path.dirname(cons.randomtelecomdata_fpath) 
+    data_fdir = os.path.dirname(cons.fpath_randomtelecomdata) 
     if not os.path.exists(data_fdir):
         os.mkdir(data_fdir)
 
     # write data to disk
-    trans_data.to_csv(cons.randomtelecomdata_fpath, index = False)
+    trans_data.to_csv(cons.fpath_randomtelecomdata, index = False)
