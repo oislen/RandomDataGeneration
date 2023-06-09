@@ -1,0 +1,17 @@
+# Random Telecom Payments QA Report
+```{python}
+import os
+import sys
+from time import time
+import pandas as pd
+
+# set file path for custom python modules
+root_dir = os.path.dirname(os.path.join(os.getcwd()))
+sys.path.append(os.path.join(root_dir, 'scripts'))
+
+import cons
+```
+
+```{python}
+data = pd.read_csv(cons.fpath_arch_randomtelecomdata)
+```
