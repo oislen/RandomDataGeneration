@@ -85,6 +85,12 @@ class Test_align_country_codes(unittest.TestCase):
     def test_dtypes(self):
         self.assertTrue((self.obs_data_df.dtypes == self.exp_data_df.dtypes).all())
 
+    def test_isnull(self):
+        self.assertTrue((self.obs_data_df.isnull() == self.exp_data_df.isnull()).all().all())
+
+    def test_notnull(self):
+        self.assertTrue((self.obs_data_df.notnull() == self.exp_data_df.notnull()).all().all())
+
     def test_object(self):
         self.assertTrue(
             (self.obs_data_df.fillna(-999.0) == self.exp_data_df.fillna(-999.0))
