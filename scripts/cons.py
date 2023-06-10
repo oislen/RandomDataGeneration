@@ -18,6 +18,7 @@ fpath_unittest_transaction_data = os.path.join(fpath_root_dir, 'RandomTelecomPay
 
 # set url links to files available online
 url_european_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries-Europe.csv'
+url_country_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries.csv'
 url_first_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/first-names.txt'
 url_last_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/last-names.txt'
 
