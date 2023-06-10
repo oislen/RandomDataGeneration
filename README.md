@@ -18,13 +18,13 @@ The underlying data model present in the simulated telecommunication payments is
 
 ![Entity Relationship Diagram](doc/entity_relationship_diagram.jpg)
 
-The application works by first generating user level telecom payments data. Once generated, the user level data is exploded to transaction level, and any inconsistencies within the data model are removed. Finally, the transaction status and error codes are generated using underlying features within the transaction level data.
-
 ## Running the Application
 
 The following command can be used to execute the application:
 
      python3 RandomTelecomPayments/scripts/main.py --factor 0.5 --randomseed 1 --nitr 3
+
+The application works by first generating user level telecom payments data. Once generated, the user level data is exploded to transaction level, and any inconsistencies within the data model are removed. Finally, the transaction status and error codes are generated using underlying features within the transaction level data.
 
 ### Parameters
 
