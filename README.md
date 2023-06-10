@@ -27,4 +27,4 @@ A stable master version of the Random Telecom Payments data can be found on Kagg
 ## Docker Image
 
 The latests image can be found on dockerhub here:
-* https://hub.docker.com/repository/docker/oislen/randomtelecomdata/general
+* https://hub.docker.com/repository/docker/oislen/randomtelecompayments/general
