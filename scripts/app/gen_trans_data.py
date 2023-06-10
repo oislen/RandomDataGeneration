@@ -71,7 +71,7 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data = pd.merge(left = trans_data.drop(columns = ['card_country_code']), right = agg_aligned_cards, on = 'card_hash', how = 'left')
     # align registration and transaction dates
     date_columns = ['registration_date', 'transaction_date']
-    trans_data[date_columns] = trans_data[date_columns].apply(lambda s: s.sort_values().to_list(), result_type = 'expand', axis = 1).copy()
+    trans_data[date_columns] = trans_data[date_columns].apply(lambda s: [s['registration_date'], max(s['registration_date'], s['transaction_date']) + np.abs((s['registration_date'] - s['transaction_date']))], result_type = 'expand', axis = 1).copy()
     # map iso numeric country codes to iso alpha country codes
     country_codes_map = gen_country_codes_map()
     trans_data['registration_country_code']  = trans_data['registration_country_code'].replace(country_codes_map)
