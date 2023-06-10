@@ -67,10 +67,8 @@ class Transaction:
             start_date=self.start_date,
             end_date=self.end_date,
         )
-        self.transaction_hashes_payment_channel_dict = (
-            self.gen_transaction_payment_channel(
-                list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels
-            )
+        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(
+            list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels
         )
         self.transaction_hashes_status_dict = self.gen_transaction_status(
             list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status
