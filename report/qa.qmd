@@ -65,6 +65,14 @@ valfreqplot(data = data, col = 'transaction_error_code', bins = 50)
 data['uid'].value_counts().head(20)
 ```
 
+```{python}
+data.groupby(by = ['uid', 'registration_date'], as_index = False).size().groupby(by = 'registration_date', as_index = False).agg({'uid':'nunique'}).sort_values('uid')
+```
+
+```{python}
+data.groupby(by = ['uid', 'transaction_date'], as_index = False).size().groupby(by = 'transaction_date', as_index = False).agg({'uid':'nunique'}).sort_values('uid')
+```
+
 
 ```{python}
 data.loc[data['uid'] == 5601785694208571, :]
