@@ -2,16 +2,70 @@
 ```{python}
 import os
 import sys
-from time import time
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # set file path for custom python modules
 root_dir = os.path.dirname(os.path.join(os.getcwd()))
 sys.path.append(os.path.join(root_dir, 'scripts'))
 
 import cons
+
+pd.set_option('display.max_columns', None)
+data = pd.read_csv(cons.fpath_randomtelecomdata)
+```
+
+
+```{python}
+data.head()
 ```
 
 ```{python}
-data = pd.read_csv(cons.fpath_arch_randomtelecomdata)
+def valfreqplot(data, col, bins = 50):
+    """"""
+    # aggregate data to col level ordered largest to smallest
+    agg_data = data.groupby(by=col, as_index=False).size().rename(columns = {'size':'n'}).groupby(by = 'n', as_index = False).size().reset_index()
+    # create barplot from ordered aggregated data
+    fig, ax = plt.subplots()
+    graph = sns.histplot(data = agg_data, x = 'size', color = 'steelblue', ax = ax, bins = bins)
+    ax.set(xlabel='n', ylabel='count', title=col)
+    plt.show()
+    return 0
+```
+
+# Frequency Plots
+
+```{python}
+valfreqplot(data = data, col = 'uid', bins = 50)
+valfreqplot(data = data, col = 'firstname', bins = 50)
+valfreqplot(data = data, col = 'lastname', bins = 50)
+valfreqplot(data = data, col = 'registration_date', bins = 50)
+valfreqplot(data = data, col = 'registration_country_code', bins = 50)
+valfreqplot(data = data, col = 'email_domain', bins = 50)
+valfreqplot(data = data, col = 'device_hash', bins = 50)
+valfreqplot(data = data, col = 'card_hash', bins = 50)
+valfreqplot(data = data, col = 'ip_hash', bins = 50)
+valfreqplot(data = data, col = 'transaction_hash', bins = 50)
+valfreqplot(data = data, col = 'application_hash', bins = 50)
+valfreqplot(data = data, col = 'device_type', bins = 50)
+valfreqplot(data = data, col = 'card_type', bins = 50)
+valfreqplot(data = data, col = 'payment_channel', bins = 50)
+valfreqplot(data = data, col = 'transaction_date', bins = 50)
+valfreqplot(data = data, col = 'ip_country_code', bins = 50)
+valfreqplot(data = data, col = 'card_country_code', bins = 50)
+valfreqplot(data = data, col = 'transaction_status', bins = 50)
+valfreqplot(data = data, col = 'transaction_error_code', bins = 50)
+
+```
+
+# UID Investigation
+
+```{python}
+data['uid'].value_counts().head(20)
+```
+
+
+```{python}
+data.loc[data['uid'] == 5601785694208571, :]
 ```
