@@ -4,8 +4,7 @@ from time import time
 import pandas as pd
 
 # set file path for custom python modules
-sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData'))
-sys.path.append(os.path.join(os.getcwd(), 'RandomTeleComData', 'scripts'))
+sys.path.append(os.path.join(os.getcwd(), 'scripts'))
 # import cons
 import cons
 # load utility functions
@@ -34,6 +33,9 @@ if __name__ == '__main__':
     # start timer
     t0 = time()
     # generate random telecom data via multiprocess call
+    # factor = input_params_dict['factor']
+    # randomseed = input_params_dict['randomseed']
+    # debug_mode = cons.debug_mode
     args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr, cons.debug_mode) for itr in range(input_params_dict['nitr'])]
     results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     # concatenate random telecom datasets into a single file
