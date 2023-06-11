@@ -10,7 +10,7 @@ This application aims to simulate telecommunication payments using random number
 
 A stable master version of the Random Telecom Payments data can be found on Kaggle here:
 
-* https://www.kaggle.com/datasets/oislen/random-telecom-data
+* https://www.kaggle.com/datasets/oislen/randomtelecompayments
 
 ## Data Model
 
