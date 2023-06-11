@@ -22,7 +22,7 @@ from objects.User import User
 programmeparams = ProgrammeParams(
     factor=cons.programme_parameters_factor,
     randomseed=cons.programme_parameters_randomseed,
-    debug_mode=cons.debug_mode,
+    debug_mode=cons.unittest_debug_mode,
 )
 
 # set random seed

@@ -39,6 +39,7 @@ unittest_seed = 42
 unittest_n_entities = 4
 unittest_n_device_types = 10
 unittest_gen_test_dfs = False
+unittest_debug_mode = True
 
 # set data model constants
 data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
