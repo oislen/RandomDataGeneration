@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # install required software and programmes for development environment
 RUN apt-get update 
-RUN apt-get install -y apt-utils vim curl wget unzip git python3 python3-pip
+RUN apt-get install -y apt-utils vim curl wget unzip git python3 python3-pip tree htop
 
 # install required python packages
 COPY requirements.txt /tmp/
