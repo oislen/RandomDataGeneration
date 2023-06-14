@@ -1,0 +1,22 @@
+﻿Column Name,Data Type,Nullable,Example,Description
+uid,Integer,FALSE,2.22406E+14,A unique incremental id for the user; grouped by registration date and registration country code.
+firstname,String,FALSE,kellen,The registered user firstname.
+lastname,String,FALSE,mcgregor,The registered user lastname.
+registration_date,Date,FALSE,13/02/2021,The date the user registered on.
+registration_country_code,String,FALSE,FR,The user registered country code of residence.
+email_domain,String,FALSE,gmail.com,The domain of the registered user email address.
+userid,Integer,FALSE,2.02025E+15,"A unique user identifier number; constructed from registration date, numeric registration country code, and uid."
+device_hash,String,TRUE,i0y95zok4kyyr5cs,The hashed device id the user used in the transaction.
+card_hash,String,TRUE,3wpiwvgf4fkaxwsu,The hashed card id the user used in the transaction.
+ip_hash,String,TRUE,5esxeky0zn5se5yp,The hashed ip address the user used in the transaction.
+transaction_hash,String,FALSE,x6lh3d3iua0i2xpr,The hashed id of the transaction.
+application_hash,String,FALSE,juu9zyjs5fcomyzl,The hashed application id the transaction relates to.
+device_type,String,TRUE,DXD-171,The device type of the hashed device id the user used in the transaction.
+card_type,String,TRUE,visa,The card type of the hashed card id the user used in the transaction.
+transaction_amount,Float,FALSE,1.44,The transaction amount.
+payment_channel,String,TRUE,paypal,The payment channel the user used to complete the tranaction.
+transaction_date,Date,FALSE,12/02/2021,The date of the transaction.
+ip_country_code,String,TRUE,PL,The ip address country code of the hashed ip address the user used in the transaction.
+card_country_code,String,TRUE,ES,The card country code of the hashed card id the user used in the transaction.
+transaction_status,String,FALSE,successful,"The status of the transaction; one of successful, pending or rejected"
+transaction_error_code,String,TRUE,E902:AuthenicationFailure,The associated error code if the transaction was rejected.
