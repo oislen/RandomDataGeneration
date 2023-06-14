@@ -34,7 +34,7 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     """
 
     # explode user data to transaction level
-    trans_data = user_data.explode('transaction_hash').dropna(subset = ['transaction_hash'])
+    trans_data = user_data.explode('transaction_hash').dropna(subset = ['transaction_hash']).reset_index(drop = True)
 
     # select hashes
     trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(x, size = 1)[0] if x != [] else np.nan)
@@ -66,6 +66,10 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     missing_card_hash_filter = (trans_data['card_hash'].isnull())
     trans_data.loc[zero_transaction_amount_filter | missing_card_hash_filter, ['payment_channel']] = np.nan
     trans_data.loc[zero_transaction_amount_filter, ['card_hash', 'card_type', 'card_country_code']] = np.nan
+    # add app store points indicator for transaction with no payments channel and positive transaction amounts
+    trans_data['store_points_ind'] = 0
+    appstorepoints_filt = (trans_data['card_hash'].isnull()) & (trans_data['payment_channel'].isnull()) & (trans_data['transaction_amount'] > 0.0)
+    trans_data.loc[appstorepoints_filt, 'store_points_ind'] = appstorepoints_filt.apply(lambda x: np.random.choice(a = list(cons.data_model_app_store_points.keys()), size = 1, p = list(cons.data_model_app_store_points.values()))[0])
     # align country codes for user, ip and card
     country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
     trans_data[country_code_columns] = trans_data[country_code_columns].apply(lambda series: align_country_codes(series), axis = 1)

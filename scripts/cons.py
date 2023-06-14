@@ -51,3 +51,4 @@ data_model_payment_channels = {'paypal':0.4, 'adyen':0.3, 'worldpay':0.2, 'docom
 data_model_transaction_status = {'successful':0.94, 'pending':0.03, 'rejected':0.03}
 data_model_rejection_codes = {'E900:ConnectionTimeout':0.2, 'E901:SuspectedFraud':0.2, 'E902:AuthenicationFailure':0.2, 'E903:UserCancelled':0.2, 'E904:InsufficientFunds':0.2}
 data_model_inconsistent_country_codes_rejection_rate = {1:0.001, 2:0.005, 3:0.01}
+data_model_app_store_points = {0:0.95, 1:0.05}
