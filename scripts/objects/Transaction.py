@@ -46,6 +46,8 @@ class Transaction:
         The transaction hash payment channels dictionary
     transaction_hashes_status_dict : dict
         The transaction hash status dictionary
+    transaction_hashes_amounts_dict : dict
+        The transaction hash amount dictionary
     """
 
     def __init__(self, n_transaction_hashes, start_date, end_date):
@@ -71,6 +73,9 @@ class Transaction:
         )
         self.transaction_hashes_status_dict = self.gen_transaction_status(
             list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status
+        )
+        self.transaction_hashes_amounts_dict = self.gen_transaction_amounts(
+            list(self.transaction_hashes_cnts_dict.keys())
         )
 
     def gen_transaction_payment_channel(self, transaction_hashes, payment_channels):
@@ -132,3 +137,26 @@ class Transaction:
             zip(transaction_hashes, transaction_status)
         )
         return transaction_hashes_status_dict
+
+    def gen_transaction_amounts(self, transaction_hashes, loc=0, scale=2):
+        """Generates a dictionary of random transaction hash amounts
+
+        Parameters
+        ----------
+        transaction_hashes : list
+            The transaction hashes
+
+        Returns
+        -------
+        dict
+            A dictionary of transaction hash prices
+        """
+        # randomly sample transaction prices from an absolute normal distribution with mean 0 and standard deviation 2
+        trans_prices = np.round(
+            np.abs(np.random.normal(loc=loc, scale=scale, size=len(transaction_hashes)))
+            ** 2,
+            2,
+        )
+        # return the transaction hashes and prices
+        trans_prices_dict = dict(zip(transaction_hashes, trans_prices))
+        return trans_prices_dict

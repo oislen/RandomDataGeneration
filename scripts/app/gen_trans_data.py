@@ -55,7 +55,7 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data['card_country_code'] = trans_data['card_hash'].replace(card_obj.card_hashes_country_code_dict)
     trans_data['ip_country_code'] = trans_data['ip_hash'].replace(ip_obj.ip_hashes_country_code_dict)
     # add transaction data
-    trans_data['transaction_amount'] = trans_data['application_hash'].replace(application_obj.application_hashes_prices_dict)
+    trans_data['transaction_amount'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_amounts_dict)
     trans_data['card_payment_channel'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_payment_channel_dict)
     trans_data['transaction_date'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_dates_dict)
 
