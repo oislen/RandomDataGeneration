@@ -4,7 +4,6 @@ import numpy as np
 import cons
 from utilities.gen_country_codes_map import gen_country_codes_map
 from utilities.align_country_codes import align_country_codes
-from utilities.gen_trans_error_codes import gen_trans_error_codes
 from utilities.gen_trans_rejection_rates import gen_trans_rejection_rates
 from utilities.gen_trans_status import gen_trans_status
 
@@ -88,14 +87,10 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data['card_country_code']  = trans_data['card_country_code'].replace(country_codes_map)
     trans_data['ip_country_code']  = trans_data['ip_country_code'].replace(country_codes_map)
 
-    # generate transaction status
-    trans_data['transaction_status'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_status_dict)
+    # generate transaction status and error code
     rejection_rates_dict = gen_trans_rejection_rates(trans_data = trans_data)
-    trans_data['transaction_status'] = trans_data.apply(lambda series: gen_trans_status(series = series, rejection_rates_dict = rejection_rates_dict), axis = 1)
+    trans_data[['transaction_status', 'transaction_error_code']] = trans_data.apply(lambda series: gen_trans_status(series = series, rejection_rates_dict = rejection_rates_dict, rejection_codes = transaction_obj.rejection_codes), result_type = 'expand', axis = 1)
 
-    # add transaction status and error codes
-    trans_data['transaction_error_code'] = gen_trans_error_codes(trans_data = trans_data, trans_status_col = 'transaction_status', rejection_codes = transaction_obj.rejection_codes)
-    
     # sort data by transaction date
     trans_data = trans_data.sort_values(by = 'transaction_date').reset_index(drop = True)
     return trans_data
