@@ -18,7 +18,7 @@ def gen_random_hash(size, nbytes=16):
         A list of random hashes
     """
     # generate a list of digits and lower case letters from string library
-    alphanumeric = list(string.digits) + list(string.ascii_lowercase)
+    alphanumeric = list(string.digits) + list(string.ascii_lowercase)[:6]
     # randomly sample nbytes digits, string concatenate and convert to integers
     random_hashes = [
         "".join(np.random.choice(a=alphanumeric, size=nbytes, replace=True))
