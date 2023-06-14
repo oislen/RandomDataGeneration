@@ -55,7 +55,6 @@ class Transaction:
         self.lam = cons.data_model_poisson_lambda_params["transaction"]
         self.payment_channels = cons.data_model_payment_channels
         self.transaction_status = cons.data_model_transaction_status
-        self.rejection_codes = cons.data_model_rejection_codes
         self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(
             idhash_type="hash", n=self.n_transaction_hashes, lam=self.lam
         )

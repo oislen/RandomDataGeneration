@@ -89,7 +89,7 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
 
     # generate transaction status and error code
     rejection_rates_dict = gen_trans_rejection_rates(trans_data = trans_data)
-    trans_data[['transaction_status', 'transaction_error_code']] = trans_data.apply(lambda series: gen_trans_status(series = series, rejection_rates_dict = rejection_rates_dict, rejection_codes = transaction_obj.rejection_codes), result_type = 'expand', axis = 1)
+    trans_data[['transaction_status', 'transaction_error_code']] = trans_data.apply(lambda series: gen_trans_status(series = series, rejection_rates_dict = rejection_rates_dict), result_type = 'expand', axis = 1)
 
     # sort data by transaction date
     trans_data = trans_data.sort_values(by = 'transaction_date').reset_index(drop = True)
