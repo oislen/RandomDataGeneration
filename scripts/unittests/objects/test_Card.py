@@ -10,28 +10,28 @@ import cons
 from objects.Card import Card
 
 exp_card_hashes_cnts_dict = {
-    "se7kimaanzn2l1nt": 1,
-    "1kwbloqrfe26k8h3": 1,
-    "od8p1jr67ydgz315": 2,
-    "3shpx9zdue7dmkfh": 1,
+    "63cea7c46926aa74": 1,
+    "37725417bd51fb40": 5,
+    "b95cb80aae9fbbfe": 1,
+    "dded2b63f8242648": 1,
 }
 exp_card_hashes_type_dict = {
-    "se7kimaanzn2l1nt": "visa",
-    "1kwbloqrfe26k8h3": "visa",
-    "od8p1jr67ydgz315": "visa",
-    "3shpx9zdue7dmkfh": "visa",
+    "63cea7c46926aa74": "visa",
+    "37725417bd51fb40": "mastercard",
+    "b95cb80aae9fbbfe": "visa",
+    "dded2b63f8242648": "mastercard",
 }
 exp_card_hashes_props_dict = {
-    "se7kimaanzn2l1nt": 0.2,
-    "1kwbloqrfe26k8h3": 0.2,
-    "od8p1jr67ydgz315": 0.4,
-    "3shpx9zdue7dmkfh": 0.2,
+    "63cea7c46926aa74": 0.125,
+    "37725417bd51fb40": 0.625,
+    "b95cb80aae9fbbfe": 0.125,
+    "dded2b63f8242648": 0.125,
 }
 exp_card_hashes_country_code_dict = {
-    "se7kimaanzn2l1nt": 642,
-    "1kwbloqrfe26k8h3": 620,
-    "od8p1jr67ydgz315": 826,
-    "3shpx9zdue7dmkfh": 528,
+    "63cea7c46926aa74": 276,
+    "37725417bd51fb40": 380,
+    "b95cb80aae9fbbfe": 380,
+    "dded2b63f8242648": 250,
 }
 exp_card_hashes_shared_props_dict = {}
 exp_card_types_dict = cons.data_model_card_types_dict

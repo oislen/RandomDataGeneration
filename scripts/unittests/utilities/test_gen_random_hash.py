@@ -11,10 +11,10 @@ from utilities.gen_random_hash import gen_random_hash
 np.random.seed(cons.unittest_seed)
 
 exp_random_hash = [
-    "se7kimaanzn2l1nt",
-    "1kwbloqrfe26k8h3",
-    "od8p1jr67ydgz315",
-    "3shpx9zdue7dmkfh",
+    "63cea7c46926aa74",
+    "37725417bd51fb40",
+    "b95cb80aae9fbbfe",
+    "dded2b63f8242648",
 ]
 obs_random_hash = gen_random_hash(size=4, nbytes=16)
 

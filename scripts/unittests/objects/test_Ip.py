@@ -10,22 +10,22 @@ import cons
 from objects.Ip import Ip
 
 exp_ip_hashes_cnts_dict = {
-    "se7kimaanzn2l1nt": 11,
-    "1kwbloqrfe26k8h3": 3,
-    "od8p1jr67ydgz315": 1,
-    "3shpx9zdue7dmkfh": 5,
+    "63cea7c46926aa74": 2,
+    "37725417bd51fb40": 11,
+    "b95cb80aae9fbbfe": 2,
+    "dded2b63f8242648": 7,
 }
 exp_ip_hashes_props_dict = {
-    "se7kimaanzn2l1nt": 0.55,
-    "1kwbloqrfe26k8h3": 0.15,
-    "od8p1jr67ydgz315": 0.05,
-    "3shpx9zdue7dmkfh": 0.25,
+    "63cea7c46926aa74": 0.09090909090909091,
+    "37725417bd51fb40": 0.5,
+    "b95cb80aae9fbbfe": 0.09090909090909091,
+    "dded2b63f8242648": 0.3181818181818182,
 }
 exp_ip_hashes_country_code_dict = {
-    "se7kimaanzn2l1nt": 703,
-    "1kwbloqrfe26k8h3": 688,
-    "od8p1jr67ydgz315": 616,
-    "3shpx9zdue7dmkfh": 250,
+    "63cea7c46926aa74": 56,
+    "37725417bd51fb40": 100,
+    "b95cb80aae9fbbfe": 528,
+    "dded2b63f8242648": 191,
 }
 exp_ip_hashes_shared_props_dict = {}
 exp_prop_shared_ip_hashes = cons.data_model_shared_entities_dict["ip"]

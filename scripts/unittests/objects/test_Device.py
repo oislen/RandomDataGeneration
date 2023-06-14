@@ -10,22 +10,22 @@ import cons
 from objects.Device import Device
 
 exp_device_hashes_cnts_dict = {
-    "se7kimaanzn2l1nt": 1,
-    "1kwbloqrfe26k8h3": 1,
-    "od8p1jr67ydgz315": 2,
-    "3shpx9zdue7dmkfh": 1,
+    "63cea7c46926aa74": 1,
+    "37725417bd51fb40": 5,
+    "b95cb80aae9fbbfe": 1,
+    "dded2b63f8242648": 1,
 }
 exp_device_hashes_props_dict = {
-    "se7kimaanzn2l1nt": 0.2,
-    "1kwbloqrfe26k8h3": 0.2,
-    "od8p1jr67ydgz315": 0.4,
-    "3shpx9zdue7dmkfh": 0.2,
+    "63cea7c46926aa74": 0.125,
+    "37725417bd51fb40": 0.625,
+    "b95cb80aae9fbbfe": 0.125,
+    "dded2b63f8242648": 0.125,
 }
 exp_device_hashes_type_dict = {
-    "se7kimaanzn2l1nt": "IGI-603",
-    "1kwbloqrfe26k8h3": "CAE-668",
-    "od8p1jr67ydgz315": "CLH-984",
-    "3shpx9zdue7dmkfh": "HLB-346",
+    "63cea7c46926aa74": "JDN-204",
+    "37725417bd51fb40": "JDN-204",
+    "b95cb80aae9fbbfe": "POH-969",
+    "dded2b63f8242648": "DVR-772",
 }
 exp_device_hashes_shared_props_dict = {}
 exp_prop_shared_device_hashes = cons.data_model_shared_entities_dict["device"]

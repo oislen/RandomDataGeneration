@@ -19,10 +19,10 @@ exp_id_dict = {
     "6720317315593519": 10,
 }
 exp_hash_dict = {
-    "o68n07nag7yyw4r6": 1,
-    "87bxwmnylqy0yd20": 3,
-    "4pdq8eepcvv3tmes": 2,
-    "zcv6lr15rrjtarow": 1,
+    "86870b77ea207220": 8,
+    "a49698b687b10f66": 3,
+    "d742b75a2024ed20": 2,
+    "496ed6a8ee99bc2e": 2,
 }
 obs_id_dict = gen_idhash_cnt_dict(idhash_type="id", n=4, lam=1, nbytes=16)
 obs_hash_dict = gen_idhash_cnt_dict(idhash_type="hash", n=4, lam=1, nbytes=16)

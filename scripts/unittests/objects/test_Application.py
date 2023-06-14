@@ -10,22 +10,22 @@ import cons
 from objects.Application import Application
 
 exp_application_hashes_cnts_dict = {
-    "se7kimaanzn2l1nt": 31,
-    "1kwbloqrfe26k8h3": 5,
-    "od8p1jr67ydgz315": 9,
-    "3shpx9zdue7dmkfh": 6,
+    "63cea7c46926aa74": 13,
+    "37725417bd51fb40": 6,
+    "b95cb80aae9fbbfe": 9,
+    "dded2b63f8242648": 3,
 }
 exp_application_hashes_prices_dict = {
-    "se7kimaanzn2l1nt": 1.51,
-    "1kwbloqrfe26k8h3": 0.44,
-    "od8p1jr67ydgz315": 7.63,
-    "3shpx9zdue7dmkfh": 0.32,
+    "63cea7c46926aa74": 1.51,
+    "37725417bd51fb40": 0.44,
+    "b95cb80aae9fbbfe": 7.63,
+    "dded2b63f8242648": 0.32,
 }
 exp_application_hashes_props_dict = {
-    "se7kimaanzn2l1nt": 0.6078431372549019,
-    "1kwbloqrfe26k8h3": 0.09803921568627451,
-    "od8p1jr67ydgz315": 0.17647058823529413,
-    "3shpx9zdue7dmkfh": 0.11764705882352941,
+    "63cea7c46926aa74": 0.41935483870967744,
+    "37725417bd51fb40": 0.1935483870967742,
+    "b95cb80aae9fbbfe": 0.2903225806451613,
+    "dded2b63f8242648": 0.0967741935483871,
 }
 exp_n_application_hashes = cons.unittest_n_entities
 exp_lam = cons.data_model_poisson_lambda_params["application"]
@@ -35,7 +35,6 @@ np.random.seed(cons.unittest_seed)
 application_object = Application(n_application_hashes=exp_n_application_hashes)
 
 obs_application_hashes_cnts_dict = application_object.application_hashes_cnts_dict
-obs_application_hashes_prices_dict = application_object.application_hashes_prices_dict
 obs_application_hashes_props_dict = application_object.application_hashes_props_dict
 obs_lam = application_object.lam
 obs_n_application_hashes = application_object.n_application_hashes
@@ -50,7 +49,6 @@ class Test_Application(unittest.TestCase):
         self.exp_application_hashes_props_dict = exp_application_hashes_props_dict
         self.obs_application_hashes_props_dict = obs_application_hashes_props_dict
         self.exp_application_hashes_prices_dict = exp_application_hashes_prices_dict
-        self.obs_application_hashes_prices_dict = obs_application_hashes_prices_dict
         self.exp_n_application_hashes = exp_n_application_hashes
         self.obs_n_application_hashes = obs_n_application_hashes
         self.exp_lam = exp_lam
@@ -66,10 +64,6 @@ class Test_Application(unittest.TestCase):
             type(self.exp_application_hashes_props_dict),
         )
         self.assertEqual(
-            type(self.obs_application_hashes_prices_dict),
-            type(self.exp_application_hashes_prices_dict),
-        )
-        self.assertEqual(
             type(self.obs_n_application_hashes), type(self.exp_n_application_hashes)
         )
         self.assertEqual(type(self.obs_lam), type(self.exp_lam))
@@ -83,10 +77,6 @@ class Test_Application(unittest.TestCase):
             len(self.obs_application_hashes_cnts_dict),
             len(self.exp_application_hashes_cnts_dict),
         )
-        self.assertEqual(
-            len(self.obs_application_hashes_prices_dict),
-            len(self.exp_application_hashes_prices_dict),
-        )
 
     def test_keys(self):
         self.assertEqual(
@@ -96,10 +86,6 @@ class Test_Application(unittest.TestCase):
         self.assertEqual(
             list(self.obs_application_hashes_cnts_dict.keys()),
             list(self.exp_application_hashes_cnts_dict.keys()),
-        )
-        self.assertEqual(
-            list(self.obs_application_hashes_prices_dict.keys()),
-            list(self.exp_application_hashes_prices_dict.keys()),
         )
 
     def test_values(self):
@@ -111,10 +97,6 @@ class Test_Application(unittest.TestCase):
             list(self.obs_application_hashes_cnts_dict.values()),
             list(self.exp_application_hashes_cnts_dict.values()),
         )
-        self.assertEqual(
-            list(self.obs_application_hashes_prices_dict.values()),
-            list(self.exp_application_hashes_prices_dict.values()),
-        )
 
     def test_object(self):
         self.assertEqual(
@@ -123,10 +105,6 @@ class Test_Application(unittest.TestCase):
         self.assertEqual(
             self.obs_application_hashes_props_dict,
             self.exp_application_hashes_props_dict,
-        )
-        self.assertEqual(
-            self.obs_application_hashes_prices_dict,
-            self.exp_application_hashes_prices_dict,
         )
         self.assertEqual(self.obs_n_application_hashes, self.exp_n_application_hashes)
         self.assertEqual(self.obs_lam, self.exp_lam)
