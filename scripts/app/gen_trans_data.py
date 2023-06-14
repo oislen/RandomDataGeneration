@@ -91,6 +91,14 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     rejection_rates_dict = gen_trans_rejection_rates(trans_data = trans_data)
     trans_data[['transaction_status', 'transaction_error_code']] = trans_data.apply(lambda series: gen_trans_status(series = series, rejection_rates_dict = rejection_rates_dict), result_type = 'expand', axis = 1)
 
-    # sort data by transaction date
-    trans_data = trans_data.sort_values(by = 'transaction_date').reset_index(drop = True)
+    # order columns and sort rows by transaction date
+    user_cols = ['userid', 'firstname', 'lastname', 'registration_date', 'registration_country_code', 'uid', 'email_domain']
+    device_cols = ['device_hash', 'device_type']
+    card_cols = ['card_hash', 'card_type', 'card_country_code']
+    ip_cols = ['ip_hash', 'ip_country_code']
+    app_cols = ['application_hash']
+    trans_cols = ['transaction_hash', 'transaction_date', 'transaction_amount', 'transaction_payment_method', 'card_payment_channel', 'transaction_status', 'transaction_error_code']
+    col_order = user_cols +  device_cols + card_cols + ip_cols + app_cols + trans_cols
+    trans_data = trans_data[col_order].sort_values(by = 'transaction_date').reset_index(drop = True)
+
     return trans_data
