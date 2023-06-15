@@ -40,6 +40,8 @@ if __name__ == '__main__':
     results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     # concatenate random telecom datasets into a single file
     trans_data = pd.concat(objs = results, axis = 0, ignore_index = True)
+    # order results by transaction date ascending
+    trans_data = trans_data.sort_values(by = 'transaction_date').reset_index(drop = True)
     # end timer
     t1 = time()
     total_runtime_seconds = round(t1 - t0, 2)
