@@ -30,7 +30,7 @@ programme_parameters_n_users = 1372
 programme_parameters_n_device_types = 53
 programme_parameters_n_applications = 1642
 programme_parameters_registration_start_date = '2020-01-01'
-programme_parameters_registration_end_date = '2021-12-31'
+programme_parameters_registration_end_date = '2020-12-31'
 programme_parameters_transaction_start_date = '2021-01-01'
 programme_parameters_transaction_end_date = '2021-12-31'
 

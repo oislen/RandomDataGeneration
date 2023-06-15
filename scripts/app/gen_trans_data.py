@@ -9,13 +9,15 @@ from utilities.gen_trans_rejection_rates import gen_trans_rejection_rates
 from utilities.gen_trans_status import gen_trans_status
 
 
-def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
+def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
     """Generates random transaction level telecom payments data
 
     Parameters
     ----------
     user_data : pandas.DataFrame
         The random user level data
+    user_obj : class
+        The random user data model object
     device_obj : class
         The random device data model object
     card_obj : class
@@ -81,8 +83,9 @@ def gen_trans_data(user_data, device_obj, card_obj, ip_obj, transaction_obj, app
     trans_data = pd.merge(left = trans_data.drop(columns = ['card_country_code']), right = agg_aligned_cards, on = 'card_hash', how = 'left')
     # align registration and transaction dates
     date_columns = ['registration_date', 'transaction_date']
-    dates_series = pd.date_range(start=datetime.strptime(transaction_obj.start_date, "%Y-%m-%d"), end=datetime.strptime(transaction_obj.end_date, "%Y-%m-%d") - pd.Timedelta(days=1), freq="d")
-    trans_data[date_columns] = trans_data[date_columns].apply(lambda s: [s['registration_date'], np.random.choice(a=dates_series[dates_series >= max(s['registration_date'], s['transaction_date'])], size=1)[0]], result_type = 'expand', axis = 1).copy()
+    if datetime.strptime(user_obj.end_date, "%Y-%m-%d") > datetime.strptime(transaction_obj.start_date, "%Y-%m-%d"):
+        dates_series = pd.date_range(start=datetime.strptime(transaction_obj.start_date, "%Y-%m-%d"), end=datetime.strptime(transaction_obj.end_date, "%Y-%m-%d") - pd.Timedelta(days=1), freq="d")
+        trans_data[date_columns] = trans_data[date_columns].apply(lambda s: [s['registration_date'], np.random.choice(a=dates_series[dates_series >= max(s['registration_date'], s['transaction_date'])], size=1)[0]], result_type = 'expand', axis = 1).copy()
     # map iso numeric country codes to iso alpha country codes
     country_codes_map = gen_country_codes_map()
     trans_data['registration_country_code']  = trans_data['registration_country_code'].replace(country_codes_map)

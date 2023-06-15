@@ -78,6 +78,7 @@ def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
     # generate transaction level data
     trans_data = gen_trans_data(
         user_data=user_data,
+        user_obj=user_obj,
         device_obj=device_obj,
         card_obj=card_obj,
         ip_obj=ip_obj,

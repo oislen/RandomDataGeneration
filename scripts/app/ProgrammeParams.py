@@ -3,7 +3,7 @@ import cons
 
 class ProgrammeParams():
     
-    def __init__(self, factor = 1, randomseed = None, debug_mode = False, n_users = 1372, n_applications = 16472, n_device_types = 53, registration_start_date = '2020-01-01', registration_end_date = '2021-12-31', transaction_start_date = '2021-01-01', transaction_end_date = '2021-12-31'):
+    def __init__(self, factor = 1, randomseed = None, debug_mode = False, n_users = 1372, n_applications = 16472, n_device_types = 53, registration_start_date = '2020-01-01', registration_end_date = '2020-12-31', transaction_start_date = '2021-01-01', transaction_end_date = '2021-12-31'):
         # if running in debug mode
         if debug_mode:
             # take programme parameters from constants file
