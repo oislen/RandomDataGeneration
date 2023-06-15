@@ -18,6 +18,10 @@ The underlying data model present in the simulated telecommunication payments is
 
 ![Entity Relationship Diagram](doc/entity_relationship_diagram.jpg)
 
+For a more detailed account of each column in the dataset see the data dictionary:
+
+* https://github.com/oislen/RandomTelecomPayments/blob/main/doc/data_dictionary.csv
+
 ## Running the Application
 
 The following command can be used to execute the application:
