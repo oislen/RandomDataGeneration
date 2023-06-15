@@ -22,6 +22,18 @@ data.head()
 ```
 
 ```{python}
+data.shape
+```
+
+```{python}
+tmp_data = data.copy()
+tmp_data['fullname'] = tmp_data['firstname'] + ' ' + tmp_data['lastname']
+agg_data = tmp_data.groupby(['userid']).agg({'fullname':'nunique'})
+agg_data = agg_data.sort_values(by = ['fullname'], ascending = False)
+agg_data['fullname'].value_counts()
+```
+
+```{python}
 def valfreqplot(data, col, bins = 50):
     """"""
     # aggregate data to col level ordered largest to smallest
