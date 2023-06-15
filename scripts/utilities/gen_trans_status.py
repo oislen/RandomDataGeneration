@@ -47,10 +47,10 @@ def gen_trans_status(series, rejection_rates_dict):
         # add rejections based on counts of devices, ips and cards
         elif rejection_rates_dict["count_devices_reject_rate_dict"][series["userid"]] >= random.uniform(0, 1):
             status = "rejected"
-            error_code = np.random.choice(a=list(cons.data_model_rejection_codes_funds.keys()),p=list(cons.data_model_rejection_codes_funds.values()),size=1)[0]
+            error_code = np.random.choice(a=list(cons.data_model_rejection_codes_user.keys()),p=list(cons.data_model_rejection_codes_user.values()),size=1)[0]
         elif rejection_rates_dict["count_ips_reject_rate_dict"][series["userid"]] >= random.uniform(0, 1):
             status = "rejected"
-            error_code = np.random.choice(a=list(cons.data_model_rejection_codes_funds.keys()),p=list(cons.data_model_rejection_codes_funds.values()),size=1)[0]
+            error_code = np.random.choice(a=list(cons.data_model_rejection_codes_connection.keys()),p=list(cons.data_model_rejection_codes_connection.values()),size=1)[0]
         elif rejection_rates_dict["count_cards_reject_rate_dict"][series["userid"]] >= random.uniform(0, 1):
             status = "rejected"
             error_code = np.random.choice(a=list(cons.data_model_rejection_codes_funds.keys()),p=list(cons.data_model_rejection_codes_funds.values()),size=1)[0]
