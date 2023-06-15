@@ -33,6 +33,12 @@ exp_transaction_hashes_status_dict = {
     "b95cb80aae9fbbfe": "successful",
     "dded2b63f8242648": "successful",
 }
+exp_transaction_hashes_amounts_dict = {
+    "63cea7c46926aa74": 0.52,
+    "37725417bd51fb40": 1.66,
+    "b95cb80aae9fbbfe": 0.52,
+    "dded2b63f8242648": 9.46,
+}
 exp_payment_channels = cons.data_model_payment_channels
 exp_transaction_status = cons.data_model_transaction_status
 exp_n_transaction_hashes = cons.unittest_n_entities
@@ -46,10 +52,9 @@ transaction_object = Transaction(exp_n_transaction_hashes, exp_start_date, exp_e
 
 obs_transaction_hashes_cnts_dict = transaction_object.transaction_hashes_cnts_dict
 obs_transaction_hashes_props_dict = transaction_object.transaction_hashes_props_dict
-obs_transaction_hashes_payment_channel_dict = (
-    transaction_object.transaction_hashes_payment_channel_dict
-)
+obs_transaction_hashes_payment_channel_dict = transaction_object.transaction_hashes_payment_channel_dict
 obs_transaction_hashes_status_dict = transaction_object.transaction_hashes_status_dict
+obs_transaction_hashes_amounts_dict = transaction_object.transaction_hashes_amounts_dict
 obs_payment_channels = transaction_object.payment_channels
 obs_transaction_status = transaction_object.transaction_status
 obs_start_date = transaction_object.start_date
@@ -66,14 +71,12 @@ class Test_Transaction(unittest.TestCase):
         self.obs_transaction_hashes_cnts_dict = obs_transaction_hashes_cnts_dict
         self.exp_transaction_hashes_props_dict = exp_transaction_hashes_props_dict
         self.obs_transaction_hashes_props_dict = obs_transaction_hashes_props_dict
-        self.exp_transaction_hashes_payment_channel_dict = (
-            exp_transaction_hashes_payment_channel_dict
-        )
-        self.obs_transaction_hashes_payment_channel_dict = (
-            obs_transaction_hashes_payment_channel_dict
-        )
+        self.exp_transaction_hashes_payment_channel_dict = exp_transaction_hashes_payment_channel_dict
+        self.obs_transaction_hashes_payment_channel_dict = obs_transaction_hashes_payment_channel_dict
         self.exp_transaction_hashes_status_dict = exp_transaction_hashes_status_dict
         self.obs_transaction_hashes_status_dict = obs_transaction_hashes_status_dict
+        self.exp_transaction_hashes_amounts_dict = exp_transaction_hashes_amounts_dict
+        self.obs_transaction_hashes_amounts_dict = obs_transaction_hashes_amounts_dict
         self.exp_payment_channels = exp_payment_channels
         self.obs_payment_channels = obs_payment_channels
         self.exp_transaction_status = exp_transaction_status
@@ -105,6 +108,10 @@ class Test_Transaction(unittest.TestCase):
             type(self.exp_transaction_hashes_status_dict),
         )
         self.assertEqual(
+            type(self.obs_transaction_hashes_amounts_dict),
+            type(self.exp_transaction_hashes_amounts_dict),
+        )
+        self.assertEqual(
             type(self.obs_payment_channels), type(self.exp_payment_channels)
         )
         self.assertEqual(
@@ -133,6 +140,10 @@ class Test_Transaction(unittest.TestCase):
         self.assertEqual(
             len(self.obs_transaction_hashes_status_dict),
             len(self.exp_transaction_hashes_status_dict),
+        )
+        self.assertEqual(
+            len(self.obs_transaction_hashes_amounts_dict),
+            len(self.exp_transaction_hashes_amounts_dict),
         )
         self.assertEqual(len(self.obs_payment_channels), len(self.exp_payment_channels))
         self.assertEqual(
@@ -164,6 +175,10 @@ class Test_Transaction(unittest.TestCase):
             list(self.obs_transaction_status.keys()),
             list(self.exp_transaction_status.keys()),
         )
+        self.assertEqual(
+            list(self.obs_transaction_hashes_amounts_dict.keys()),
+            list(self.exp_transaction_hashes_amounts_dict.keys()),
+        )
 
     def test_values(self):
         self.assertEqual(
@@ -190,6 +205,10 @@ class Test_Transaction(unittest.TestCase):
             list(self.obs_transaction_status.values()),
             list(self.exp_transaction_status.values()),
         )
+        self.assertEqual(
+            list(self.obs_transaction_hashes_amounts_dict.values()),
+            list(self.exp_transaction_hashes_amounts_dict.values()),
+        )
 
     def test_object(self):
         self.assertEqual(
@@ -206,6 +225,10 @@ class Test_Transaction(unittest.TestCase):
         self.assertEqual(
             self.obs_transaction_hashes_status_dict,
             self.exp_transaction_hashes_status_dict,
+        )
+        self.assertEqual(
+            self.obs_transaction_hashes_amounts_dict,
+            self.exp_transaction_hashes_amounts_dict,
         )
         self.assertEqual(self.obs_payment_channels, self.exp_payment_channels)
         self.assertEqual(self.obs_transaction_status, self.exp_transaction_status)

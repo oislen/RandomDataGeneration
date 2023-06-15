@@ -46,10 +46,10 @@ exp_user_ids_email_domain_dict = {
     "6720317315593519": "gmail.com",
 }
 exp_user_ids_dates_dict = {
-    "6374692674377254": np.datetime64("2021-05-17T00:00:00.000000000"),
-    "1751409580926382": np.datetime64("2021-02-10T00:00:00.000000000"),
-    "4264861381989413": np.datetime64("2021-07-27T00:00:00.000000000"),
-    "6720317315593519": np.datetime64("2021-12-28T00:00:00.000000000"),
+    "6374692674377254": np.datetime64("2020-03-02T00:00:00.000000000"),
+    "1751409580926382": np.datetime64("2020-08-03T00:00:00.000000000"),
+    "4264861381989413": np.datetime64("2020-10-19T00:00:00.000000000"),
+    "6720317315593519": np.datetime64("2020-04-08T00:00:00.000000000"),
 }
 exp_start_date = cons.programme_parameters_registration_start_date
 exp_end_date = cons.programme_parameters_registration_end_date

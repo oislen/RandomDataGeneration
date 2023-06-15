@@ -59,6 +59,7 @@ obs_user_data = gen_user_data(
 )
 obs_trans_data = gen_trans_data(
     user_data=obs_user_data,
+    user_obj=user_obj,
     device_obj=device_obj,
     card_obj=card_obj,
     ip_obj=ip_obj,
