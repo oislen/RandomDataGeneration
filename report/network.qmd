@@ -1,0 +1,65 @@
+
+```{python}
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# load csv data
+data=pd.read_csv('../data/RandomTelecomPayments.csv')
+```
+
+# Data Preparation
+
+```{python}
+# extract out the unique userids and device hashes
+user_device_data = data[['userid', 'device_hash']].dropna().drop_duplicates()
+
+# inner join users to users based on shared device hash
+user_device_network_data = pd.merge(left = user_device_data, right = user_device_data, on = 'device_hash', how = 'inner')
+
+# drop rows where userid_x = userid_y
+user_device_network_data = user_device_network_data.loc[user_device_network_data['userid_x'] != user_device_network_data['userid_y'], :]
+
+```
+
+# Network Analysis
+
+```{python}
+# generate graph from edgelist
+G = nx.from_pandas_edgelist(df = user_device_network_data, source = 'userid_x', target = 'userid_y', edge_attr = ['device_hash'])
+
+# extract connect components from graph
+CC = pd.DataFrame([{'compid':i, 'userid':cc} for i, cc in enumerate(nx.connected_components(G))]).explode('userid').reset_index(drop = True)
+
+# calculate compid size
+comp_size = CC.groupby(by = 'compid', as_index = False).agg({'userid':'nunique'}).rename(columns={'userid':'compsize'})
+
+# generate the component data
+comp_data = pd.merge(left = user_device_data, right = CC, left_on = 'userid', right_on = 'userid', how = 'inner')
+comp_data = pd.merge(left = comp_data, right = comp_size, on = 'compid', how = 'inner')
+
+# order by comp size
+comp_data = comp_data.sort_values(by = 'compsize', ascending = False)
+
+# generate grpah from component data
+compids = comp_data['compid'].unique()[:1]
+comp_data = comp_data.loc[comp_data['compid'].isin(compids), :]
+G = nx.from_pandas_edgelist(df = comp_data, source = 'userid', target = 'device_hash', edge_attr = ['compid'])
+```
+
+# Connect Component
+
+```{python}
+# define node colours
+node_color_map = {
+**{user:'blue' for user in list(comp_data['userid'].unique())},
+**{device:'orange' for device in list(comp_data['device_hash'].unique())}
+}
+node_colors = [node_color_map[node] for node in list(G)]
+
+# plot network
+fig, ax = plt.subplots()
+nx.draw_networkx(G, pos = nx.spring_layout(G), with_labels = True, node_size = 30, font_size = 1, node_color=node_colors, ax=ax)
+ax.set(title="Connected Component")
+plt.show()
+```

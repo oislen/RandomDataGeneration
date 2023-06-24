@@ -2,3 +2,5 @@ pandas
 numpy
 seaborn
 ipykernel
+networkx
+scipy
