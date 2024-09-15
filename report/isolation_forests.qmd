@@ -1,0 +1,52 @@
+
+```{python}
+import os
+import numpy as np
+import pandas as pd
+import sklearn as sk
+import shap
+```
+
+# Data Load
+
+```{python}
+# load random telecom payments data
+data = pd.read_csv(os.path.join('..', 'data', 'RandomTelecomPayments.csv'))
+# convert transaction date to datetime
+data['transaction_date'] = pd.to_datetime(data['transaction_date'])
+```
+
+# Feature Engineering
+
+Count of transaction status and transaction error codes in last 7 days
+
+```{python}
+def count_feature(data, group, target):
+    """
+    """
+    data_agg = data.copy().groupby(by=[group, target], as_index=False).agg(func='size')
+    data_pivot = pd.pivot_table(data=data_agg, index=group, values='size', columns=target)
+    data_pivot.columns = f'{group}_transaction_status_count_' + data_pivot.columns
+    return data_pivot
+```
+
+```{python}
+userid_data = count_feature(data, group='userid', target='transaction_status')
+```
+
+# Isolation Forests Model
+
+```{python}
+# determine dataset splits
+datasets = {'train':[1, 2, 3, 4, 5, 6], 'valid':[7, 8, 9], 'test':[10, 11, 12]}
+data['dataset'] = data['transaction_date'].dt.month.replace({v:key for key, val in datasets.items() for v in val})
+# split into train, valid and test sets
+train = data.loc[data['dataset'] == 'train', :].sample(frac=1, replace=False, random_state=42)
+valid = data.loc[data['dataset'] == 'valid', :].sample(frac=1, replace=False, random_state=42)
+test = data.loc[data['dataset'] == 'test', :].sample(frac=1, replace=False, random_state=42)
+```
+
+
+```{python}
+train.head()
+```
