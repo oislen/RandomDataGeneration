@@ -5,15 +5,31 @@ import numpy as np
 import pandas as pd
 import sklearn as sk
 import shap
+import os
+import sys
+from datetime import datetime
+from sklearn.ensemble import IsolationForest
+
+sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(os.getcwd()))
+
+import scripts.cons as cons
 ```
 
 # Data Load
 
 ```{python}
 # load random telecom payments data
-data = pd.read_csv(os.path.join('..', 'data', 'RandomTelecomPayments.csv'))
-# convert transaction date to datetime
-data['transaction_date'] = pd.to_datetime(data['transaction_date'])
+filepath_or_buffer=os.path.join('..', 'data', 'RandomTelecomPayments.csv')
+parse_dates = ['registration_date', 'transaction_date']
+date_parser = lambda x: datetime.strptime(x, '%Y-%m-%d')
+data = pd.read_csv(filepath_or_buffer=filepath_or_buffer,  parse_dates=parse_dates)
+
+# determine the week number for all transaction dates
+data['transaction_week'] = data['transaction_date'].dt.isocalendar().week
+
+# lead week data
+week_28_data = data.loc[data['transaction_week'] == 28, :]
 ```
 
 # Feature Engineering
@@ -21,32 +37,39 @@ data['transaction_date'] = pd.to_datetime(data['transaction_date'])
 Count of transaction status and transaction error codes in last 7 days
 
 ```{python}
-def count_feature(data, group, target):
+def feature_engineer(data, ids, groups, target, func):
     """
     """
-    data_agg = data.copy().groupby(by=[group, target], as_index=False).agg(func='size')
-    data_pivot = pd.pivot_table(data=data_agg, index=group, values='size', columns=target)
-    data_pivot.columns = f'{group}_transaction_status_count_' + data_pivot.columns
+    data_agg = data.copy().groupby(by=ids+groups, as_index=False).agg({target:func})
+    data_pivot = pd.pivot_table(data=data_agg, index=ids, values=target, columns=groups)
+    data_pivot.columns = '_'.join(ids+groups) + '_' + data_pivot.columns.str.split(':').str[0] + f'_{func}'
     return data_pivot
-```
 
-```{python}
-userid_data = count_feature(data, group='userid', target='transaction_status')
+# engineer features
+userid_cnt_data = feature_engineer(data=week_28_data, ids=['userid'], groups=['transaction_error_code'], target='transaction_amount', func='size')
+userid_sum_data = feature_engineer(data=week_28_data, ids=['userid'], groups=['transaction_error_code'], target='transaction_amount', func='sum')
+# determine the base dataset
+groupby_cols = ['userid', 'transaction_week']
+agg_dict = {'transaction_amount':'sum'}
+base_data = week_28_data.groupby(groupby_cols, as_index=False).agg(agg_dict)
+# join user features
+base_data = base_data.merge(userid_cnt_data, how='left', on='userid')
+base_data = base_data.merge(userid_sum_data, how='left', on='userid')
+# fill in zero values
+base_data = base_data.fillna(0)
 ```
 
 # Isolation Forests Model
 
 ```{python}
-# determine dataset splits
-datasets = {'train':[1, 2, 3, 4, 5, 6], 'valid':[7, 8, 9], 'test':[10, 11, 12]}
-data['dataset'] = data['transaction_date'].dt.month.replace({v:key for key, val in datasets.items() for v in val})
-# split into train, valid and test sets
-train = data.loc[data['dataset'] == 'train', :].sample(frac=1, replace=False, random_state=42)
-valid = data.loc[data['dataset'] == 'valid', :].sample(frac=1, replace=False, random_state=42)
-test = data.loc[data['dataset'] == 'test', :].sample(frac=1, replace=False, random_state=42)
-```
+# train isolation forests
+id_cols = ['userid', 'transaction_week', 'transaction_amount']
+X_cols = ['userid_transaction_error_code_E900_size', 'userid_transaction_error_code_E900_sum']
+train_data = base_data[X_cols].copy()
+clf = IsolationForest(random_state=0).fit(train_data)
 
-
-```{python}
-train.head()
+# score data
+score_data = base_data[id_cols+X_cols].copy()
+score_data['score'] = clf.decision_function(train_data)
+score_data.sort_values(by='score')
 ```
