@@ -3,6 +3,7 @@ import platform
 
 # set debug mode
 debug_mode = False
+__spec__ = None # persist pdb
 
 # set file paths and locations with repo
 fpath_root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
