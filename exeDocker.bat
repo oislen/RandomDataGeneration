@@ -5,7 +5,6 @@ SET DOCKER_TAG=latest
 SET DOCKER_IMAGE=%DOCKER_USER%/%DOCKER_REPO%:%DOCKER_TAG%
 
 :: remove existing docker containers and images
-docker container prune -f
 docker rm -f %DOCKER_IMAGE%
 
 :: build docker image
