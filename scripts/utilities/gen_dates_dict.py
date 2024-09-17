@@ -21,11 +21,7 @@ def gen_dates_dict(idhashes_cnts_dict, start_date, end_date):
         A dictionary of idhashes dates
     """
     # generate a range of dates between the given input start and end dates
-    dates = pd.date_range(
-        start=datetime.strptime(start_date, "%Y-%m-%d"),
-        end=datetime.strptime(end_date, "%Y-%m-%d") - pd.Timedelta(days=1),
-        freq="d",
-    )
+    dates = pd.date_range(start=datetime.strptime(start_date, "%Y-%m-%d"), end=datetime.strptime(end_date, "%Y-%m-%d") - pd.Timedelta(days=1), freq="d",)
     # extract out the idhashes from idhashes counts dictionary
     idhashes_list = list(idhashes_cnts_dict.keys())
     # randomly sample dates for each of the idhashes

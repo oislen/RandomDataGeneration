@@ -27,9 +27,7 @@ def gen_shared_idhashes(idhash_cnt_dict, prop_shared_idhashes):
         )
     )
     # subset the idhashes counts dictionary based on the shared idhashes
-    shared_idhashes_cnts_dict = {
-        key: idhash_cnt_dict[key] for key in shared_idhashes_list
-    }
+    shared_idhashes_cnts_dict = {key: idhash_cnt_dict[key] for key in shared_idhashes_list}
     # convert the shared idhashes counts to proportions
     shared_idhashes_prop_dict = cnt2prop_dict(shared_idhashes_cnts_dict)
     return shared_idhashes_prop_dict

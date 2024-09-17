@@ -41,17 +41,10 @@ class Device:
         self.n_device_types = n_device_types
         self.lam = cons.data_model_poisson_lambda_params["device"]
         self.prop_shared_device_hashes = cons.data_model_shared_entities_dict["device"]
-        self.device_hashes_cnts_dict = gen_idhash_cnt_dict(
-            idhash_type="hash", n=self.n_device_hashes, lam=self.lam
-        )
+        self.device_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_device_hashes, lam=self.lam)
         self.device_hashes_props_dict = cnt2prop_dict(self.device_hashes_cnts_dict)
-        self.device_hashes_type_dict = self.gen_device_type(
-            list(self.device_hashes_cnts_dict.keys()),
-            n_device_types=self.n_device_types,
-        )
-        self.device_hashes_shared_props_dict = gen_shared_idhashes(
-            self.device_hashes_cnts_dict, self.prop_shared_device_hashes
-        )
+        self.device_hashes_type_dict = self.gen_device_type(list(self.device_hashes_cnts_dict.keys()),n_device_types=self.n_device_types,)
+        self.device_hashes_shared_props_dict = gen_shared_idhashes(self.device_hashes_cnts_dict, self.prop_shared_device_hashes)
 
     def gen_device_type(self, device_hashes, n_device_types):
         """Generates a dictionary of random device types
@@ -76,10 +69,7 @@ class Device:
         # generate a device type name
         prefixes = np.random.choice(letters, size=(n_device_types, 3), replace=True)
         suffixes = np.random.choice(digits, size=(n_device_types, 3), replace=True)
-        device_types = [
-            "".join(list(prefixes[i])) + "-" + "".join(list(suffixes[i]))
-            for i in range(n_device_types)
-        ]
+        device_types = ["".join(list(prefixes[i])) + "-" + "".join(list(suffixes[i])) for i in range(n_device_types)]
         # randomly choose different device types
         device_types = list(np.random.choice(a=device_types, size=len(device_hashes)))
         # return device hashes and types

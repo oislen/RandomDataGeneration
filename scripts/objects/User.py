@@ -50,19 +50,13 @@ class User:
         self.start_date = start_date
         self.end_date = end_date
         self.lam = cons.data_model_poisson_lambda_params["user"]
-        self.user_ids_cnts_dict = gen_idhash_cnt_dict(
-            idhash_type="id", n=self.n_user_ids, lam=self.lam
-        )
+        self.user_ids_cnts_dict = gen_idhash_cnt_dict(idhash_type="id", n=self.n_user_ids, lam=self.lam)
         self.user_ids_props_dict = cnt2prop_dict(self.user_ids_cnts_dict)
         self.user_ids_firstname_dict = self.gen_user_firstname(cons)
         self.user_ids_lastname_dict = self.gen_user_lastname(cons)
-        self.user_ids_country_code_dict = gen_country_codes_dict(
-            self.user_ids_cnts_dict
-        )
+        self.user_ids_country_code_dict = gen_country_codes_dict(self.user_ids_cnts_dict)
         self.user_ids_email_domain_dict = self.gen_user_email_domain(cons)
-        self.user_ids_dates_dict = gen_dates_dict(
-            self.user_ids_cnts_dict, start_date=self.start_date, end_date=self.end_date
-        )
+        self.user_ids_dates_dict = gen_dates_dict(self.user_ids_cnts_dict, start_date=self.start_date, end_date=self.end_date)
 
     def gen_user_firstname(self, cons):
         """Generates a dictionary of random user id first names
@@ -126,13 +120,9 @@ class User:
         # load domain names data
         email_domain_data = pd.read_csv(cons.fpath_domain_email, index_col=0)
         # calculate the proportion of email domains
-        email_domain_data["proportion"] = email_domain_data["proportion"].divide(
-            email_domain_data["proportion"].sum()
-        )
+        email_domain_data["proportion"] = email_domain_data["proportion"].divide(email_domain_data["proportion"].sum())
         # convert email domain proportions to a dictionary
-        email_domain_dict = email_domain_data.set_index("domain").to_dict()[
-            "proportion"
-        ]
+        email_domain_dict = email_domain_data.set_index("domain").to_dict()["proportion"]
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly choose the email domains based on proportions

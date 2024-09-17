@@ -57,26 +57,12 @@ class Transaction:
         self.lam = cons.data_model_poisson_lambda_params["transaction"]
         self.payment_channels = cons.data_model_payment_channels
         self.transaction_status = cons.data_model_transaction_status
-        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(
-            idhash_type="hash", n=self.n_transaction_hashes, lam=self.lam
-        )
-        self.transaction_hashes_props_dict = cnt2prop_dict(
-            self.transaction_hashes_cnts_dict
-        )
-        self.transaction_hashes_dates_dict = gen_dates_dict(
-            self.transaction_hashes_cnts_dict,
-            start_date=self.start_date,
-            end_date=self.end_date,
-        )
-        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(
-            list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels
-        )
-        self.transaction_hashes_status_dict = self.gen_transaction_status(
-            list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status
-        )
-        self.transaction_hashes_amounts_dict = self.gen_transaction_amounts(
-            list(self.transaction_hashes_cnts_dict.keys())
-        )
+        self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_transaction_hashes, lam=self.lam)
+        self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
+        self.transaction_hashes_dates_dict = gen_dates_dict(self.transaction_hashes_cnts_dict,start_date=self.start_date,end_date=self.end_date,)
+        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels)
+        self.transaction_hashes_status_dict = self.gen_transaction_status(list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status)
+        self.transaction_hashes_amounts_dict = self.gen_transaction_amounts(list(self.transaction_hashes_cnts_dict.keys()))
 
     def gen_transaction_payment_channel(self, transaction_hashes, payment_channels):
         """Generates a dictionary of random transaction payment channels
@@ -103,9 +89,7 @@ class Transaction:
             )
         )
         # return payment channels and transaction hashes
-        transaction_hashes_payment_channels_dict = dict(
-            zip(transaction_hashes, transactoin_payment_channels)
-        )
+        transaction_hashes_payment_channels_dict = dict(zip(transaction_hashes, transactoin_payment_channels))
         return transaction_hashes_payment_channels_dict
 
     def gen_transaction_status(self, transaction_hashes, transaction_status):
@@ -133,9 +117,7 @@ class Transaction:
             )
         )
         # return transaction hashes and statuses
-        transaction_hashes_status_dict = dict(
-            zip(transaction_hashes, transaction_status)
-        )
+        transaction_hashes_status_dict = dict(zip(transaction_hashes, transaction_status))
         return transaction_hashes_status_dict
 
     def gen_transaction_amounts(self, transaction_hashes, loc=0, scale=2):
@@ -152,11 +134,7 @@ class Transaction:
             A dictionary of transaction hash prices
         """
         # randomly sample transaction prices from an absolute normal distribution with mean 0 and standard deviation 2
-        trans_prices = np.round(
-            np.abs(np.random.normal(loc=loc, scale=scale, size=len(transaction_hashes)))
-            ** 2,
-            2,
-        )
+        trans_prices = np.round(np.abs(np.random.normal(loc=loc, scale=scale, size=len(transaction_hashes)))** 2,2,)
         # return the transaction hashes and prices
         trans_prices_dict = dict(zip(transaction_hashes, trans_prices))
         return trans_prices_dict
