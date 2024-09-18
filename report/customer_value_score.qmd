@@ -20,58 +20,78 @@ filepath_or_buffer=os.path.join('..', 'data', 'RandomTelecomPayments.csv')
 parse_dates = ['registration_date', 'transaction_date']
 date_parser = lambda x: datetime.strptime(x, '%Y-%m-%d')
 data = pd.read_csv(filepath_or_buffer=filepath_or_buffer,  parse_dates=parse_dates)
-
-# determine the week number for all transaction dates
-data['transaction_week'] = data['transaction_date'].dt.isocalendar().week
 ```
 
 # Feature Engineering
 
-Count of successful transactions in last 7 days
+Count the number of successful transactions, and sum the total transaction amounts for each user across each week number.
 
 ```{python}
 def feature_engineer(data, ids, groups, target, func):
     """
     """
+    # aggregate across the ids and group, applying the function to the target
     data_agg = data.copy().groupby(by=ids+groups, as_index=False).agg({target:func})
+    # pivot the target results across each group
     data_pivot = pd.pivot_table(data=data_agg, index=ids, values=target, columns=groups)
-    data_pivot.columns = '_'.join(ids+groups) + '_' + data_pivot.columns.str.split(':').str[0] + f'_{func}'
+    # rename and format the columns
+    data_pivot.columns = data_pivot.columns.str.split(':').str[0] + f'_{func}'
+    data_pivot = data_pivot.reset_index()
+    data_pivot.columns.name = None
     return data_pivot
 
+# determine the week number for all transaction dates
+data['transaction_week'] = data['transaction_date'].dt.isocalendar().week
 # engineer features
-userid_cnt_data = feature_engineer(data=data, ids=['userid'], groups=['transaction_status'], target='transaction_amount', func='size')
-userid_sum_data = feature_engineer(data=data, ids=['userid'], groups=['transaction_status'], target='transaction_amount', func='sum')
-# determine the base dataset
-groupby_cols = ['userid', 'transaction_week']
-agg_dict = {'transaction_amount':'sum'}
-base_data = data.groupby(groupby_cols, as_index=False).agg(agg_dict)
-# join user features
-base_data = base_data.merge(userid_cnt_data, how='left', on='userid')
-base_data = base_data.merge(userid_sum_data, how='left', on='userid')
+userid_cnt_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=['transaction_status'], target='transaction_amount', func='size')
+userid_sum_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=['transaction_status'], target='transaction_amount', func='sum')
+# create base data
+base_data = pd.merge(
+    left=userid_cnt_data[['userid', 'transaction_week', 'successful_size']], 
+    right=userid_sum_data[['userid', 'transaction_week', 'successful_sum']], 
+    on=['userid', 'transaction_week'], 
+    how='outer'
+    )
 # fill in zero values
 base_data = base_data.fillna(0)
-# subset required data
-id_cols = ['userid', 'transaction_week']
-X_cols = ['userid_transaction_status_successful_size', 'userid_transaction_status_successful_sum']
-base_data = base_data[id_cols+X_cols].sort_values(by=['userid','transaction_week']).copy()
 ```
-
 
 # Customer Value Score
 
+Percentile score / rank the users across each week number based on their successful transaction count, and amount total.
+
 ```{python}
-def week_pct_score(group):
+def week_pct_score(group, score_cols = ['successful_size','successful_sum']):
     """
     """
-    score_cols = ['userid_transaction_status_successful_size','userid_transaction_status_successful_sum']
+    # percentile rank the score columns
     group_score = group[score_cols].rank(method='average', ascending=True, pct=True, axis=0)
     group_score.columns = group_score.columns + '_pct'
+    # join score results back to groups
     group_results = group.join(group_score)
     return group_results
 
 # score each user across each week for their percentile score in number of successfull transactions counts and acounts
 score_data_week = base_data.groupby(by=['transaction_week'], group_keys=False).apply(lambda group: week_pct_score(group))
 # aggregate across dataset to find most valueable users
-agg_dict={'userid_transaction_status_successful_size':'sum', 'userid_transaction_status_successful_sum':'sum', 'userid_transaction_status_successful_size_pct':'sum', 'userid_transaction_status_successful_sum_pct':'sum'}
-score_data_total = score_data_week.groupby(by=['userid']).agg(agg_dict).sort_values(by=['userid_transaction_status_successful_sum_pct'], ascending=False)
+agg_dict={'successful_size':'sum', 'successful_sum':'sum', 'successful_size_pct':'sum', 'successful_sum_pct':'sum'}
+score_data_total = score_data_week.groupby(by=['userid']).agg(agg_dict)
+# calcualte the customer value score
+score_data_total['customer_value_score'] = score_data_total[['successful_size_pct', 'successful_sum_pct']].mean(axis=1)
+# order results by the customer value score
+score_data_total = score_data_total.sort_values(by=['customer_value_score'], ascending=False)
+```
+
+# High Value Users
+
+Identify the high value users as the customers with a customer value score in the top 10%. Calculate transaction stats of the high value users.
+
+```{python}
+# create the high value user identifier
+score_data_total['customer_value_score_pct'] = score_data_total['customer_value_score'].rank(method='average', ascending=True, pct=True, axis=0)
+score_data_total['high_value_user'] = (score_data_total['customer_value_score_pct'] >= 0.9).astype(int)
+# sum across the 
+groupby_col=['high_value_user']
+agg_dict={'successful_size':'sum', 'successful_sum':'sum', 'successful_size_pct':'mean', 'successful_sum_pct':'mean', 'customer_value_score':'mean', 'customer_value_score_pct':'mean'}
+high_value_data = score_data_total.groupby(by=groupby_col).agg(agg_dict)
 ```
