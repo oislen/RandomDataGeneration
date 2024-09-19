@@ -73,5 +73,8 @@ clf = IsolationForest(random_state=0).fit(train_data)
 # score data
 score_data = base_data[id_cols+X_cols].copy()
 score_data['score'] = clf.decision_function(train_data)
-score_data.sort_values(by='score')
+score_data = score_data.sort_values(by='score')
+
+# count up the number of fraudulent transactions
+base_data['E900_size'].value_counts()/base_data['E900_size'].value_counts().sum()
 ```
