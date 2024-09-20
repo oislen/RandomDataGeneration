@@ -11,15 +11,15 @@ from objects.Ip import Ip
 
 exp_ip_hashes_cnts_dict = {
     "63cea7c46926aa74": 2,
-    "37725417bd51fb40": 11,
+    "37725417bd51fb40": 5,
     "b95cb80aae9fbbfe": 2,
     "dded2b63f8242648": 7,
 }
 exp_ip_hashes_props_dict = {
-    "63cea7c46926aa74": 0.09090909090909091,
-    "37725417bd51fb40": 0.5,
-    "b95cb80aae9fbbfe": 0.09090909090909091,
-    "dded2b63f8242648": 0.3181818181818182,
+    "63cea7c46926aa74": 0.125,
+    "37725417bd51fb40": 0.3125,
+    "b95cb80aae9fbbfe": 0.125,
+    "dded2b63f8242648": 0.4375,
 }
 exp_ip_hashes_country_code_dict = {
     "63cea7c46926aa74": 56,

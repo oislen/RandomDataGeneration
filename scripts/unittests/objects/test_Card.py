@@ -11,7 +11,7 @@ from objects.Card import Card
 
 exp_card_hashes_cnts_dict = {
     "63cea7c46926aa74": 1,
-    "37725417bd51fb40": 5,
+    "37725417bd51fb40": 3,
     "b95cb80aae9fbbfe": 1,
     "dded2b63f8242648": 1,
 }
@@ -22,10 +22,10 @@ exp_card_hashes_type_dict = {
     "dded2b63f8242648": "mastercard",
 }
 exp_card_hashes_props_dict = {
-    "63cea7c46926aa74": 0.125,
-    "37725417bd51fb40": 0.625,
-    "b95cb80aae9fbbfe": 0.125,
-    "dded2b63f8242648": 0.125,
+    "63cea7c46926aa74": 0.16666666666666666,
+    "37725417bd51fb40": 0.5,
+    "b95cb80aae9fbbfe": 0.16666666666666666,
+    "dded2b63f8242648": 0.16666666666666666,
 }
 exp_card_hashes_country_code_dict = {
     "63cea7c46926aa74": 276,

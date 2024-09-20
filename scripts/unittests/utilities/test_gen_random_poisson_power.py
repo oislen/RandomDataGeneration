@@ -6,15 +6,15 @@ import numpy as np
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
 
 import cons
-from utilities.gen_random_poisson_sq import gen_random_poisson_sq
+from utilities.gen_random_poisson_power import gen_random_poisson_power
 
 np.random.seed(cons.unittest_seed)
 
-exp_random_poisson = np.array([5, 7, 1, 1])
-obs_random_poisson = gen_random_poisson_sq(lam=1, size=4)
+exp_random_poisson = np.array([11, 7, 1, 1])
+obs_random_poisson = gen_random_poisson_power(lam=1, size=4, power=2)
 
 
-class Test_gen_random_poisson_sq(unittest.TestCase):
+class Test_gen_random_poisson_power(unittest.TestCase):
     """"""
 
     def setUp(self):

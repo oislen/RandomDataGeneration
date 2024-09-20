@@ -10,16 +10,16 @@ import cons
 from objects.Transaction import Transaction
 
 exp_transaction_hashes_cnts_dict = {
-    "63cea7c46926aa74": 28,
-    "37725417bd51fb40": 22,
-    "b95cb80aae9fbbfe": 42,
-    "dded2b63f8242648": 56,
+    "63cea7c46926aa74": 10,
+    "37725417bd51fb40": 30,
+    "b95cb80aae9fbbfe": 32,
+    "dded2b63f8242648": 44,
 }
 exp_transaction_hashes_props_dict = {
-    "63cea7c46926aa74": 0.1891891891891892,
-    "37725417bd51fb40": 0.14864864864864866,
-    "b95cb80aae9fbbfe": 0.28378378378378377,
-    "dded2b63f8242648": 0.3783783783783784,
+    "63cea7c46926aa74": 0.08620689655172414,
+    "37725417bd51fb40": 0.25862068965517243,
+    "b95cb80aae9fbbfe": 0.27586206896551724,
+    "dded2b63f8242648": 0.3793103448275862,
 }
 exp_transaction_hashes_payment_channel_dict = {
     "63cea7c46926aa74": "paypal",

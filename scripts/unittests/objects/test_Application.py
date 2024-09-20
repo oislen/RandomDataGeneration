@@ -11,8 +11,8 @@ from objects.Application import Application
 
 exp_application_hashes_cnts_dict = {
     "63cea7c46926aa74": 13,
-    "37725417bd51fb40": 6,
-    "b95cb80aae9fbbfe": 9,
+    "37725417bd51fb40": 18,
+    "b95cb80aae9fbbfe": 19,
     "dded2b63f8242648": 3,
 }
 exp_application_hashes_prices_dict = {
@@ -22,10 +22,10 @@ exp_application_hashes_prices_dict = {
     "dded2b63f8242648": 0.32,
 }
 exp_application_hashes_props_dict = {
-    "63cea7c46926aa74": 0.41935483870967744,
-    "37725417bd51fb40": 0.1935483870967742,
-    "b95cb80aae9fbbfe": 0.2903225806451613,
-    "dded2b63f8242648": 0.0967741935483871,
+    "63cea7c46926aa74": 0.24528301886792453,
+    "37725417bd51fb40": 0.33962264150943394,
+    "b95cb80aae9fbbfe": 0.3584905660377358,
+    "dded2b63f8242648": 0.05660377358490566,
 }
 exp_n_application_hashes = cons.unittest_n_entities
 exp_lam = cons.data_model_poisson_lambda_params["application"]
