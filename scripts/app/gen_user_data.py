@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from utilities.gen_random_poisson_sq import gen_random_poisson_sq
+from utilities.gen_random_poisson_power import gen_random_poisson_power
 from utilities.remove_duplicate_idhashes import remove_duplicate_idhashes
 
 def gen_user_data(user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
@@ -33,11 +33,11 @@ def gen_user_data(user_obj, device_obj, card_obj, ip_obj, transaction_obj, appli
     # randomly sample from the random user uids
     user_agg_data['uid'] = np.random.choice(a = list(user_obj.user_ids_props_dict.keys()), size = n_users, replace = False)
     # randomly simulate the number of entities per user
-    user_agg_data['n_devices'] = gen_random_poisson_sq(lam = device_obj.lam, size = n_users)
-    user_agg_data['n_cards'] = gen_random_poisson_sq(lam = card_obj.lam, size = n_users)
-    user_agg_data['n_ips'] = gen_random_poisson_sq(lam = ip_obj.lam, size = n_users)
-    user_agg_data['n_transactions'] = gen_random_poisson_sq(lam = transaction_obj.lam, size = n_users)
-    user_agg_data['n_applications'] = gen_random_poisson_sq(lam = application_obj.lam, size = n_users)
+    user_agg_data['n_devices'] = gen_random_poisson_power(lam = device_obj.lam, size = n_users, power = 1)
+    user_agg_data['n_cards'] = gen_random_poisson_power(lam = card_obj.lam, size = n_users, power = 1)
+    user_agg_data['n_ips'] = gen_random_poisson_power(lam = ip_obj.lam, size = n_users, power = 2)
+    user_agg_data['n_transactions'] = gen_random_poisson_power(lam = transaction_obj.lam, size = n_users, power = 3)
+    user_agg_data['n_applications'] = gen_random_poisson_power(lam = application_obj.lam, size = n_users, power = 2)
     user_data = user_agg_data.copy()
     # add user data
     user_data['firstname'] = user_data['uid'].replace(user_obj.user_ids_firstname_dict)
