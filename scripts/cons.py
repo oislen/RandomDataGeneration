@@ -3,11 +3,11 @@ import platform
 
 # set debug mode
 debug_mode = False
-__spec__ = None # persist pdb
 
 # set file paths and locations with repo
 fpath_root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
-fpath_randomtelecomdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomPayments.csv')
+fpath_randomtelecomtransdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomPayments.csv')
+fpath_randomtelecomusersdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomUsers.csv')
 fpath_arch_randomtelecomdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'arch', 'RandomTelecomPayments.csv')
 fpath_domain_email = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'email-domains.csv')
 fpath_countrycrimeindex = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'country_crime_index.csv')
