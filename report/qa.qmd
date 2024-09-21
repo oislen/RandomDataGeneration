@@ -33,11 +33,11 @@ data = pd.read_csv(cons.fpath_randomtelecomtransdata,  parse_dates=parse_dates)
 data.head()
 ```
 
-## UID
+## Users
 
 Check that the data makes sense and there are no anomalies at a user level.
 
-### UserId per UID
+### Unique UserIds per UID
 
 There shoule be exactly one unique userid for every UID.
 
@@ -45,9 +45,10 @@ There shoule be exactly one unique userid for every UID.
 #| label: nunique-userids-per-uid
 nunique_userids_per_uid = data.groupby(by='uid').agg({'userid':'nunique'})
 sns.histplot(data=nunique_userids_per_uid,x='userid', bins = 20)
+tmp_data['userid'].notnull().value_counts()
 ```
 
-### Fullnames per UID
+### Unique Fullnames per UID
 
 There should be exactly one unique fullname for every UID.
 
@@ -57,9 +58,10 @@ tmp_data = data.copy()
 tmp_data['fullname'] = tmp_data['firstname'] + ' ' + tmp_data['lastname']
 nunique_names_per_uid = tmp_data.groupby(['userid']).agg({'fullname':'nunique'})
 sns.histplot(data=nunique_names_per_uid,x='fullname', bins = 20)
+tmp_data['fullname'].notnull().value_counts()
 ```
 
-### Registration Dates per UID
+### Unique Registration Dates per UID
 
 A user should register only on a single date.
 
@@ -67,9 +69,10 @@ A user should register only on a single date.
 #| label: nunique-regdates-per-uid
 nunique_regdate_per_uid = data.groupby(by='uid').agg({'registration_date':'nunique'})
 sns.histplot(data=nunique_regdate_per_uid,x='registration_date', bins = 20)
+data['registration_date'].notnull().value_counts()
 ```
 
-### Registration Countries per UID
+### Unique Registration Countries per UID
 
 When registering the user should set their country code of residence.
 
@@ -77,9 +80,10 @@ When registering the user should set their country code of residence.
 #| label: nunique-regcountries-per-uid
 nunique_regcountry_per_uid = data.groupby(by='uid').agg({'registration_country_code':'nunique'})
 sns.histplot(data=nunique_regcountry_per_uid,x='registration_country_code', bins = 20)
+data['registration_country_code'].notnull().value_counts()
 ```
 
-### Email Domains per UID
+### Unique Email Domains per UID
 
 A user should register with a single email address corresponding to a single email domain.
 
@@ -87,19 +91,21 @@ A user should register with a single email address corresponding to a single ema
 #| label: nunique-emaildomains-per-uid
 nunique_emaildomains_per_uid = data.groupby(by='uid').agg({'email_domain':'nunique'})
 sns.histplot(data=nunique_emaildomains_per_uid,x='email_domain', bins = 20)
+data['email_domain'].notnull().value_counts()
 ```
 
-### Device Hash per UID
+### Unique Device Hash per UID
 
-A UID should have 1 to 3 devices.
+A UID should have 1 to 3 devices. Note, device hash can be missing if the user uses an unregistered device.
 
 ```{python}
 #| label: nunique-devices-per-uid
 nunique_devices_per_uid = data.groupby(by='uid').agg({'device_hash':'nunique'})
 sns.histplot(data=nunique_devices_per_uid,x='device_hash', bins = 20)
+data['device_hash'].notnull().value_counts()
 ```
 
-### Card Hash per UID
+### Unique Card Hash per UID
 
 A UID should have 1 to 2 cards, with an overall distribution less than the corresponding device hash distribution.
 
@@ -107,9 +113,10 @@ A UID should have 1 to 2 cards, with an overall distribution less than the corre
 #| label: nunique-cards-per-uid
 nunique_cards_per_uid = data.groupby(by='uid').agg({'card_hash':'nunique'})
 sns.histplot(data=nunique_cards_per_uid,x='card_hash', bins = 20)
+tmp_data['card_hash'].notnull().value_counts()
 ```
 
-### IP Hash per UID
+### Unique IP Hash per UID
 
 A UID should have between 1 and 10 ips.
 
@@ -117,27 +124,30 @@ A UID should have between 1 and 10 ips.
 #| label: nunique-ips-per-uid
 nunique_ips_per_uid = data.groupby(by='uid').agg({'ip_hash':'nunique'})
 sns.histplot(data=nunique_ips_per_uid,x='ip_hash')
+tmp_data['ip_hash'].notnull().value_counts()
 ```
 
-### Application Hash per UID
+### Unique Application Hash per UID
 
 ```{python}
 #| label: nunique-apps-per-uid
 nunique_apps_per_uid = data.groupby(by='uid').agg({'application_hash':'nunique'})
 sns.histplot(data=nunique_apps_per_uid,x='application_hash')
+tmp_data['ip_hash'].notnull().value_counts()
 ```
 
-### Transaction Hash per UID
+### Unique Transaction Hash per UID
 
 ```{python}
 #| label: nunique-ips-per-uid
 nunique_ips_per_uid = data.groupby(by='uid').agg({'transaction_hash':'nunique'})
 sns.histplot(data=nunique_ips_per_uid,x='transaction_hash')
+tmp_data['transaction_hash'].notnull().value_counts()
 ```
 
 ## Transaction
 
-### Date
+### Unique Date per Transaction Hash
 
 Each transaction hash should have a single date associated with it
 
@@ -147,7 +157,7 @@ nunique_transdates_per_trans = data.groupby(by=['transaction_hash']).agg({'trans
 sns.histplot(data=nunique_transdates_per_trans,x='transaction_date', bins = 20)
 ```
 
-### Amount
+### Unique Amount per Transaction Hash
 
 Each transaction hash should have a single transaction amount associated with it
 
@@ -157,15 +167,50 @@ nunique_transamounts_per_trans = data.groupby(by=['transaction_hash']).agg({'tra
 sns.histplot(data=nunique_transamounts_per_trans,x='transaction_amount', bins = 20)
 ```
 
-### Payment Method
+### Unique Payment Method per Transaction Hash
 
-Each transaction hash should have a single transaction payment method associated with it. Note, in certain circumstances the payment method is missing as the transaction amount was 0.
+Each transaction hash should have a single transaction payment method associated with it. Note, in some circumstances the payment method is missing as the transaction amount was 0.
 
 ```{python}
 #| label: nunique-paymentmethod-per-trans
 nunique_paymentmethod_per_trans = data.groupby(by=['transaction_hash']).agg({'transaction_payment_method':'nunique'}).sort_values('transaction_payment_method')
 sns.histplot(data=nunique_paymentmethod_per_trans,x='transaction_payment_method', bins = 20)
 data.loc[data['transaction_hash'].isin(nunique_paymentmethod_per_trans[(nunique_paymentmethod_per_trans == 0)].index[:5]), :]
+data.loc[data['transaction_hash'].isin(nunique_paymentchannel_per_trans[(nunique_paymentchannel_per_trans == 0)].index[:5]), :]
+data.groupby(by=['card_type', 'transaction_payment_method'], as_index=False, dropna=False).agg({'transaction_hash':'size', 'transaction_amount':'sum'})
+```
+
+### Unique Payment Channel per Transaction Hash
+
+Each transaction hash should have a single transaction payment channel with it. Note in some circumstances the payment channel is missing when the transaction amount is 0, or the payment method is wallet or points.
+
+```{python}
+#| label: nunique-paymentchannel-per-trans
+nunique_paymentchannel_per_trans = data.groupby(by=['transaction_hash']).agg({'card_payment_channel':'nunique'}).sort_values('card_payment_channel')
+sns.histplot(data=nunique_paymentchannel_per_trans,x='card_payment_channel', bins = 20)
+data.groupby(by=['transaction_payment_method', 'card_payment_channel'], as_index=False, dropna=False).agg({'transaction_hash':'size', 'transaction_amount':'sum'})
+```
+
+### Unique Transaction Status per Transaction Hash
+
+Each transaction hash should have a single unique payment status associated with it.
+
+```{python}
+#| label: nunique-transstatus-per-trans
+nunique_transstatus_per_trans = data.groupby(by=['transaction_hash']).agg({'transaction_status':'nunique'})
+sns.histplot(data=nunique_transstatus_per_trans,x='transaction_status', bins = 20)
+data.groupby(by=['transaction_error_code', 'transaction_status'], as_index=False, dropna=False).size()
+```
+
+### Unique Error Codes Status per Transaction Hash
+
+An error code should only be associated with transaction hashes with a failed payment status.
+
+```{python}
+#| label: nunique-errorcodes-per-trans
+nunique_errorcodes_per_trans = data.groupby(by=['transaction_hash']).agg({'transaction_error_code':'nunique'})
+sns.histplot(data=nunique_errorcodes_per_trans,x='transaction_error_code', bins = 20)
+data.groupby(by=['transaction_error_code', 'transaction_status'], as_index=False, dropna=False).size()
 ```
 
 ### UIDs with High Device Hash Counts
@@ -175,10 +220,8 @@ data.loc[data['transaction_hash'].isin(nunique_paymentmethod_per_trans[(nunique_
 nunique_devices_per_uid = data.groupby(by='uid', as_index=False).agg({'device_hash':'nunique'}).sort_values(by='device_hash')
 uids_max_devices = data.loc[data['uid'].isin(nunique_devices_per_uid['uid'].tail()), :].sort_values(by=['uid', 'device_hash', 'transaction_date'])
 
-#| label: uid-maxdevice-trans-error-counts
 uids_max_devices.groupby(by=['userid'], as_index=False).agg({'device_hash':'nunique', 'transaction_hash':'count', 'transaction_error_code':'count'})
 
-#| label: uid-maxdevice-error-status
 uids_max_devices.groupby(by=['transaction_error_code'], as_index=False).size().sort_values(by='size', ascending=False)
 ```
 
@@ -209,17 +252,18 @@ uids_max_ips.groupby(by=['transaction_error_code'], as_index=False).size().sort_
 
 ## Card
 
-### Country Code
+### Unique Card Types per Card Hashes
 
-Each card should have a single country type associated with it.
+Each card should have a single card type associated with it.
 
 ```{python}
 #| label: nunique-cardtypes-per-card
-nunique_countrytypes_per_card = data.groupby(by=['card_hash']).agg({'card_type':'nunique'})
-sns.histplot(data=nunique_countrytypes_per_card,x='card_type', bins = 20)
+nunique_cardtypes_per_card = data.groupby(by=['card_hash']).agg({'card_type':'nunique'})
+sns.histplot(data=nunique_cardtypes_per_card,x='card_type', bins = 20)
+data.groupby(by=['card_type', 'transaction_payment_method'], as_index=False, dropna=False).agg({'transaction_hash':'size', 'transaction_amount':'sum'})
 ```
 
-### Country Code
+### Unique Country Code per Card Hashes
 
 Each card should have a single country code associated with it.
 
@@ -227,11 +271,13 @@ Each card should have a single country code associated with it.
 #| label: nunique-countrycodes-per-card
 nunique_countrycodes_per_card = data.groupby(by=['card_hash']).agg({'card_country_code':'nunique'})
 sns.histplot(data=nunique_countrycodes_per_card,x='card_country_code', bins = 20)
+#data.groupby(by=['card_country_code'], as_index=False, dropna=False).size()
+data.assign(card_country_code=data['card_country_code'].notnull().astype(int)).groupby(by=['card_country_code', 'transaction_payment_method'], as_index=False, dropna=False).agg({'transaction_hash':'size', 'transaction_amount':'sum'})
 ```
 
 ## IP
 
-### Country Code
+### Unique Country Codes per IP Hashes
 
 Each IP should have a single country code associated with it.
 
@@ -239,4 +285,5 @@ Each IP should have a single country code associated with it.
 #| label: nunique-countrycodes-per-ip
 nunique_countrycodes_per_ip = data.groupby(by=['ip_hash']).agg({'ip_country_code':'nunique'})
 sns.histplot(data=nunique_countrycodes_per_ip,x='ip_country_code', bins = 20)
+data.groupby(by=['ip_country_code'], as_index=False, dropna=False).size()
 ```
