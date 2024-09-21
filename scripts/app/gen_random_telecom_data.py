@@ -86,4 +86,4 @@ def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
         application_obj=application_obj,
     )
 
-    return trans_data
+    return {"user_data":user_data, "trans_data":trans_data}
