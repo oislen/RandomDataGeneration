@@ -6,3 +6,5 @@ networkx
 scipy
 shap
 scikit-learn
+pyarrow
+fastparquet
