@@ -28,6 +28,7 @@ pd.set_option('display.max_columns', None)
 parse_dates = ['registration_date', 'transaction_date']
 date_parser = lambda x: datetime.strptime(x, '%Y-%m-%d')
 data = pd.read_csv(cons.fpath_randomtelecomtransdata,  parse_dates=parse_dates)
+userdata = pd.read_csv(cons.fpath_randomtelecomusersdata)
 
 # show head of data
 data.head()
