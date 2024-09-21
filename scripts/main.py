@@ -61,5 +61,5 @@ if __name__ == '__main__':
             os.mkdir(data_fdir)
 
     # write data to disk
-    user_data.to_csv(cons.fpath_randomtelecomusersdata, index = False)
+    user_data.to_parquet(cons.fpath_randomtelecomusersdata, engine='fastparquet')
     trans_data.to_csv(cons.fpath_randomtelecomtransdata, index = False)
