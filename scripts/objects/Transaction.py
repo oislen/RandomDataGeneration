@@ -6,6 +6,7 @@ import cons
 from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_dates_dict import gen_dates_dict
+from utilities.round_trans_amount import round_trans_amount
 
 
 class Transaction:
@@ -136,5 +137,5 @@ class Transaction:
         # randomly sample transaction prices from an absolute normal distribution with mean 0 and standard deviation 2
         trans_prices = np.round(np.abs(np.random.normal(loc=loc, scale=scale, size=len(transaction_hashes)))** 2,2,)
         # return the transaction hashes and prices
-        trans_prices_dict = dict(zip(transaction_hashes, trans_prices))
+        trans_prices_dict = dict(zip(transaction_hashes, round_trans_amount(trans_prices)))
         return trans_prices_dict
