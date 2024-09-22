@@ -2,7 +2,6 @@ import os
 import sys
 from time import time
 import pandas as pd
-__spec__ = None # persist pdb
 
 # set file path for custom python modules
 sys.path.append(os.path.join(os.getcwd(), 'scripts'))
@@ -37,8 +36,11 @@ if __name__ == '__main__':
     # factor = input_params_dict['factor']
     # randomseed = input_params_dict['randomseed']
     # debug_mode = cons.debug_mode
-    args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr, cons.debug_mode) for itr in range(input_params_dict['nitr'])]
-    results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
+    if input_params_dict['nitr'] > 1:
+        args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr, cons.debug_mode) for itr in range(input_params_dict['nitr'])]
+        results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
+    else:
+        results = [gen_random_telecom_data(factor=input_params_dict['factor'], randomseed=input_params_dict['randomseed'], debug_mode=cons.debug_mode)]
     # concatenate random telecom datasets into a single file
     user_data = pd.concat(objs = [result['user_data'] for result in results], axis = 0, ignore_index = True)
     trans_data = pd.concat(objs = [result['trans_data'] for result in results], axis = 0, ignore_index = True)
