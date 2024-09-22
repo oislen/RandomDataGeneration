@@ -1,4 +1,7 @@
-def remove_duplicate_idhashes(user_data, idhash_col):
+import numpy as np
+import pandas as pd
+
+def remove_duplicate_idhashes(user_data, idhash_col, redistribute=False):
     """Removes duplicate idhashes from a given idhash column
 
     Parameters
@@ -15,16 +18,12 @@ def remove_duplicate_idhashes(user_data, idhash_col):
     """
     # take deep copy of the data
     tmp_data = user_data.copy()
-    # define duplicate idhash column name
-    duplicate_idhash_col = f"duplicate_{idhash_col}"
-    # explode out the idhashes
-    user_transaction_hashes = (tmp_data[idhash_col].explode().rename(duplicate_idhash_col))
-    # identify the duplicate idhashes
-    duplicated_user_transaction_hashes = (user_transaction_hashes[user_transaction_hashes.duplicated()].reset_index().groupby(by="index").agg({duplicate_idhash_col: list}))
-    # join duplicated idhashes to temp data
-    tmp_data = tmp_data.join(duplicated_user_transaction_hashes, how="left")
-    # remove duplicate id hashes
-    tmp_data[idhash_col] = tmp_data.apply(lambda s: s[idhash_col] if not s[duplicate_idhash_col] == s[duplicate_idhash_col] else [v for v in s[idhash_col] if v not in s[duplicate_idhash_col]], axis=1,)
-    # drop duplicate id hashes columns
-    tmp_data = tmp_data.drop(columns=[duplicate_idhash_col])
+    # explode out the series of lists and deduplicate values
+    tmp_deduplicated_series = tmp_data[idhash_col].explode().drop_duplicates()
+    # roll up and redictribute the idhashes
+    tmp_deduplicate_series=tmp_deduplicated_series.groupby(level=0).apply(lambda series: series.to_list())
+    # overwrite series with empty lists
+    tmp_data[idhash_col] = np.nan
+    tmp_data[idhash_col] = tmp_deduplicate_series
+    tmp_data[idhash_col] = tmp_data[idhash_col].apply(lambda x: x if x == x else [])
     return tmp_data
