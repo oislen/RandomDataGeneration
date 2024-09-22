@@ -42,8 +42,7 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(x, size = 1)[0] if x != [] else np.nan)
     trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(x, size = 1)[0] if x != [] else np.nan)
     trans_data['application_hash'] = trans_data['application_hash'].apply(lambda x: np.random.choice(x, size = 1)[0])
-    # add null values to transaction hashes and card hashes
-    trans_data['transaction_hash'] = trans_data['transaction_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['transaction'] else x)
+    # add null values card hashes
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['card'] else x)
     # add shared hashed entities between users
     trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(a = list(ip_obj.ip_hashes_shared_props_dict.keys()), p = list(ip_obj.ip_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['ip'] and ip_obj.ip_hashes_shared_props_dict != {} else x)
