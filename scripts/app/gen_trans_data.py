@@ -52,8 +52,8 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=device_obj.device_hashes_type_dict, idhash_key_name='device_hash', idhash_val_name='device_type')
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=card_obj.card_hashes_type_dict, idhash_key_name='card_hash', idhash_val_name='card_type')
     # add card and ip country codes
-    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=card_obj.card_hashes_country_code_dict, idhash_key_name='card_hash', idhash_val_name='card_country_code')
-    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=ip_obj.ip_hashes_country_code_dict, idhash_key_name='ip_hash', idhash_val_name='ip_country_code')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=card_obj.card_hashes_country_code_dict, idhash_key_name='card_hash', idhash_val_name='card_country_code_alpha')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=ip_obj.ip_hashes_country_code_dict, idhash_key_name='ip_hash', idhash_val_name='ip_country_code_alpha')
     # add transaction data
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_amounts_dict, idhash_key_name='transaction_hash', idhash_val_name='transaction_amount')
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_payment_channel_dict, idhash_key_name='transaction_hash', idhash_val_name='card_payment_channel')
@@ -64,7 +64,7 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     zero_transaction_amount_filter = (trans_data['transaction_amount'] == 0.0)
     missing_card_hash_filter = (trans_data['card_hash'].isnull())
     trans_data.loc[zero_transaction_amount_filter | missing_card_hash_filter, ['card_payment_channel']] = np.nan
-    trans_data.loc[zero_transaction_amount_filter, ['card_hash', 'card_type', 'card_country_code']] = np.nan
+    trans_data.loc[zero_transaction_amount_filter, ['card_hash', 'card_type', 'card_country_code_alpha']] = np.nan
     # add payment method as either card, store_wallet or store_points
     trans_data['transaction_payment_method'] = 'card'
     zero_transaction_amount_filter = (trans_data['transaction_amount'] == 0.0)
@@ -72,12 +72,12 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     trans_data.loc[missing_card_hash_filter, 'transaction_payment_method'] = missing_card_hash_filter.apply(lambda x: np.random.choice(a = list(cons.data_model_non_card_trans_methods.keys()), size = 1, p = list(cons.data_model_non_card_trans_methods.values()))[0])
     trans_data.loc[zero_transaction_amount_filter, 'transaction_payment_method'] = np.nan
     # align country codes for user, ip and card
-    country_code_columns = ['registration_country_code', 'ip_country_code', 'card_country_code']
+    country_code_columns = ['registration_country_code_alpha', 'ip_country_code_alpha', 'card_country_code_alpha']
     trans_data[country_code_columns] = trans_data[country_code_columns].apply(lambda series: align_country_codes(series), axis = 1)
-    agg_aligned_ips = trans_data.groupby(by = ['ip_hash', 'ip_country_code'], as_index = False).size().sort_values(by = ['ip_hash', 'ip_country_code'], ascending = [True, False]).drop_duplicates(subset = ['ip_hash'], keep = 'first').drop(columns = ['size'])
-    agg_aligned_cards = trans_data.groupby(by = ['card_hash', 'card_country_code'], as_index = False).size().sort_values(by = ['card_hash', 'card_country_code'], ascending = [True, False]).drop_duplicates(subset = ['card_hash'], keep = 'first').drop(columns = ['size'])
-    trans_data = pd.merge(left = trans_data.drop(columns = ['ip_country_code']), right = agg_aligned_ips, on = 'ip_hash', how = 'left')
-    trans_data = pd.merge(left = trans_data.drop(columns = ['card_country_code']), right = agg_aligned_cards, on = 'card_hash', how = 'left')
+    agg_aligned_ips = trans_data.groupby(by = ['ip_hash', 'ip_country_code_alpha'], as_index = False).size().sort_values(by = ['ip_hash', 'ip_country_code_alpha'], ascending = [True, False]).drop_duplicates(subset = ['ip_hash'], keep = 'first').drop(columns = ['size'])
+    agg_aligned_cards = trans_data.groupby(by = ['card_hash', 'card_country_code_alpha'], as_index = False).size().sort_values(by = ['card_hash', 'card_country_code_alpha'], ascending = [True, False]).drop_duplicates(subset = ['card_hash'], keep = 'first').drop(columns = ['size'])
+    trans_data = pd.merge(left = trans_data.drop(columns = ['ip_country_code_alpha']), right = agg_aligned_ips, on = 'ip_hash', how = 'left')
+    trans_data = pd.merge(left = trans_data.drop(columns = ['card_country_code_alpha']), right = agg_aligned_cards, on = 'card_hash', how = 'left')
     # align registration and transaction dates
     date_columns = ['registration_date', 'transaction_date']
     if datetime.strptime(user_obj.end_date, "%Y-%m-%d") > datetime.strptime(transaction_obj.start_date, "%Y-%m-%d"):
@@ -85,9 +85,10 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
         trans_data[date_columns] = trans_data[date_columns].apply(lambda s: [s['registration_date'], np.random.choice(a=dates_series[dates_series >= max(s['registration_date'], s['transaction_date'])], size=1)[0]], result_type = 'expand', axis = 1).copy()
     # map iso numeric country codes to iso alpha country codes
     country_codes_map = gen_country_codes_map()
-    trans_data['registration_country_code']  = trans_data['registration_country_code'].replace(country_codes_map)
-    trans_data['card_country_code']  = trans_data['card_country_code'].replace(country_codes_map)
-    trans_data['ip_country_code']  = trans_data['ip_country_code'].replace(country_codes_map)
+    breakpoint()
+    trans_data['registration_country_code']  = trans_data['registration_country_code_alpha'].replace(country_codes_map)
+    trans_data['card_country_code']  = trans_data['card_country_code_alpha'].replace(country_codes_map)
+    trans_data['ip_country_code']  = trans_data['ip_country_code_alpha'].replace(country_codes_map)
 
     # generate transaction status and error code
     rejection_rates_dict = gen_trans_rejection_rates(trans_data = trans_data)

@@ -34,9 +34,9 @@ def gen_user_data(random_entity_counts, user_obj, device_obj, card_obj, ip_obj, 
     user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_firstname_dict, idhash_key_name='uid', idhash_val_name='firstname')
     user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_lastname_dict, idhash_key_name='uid', idhash_val_name='lastname')
     user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_dates_dict, idhash_key_name='uid', idhash_val_name='registration_date')
-    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_country_code_dict, idhash_key_name='uid', idhash_val_name='registration_country_code')
+    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_country_code_dict, idhash_key_name='uid', idhash_val_name='registration_country_code_alpha')
     user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_email_domain_dict, idhash_key_name='uid', idhash_val_name='email_domain')
-    userid_date_country_code = user_data['registration_date'].dt.strftime('%Y%m%d') + user_data['registration_country_code'].astype(str)
+    userid_date_country_code = user_data['registration_date'].dt.strftime('%Y%m%d') + user_data['registration_country_code_alpha'].astype(str)
     zero_pad = (userid_date_country_code.str.len() - 11).abs().apply(lambda x: '0'*x)
     user_data['userid'] = userid_date_country_code + zero_pad + user_data['uid'].astype(str).str[-5:]
     # add hash data lists

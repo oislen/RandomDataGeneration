@@ -23,9 +23,9 @@ def align_country_codes(series, proba_comm_ip=0.95, proba_comm_card=0.99):
     # generate random value between 0 and 1
     random_unif = random.uniform(0, 1)
     # extract country codes from input series
-    registration_country_code = series["registration_country_code"]
-    ip_country_code = series["ip_country_code"]
-    card_country_code = series["card_country_code"]
+    registration_country_code = series["registration_country_code_alpha"]
+    ip_country_code = series["ip_country_code_alpha"]
+    card_country_code = series["card_country_code_alpha"]
     # determine shared or new ip country code
     if ip_country_code == ip_country_code:
         if random_unif >= proba_comm_ip:
@@ -44,9 +44,9 @@ def align_country_codes(series, proba_comm_ip=0.95, proba_comm_card=0.99):
         new_card_country_code = np.nan
     # return aligned codes
     align_code_dict = {
-        "registration_country_code": registration_country_code,
-        "ip_country_code": new_ip_country_code,
-        "card_country_code": new_card_country_code,
+        "registration_country_code_alpha": registration_country_code,
+        "ip_country_code_alpha": new_ip_country_code,
+        "card_country_code_alpha": new_card_country_code,
     }
     aligned_code_series = pd.Series(align_code_dict)
     return aligned_code_series
