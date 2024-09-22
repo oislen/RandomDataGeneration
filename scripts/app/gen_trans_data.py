@@ -37,24 +37,22 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
 
     # explode user data to transaction level
     trans_data = user_data.explode('transaction_hash').dropna(subset = ['transaction_hash']).reset_index(drop = True)
-
-    # select hashes
+    # select uid entity hashes for each transaction
     trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(x, size = 1)[0] if x != [] else np.nan)
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(x, size = 1)[0] if x != [] else np.nan)
     trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(x, size = 1)[0] if x != [] else np.nan)
     trans_data['application_hash'] = trans_data['application_hash'].apply(lambda x: np.random.choice(x, size = 1)[0])
-    # add shared hashed entities
-    trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(a = list(ip_obj.ip_hashes_shared_props_dict.keys()), p = list(ip_obj.ip_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['ip'] else x)
-    trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(a = list(card_obj.card_hashes_shared_props_dict.keys()), p = list(card_obj.card_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['card'] else x)
-    trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(a = list(device_obj.device_hashes_shared_props_dict.keys()), p = list(device_obj.device_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['device'] else x)
-    # add null rates
-    trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['ip'] else x)
+    # add null values to transaction hashes and card hashes
+    trans_data['transaction_hash'] = trans_data['transaction_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['transaction'] else x)
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['card'] else x)
-    trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['device'] else x)
-    # add type data
+    # add shared hashed entities between users
+    trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(a = list(ip_obj.ip_hashes_shared_props_dict.keys()), p = list(ip_obj.ip_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['ip'] and ip_obj.ip_hashes_shared_props_dict != {} else x)
+    trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(a = list(card_obj.card_hashes_shared_props_dict.keys()), p = list(card_obj.card_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['card'] and card_obj.card_hashes_shared_props_dict != {} else x)
+    trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(a = list(device_obj.device_hashes_shared_props_dict.keys()), p = list(device_obj.device_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['device'] and device_obj.device_hashes_shared_props_dict != {} else x)
+    # add card and device entity types
     trans_data['device_type'] = trans_data['device_hash'].replace(device_obj.device_hashes_type_dict)
     trans_data['card_type'] = trans_data['card_hash'].replace(card_obj.card_hashes_type_dict)
-    # add country code data
+    # add card and ip country codes
     trans_data['card_country_code'] = trans_data['card_hash'].replace(card_obj.card_hashes_country_code_dict)
     trans_data['ip_country_code'] = trans_data['ip_hash'].replace(ip_obj.ip_hashes_country_code_dict)
     # add transaction data
