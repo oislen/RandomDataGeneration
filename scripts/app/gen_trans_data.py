@@ -85,10 +85,9 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
         trans_data[date_columns] = trans_data[date_columns].apply(lambda s: [s['registration_date'], np.random.choice(a=dates_series[dates_series >= max(s['registration_date'], s['transaction_date'])], size=1)[0]], result_type = 'expand', axis = 1).copy()
     # map iso numeric country codes to iso alpha country codes
     country_codes_map = gen_country_codes_map()
-    breakpoint()
-    trans_data['registration_country_code']  = trans_data['registration_country_code_alpha'].replace(country_codes_map)
-    trans_data['card_country_code']  = trans_data['card_country_code_alpha'].replace(country_codes_map)
-    trans_data['ip_country_code']  = trans_data['ip_country_code_alpha'].replace(country_codes_map)
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='registration_country_code_alpha', idhash_val_name='registration_country_code')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='card_country_code_alpha', idhash_val_name='card_country_code')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='ip_country_code_alpha', idhash_val_name='ip_country_code')
 
     # generate transaction status and error code
     rejection_rates_dict = gen_trans_rejection_rates(trans_data = trans_data)
