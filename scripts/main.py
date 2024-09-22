@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from time import time
 import pandas as pd
 
@@ -15,8 +16,12 @@ from app.gen_random_telecom_data import gen_random_telecom_data
 
 if __name__ == '__main__':
 
+    # set up logging
+    lgr = logging.getLogger()
+    lgr.setLevel(logging.INFO)
+
     if cons.debug_mode:
-        print(f'Debug Mode: {cons.debug_mode}')
+        logging.info(f'Debug Mode: {cons.debug_mode}')
         # set user parameters
         input_params_dict = {}
         input_params_dict['factor'] = cons.programme_parameters_factor
@@ -28,7 +33,7 @@ if __name__ == '__main__':
     # run input error handling
     res = input_error_handling(input_params_dict)
 
-    print(f'Input Parameters: {input_params_dict}')
+    logging.info(f'Input Parameters: {input_params_dict}')
 
     # start timer
     t0 = time()
@@ -50,11 +55,11 @@ if __name__ == '__main__':
     # end timer
     t1 = time()
     total_runtime_seconds = round(t1 - t0, 2)
-    print(f'Total Runtime: {total_runtime_seconds} seconds')
+    logging.info(f'Total Runtime: {total_runtime_seconds} seconds')
 
     # print out head and shape of data
-    print(f'RandomTeleComUsersData.shape: {user_data.shape}')
-    print(f'RandomTeleComTransData.shape: {trans_data.shape}')
+    logging.info(f'RandomTeleComUsersData.shape: {user_data.shape}')
+    logging.info(f'RandomTeleComTransData.shape: {trans_data.shape}')
 
     # check output data directories exist
     data_fdirs = [os.path.dirname(cons.fpath_randomtelecomtransdata), os.path.dirname(cons.fpath_randomtelecomusersdata)] 
@@ -63,5 +68,7 @@ if __name__ == '__main__':
             os.mkdir(data_fdir)
 
     # write data to disk
+    logging.info(f'Writing intermediate user level random telecoms data to: {cons.fpath_randomtelecomusersdata}')
+    logging.info(f'Writing output trans level random telecoms data to: {cons.fpath_randomtelecomusersdata}')
     user_data.to_parquet(cons.fpath_randomtelecomusersdata, engine='fastparquet')
     trans_data.to_csv(cons.fpath_randomtelecomtransdata, index = False)
