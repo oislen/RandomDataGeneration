@@ -13,7 +13,7 @@ def gen_random_entity_counts(user_obj):
     # randomly simulate the number of entities per user
     random_entity_counts['n_devices'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["device"], size = user_obj.n_user_ids, power = 1)
     random_entity_counts['n_cards'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["card"], size = user_obj.n_user_ids, power = 1)
-    random_entity_counts['n_ips'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["ip"], size = user_obj.n_user_ids, power = 2)
-    random_entity_counts['n_transactions'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["transaction"], size = user_obj.n_user_ids, power = 3)
-    random_entity_counts['n_applications'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["application"], size = user_obj.n_user_ids, power = 2)
+    random_entity_counts['n_ips'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["ip"], size = user_obj.n_user_ids, power = 1)
+    random_entity_counts['n_transactions'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["transaction"], size = user_obj.n_user_ids, power = 2)
+    random_entity_counts['n_applications'] = gen_random_poisson_power(lam = cons.data_model_poisson_lambda_params["application"], size = user_obj.n_user_ids, power = 1)
     return random_entity_counts
