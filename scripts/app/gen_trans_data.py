@@ -7,7 +7,7 @@ from utilities.gen_country_codes_map import gen_country_codes_map
 from utilities.align_country_codes import align_country_codes
 from utilities.gen_trans_rejection_rates import gen_trans_rejection_rates
 from utilities.gen_trans_status import gen_trans_status
-
+from utilities.join_idhashes_dict import join_idhashes_dict
 
 def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
     """Generates random transaction level telecom payments data
@@ -49,17 +49,17 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(a = list(card_obj.card_hashes_shared_props_dict.keys()), p = list(card_obj.card_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['card'] and card_obj.card_hashes_shared_props_dict != {} else x)
     trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(a = list(device_obj.device_hashes_shared_props_dict.keys()), p = list(device_obj.device_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['device'] and device_obj.device_hashes_shared_props_dict != {} else x)
     # add card and device entity types
-    trans_data['device_type'] = trans_data['device_hash'].replace(device_obj.device_hashes_type_dict)
-    trans_data['card_type'] = trans_data['card_hash'].replace(card_obj.card_hashes_type_dict)
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=device_obj.device_hashes_type_dict, idhash_key_name='device_hash', idhash_val_name='device_type')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=card_obj.card_hashes_type_dict, idhash_key_name='card_hash', idhash_val_name='card_type')
     # add card and ip country codes
-    trans_data['card_country_code'] = trans_data['card_hash'].replace(card_obj.card_hashes_country_code_dict)
-    trans_data['ip_country_code'] = trans_data['ip_hash'].replace(ip_obj.ip_hashes_country_code_dict)
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=card_obj.card_hashes_country_code_dict, idhash_key_name='card_hash', idhash_val_name='card_country_code')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=ip_obj.ip_hashes_country_code_dict, idhash_key_name='ip_hash', idhash_val_name='ip_country_code')
     # add transaction data
-    trans_data['transaction_amount'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_amounts_dict)
-    trans_data['card_payment_channel'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_payment_channel_dict)
-    trans_data['transaction_date'] = trans_data['transaction_hash'].replace(transaction_obj.transaction_hashes_dates_dict)
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_amounts_dict, idhash_key_name='transaction_hash', idhash_val_name='transaction_amount')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_payment_channel_dict, idhash_key_name='transaction_hash', idhash_val_name='card_payment_channel')
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_dates_dict, idhash_key_name='transaction_hash', idhash_val_name='transaction_date')
 
-    # TODO: wrap this logic up into a seperate function
+    # TODO: wrap this logic up into a separate function
     # align payment channel with missing card hashes and 0 transaction amounts
     zero_transaction_amount_filter = (trans_data['transaction_amount'] == 0.0)
     missing_card_hash_filter = (trans_data['card_hash'].isnull())

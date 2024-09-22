@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from utilities.gen_obj_idhash_series import gen_obj_idhash_series
+from utilities.join_idhashes_dict import join_idhashes_dict
 
 def gen_user_data(random_entity_counts, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
     """Generates random user level telecom payments data
@@ -30,11 +31,11 @@ def gen_user_data(random_entity_counts, user_obj, device_obj, card_obj, ip_obj, 
     # take a deep copy of the data
     user_data = random_entity_counts.copy()
     # add user data
-    user_data['firstname'] = user_data['uid'].replace(user_obj.user_ids_firstname_dict)
-    user_data['lastname'] = user_data['uid'].replace(user_obj.user_ids_lastname_dict)
-    user_data['registration_date'] = user_data['uid'].replace(user_obj.user_ids_dates_dict)
-    user_data['registration_country_code'] = user_data['uid'].replace(user_obj.user_ids_country_code_dict)
-    user_data['email_domain'] = user_data['uid'].replace(user_obj.user_ids_email_domain_dict)
+    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_firstname_dict, idhash_key_name='uid', idhash_val_name='firstname')
+    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_lastname_dict, idhash_key_name='uid', idhash_val_name='lastname')
+    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_dates_dict, idhash_key_name='uid', idhash_val_name='registration_date')
+    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_country_code_dict, idhash_key_name='uid', idhash_val_name='registration_country_code')
+    user_data = join_idhashes_dict(data=user_data, idhashes_dict=user_obj.user_ids_email_domain_dict, idhash_key_name='uid', idhash_val_name='email_domain')
     userid_date_country_code = user_data['registration_date'].dt.strftime('%Y%m%d') + user_data['registration_country_code'].astype(str)
     zero_pad = (userid_date_country_code.str.len() - 11).abs().apply(lambda x: '0'*x)
     user_data['userid'] = userid_date_country_code + zero_pad + user_data['uid'].astype(str).str[-5:]
