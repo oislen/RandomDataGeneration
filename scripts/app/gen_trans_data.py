@@ -100,7 +100,8 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     ip_cols = ['ip_hash', 'ip_country_code']
     app_cols = ['application_hash']
     trans_cols = ['transaction_hash', 'transaction_date', 'transaction_amount', 'transaction_payment_method', 'card_payment_channel', 'transaction_status', 'transaction_error_code']
-    col_order = user_cols +  device_cols + card_cols + ip_cols + app_cols + trans_cols
+    itr_cols = ['itr_hash']
+    col_order = user_cols +  device_cols + card_cols + ip_cols + app_cols + trans_cols + itr_cols
     trans_data = trans_data[col_order].sort_values(by = 'transaction_date').reset_index(drop = True)
 
     return trans_data

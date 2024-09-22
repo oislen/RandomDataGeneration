@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from utilities.gen_obj_idhash_series import gen_obj_idhash_series
 from utilities.join_idhashes_dict import join_idhashes_dict
+from utilities.gen_random_hash import gen_random_hash
 
 def gen_user_data(random_entity_counts, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
     """Generates random user level telecom payments data
@@ -48,4 +49,6 @@ def gen_user_data(random_entity_counts, user_obj, device_obj, card_obj, ip_obj, 
     # drop excess columns
     drop_columns = ['n_devices', 'n_cards', 'n_ips', 'n_applications', 'n_transactions']
     user_data = user_data.drop(columns = drop_columns)
+    # create a hash value for the dataset (to distinguish between different iterations)
+    user_data['itr_hash'] = gen_random_hash(size=1)[0]
     return user_data
