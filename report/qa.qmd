@@ -148,6 +148,12 @@ data.assign(transaction_hash=data['transaction_hash'].notnull().astype(int)).gro
 
 ## Transaction
 
+### Unique Transaction Hash
+
+```{python}
+data['transaction_hash'].value_counts().sort_values(ascending=False).head()
+```
+
 ### Unique Date per Transaction Hash
 
 Each transaction hash should have a single date associated with it
