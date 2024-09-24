@@ -1,0 +1,981 @@
+model,price,rating,ram_capacity,internal_memory,screen_size,os
+OnePlus 11 5G,54999,89,12,256,6.7,android
+OnePlus Nord CE 2 Lite 5G,19989,81,6,128,6.59,android
+Samsung Galaxy A14 5G,16499,75,4,64,6.6,android
+Motorola Moto G62 5G,14999,81,6,128,6.55,android
+Realme 10 Pro Plus,24999,82,6,128,6.7,android
+Samsung Galaxy F23 5G (6GB RAM + 128GB),16999,80,6,128,6.6,android
+Apple iPhone 14,65999,81,6,128,6.1,ios
+Xiaomi Redmi Note 12 Pro Plus,29999,86,8,256,6.67,android
+Nothing Phone 1,26749,85,8,128,6.55,android
+OnePlus Nord 2T 5G,28999,84,8,128,6.43,android
+Realme 10 Pro,18999,82,6,128,6.72,android
+Oppo A78,18999,79,8,128,6.56,android
+Xiaomi Redmi Note 12 Pro 5G,24762,79,6,128,6.67,android
+Vivo T1 5G (6GB RAM + 128GB),16990,80,6,128,6.58,android
+Samsung Galaxy S23 Ultra 5G,114990,,8,256,6.8,android
+Apple iPhone 13,62999,79,4,128,6.1,ios
+Vivo Y16,9999,65,3,32,6.51,android
+OPPO Reno 9 Pro Plus,45999,86,16,256,6.7,android
+OnePlus 10R 5G,32999,86,8,128,6.7,android
+Vivo Y22,14499,72,4,64,6.55,android
+OnePlus 11R,39999,85,8,128,6.7,android
+Vivo V25 Pro 5G,35999,85,8,128,6.56,android
+Poco X4 Pro 5G,14999,80,6,64,6.67,android
+Xiaomi Redmi Note 12,17859,76,4,128,6.67,android
+Vivo V26 Pro,42990,87,12,256,6.7,android
+Samsung Galaxy S20 FE 5G,31239,88,8,128,6.5,android
+OnePlus Nord CE 2 Lite 5G (8GB RAM + 128GB),21995,84,8,128,6.59,android
+Apple iPhone 14 Pro Max,129990,76,6,128,6.7,ios
+Vivo V25 5G,27999,83,8,128,6.44,android
+OnePlus 11 Pro,69999,,8,128,6.7,android
+Realme 10 Pro (8GB RAM + 128GB),19999,84,8,128,6.72,android
+Poco X5 Pro,20999,81,6,128,6.67,android
+Vivo V27,27990,83,8,256,6.56,android
+Apple iPhone 11,38999,73,4,64,6.1,ios
+Samsung Galaxy M53 5G,23790,85,6,128,6.7,android
+Samsung Galaxy S21 FE 5G,39999,87,8,128,6.4,android
+Oppo Reno 8T,29990,87,8,256,6.67,android
+Samsung Galaxy S22 Ultra 5G,91999,,12,256,6.8,android
+Xiaomi Redmi Note 12 Pro Max 5G,32999,83,6,128,6.67,android
+OPPO Reno 9 5G,28499,83,8,256,6.7,android
+OnePlus Nord CE 3 5G,21999,83,6,128,6.7,android
+Xiaomi Redmi Note 11 Pro Plus 5G,19999,83,6,128,6.67,android
+Motorola Edge 20 Fusion 5G,18999,87,6,128,6.67,android
+Realme 10 Pro Plus (8GB RAM + 256GB),27999,85,8,256,6.7,android
+Vivo Y35,18499,80,8,128,6.58,android
+Samsung Galaxy M33 5G,17478,81,6,128,6.6,android
+Xiaomi Redmi Note 11,11936,76,4,64,6.43,android
+Realme C33,8950,64,3,32,6.5,android
+Vivo Y16 (4GB RAM + 64GB),12489,68,4,64,6.51,android
+Samsung Galaxy A74 5G,42999,,8,128,6.7,android
+Samsung Galaxy A14 5G (6GB RAM + 128GB),18999,79,6,128,6.6,android
+iQOO Neo 7 5G,29999,82,8,128,6.78,android
+Jio JioPhone 5G,11990,64,4,32,6.5,android
+Motorola Moto G82 5G,18999,83,6,128,6.6,android
+Realme 10,13999,74,4,64,6.4,android
+Realme 9i 5G,14965,75,4,64,6.6,android
+Apple iPhone 14 Plus,74999,82,6,128,6.7,ios
+Xiaomi Redmi Note 10S,10999,78,6,64,6.43,android
+Samsung Galaxy S23 Plus,84990,89,8,256,6.6,android
+Motorola Moto G32,10499,75,4,64,6.55,android
+Xiaomi Redmi Note 13 Pro 5G,17990,78,6,128,6.67,android
+Vivo S16,29990,85,8,128,6.78,android
+Samsung Galaxy A23,18499,79,6,128,6.6,android
+Vivo Y22 (6GB RAM + 128GB),16499,75,6,128,6.55,android
+Poco M4 Pro 5G (6GB RAM + 128GB),14999,81,6,128,6.6,android
+Vivo S16 Pro,35499,86,8,256,6.78,android
+OnePlus 10 Pro 5G,60999,89,8,128,6.7,android
+Xiaomi Redmi Note 12 Pro Plus (12GB RAM + 256GB),32999,87,12,256,6.67,android
+Samsung Galaxy F23 5G,15999,78,4,128,6.6,android
+Oppo Find N Fold,99990,,8,256,7.1,other
+OPPO A17K,9499,62,3,64,6.56,android
+Vivo V23 5G (12GB RAM + 256GB),27994,86,12,256,6.44,android
+iQOO Z6 Lite 5G,13989,75,4,64,6.58,android
+OnePlus 10T,44999,85,8,128,6.7,android
+Xiaomi Redmi Note 10T 5G (6GB RAM +128GB),13999,79,6,128,6.5,android
+Gionee G13 Pro,6190,,4,32,6.26,other
+Apple iPhone 13 Pro,119900,83,6,128,6.1,ios
+OPPO F22 Pro,27660,83,8,128,6.58,android
+Samsung Galaxy A34 5G,24999,75,6,128,6.5,android
+Xiaomi Redmi 10A (4GB RAM + 64GB),8388,66,4,64,6.53,android
+Motorola Moto G72 4G,15999,83,6,128,6.55,android
+Samsung Galaxy A14 5G (8GB RAM + 128GB),20999,82,8,128,6.6,android
+Realme 9 5G,13999,75,4,64,6.5,android
+Vivo T1 5G (8GB RAM + 128GB),19990,83,8,128,6.58,android
+Samsung Galaxy M13 5G,13999,75,6,128,6.5,android
+Motorola Edge 30 5G,22999,83,6,128,6.5,android
+Samsung Galaxy A23 5G,22999,79,6,128,6.6,android
+OPPO K10 5G,16999,79,8,128,6.56,android
+Xiaomi Redmi Note 11 (6GB RAM + 128GB),14290,80,6,128,6.43,android
+Samsung Galaxy A73 5G,41999,,8,128,6.7,android
+Vivo Y21 2021,13489,69,4,64,6.51,android
+OnePlus Ace Racing Edition 5G,22990,83,8,128,6.59,android
+Motorola Moto G62 (8GB RAM + 128GB),16499,84,8,128,6.55,android
+Vivo X90 Pro Plus 5G,73999,,12,256,6.78,android
+Realme C33 (4GB RAM + 64GB),9999,67,4,64,6.5,android
+Realme 9i,12499,75,4,64,6.6,android
+OPPO A17,12499,72,4,64,6.56,android
+iQOO 11 5G,59999,88,8,256,6.78,android
+Vivo X Fold 5G,106990,,12,256,8.03,android
+Vivo T1 5G,15990,78,4,128,6.58,android
+Apple iPhone 14 Pro,119990,75,6,128,6.1,ios
+Xiaomi Redmi Note 11 Pro Max 5G,19999,83,6,128,6.67,android
+Motorola Moto S30 Pro,23990,83,8,128,6.55,android
+Realme 10s,12999,80,8,128,6.6,android
+OPPO F19 Pro Plus 5G,19990,82,8,128,6.43,android
+Xiaomi 13 Pro 5G,58990,,8,128,6.73,android
+Vivo V27 Pro,43999,87,12,256,6.73,android
+Samsung Galaxy S22 5G,49999,86,8,128,6.1,android
+Vivo T1 44W (6GB RAM + 128GB),15999,79,6,128,6.44,android
+OnePlus 10R 5G (12GB RAM + 256GB),36999,87,12,256,6.7,android
+Tecno Phantom X2,39999,85,8,256,6.8,android
+Apple iPhone 12,51999,74,4,64,6.1,ios
+Xiaomi Redmi K50i 5G,22999,82,6,128,6.6,android
+Samsung Galaxy A53 5G,31999,87,6,128,6.5,android
+Xiaomi Redmi A1,6171,,2,32,6.52,android
+OPPO Reno8 5G,29340,83,8,128,6.43,android
+Samsung Galaxy M53 5G (8GB RAM + 128GB),25289,87,8,128,6.7,android
+iQOO Z6 Pro 5G,21788,78,6,128,6.44,android
+Tesla Pi Phone,69999,83,16,512,6.73,android
+Samsung Galaxy S23,70990,88,8,128,6.1,android
+Motorola Edge 30 Pro 5G,34999,89,8,128,6.7,android
+OnePlus Nord 2T (12GB RAM + 256GB),33900,85,12,256,6.43,android
+Google Pixel 6A,29999,71,6,128,6.14,android
+Infinix Note 12 Pro 5G,18999,84,8,128,6.7,android
+Samsung Galaxy M33 5G (8GB RAM + 128GB),19499,84,8,128,6.6,android
+Vivo V23 5G,24994,83,8,128,6.44,android
+Motorola Moto G42,10999,78,4,64,6.47,android
+OnePlus Nord CE 2 Lite 5G (8GB RAM + 256GB),24999,85,8,256,6.59,android
+Samsung Galaxy A33 5G,25999,82,6,128,6.4,android
+Google Pixel 7A,34990,69,6,128,6.1,android
+Xiaomi Redmi 11 Prime 5G,13466,74,4,64,6.58,android
+Xiaomi Redmi Note 10 Lite,9999,76,4,64,6.67,android
+Motorola Moto E40,7999,71,4,64,6.5,android
+Nothing Phone 1 (8GB RAM + 256GB),28249,86,8,256,6.55,android
+Poco X4 Pro 5G (6GB RAM + 128GB),16499,82,6,128,6.67,android
+Xiaomi Redmi Note 11 Pro Plus 5G (8GB RAM + 256GB),22999,87,8,256,6.67,android
+Apple iPhone 11 (128GB),46999,75,4,128,6.1,ios
+Realme C35 (6GB RAM + 128GB),13999,74,6,128,6.6,android
+OPPO K10,13490,78,6,128,6.59,android
+iQOO Neo 6 5G,28999,82,8,128,6.62,android
+iQOO Z6 5G,15499,78,4,128,6.58,android
+OPPO Reno 9 Pro 5G,39999,86,16,256,6.7,android
+Poco M4 Pro 5G,12999,76,4,64,6.6,android
+Jio Phone 3,4499,,2,64,5,android
+OnePlus Clover,14999,69,4,64,6.52,android
+Samsung Galaxy F04,8499,68,4,64,6.5,android
+iQOO 7,24990,83,8,128,6.62,android
+Samsung Galaxy M34 5G,16999,84,6,128,6.5,android
+Xiaomi Redmi 10,9589,71,4,64,6.7,android
+Apple iPhone 12 Mini,40999,74,4,64,5.4,ios
+Xiaomi Redmi Note 12 (6GB RAM + 128GB),19988,79,6,128,6.67,android
+Motorola Moto G52,11999,75,4,64,6.6,android
+Apple iPhone 15 Pro Max,142990,79,8,256,6.68,ios
+Oppo A98,30990,87,8,128,6.7,android
+Infinix Zero 5G 2023,19499,85,8,256,6.78,android
+Realme C30,5299,,2,32,6.5,android
+OPPO F21 Pro 5G,25969,82,8,128,6.43,android
+Realme 11 Pro,28999,82,6,128,6.4,android
+Oppo Find N2 5G,94990,,12,256,7.1,
+Realme 9 4G,14999,81,6,128,6.4,android
+Cola Phone,14999,74,4,64,6.4,android
+Apple iPhone 13 Pro Max,129900,84,6,128,6.7,ios
+Oppo Reno 10 Pro Plus,58990,88,12,256,6.73,android
+Vivo X90 5G,41990,88,8,128,6.78,android
+Samsung Galaxy F13,10999,74,4,64,6.6,android
+Xiaomi Redmi Note 10S (6GB RAM + 128GB),11999,79,6,128,6.43,android
+Realme 10 (8GB RAM + 128GB),16999,79,8,128,6.4,android
+iQOO 9 SE 5G,30990,83,8,128,6.62,android
+Infinix Hot 20,17999,75,4,64,6.6,android
+Letv Y1 Pro,5499,,4,32,6.54,android
+Xiaomi Redmi Note 13 Pro Max 5G,20499,83,6,128,6.67,android
+Realme Narzo 50 Pro 5G,20490,81,6,128,6.4,android
+OPPO A74 5G,15490,77,6,128,6.5,android
+Apple iPhone 9,29990,61,3,64,4.7,ios
+iQOO Z6 Lite (6GB RAM + 128GB),15499,79,6,128,6.58,android
+Xiaomi Redmi Note 11SE,11999,80,6,64,6.43,android
+Realme Narzo 50,10999,74,4,64,6.6,android
+Vivo Y75 5G,21990,82,8,128,6.58,android
+Vivo V25 (12GB RAM + 256GB),31999,85,12,256,6.44,android
+POCO M4 Pro 4G,11999,77,6,64,6.43,android
+Infinix Zero Ultra,36999,89,8,256,6.8,android
+Tecno Spark Go 2023,6999,62,3,32,6.56,android
+Motorola Moto X40,39999,89,8,128,6.7,android
+Samsung Galaxy F24 5G,14999,78,4,128,6.6,android
+Realme 10 5G,14499,79,8,128,6.6,android
+OnePlus Nord 3 5G,27999,84,8,128,6.43,android
+Motorola Moto G82 (8GB RAM + 128GB),20499,86,8,128,6.6,android
+iKall Z19 Pro,8099,60,4,64,6.5,android
+LeEco S1 Pro,10999,65,8,128,6.5,android
+Realme C2s,3499,63,3,32,6.1,android
+Duoqin F22 Pro,9990,,4,64,3.54,android
+Samsung Galaxy M54 5G,34999,85,6,128,6.67,android
+Nokia N73 5G,46999,,12,256,6.9,android
+Motorola Edge 30 Fusion 5G,39999,88,8,128,6.55,android
+Realme C35,11828,70,4,64,6.6,android
+OPPO Reno 8 Pro House of Dragon Edition,45999,86,12,256,6.7,android
+OnePlus Nord CE 3 Lite 5G,18999,81,6,128,6.59,android
+Poco X4 Pro 5G (8GB RAM + 128GB),17999,84,8,128,6.67,android
+Samsung Galaxy M04,8499,66,4,64,6.5,android
+OPPO A77s,17999,76,8,128,6.56,android
+Samsung Galaxy A13,14450,75,4,64,6.6,android
+Motorola Edge 30 Ultra,54999,,8,128,6.67,android
+Xiaomi 13 Ultra 5G,71999,,12,256,6.6,android
+Motorola Moto G52 (6GB RAM + 128GB),12999,79,6,128,6.6,android
+Poco M4 5G,11499,75,4,64,6.58,android
+Nothing Phone 1 (12GB RAM + 256GB),35999,87,12,256,6.55,android
+Samsung Galaxy A54 5G,34999,76,6,128,6.4,android
+Tecno Pova 4,11999,73,8,128,6.82,android
+Xiaomi Redmi Note 12 Pro (8GB RAM + 256GB),27994,82,8,256,6.67,android
+Apple iPhone 14 Pro Max (256GB),139990,77,6,256,6.7,ios
+Vivo V25 Pro (12GB RAM + 256GB),39999,86,12,256,6.56,android
+Realme 9 5G (6GB RAM + 128GB),15499,79,6,128,6.5,android
+Realme 9 Pro 5G,18999,80,6,128,6.6,android
+Lava Blaze 5G,10999,73,4,128,6.5,android
+Honor X9a,27999,81,8,256,6.67,android
+Google Pixel 7 Pro 5G,81999,,12,128,6.7,android
+Tecno Pova 3,9999,74,4,64,6.95,android
+Vivo V23 Pro 5G,31994,85,8,128,6.56,android
+Samsung Galaxy A04e,9299,65,3,32,6.5,android
+Xiaomi Redmi K60,29990,84,8,128,6.67,android
+Realme 9 Pro Plus 5G,25900,78,6,128,6.4,android
+Realme 9i 5G (6GB RAM + 128GB),16999,78,6,128,6.6,android
+Motorola Edge 30 5G (8GB RAM + 128GB),24999,85,8,128,6.5,android
+Xiaomi Redmi Note 11 (6GB RAM + 64GB),12188,79,6,64,6.43,android
+Vivo Y02,8999,,3,32,6.51,android
+POCO C31 (4GB RAM + 64GB),7499,68,4,64,6.53,android
+Realme Narzo 50 5G,17999,79,6,128,6.6,android
+Realme GT Neo 3T,24999,79,6,128,6.62,android
+OPPO Reno 8 Pro 5G,45999,86,12,256,6.7,android
+OnePlus 10 Pro 5G (12GB RAM + 256GB),65499,,12,256,6.7,android
+iQOO 11 Pro 5G,58990,89,8,256,6.78,android
+Vivo T1x 4G,11999,74,4,64,6.58,android
+Xiaomi Redmi 10 Power,11999,77,8,128,6.7,android
+OPPO A58,18990,76,6,128,6.56,android
+Vivo T1 44W,14499,77,4,128,6.44,android
+Xiaomi Mix Fold 2 5G,106990,,12,256,8.02,android
+Vivo Y16 (3GB RAM + 64GB),10499,66,3,64,6.51,android
+OPPO Reno 8 Z,26990,86,8,256,6.43,android
+Vivo Y75 4G,19990,82,8,128,6.44,android
+Xiaomi Redmi Note 12 Explorer,24999,89,8,256,6.67,android
+OPPO A57 4G (4GB RAM + 64 GB),13969,69,4,64,6.56,android
+Samsung Galaxy A75 5G,44999,83,8,128,6.7,android
+Vivo T1 Pro 5G (8GB RAM + 128GB),24999,84,8,128,6.44,android
+Google Pixel 7 5G,53100,86,8,128,6.3,android
+Xiaomi Redmi Note 11T 5G (6GB RAM + 128GB),16999,81,6,128,6.6,android
+OPPO F21s Pro 4G,21899,82,8,128,6.43,android
+Apple iPhone 14 (256GB),75999,82,6,256,6.1,ios
+Motorola Moto G73,25999,85,8,256,6.5,android
+Nubia Red Magic 8 Pro 5G,46990,84,8,128,6.8,android
+Motorola Moto G31,9999,75,4,64,6.47,android
+Tecno Phantom X2 Pro,49999,89,12,256,6.8,android
+Infinix Zero 20,17999,87,8,128,6.7,android
+iQOO Z6 5G (6GB RAM + 128GB),16940,80,6,128,6.58,android
+Xiaomi Redmi Note 11 Pro 5G,17990,81,6,64,6.67,android
+OPPO A1 Pro,20990,84,8,128,6.7,android
+Samsung Galaxy S22 FE 5G,51999,79,8,128,6.4,android
+Samsung Galaxy S22 Plus 5G,64449,87,8,128,6.6,android
+Vivo U3x,8990,71,6,64,6.58,android
+Motorola Moto G23,19999,77,4,128,6.5,android
+Poco M4 5G (6GB RAM + 128GB),13499,79,6,128,6.58,android
+Tecno Pova 5G,15499,78,8,128,6.9,android
+POCO C31,6499,65,3,32,6.53,android
+Apple iPhone XR2,71999,60,4,64,6.1,ios
+Samsung Galaxy A53 (8GB RAM + 256GB),36499,89,8,256,6.5,android
+Infinix Note 12 5G,15999,78,6,64,6.7,android
+OPPO Reno7 Pro 5G,31994,87,12,256,6.55,android
+OnePlus Ace 2,34999,84,8,128,6.7,android
+Redmi Note 11 Pro 2023,18999,81,6,128,6.67,android
+Nothing Phone 2,39990,88,8,128,6.67,android
+Samsung Galaxy A32 (8GB RAM + 128GB),16499,82,8,128,6.4,android
+Google Pixel 6 Pro,54300,89,12,128,6.71,android
+Infinix Note 12i (2022),9999,73,4,64,6.7,android
+Xiaomi Redmi 11 Prime 5G (6GB RAM + 128GB),15990,77,6,128,6.58,android
+Xiaomi Redmi Note 11 Pro Plus 5G (8GB RAM + 128GB),22700,86,8,128,6.67,android
+Xiaomi 12 Pro 5G,50990,89,8,256,6.73,android
+Apple iPhone 13 Mini,64900,79,4,128,5.4,ios
+Tecno Pova 3 (6GB RAM + 128GB),13799,77,6,128,6.9,android
+Realme C31 (4GB RAM + 64GB),8999,65,4,64,6.52,android
+Asus ROG Phone 6 Pro 5G,89999,88,18,512,6.78,android
+Vivo V23e 5G,21994,84,8,128,6.44,android
+Apple iPhone 14 Mini,69990,70,6,128,5.42,ios
+Xiaomi Redmi Note 10T 5G,12999,75,4,64,6.5,android
+iQOO Neo 7 SE 5G,24990,83,8,128,6.78,android
+Samsung Galaxy A23 (8GB RAM + 128GB),19990,82,8,128,6.6,android
+Xiaomi Redmi Note 12 Pro (8GB RAM + 128GB),26999,82,8,128,6.67,android
+Xiaomi Redmi Note 12 Turbo,19999,81,8,128,6.67,android
+Infinix Note 12 Pro,16900,83,8,256,6.7,android
+Infinix Hot 20 (6GB RAM+ 128GB),19999,78,6,128,6.6,android
+Apple iPhone 14 Pro Max (1TB),182999,78,6,1024,6.7,ios
+Samsung Galaxy M13,12999,75,6,128,6.6,android
+Poco M4 Pro 5G (8GB RAM + 128GB),15999,82,8,128,6.6,android
+Xiaomi Redmi Note 10S (8GB RAM + 128GB),13999,82,8,128,6.43,android
+Realme C11 2021 (4GB RAM + 64GB),7749,61,4,64,6.52,android
+Samsung Galaxy A23 5G (8GB RAM + 128GB),24999,81,8,128,6.6,android
+Motorola Edge 30 Ultra (12GB RAM + 256GB),59999,,12,256,6.67,android
+OPPO F21s Pro,25895,82,8,128,6.43,android
+Xiaomi 13 5G,46990,89,8,128,6.36,android
+Xiaomi Redmi 10A,7499,64,3,32,6.53,android
+Vivo Y01A,7790,60,2,32,6.51,android
+Xiaomi Redmi K50i (8GB RAM + 256GB),25999,85,8,256,6.6,android
+Realme C30 (3GB RAM + 32GB),6299,60,3,32,6.5,android
+Motorola Moto G51 5G,12999,77,4,64,6.8,android
+Xiaomi Redmi 10 (6GB RAM + 128GB),11999,75,6,128,6.7,android
+Xiaomi Mi 11 Lite NE 5G,21890,83,6,128,6.55,android
+Samsung Galaxy Z Flip 3,69999,84,8,128,6.7,
+Apple iPhone 12 (128GB),55999,75,4,128,6.1,ios
+OnePlus 10T (16GB RAM + 256GB),55999,87,16,256,6.7,android
+Samsung Galaxy A13 (4GB RAM + 128GB),14999,75,4,128,6.6,android
+OPPO Reno7 5G,25994,85,8,256,6.43,android
+OnePlus 9RT 5G,42999,85,8,128,6.62,android
+Samsung Galaxy A53 5G (8GB RAM + 128GB),33499,89,8,128,6.5,android
+Samsung Galaxy S22 Ultra 5G (12GB RAM + 512GB),118999,,12,512,6.8,android
+Motorola Moto G71 5G,16999,80,6,128,6.4,android
+itel S16 Pro,6990,,2,32,6.6,android
+Vivo Y100,29990,82,8,128,6,android
+Samsung Galaxy M13 5G (4GB RAM + 64GB),12944,71,4,64,6.5,android
+POCO X5 GT,29990,84,8,128,6.7,android
+Honor X9 5G,16999,80,8,128,6.81,android
+iQOO 11 (16GB RAM + 256GB),64999,89,16,256,6.78,android
+Samsung Galaxy Z Fold 4,154998,,12,256,7.6,android
+Royole FlexPai 2,109999,87,8,128,7.8,
+Apple iPhone 14 Plus (256GB),84999,83,6,256,6.7,ios
+Samsung Galaxy A33 5G (8GB RAM + 128GB),27499,85,8,128,6.4,android
+Tecno Spark 9,8999,69,6,128,6.6,android
+Google Pixel 6,40480,84,8,128,6.4,android
+Xiaomi Redmi Note 10 Pro (6GB RAM + 128GB),17999,81,6,128,6.67,android
+Samsung Galaxy S21 Ultra,105999,,12,256,6.8,android
+Infinix Hot 20 Play,8999,67,4,64,6.82,android
+Vivo T1x (6GB RAM + 128GB),14999,77,6,128,6.58,android
+OPPO F23 Pro,19990,82,8,128,6.5,android
+iQOO Z6 Pro 5G (8GB RAM + 128GB),23399,80,8,128,6.44,android
+Samsung Galaxy A73 5G (8GB RAM + 256GB),41990,,8,256,6.7,android
+Realme 9 5G SE (8GB RAM + 128GB),22998,82,8,128,6.6,android
+Poco F4 5G,25999,82,6,128,6.67,android
+Infinix Note 12,11700,74,4,64,6.7,android
+Samsung Galaxy A03 Core,6499,,2,32,6.5,android
+Motorola Moto G60,15999,84,6,128,6.78,android
+OnePlus 9 Pro,64800,89,8,128,6.7,android
+Xiaomi Redmi Note 11S,14590,80,6,64,6.43,android
+Xiaomi Redmi 9 Activ,7499,68,4,64,6.53,android
+Tecno Camon 19 Pro 5G,21999,82,8,128,6.8,android
+Samsung Galaxy A04,11999,71,4,64,6.5,android
+POCO M4 Pro 4G (6GB RAM + 128GB),12999,79,6,128,6.43,android
+OnePlus Nord N20 5G,20990,81,6,128,6.43,android
+Apple iPhone 13 (256GB),72999,79,4,256,6.1,ios
+Oppo Find X6 Pro,77990,,12,256,6.78,android
+Vivo X90 Pro 5G,56999,,8,256,6.78,android
+Motorola Moto G53,21999,79,4,128,6.5,android
+Motorola Moto G22,9499,75,4,64,6.53,android
+Xiaomi Redmi 9i Sport,7499,66,4,64,6.53,android
+Jio JioPhone Next,4649,,2,32,5.45,android
+Vivo Y93,18000,62,4,32,6.2,android
+Xiaomi Redmi K60 Pro,38999,85,8,128,6.67,android
+Realme C30s,7145,,2,32,6.5,android
+Vivo Y22s,14990,77,8,128,6.55,android
+OPPO A77,15499,70,4,64,6.56,android
+Xiaomi Redmi 10A Sport,9999,69,6,128,6.53,android
+Poco F4 (12GB RAM + 256GB),29999,86,12,256,6.67,android
+Realme 9 4G (8GB RAM + 128GB),15999,84,8,128,6.4,android
+Xiaomi 12T Pro 5G,59990,89,8,128,6.67,android
+iQOO 9 5G,34990,84,8,128,6.56,android
+Apple iPhone 12 Mini (128GB),45999,75,4,128,5.4,ios
+Samsung Galaxy S24 Ultra,119990,85,12,256,6.83,android
+OPPO Find N Flip,89990,88,8,128,6.8,
+OnePlus 10T (12GB RAM + 256GB),50999,87,12,256,6.7,android
+Tecno Spark 9 (4GB RAM + 64GB),7999,65,4,64,6.6,android
+Samsung Galaxy S21 FE 5G (8GB RAM + 256GB),43999,88,8,256,6.4,android
+Xiaomi Redmi Note 11T 5G (8GB RAM + 128GB),18499,83,8,128,6.6,android
+Sony Xperia Pro-I,134999,,12,512,6.5,android
+Vivo V21 Pro,32999,85,8,128,6.44,android
+Poco X3,13499,80,6,64,6.67,android
+Samsung Galaxy S20 FE,35489,86,8,128,6.5,android
+Google Pixel 4,20120,78,6,64,5.7,android
+Samsung Galaxy S10 Plus,42999,81,8,128,6.4,android
+Realme 11 Pro Plus,24999,78,6,128,6.4,android
+OPPO F21 Pro 4G,20999,82,8,128,6.5,android
+Realme GT 2 5G,28994,84,8,128,6.62,android
+Samsung Galaxy S21,48900,88,8,128,6.2,android
+Samsung Galaxy A71,22494,86,8,128,6.7,android
+Vivo Y02s,8990,61,3,32,6.51,android
+Letv Y2 Pro,6999,,4,32,6.5,android
+Tecno Spark 8C (4GB RAM + 64GB),8890,63,4,64,6.6,android
+iQOO Z6 5G (8GB RAM + 128GB),18498,82,8,128,6.58,android
+Vivo T1 Pro,23999,81,6,128,6.44,android
+Realme 9 Pro Plus 5G (8GB RAM + 128GB),22994,81,8,128,6.4,android
+Samsung Galaxy A04s,12990,71,4,64,6.5,android
+Realme 9i (6GB RAM + 128GB),14999,78,6,128,6.6,android
+Realme 8 5G (8GB RAM + 128GB),18499,80,8,128,6.5,android
+OPPO F19,14990,78,6,128,6.4,android
+OPPO Find N2 Flip,70990,88,8,256,6.8,
+Samsung Galaxy M32 Prime Edition,12120,75,4,64,6.4,android
+Oukitel WP19,29990,84,8,256,6.78,android
+Realme 9 Pro 5G (8GB RAM + 128GB),20999,82,8,128,6.6,android
+Xiaomi Redmi Note 10 Lite (6GB RAM + 128GB),11999,80,6,128,6.67,android
+Samsung Galaxy A13 5G,17990,73,4,64,6.5,android
+Xiaomi Redmi Note 11 5G,14990,77,4,128,6.6,android
+itel P36,6490,,1,16,6.5,android
+Realme GT Neo 5,34999,83,8,128,6.7,android
+Apple iPhone 15 Ultra,149900,79,8,128,6.73,ios
+Poco C50,6499,,2,32,6.52,android
+Samsung Galaxy Note 30 Ultra 5G,104999,,12,256,6.71,android
+Realme 9i (4GB RAM + 128GB),13999,75,4,128,6.6,android
+Xiaomi Redmi Note 11T 5G,16999,79,6,64,6.6,android
+Vivo X80 Pro 5G,79999,,12,256,6.78,android
+OPPO Reno 6 Pro 5G,36760,87,12,256,6.55,android
+Xiaomi Mi 11i 5G,23499,81,6,128,6.67,android
+Asus ROG Phone 7,75990,87,18,256,6.8,android
+Oppo A77 5G,21990,76,6,128,6.56,android
+Realme 9 5G SE,18999,80,6,128,6.6,android
+Samsung Galaxy A03,7249,66,3,32,6.5,android
+OnePlus Nord N200,16990,75,4,64,6.49,android
+Xiaomi Mi 11X,23890,80,6,128,6.67,android
+OPPO Reno 6,26380,83,8,128,6.43,android
+Realme X50 Pro 5G (12GB RAM + 256GB),27999,87,12,256,6.44,android
+Xiaomi Redmi 10A (6GB RAM + 128GB),10850,70,6,128,6.53,android
+Redmi Note 12 Pro Speed Edition,19999,81,6,128,6.67,android
+Apple iPhone 14 Pro (256GB),129990,76,6,256,6.1,ios
+Motorola Moto G72,19990,81,6,128,6.5,android
+Motorola Moto X30 Pro,41990,,8,128,6.67,android
+Xiaomi 12S Ultra,69990,,8,256,6.73,android
+Honor 70 5G,39990,88,12,512,6.67,android
+OnePlus 10 Pro 5G (12GB RAM + 512GB),74999,,12,512,6.7,android
+Vivo V23 Pro 5G (12GB RAM + 256GB),36994,87,12,256,6.56,android
+OPPO A55 4G (6GB RAM + 128GB),14700,76,6,128,6.51,android
+Xiaomi Mi 11T Pro 5G,34990,86,8,128,6.67,android
+Nokia X50 5G,34999,76,6,64,6.81,android
+Xiaomi Redmi Note 10,13990,75,4,64,6.43,android
+Vertu Signature Touch,650000,62,2,64,4.7,android
+Samsung Galaxy M32 Prime Edition (6GB RAM + 128GB),14859,79,6,128,6.4,android
+Tecno Camon 19 Pro Mondrian Edition,17999,84,8,128,6.8,android
+Poco F5,34990,85,8,128,6.7,android
+BLU F91 5G,14990,85,8,128,6.8,android
+OPPO A16e,8999,65,3,32,6.52,android
+Motorola Moto E32,8999,71,4,64,6.5,android
+Xiaomi Redmi Note 11S (8GB RAM + 128GB),15824,84,8,128,6.43,android
+Apple iPhone SE 3 2022,43900,,4,64,4.7,ios
+Samsung Galaxy A52 (8GB RAM + 128GB),22494,86,8,128,6.5,android
+Poco X3 Pro,19650,82,6,128,6.67,android
+Xiaomi Redmi 9A,6999,61,2,32,6.53,android
+Samsung Galaxy A32,16499,80,6,128,6.4,android
+Motorola Moto G13,15999,75,4,128,6.5,android
+Asus ROG Phone 6 Batman Edition,72999,88,16,256,6.78,android
+Xiaomi Redmi Note 12 Pro Plus (6GB RAM + 128GB),26999,84,6,128,6.67,android
+Infinix Smart 6 HD,6999,,2,32,6.6,android
+Apple iPhone 15 Pro,130990,75,8,128,6.06,ios
+Realme C35 (4GB RAM + 128GB),12787,71,4,128,6.6,android
+Infinix Hot 12,9999,72,4,64,6.82,android
+Vivo X80 5G,54999,86,8,128,6.78,android
+Vivo Y53s,15490,79,8,128,6.58,android
+Tecno Phantom X,25999,84,8,256,6.7,android
+Samsung Galaxy M04 (4GB RAM + 128GB),9499,68,4,128,6.5,android
+Redmi 12C,7999,70,4,64,6.71,android
+Asus ZenFone 9,63990,86,8,128,5.9,android
+Sony Xperia L5 5G,15990,73,4,64,6.2,android
+iQOO 9 SE 5G (12GB RAM + 256GB),34949,85,12,256,6.62,android
+Tecno Spark 8 Pro,8799,72,4,64,6.8,android
+Xiaomi Redmi 10 Prime,12390,74,4,64,6.5,android
+Samsung Galaxy F22,11499,73,4,64,6.4,android
+Xiaomi Mi Mix Alpha,199990,,12,512,7.92,android
+OPPO Reno 10 Pro,42990,86,16,256,6.73,android
+Nubia Z50,34999,82,8,128,6.67,android
+Samsung Galaxy F13 (4GB RAM + 128GB),11999,75,4,128,6.6,android
+Nokia G11 Plus,10499,70,4,64,6.52,android
+Infinix Hot 12 Play,8910,66,4,64,6.82,android
+Vivo T2 5G,24990,85,8,128,6.62,android
+OPPO Reno7 Z 5G,17999,84,8,128,6.43,android
+Xiaomi Mi 11 Lite NE 5G (8GB RAM + 128GB),22999,86,8,128,6.55,android
+Realme Narzo 50i,6490,,2,32,6.5,android
+Infinix Zero X Pro,21990,85,8,128,6.67,android
+Samsung Galaxy M32,12364,76,4,64,6.4,android
+Samsung Galaxy A82 5G,39990,86,6,128,6.71,android
+Xiaomi Poco F1,11999,77,6,64,6.18,android
+Vivo Y25,7499,,1,16,4.5,android
+Lyf Earth 1,3990,60,3,32,5.5,android
+Motorola Moto E13,10499,65,2,64,6.5,android
+Tecno Pop 6 Pro,6299,,2,32,6.56,android
+Itel A24 Pro,5990,,2,32,5,android
+Vivo X Fold Plus,113990,,12,256,8.03,android
+Huawei Mate 50 RS Porsche Design,239999,81,12,512,6.74,other
+Samsung Galaxy F63,21999,84,6,128,6.7,android
+iQOO Z6 4G (6GB RAM + 128GB),15999,80,6,128,6.44,android
+Sony Xperia 5 II,69990,86,8,128,6.1,android
+Vivo Y3 (4GB RAM + 128GB),12990,71,4,128,6.35,android
+Sony Xperia 1 IV (12GB RAM + 512GB),92980,,12,512,6.5,android
+Tecno Pova 4 Pro,15999,74,8,256,6.66,android
+Huawei Nova 10 SE,23999,84,8,256,6.67,android
+Vivo T1x (4GB RAM + 128GB),12999,75,4,128,6.58,android
+Nubia Red Magic 7S Pro,60990,86,12,256,6.8,android
+Motorola Moto E32s (4GB RAM + 64GB),8859,67,4,64,6.5,android
+iQOO Neo 6 5G (12GB RAM + 256GB),33749,84,12,256,6.62,android
+Samsung Galaxy A15,15990,63,6,64,6.5,android
+POCO X4 GT 5G,24990,84,8,128,6.6,android
+Realme Narzo 50 5G (4GB RAM + 128GB),14999,76,4,128,6.6,android
+Vivo Y77 5G,17990,76,6,128,6.64,android
+Honor 60 SE 5G,24990,75,8,128,6.67,android
+Xiaomi Redmi 11 Prime,11600,74,4,64,6.58,android
+Realme C31,8299,62,3,32,6.52,android
+Motorola Moto G31 (6GB RAM+ 128GB),11999,78,6,128,6.47,android
+Samsung Galaxy Z Flip 4 5G,89999,88,8,128,6.7,
+OnePlus 6 (8GB RAM + 128GB),27999,77,8,128,6.28,android
+Google Pixel 2 XL,15990,69,4,128,6,android
+Xiaomi Redmi A1 Plus,7289,60,2,32,6.52,android
+Honor 70 5G (8GB RAM + 256GB),30990,86,8,256,6.67,android
+Realme Narzo 50 (6GB RAM + 128GB),15499,77,6,128,6.6,android
+Vivo Y15s,8499,66,3,32,6.51,android
+Samsung Galaxy M32 (6GB RAM + 128GB),14490,80,6,128,6.4,android
+Samsung Galaxy F42 5G,15490,80,6,128,6.6,android
+Realme Q5 5G,14990,78,6,128,6.6,android
+POCO M3 Pro 5G,15999,75,4,64,6.5,android
+Google Pixel 5,36000,82,8,128,6,android
+OnePlus 12 Pro,69999,,12,256,6.73,android
+Xiaomi Redmi Note 12 Discovery Edition,26990,86,8,256,6.67,android
+Samsung Galaxy M13 (4GB RAM + 64GB),10630,71,4,64,6.6,android
+Oppo Reno 8 Pro (8GB RAM + 256GB),42990,85,8,256,6.7,android
+Vivo Y78 5G,24990,77,8,128,6.58,android
+iQOO Z6 4G,14489,77,4,128,6.44,android
+OPPO A76,16490,73,6,128,6.56,android
+Realme 9 Pro Plus 5G (8GB RAM + 256GB),24494,82,8,256,6.4,android
+Vivo Y01,7999,61,2,32,6.51,android
+Motorola Moto Edge S30 5G,23990,85,6,128,6.8,android
+Realme GT 2 Pro 5G,49959,89,8,128,6.7,android
+Apple iPhone 13 Pro (256GB),129900,83,6,256,6.1,ios
+Vivo Y73 2021,19990,80,8,128,6.44,android
+Samsung Galaxy F14,14990,67,4,64,6.62,android
+Vivo V20,23269,85,8,128,6.44,android
+Xiaomi Redmi Note 9 Pro,13999,75,4,64,6.67,android
+OnePlus 10R Prime Edition,35389,85,8,128,6.7,android
+Google Pixel 6 Pro (12GB RAM + 256GB),79700,,12,256,6.71,android
+Nokia C31,9499,62,3,32,6.74,android
+Infinix Hot 12 Pro (8GB RAM+ 128GB),12340,76,8,128,6.6,android
+Poco M5,10799,74,4,64,6.58,android
+Xiaomi Redmi 10C (4GB RAM + 128GB),14990,73,4,128,6.7,android
+ZTE Axon 40 Ultra 5G,61990,89,8,128,6.8,android
+Xiaomi 12 Pro 5G (12GB RAM + 256GB),51880,,12,256,6.73,android
+OPPO K10 (8GB RAM + 128GB),16990,80,8,128,6.59,android
+Huawei Nova 9 SE,19990,84,8,128,6.78,android
+Samsung Galaxy S22 5G (8GB RAM + 256GB),57999,87,8,256,6.1,android
+Lenovo Legion Y90,46990,87,12,256,6.92,android
+Vivo Y55 5G,20990,77,4,128,6.58,android
+Nokia X100 5G,17990,82,6,128,6.67,android
+Realme 8s 5G (8GB RAM + 128GB),17499,82,8,128,6.5,android
+Realme 8s 5G,17999,80,6,128,6.5,android
+Nokia X60 Pro 5G,49990,,8,128,6.51,android
+Poco X5,14999,74,4,128,6.67,android
+Xiaomi Redmi Note 10 Pro Max (6GB RAM + 128GB),19980,82,6,128,6.67,android
+iQOO 7 (12GB RAM + 256GB),35990,85,12,256,6.62,android
+Realme 8,15999,78,4,128,6.4,android
+Samsung Galaxy S20,41999,88,8,128,6.2,android
+Xiaomi Redmi K60E,25999,83,8,128,6.67,android
+Motorola Moto E32s,7990,65,3,32,6.5,android
+OnePlus Nord 3T 5G,29990,84,8,128,6.43,android
+OPPO F23 Pro Plus 5G,27990,83,8,128,6.43,android
+Poco F5 Pro,29999,84,8,128,6.67,android
+OPPO A16e (4GB RAM + 64GB),8999,68,4,64,6.52,android
+POCO M4 Pro 4G (8GB RAM + 128GB),13999,81,8,128,6.43,android
+Realme Narzo 50A,11499,71,4,64,6.5,android
+Asus ROG Phone 5s 5G,39999,87,8,128,6.78,android
+Realme GT Master Edition 5G,27999,84,8,128,6.43,android
+Samsung Galaxy A32 5G,24499,79,6,128,6.5,android
+Nubia Red Magic 8 Pro Plus,60999,86,12,256,6.8,android
+Samsung Galaxy Z Fold 3,110999,89,12,256,7.6,android
+LG Wing 5G,54999,89,8,128,6.8,
+Xiaomi Redmi Note 9 Pro Max,16490,80,6,64,6.67,android
+Samsung Galaxy A52,24990,83,6,128,6.5,android
+Vivo Y71,25000,,3,16,6,android
+Samsung Galaxy A04e (3GB RAM + 64GB),9950,66,3,64,6.5,android
+Oppo A56s,12999,75,8,128,6.56,android
+Oppo Reno 8T 4G,19999,83,8,256,6.67,android
+OPPO Reno 10,32999,84,8,256,6.73,android
+Nokia G60,28498,81,6,128,6.58,android
+OPPO A77 (4GB RAM + 128 GB),15998,71,4,128,6.56,android
+Motorola Edge 40 Pro 5G,59990,89,8,128,6.7,android
+Oppo K10x 5G,16990,78,6,128,6.59,android
+iQOO Z6 Pro 5G (12GB RAM + 256GB),27999,82,12,256,6.44,android
+Nokia G21 (6GB RAM + 128GB),13499,75,6,128,6.5,android
+Samsung Galaxy A13 (6GB RAM + 128GB),16499,78,6,128,6.6,android
+OPPO A16K (4GB RAM + 64GB),10999,66,4,64,6.52,android
+Xiaomi Redmi 10C,13990,71,4,64,6.7,android
+Tecno Spark 9 Pro,9999,74,4,64,6.6,android
+Realme GT Neo 3 5G,31994,83,8,128,6.7,android
+Xiaomi 11i HyperCharge 5G,24820,83,6,128,6.67,android
+iQOO Neo 6 SE 5G,22990,83,8,128,6.62,android
+iQOO 9 Pro 5G,59990,88,8,256,6.78,android
+Realme Narzo 50i (4GB RAM + 64GB),8999,62,4,64,6.5,android
+Xiaomi Redmi 9 Activ (6GB RAM + 128GB),10499,72,6,128,6.53,android
+Jio JioPhone Next (3GB RAM + 32GB),7499,,3,32,5.5,android
+Xiaomi Redmi Note 8 2021,9990,75,4,64,6.3,android
+Xiaomi Redmi Note 10 5G,12490,76,4,128,6.5,android
+Vivo Y20G,13990,69,4,64,6.51,android
+Samsung Galaxy A22 5G,17990,79,6,128,6.6,android
+Vivo V21,24999,83,8,128,6.44,android
+Realme 7 Pro (8GB RAM + 128GB),21999,85,8,128,6.4,android
+OnePlus Nord Lite,19999,77,8,128,6.55,android
+Samsung Galaxy S20 Ultra 5G,99999,,12,128,6.9,android
+Apple iPhone 11 Pro Max,109900,77,4,64,6.5,ios
+Apple iPhone 7s,52990,,3,32,4.7,ios
+Sony Xperia Ace IV,19990,80,8,128,6.5,android
+Samsung Galaxy A04e (4GB RAM + 128GB),11499,69,4,128,6.5,android
+Xiaomi Redmi Note 12 4G,13999,75,4,64,6.67,android
+Oukitel WP21,22990,82,12,256,6.78,
+Vivo V28,28990,84,8,256,6.7,android
+Poco F4 5G (8GB RAM + 128GB),27999,85,8,128,6.67,android
+Xiaomi Redmi Note 11T Pro 5G,19990,82,6,128,6.6,android
+Realme Narzo 50 Pro 5G (8GB RAM + 128GB),22999,83,8,128,6.4,android
+Vivo T1 44W (8GB RAM + 128GB),17999,82,8,128,6.44,android
+Xiaomi Redmi Note 11S (6GB RAM + 128GB),15499,81,6,128,6.43,android
+Lava Agni 5G,17990,84,8,128,6.78,android
+Realme 8i (6GB RAM + 128GB),13999,77,6,128,6.6,android
+OPPO A55 4G,13499,73,4,64,6.51,android
+POCO M3 Pro 5G (6GB RAM + 128GB),14799,79,6,128,6.5,android
+Realme C21Y,6999,62,3,32,6.5,android
+OPPO A16,11999,69,4,64,6.52,android
+Vivo V21 5G,23994,85,8,128,6.44,android
+Apple iPhone 12 Pro (512GB),139900,80,6,512,6.1,ios
+Sony Xperia 1 II,69999,89,8,256,6.5,android
+Motorola Edge Plus,57999,89,12,256,6.7,android
+Samsung Galaxy Note 20,86000,87,8,256,6.7,android
+Samsung Galaxy A12,11999,71,4,64,6.5,android
+Xiaomi Redmi Note 12 Pro 4G,14999,77,6,128,6.67,android
+Realme GT Neo 3T (8GB RAM + 128GB),26499,81,8,128,6.62,android
+Realme C30s (4GB RAM + 64GB),8990,62,4,64,6.5,android
+Apple iPhone 14 (512GB),95999,82,6,512,6.1,ios
+iQOO 9T 5G,47990,85,8,128,6.78,android
+Tecno Camon 19 Pro,17990,81,8,128,6.8,android
+OnePlus Nord 2 Lite 5G,22999,83,8,128,6.59,android
+Samsung Galaxy S22 Ultra 5G (8GB RAM + 128GB),99990,,8,128,6.8,android
+POCO F4 GT 5G,39999,86,8,128,6.67,android
+Xiaomi 11T Pro 5G (12GB RAM + 256GB),38999,88,12,256,6.67,android
+Vivo Y10,12490,63,4,128,6.51,android
+Samsung Galaxy A83 5G,39990,86,6,128,6.71,android
+Vivo Y33s,16685,80,8,128,6.58,android
+Huawei Mate 40 Pro 4G,69990,,8,128,6.76,other
+Micromax IN 2B,6999,66,4,64,6.52,android
+Asus ROG Phone 6,71999,86,12,256,6.78,android
+Realme X7 Max,26999,84,8,128,6.43,android
+Realme 8 5G,16499,75,4,128,6.5,android
+OPPO A55 5G,17990,74,6,128,6.5,android
+Xiaomi Redmi 9,8999,68,4,64,6.53,android
+Apple iPhone SE 2020,39900,63,3,64,4.7,ios
+Letv Y1 Pro Plus,5999,60,6,64,6.5,android
+OnePlus Nord 5,34999,76,8,128,6.57,android
+Vivo Y73T,16990,77,8,128,6.58,android
+OPPO Reno 9 Z,22990,84,8,128,6.58,android
+Vivo V25e,19990,84,8,256,6.44,android
+Infinix Hot 12 Pro,10850,74,6,64,6.6,android
+Realme Narzo 50 5G (4GB RAM + 64GB),13499,75,4,64,6.6,android
+itel Vision 3,6699,61,3,64,6.6,android
+OPPO A96 4G,17999,80,8,128,6.59,android
+Xiaomi Redmi Note 11E 5G,13990,69,4,128,6.58,android
+Honor Magic 4 Pro Plus 5G,94990,,12,512,6.76,android
+Tecno Spark 9T,8968,72,4,64,6.6,android
+Infinix Smart 6,7320,60,2,64,6.6,android
+Realme C25Y (4GB RAM + 64GB),8999,69,4,64,6.5,android
+Samsung Galaxy A12 (6GB RAM + 128GB),13999,75,6,128,6.5,android
+Tecno Camon 19,14746,79,6,128,6.8,android
+Xiaomi Redmi Note 10 Pro 5G,16999,83,6,128,6.6,android
+Xiaomi Mi 11X 5G (8GB RAM + 128GB),25990,83,8,128,6.67,android
+Xiaomi Redmi Note 10 (6GB RAM + 128GB),16499,78,6,128,6.43,android
+Xiaomi Redmi Note 10 Pro Max,19999,81,6,64,6.67,android
+Xiaomi Mi 10T 5G,23500,80,6,128,6.67,android
+LG Velvet 5G,54999,85,6,128,6.8,android
+Motorola One Fusion Plus,19499,80,6,128,6.5,android
+LG V60 ThinQ,79990,,8,128,6.8,
+Samsung Galaxy Note 10 Lite,39999,83,6,128,6.7,android
+Samsung Galaxy Note 10 Plus 5G,92999,89,12,256,6.8,android
+iQOO Neo 7 Racing Edition,32990,84,8,256,6.78,android
+Samsung Galaxy A04s (4GB RAM + 128GB),14499,72,4,128,6.5,android
+Vivo Y35 5G,13999,70,4,128,6.51,android
+Vivo Y02 (2GB RAM + 32GB),7999,,2,32,6.51,android
+itel Vision 3 (2GB RAM + 32GB),5785,,2,32,6.6,android
+Xiaomi Redmi Note 11R,12990,73,4,128,6.58,android
+Poco M6 Pro,19990,84,8,128,6.73,android
+OPPO A97 5G,23990,79,12,256,6.56,android
+Samsung Galaxy A24,17999,77,6,64,6.4,android
+Infinix Note 13 Pro,16999,80,6,128,6.91,android
+Honor Play 30,9999,68,4,128,6.5,android
+Infinix Smart 6 Plus,8299,63,3,64,6.82,android
+Sony Xperia 5 IV 5G,82199,89,8,256,6.1,android
+Nubia Z40 Pro 5G,49990,84,8,128,6.67,android
+Nokia G21,11999,71,4,64,6.5,android
+Xiaomi 12 Lite 5G,29990,82,6,128,6.55,android
+Oppo Find N 5G,92249,,8,256,7.1,android
+Apple iPhone 13 Pro Max (256GB),139900,84,6,256,6.7,ios
+Vivo Y21s,14990,74,4,128,6.51,android
+OPPO F19s,15988,79,6,128,6.43,android
+Samsung Galaxy M21 2021,11725,76,4,64,6.4,android
+OPPO F19 Pro,17994,80,8,128,6.43,android
+OPPO X 2021,134999,86,8,256,7.4,android
+OnePlus Nord N10,25595,81,6,128,6.49,android
+Gionee M12 Pro,7499,67,6,128,6.2,android
+Poco M2,10890,74,6,64,6.53,android
+OPPO F17 Pro,18990,83,8,128,6.43,android
+Motorola Moto G 5G,19990,82,6,128,6.67,android
+Samsung Galaxy A50s,15990,80,4,128,6.4,android
+Samsung Galaxy Note 10 Plus,58999,89,12,256,6.8,android
+Vivo Y15,12500,71,4,64,6.35,android
+Vivo S1 Pro,29999,82,8,128,6.38,android
+Vivo T3 Pro,31990,86,8,256,6.67,android
+Vivo V21s,29999,86,8,128,6.44,android
+Asus ROG Phone 6D Ultimate,107990,,16,512,6.78,
+Motorola Moto Edge 30 Neo,31990,84,8,128,6.28,android
+Xiaomi 12T,48990,87,8,128,6.67,android
+Huawei Mate 50 Pro 5G,99990,85,8,256,6.76,other
+Realme C32,9499,65,4,64,6.52,android
+Huawei Mate Xs 2,162990,89,8,512,7.8,
+iQOO Z7 Pro 5G,24999,80,6,128,6.62,android
+Apple iPhone 15,82990,72,6,128,6.06,ios
+Infinix Note 11S (8GB RAM + 128GB),15999,79,8,128,6.95,android
+Tecno Spark 8 (4GB RAM + 64GB),8999,64,4,64,6.52,android
+Oppo A56 5G,17990,73,6,128,6.5,android
+Vivo X80 Pro Plus 5G,82990,,12,256,6.78,android
+Xiaomi Redmi 10 Prime (6GB RAM + 128GB),12999,77,6,128,6.5,android
+Huawei Nova 9,29990,83,8,128,6.57,other
+Tecno Pop 5 Go,6999,,1,16,6.1,android
+Huawei P50 Pro 4G,60999,,8,256,6.6,other
+Xiaomi Redmi K50 5G,27990,83,8,128,6.67,android
+Nokia C01 Plus,5249,,2,16,5.45,android
+Realme Q3,14999,80,6,128,6.5,android
+OPPO Reno 6 Pro Plus 5G,44990,87,8,128,6.55,android
+Motorola Edge S,22490,87,6,128,6.7,android
+Oppo Find X3 Pro,50990,,12,256,6.7,android
+Poco M3,11499,75,6,64,6.53,android
+itel S16,5990,,1,16,6.5,android
+Vivo V20 Pro,27000,84,8,128,6.44,android
+Xiaomi Mi 10T Pro 5G,29999,86,8,128,6.67,android
+Vivo V19 (8GB RAM + 256GB),27990,84,8,256,6.44,android
+Samsung Galaxy S20 5G,74999,89,8,128,6.2,android
+Vivo U3,9990,72,4,64,6.53,android
+Oppo K5 (8GB RAM + 128GB),19990,82,8,128,6.4,android
+Realme XT,13279,75,4,64,6.4,android
+Vivo Y12 (3GB RAM + 64GB),11000,68,3,64,6.35,android
+Xiaomi Poco F1 (6GB RAM + 128GB),12999,78,6,128,6.18,android
+Poco C50 (3GB RAM + 32GB),7299,61,3,32,6.52,android
+iKall Z19,7999,61,4,32,6.5,android
+Xiaomi Redmi K60 Gaming Edition,54990,86,8,128,6.73,android
+Vivo S17 Pro,49990,77,12,256,6.67,android
+Honor 80 Pro Plus,54990,,12,256,6.78,android
+Apple iPhone SE 4,49990,60,4,64,6.1,ios
+Tecno Pova Neo 5G,15499,71,4,128,6.8,android
+Apple iPhone 14 Pro Max (512GB),169900,78,6,512,6.7,ios
+Google Pixel 8,53990,75,8,128,6.6,android
+Vivo T2x 5G,18990,80,8,128,6.58,android
+Motorola Moto G52 5G,16999,76,4,64,6.6,android
+Motorola Edge 40 5G,34999,86,8,128,6.5,android
+Vivo X Note 5G (12GB RAM + 512GB),82990,,12,512,7,android
+Realme GT 2 Pro 5G (12GB RAM + 256GB),46999,89,12,256,6.7,android
+Vivo Y15C,8499,66,3,32,6.51,android
+Honor X8,16999,76,6,128,6.7,android
+Samsung Galaxy A03 (4GB RAM + 64GB),11499,69,4,64,6.5,android
+Samsung Galaxy S22 Plus 5G (8GB RAM + 256GB),88999,88,8,256,6.6,android
+Vivo Y33T,15990,81,8,128,6.58,android
+Xiaomi 11i 5G (8GB RAM + 128GB),24990,83,8,128,6.67,android
+Oppo Find X5 Pro 5G,79990,,8,256,6.7,android
+Tecno Spark Go 2022,6249,61,2,32,6.51,android
+Vivo Y21e,12499,69,3,64,6.51,android
+Xiaomi Redmi 9A Sport,6499,61,2,32,6.53,android
+Apple iPhone 13 Pro Max (1TB),179900,86,6,1024,6.7,ios
+Vivo Y12G (3GB RAM + 64GB),11990,68,3,64,6.51,android
+Vivo V23e,26990,82,8,128,6.44,android
+Samsung Galaxy F22 (6GB RAM + 128GB),13499,76,6,128,6.4,android
+Xiaomi 12 Ultra 5G,75999,,12,256,6.73,android
+Micromax IN 2C,5999,60,3,32,6.52,android
+Samsung Galaxy A03s,8499,67,3,32,6.5,android
+OPPO A54 (4GB RAM + 128GB),11990,71,4,128,6.51,android
+Xiaomi Redmi 20X,10990,77,4,128,6.43,android
+Xiaomi Mi Mix Fold,109990,,12,256,8.01,android
+Realme Narzo 30 5G,16999,80,6,128,6.5,android
+OPPO A54,12199,70,4,64,6.51,android
+Oppo A15s (4GB RAM + 128GB),11490,72,4,128,6.52,android
+itel A56,5490,,1,16,6,android
+Xiaomi Redmi 9 Power,11499,74,4,64,6.53,android
+Samsung Galaxy S21 Plus,59450,88,8,128,6.7,android
+POCO M2 Pro,12799,76,4,64,6.67,android
+Samsung Galaxy S20 Plus,83000,88,8,128,6.7,android
+Realme 6 Pro,14490,80,6,64,6.6,android
+Huawei P40 Pro,82990,,8,256,6.58,android
+Vivo Y11 (2019),9490,64,3,32,6.35,android
+Vivo V15 Pro (8GB RAM +128GB),25000,78,8,128,6.39,android
+Vivo Y95,15000,65,4,64,6.22,android
+Vivo V11i,20990,70,4,128,6.3,android
+Samsung Galaxy S9 Plus (128GB),34999,78,6,128,6.2,android
+Realme GT Neo 4T,29999,80,8,128,6.73,android
+Vivo Y53t,11999,67,4,128,6.51,android
+Samsung Galaxy A04 (4GB RAM + 128GB),12999,72,4,128,6.5,android
+Leitz Phone 2,124990,89,12,256,6.6,android
+Xiaomi Redmi K60i,28999,85,8,128,6.67,android
+Infinix Hot 20S,12999,77,8,128,6.78,android
+Realme GT Neo 3T (8GB RAM + 256GB),28499,82,8,256,6.62,android
+Apple iPhone 14 Plus (512GB),104999,83,6,512,6.7,ios
+Apple iPhone 14 Pro (1TB),172999,77,6,1024,6.1,ios
+Xiaomi Redmi 13 Prime 5G,17990,79,6,128,6.73,android
+Xiaomi Redmi 11 Prime (6GB RAM + 128GB),13774,76,6,128,6.58,android
+Nokia C21 Plus (4GB RAM + 64GB),8999,64,4,64,6.52,android
+OnePlus Nord N300,18990,75,4,64,6.56,android
+Tecno Camon 19 Neo,14999,77,6,128,6.8,android
+Realme Narzo 50i Prime,7999,61,3,32,6.5,android
+Xiaomi Redmi K50 Ultra 5G,39999,85,8,128,6.67,android
+OPPO A57 4G,11990,67,3,64,6.56,android
+Infinix Note 12 (6GB RAM + 128GB),12999,77,6,128,6.7,android
+Samsung Galaxy S23 FE 5G,54999,77,8,128,6.5,android
+Samsung Galaxy M51s 5G,24990,72,6,128,6.7,android
+Vivo X80 5G (12GB RAM + 256GB),59999,88,12,256,6.78,android
+Poco X6 Pro 5G,19999,72,6,128,6.67,android
+Infinix Note 12 (G96),16999,79,8,128,6.7,android
+Samsung Galaxy M14,14999,60,4,64,6.5,android
+Vivo T2 Pro 5G,29990,76,8,128,6.44,android
+Xiaomi Redmi 10 Prime Plus 5G,13990,69,4,128,6.58,android
+Xiaomi Redmi Note 11 Pro 4G,17999,81,6,128,6.67,android
+Realme Narzo 50A Prime,11399,73,4,64,6.6,android
+Vivo Y55s 5G,19990,79,8,128,6.58,android
+Vivo Y21T,15499,74,4,128,6.51,android
+Gionee K10,6999,,3,32,6.8,android
+Xiaomi Redmi Note 10 Lite (4GB RAM + 128GB),12499,77,4,128,6.67,android
+Apple iPhone 13 (512GB),91999,80,4,512,6.1,ios
+Infinix Hot 11S,9690,71,4,64,6.78,android
+Realme GT Explorer Master Edition,32990,85,8,128,6.55,android
+Xiaomi Mi 12 5G,42990,87,8,128,6.28,android
+CAT S22 Flip,14999,,2,16,4,
+Xiaomi Mi 11 Lite (8GB RAM + 128GB),18699,82,8,128,6.55,android
+Realme Q3i 5G,10990,76,4,128,6.5,android
+Xiaomi Mi 11X Pro,30990,85,8,128,6.67,android
+Lenovo Legion Pro 2,59999,89,16,512,6.5,android
+Samsung Galaxy M62,23999,83,6,128,6.71,android
+Realme Q2i,9999,69,4,128,6.5,android
+Apple iPhone 12 Pro (256GB),119900,80,6,256,6.1,ios
+Xiaomi Redmi 9i (4GB RAM + 128GB),9299,67,4,128,6.53,android
+Realme 6 (6GB RAM + 64GB),12989,77,6,64,6.5,android
+Samsung Galaxy A01 Core,4999,,1,16,5.3,android
+Oppo Reno 5,29990,83,8,128,6.43,android
+Oppo A31 2020 (6GB RAM + 128GB),12490,72,6,128,6.5,android
+Sony Xperia 10 II,27999,75,4,128,6,android
+Vivo Y91c,8199,,2,32,6.22,android
+Huawei Nova 7i,21990,81,8,128,6.4,android
+Vivo Y19,20000,73,4,128,6.53,android
+Vivo U3 (6GB RAM + 64GB),11990,74,6,64,6.53,android
+Xiaomi Redmi Note 9,11989,75,4,64,6.53,android
+Xiaomi Redmi 8 (4GB RAM + 64GB),11490,66,4,64,6.22,android
+Motorola One Macro,11490,68,4,64,6.2,android
+Google Pixel 3a XL,15999,67,4,64,6,android
+Samsung Galaxy A40,17990,69,4,64,5.9,android
+Samsung Galaxy S10 5G,78990,86,8,256,6.7,android
+Huawei Honor 9N,10949,66,4,64,5.84,android
+Xiaomi Redmi Note 4,10300,65,4,64,5.5,android
+Doogee V Max,45999,88,12,256,6.58,android
+Huawei Nova Y61,21990,63,4,64,6.52,other
+iQOO Z9,19990,76,8,128,6.67,android
+Vivo V29,32990,84,8,256,6.67,android
+Poco M5 (6GB RAM + 128GB),14499,77,6,128,6.58,android
+Nokia X30,41990,85,6,128,6.43,android
+Tecno Pova Neo 2,13990,67,6,128,6.82,android
+Vivo Y15C (3GB RAM + 64GB),10490,67,3,64,6.51,android
+Huawei Nova 10,29990,82,8,128,6.67,other
+Huawei Nova Y90,22990,82,8,128,6.7,other
+Samsung Galaxy A92 5G,47990,80,8,128,6.7,android
+Infinix Note 12 VIP,19999,84,8,128,6.7,android
+OnePlus Nord 4 5G,29999,83,8,128,6.43,android
+Realme Narzo 50A Prime (4GB RAM + 128GB),11879,74,4,128,6.6,android
+OnePlus Ace 5G,28990,84,8,128,6.7,android
+iQOO 9 5G (12GB RAM + 256GB),39990,85,12,256,6.56,android
+Xiaomi Redmi Note 12T 5G,15999,78,6,64,6.52,android
+Oppo A96 5G,22990,82,8,256,6.43,android
+Royole FlexPai 3 5G,149999,87,8,128,7.2,
+Tecno Camon 18,11499,75,4,128,6.8,android
+Tecno Phantom X Pro,22999,84,8,256,6.7,android
+Tecno Spark 8T,7999,70,4,64,6.6,android
+Realme GT Neo2 5G,31999,82,8,128,6.62,android
+Sony Xperia 10 III Lite 5G,30990,78,6,64,6,android
+Realme G1,7999,64,3,32,6.52,android
+Tecno Pova 2,10999,74,4,64,6.95,android
+Poco X4,14990,79,6,128,6.67,android
+Motorola Moto G40 Fusion,14499,77,4,64,6.78,android
+OnePlus 9T,44999,86,8,128,6.55,android
+Realme 8 (8GB RAM + 128GB),17999,83,8,128,6.4,android
+Realme Narzo 30 Pro 5G (8GB RAM +128GB),19999,83,8,128,6.5,android
+Itel A23 Pro,3999,,1,8,5,android
+Samsung Galaxy S21 Ultra 5G (12GB RAM + 128GB),101999,,12,128,6.8,android
+Oppo Reno 5 Pro 5G,38700,84,8,128,6.53,android
+OnePlus Nord SE,19999,73,4,64,6.3,android
+Samsung Galaxy M12,10999,72,4,64,6.5,android
+OnePlus Nord N100,16990,68,4,64,6.52,android
+Apple iPhone 12 Mini (256GB),55999,75,4,256,5.4,ios
+Apple iPhone 12 (256GB),67999,76,4,256,6.1,ios
+OPPO A15,9999,66,3,32,6.52,android
+Xiaomi Redmi Note 9 Pro (4GB RAM + 128GB),14439,77,4,128,6.67,android
+Oppo A12,9990,64,3,32,6.22,android
+Realme X50 Pro 5G (8GB RAM + 128GB),24999,85,8,128,6.44,android
+Samsung Galaxy S20 Plus 5G,85990,,8,128,6.7,android
+Xiaomi Redmi K20 Pro Signature Edition,480000,88,8,256,6.39,android
+Xiaomi Redmi Note 8 Pro,16999,78,6,64,6.53,android
+Realme A1,8999,,2,16,6.2,android
+OPPO A73,15990,62,3,32,6,android
+Lyf Earth 2,3890,,3,32,5,android
+Apple iPhone 15 Plus,84990,75,8,128,6.71,ios
+Vivo Y55s 2023,21999,78,4,128,6.58,android
+Lava Blaze NXT,8999,66,4,64,6.5,android
+Tecno Camon 20 Premier,20999,79,6,128,6.83,android
+OPPO Reno 8 House of Dragon Edition,32990,84,8,128,6.43,android
+Motorola Moto E22s,9022,70,4,64,6.5,android
+Xiaomi Redmi A1 Plus (3GB RAM + 32GB),8399,61,3,32,6.52,android
+Infinix Hot 20i,9999,64,3,64,6.6,android
+Tecno Spark 9 (3GB RAM + 64GB),8390,63,3,64,6.6,android
+ZTE Axon 30S,19999,82,6,128,6.9,android
+Honor X6,13999,71,4,64,6.5,android
+Xiaomi Civi 2,29999,85,8,128,6.55,android
+TCL Ion X,8990,60,3,32,6,android
+Samsung Galaxy Z Fold 4 (12GB RAM + 1TB),163980,,12,1024,7.6,android
+Nothing Phone 1 Lite,24990,80,6,128,6.55,android
+Motorola Moto Edge X30 Pro,59990,,8,128,6.67,android
+OnePlus Ace Pro,47990,86,12,256,6.7,android
+Realme GT 2 Explorer Master Edition,40990,86,8,128,6.7,android
+Samsung Galaxy M35,22999,74,8,128,6.5,android
+Samsung Galaxy A05,12990,63,4,64,6.5,android
+Infinix Note 12 Turbo,14999,79,8,128,6.7,android
+POCO F5 GT 5G,42999,86,8,128,6.67,android
+iQOO Z8 5G,14999,78,4,128,6.58,android
+Vivo Y55 4G,22990,83,8,128,6.44,android
+Vivo X Fold 5G (12GB RAM + 512GB),118990,,12,512,8.03,android
+Oppo K10 Pro 5G,29990,81,8,128,6.62,android
+Tecno Spark 8C,7399,62,3,64,6.6,android
+iQOO Z7 5G,17999,80,8,128,6.67,android
+Infinix Note 11 (6GB RAM + 128GB),12799,77,6,128,6.7,android
+Xiaomi 11i HyperCharge 5G (8GB RAM + 128GB),26999,86,8,128,6.67,android
+Samsung Galaxy F42 5G (8GB RAM + 128GB),22999,82,8,128,6.6,android
+Apple iPhone 13 Pro (1TB),147900,84,6,1024,6.1,ios
+Nubia Red Magic 6S 5G,44999,84,8,128,6.8,android
+Micromax IN 2B (6GB RAM + 64GB),7790,68,6,64,6.52,android
+Nokia X60 5G,39990,87,6,128,6.51,other
+Vivo Y12a,9999,65,3,32,6.51,android
+Oppo Reno 5A,22990,80,6,128,6.5,android
+Poco F3 GT,32999,79,6,128,6.67,android
+Honor 50,32990,85,6,128,6.57,android
+OPPO A54 (6GB RAM + 128GB),14999,74,6,128,6.51,android
+Realme 8i,12499,74,4,64,6.6,android
+iQOO 7 Legend,39990,84,8,128,6.62,android
+Realme C11 2021,6499,61,2,32,6.52,android
+Samsung Galaxy A22,18499,76,6,128,6.4,android
+Realme GT 5G,30994,85,8,128,6.43,android
+Google Pixel 5A,32999,78,6,128,6.34,android
+Samsung Galaxy F12,10499,73,4,64,6.5,android
+Samsung Galaxy F41 (6GB RAM + 128GB),19999,82,6,128,6.4,android
+Samsung Galaxy A21s (6GB RAM + 128GB),17499,75,6,128,6.5,android
+Xiaomi Redmi 9A (6GB RAM + 128GB),10990,69,6,128,6.53,android
+Vivo V20 SE,19000,82,8,128,6.44,android
+OPPO A53 2020 (6GB RAM + 128GB),13990,70,6,128,6.5,android
+Realme Narzo 20,10499,72,4,64,6.5,android
+itel Vision 1 (3GB RAM + 32GB),5890,,3,32,6.09,android
+Realme C11,6490,61,2,32,6.5,android
+Xiaomi Mi 10 5G (8GB RAM + 256GB),54999,88,8,256,6.67,android
+Vivo Y21 (2020),9990,65,4,64,6.5,android
+OnePlus Z,24999,79,8,128,6.55,android
+Sharp Aquos R5G,59990,88,12,256,6.5,android
+Huawei Mate 30 RS Porsche Design,214990,,12,512,6.53,android
+Samsung Galaxy A11,9990,63,2,32,6.4,android
+Realme C2,6999,,2,16,6.1,android
+Huawei Mate X,169000,,8,512,8,
+Samsung Galaxy A9 Pro (2019),39990,78,6,128,6.4,android
+Samsung Galaxy A7 (2018),21490,70,4,64,6,android
+Vivo Y55S,13490,,3,16,5.2,android
+Poco C55,7999,70,4,64,6.71,android
+Blackview BV5200 Pro,8990,67,4,64,6.1,android
+Honor X7a,13999,75,6,128,6.75,android
+OPPO A58x,13990,72,6,128,6.56,android
+Doogee S99,14999,84,8,128,6.3,android
+Lava X3,6999,,3,32,6.5,android
+Motorola Edge 40 Fusion,42990,87,8,128,6.67,android
+iKall Z18,6799,61,4,64,6.82,android
+Oukitel WP9,25899,72,6,128,5.86,android
+Xiaomi 14,54999,89,12,256,6.43,android
+Motorola ThinkPhone,49990,89,8,128,6.6,android
+Xiaomi Civi 3,32990,86,8,256,6.7,android
+Realme Narzo 50i Prime (4GB RAM + 64GB),8720,64,4,64,6.5,android
+Oppo Find X6,69990,89,8,256,6.73,android
+itel A23s,4787,,2,32,5,android
+Google Pixel 8 Pro,70990,80,12,256,6.73,android
+Vivo X Fold 2,119990,,12,256,8.03,android
+Motorola Moto Edge S30 Pro,34990,83,8,128,6.67,android
+Honor X8 5G,14990,75,6,128,6.5,android
+POCO X4 GT 5G (8GB RAM + 256GB),28990,85,8,256,6.6,android
+Motorola Moto G91 5G,19990,80,6,128,6.8,android
+Samsung Galaxy M52s 5G,24990,74,8,128,6.5,android
