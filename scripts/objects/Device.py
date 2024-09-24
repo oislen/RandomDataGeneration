@@ -14,15 +14,11 @@ class Device:
     ----------
     n_device_hashes : int
         The number of device hashes to generate
-    n_device_types : int
-        The number of device types to generate
 
     Attributes
     ----------
     n_device_hashes : int
         The number of device hashes generated
-    n_device_types : int
-        The number of device types generated
     lam : float
         The lambda parameter of the squared poisson distribution used to generate the device hash counts
     prop_shared_device_hashes : float
@@ -37,26 +33,23 @@ class Device:
         The shared device hash proportions dictionary
     """
 
-    def __init__(self, n_device_hashes, n_device_types):
+    def __init__(self, n_device_hashes):
         self.n_device_hashes = n_device_hashes
-        self.n_device_types = n_device_types
         self.lam = cons.data_model_poisson_params["device"]["lambda"]
         self.power = cons.data_model_poisson_params["device"]["power"]
         self.prop_shared_device_hashes = cons.data_model_shared_entities_dict["device"]
         self.device_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_device_hashes, lam=self.lam)
         self.device_hashes_props_dict = cnt2prop_dict(self.device_hashes_cnts_dict)
-        self.device_hashes_type_dict = self.gen_device_type(list(self.device_hashes_cnts_dict.keys()),n_device_types=self.n_device_types,)
+        self.device_hashes_type_dict = self.gen_device_type(list(self.device_hashes_cnts_dict.keys()))
         self.device_hashes_shared_props_dict = gen_shared_idhashes(self.device_hashes_cnts_dict, self.prop_shared_device_hashes)
 
-    def gen_device_type(self, device_hashes, n_device_types):
+    def gen_device_type(self, device_hashes):
         """Generates a dictionary of random device types
 
         Parameters
         ----------
         device_hashes : list
             The device hashes
-        n_device_types : int
-            The number of available device types to generated
 
         Returns
         -------
@@ -64,7 +57,8 @@ class Device:
             A dictionary of device hash types
         """
         # load in smartphone data
-        smartphone_data = pd.read_csv(cons.fpath_smartphones, usecols=['model','rating'])
+        smartphone_data = pd.read_csv(cons.fpath_smartphones, usecols=['model','rating','os'])
+        smartphone_data = smartphone_data.loc[smartphone_data['os'] == 'android', :].copy()
         # derive a proportion popularity from the ratings(TODO: expand this to be average rating per mobile phone brand)
         smartphone_data['rating'] = smartphone_data['rating'].fillna(value=smartphone_data['rating'].mean())
         smartphone_data['popularity'] =  smartphone_data['rating'] / smartphone_data['rating'].sum()

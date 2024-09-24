@@ -41,7 +41,7 @@ def gen_random_telecom_data(n_users=1, random_seed=None):
     random_entity_counts = gen_random_entity_counts(user_obj)
 
     # generate random entity values
-    device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum(), n_device_types=programmeparams.n_device_types)
+    device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum())
     card_obj = Card(n_card_hashes=random_entity_counts['n_cards'].sum())
     ip_obj = Ip(n_ip_hashes=random_entity_counts['n_ips'].sum())
     transaction_obj = Transaction(n_transaction_hashes=random_entity_counts['n_transactions'].sum(), start_date=programmeparams.transaction_start_date, end_date=programmeparams.transaction_end_date)
