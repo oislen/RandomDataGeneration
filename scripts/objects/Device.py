@@ -1,5 +1,6 @@
 import string
 import numpy as np
+import pandas as pd
 import cons
 from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
@@ -62,17 +63,13 @@ class Device:
         dict
             A dictionary of device hash types
         """
-        # create an empty list to hold the different device types
-        device_types = []
-        # define a list of letters and digits
-        letters = list(string.ascii_uppercase)
-        digits = list(string.digits)
-        # generate a device type name
-        prefixes = np.random.choice(letters, size=(n_device_types, 3), replace=True)
-        suffixes = np.random.choice(digits, size=(n_device_types, 3), replace=True)
-        device_types = ["".join(list(prefixes[i])) + "-" + "".join(list(suffixes[i])) for i in range(n_device_types)]
+        # load in smartphone data
+        smartphone_data = pd.read_csv(cons.fpath_smartphones, usecols=['model','rating'])
+        # derive a proportion popularity from the ratings(TODO: expand this to be average rating per mobile phone brand)
+        smartphone_data['rating'] = smartphone_data['rating'].fillna(value=smartphone_data['rating'].mean())
+        smartphone_data['popularity'] =  smartphone_data['rating'] / smartphone_data['rating'].sum()
         # randomly choose different device types
-        device_types = list(np.random.choice(a=device_types, size=len(device_hashes)))
+        device_types = list(np.random.choice(a=smartphone_data['model'].to_list(), size=len(device_hashes), replace=True, p=smartphone_data['popularity'].to_list()))
         # return device hashes and types
         device_hashes_type_dict = dict(zip(device_hashes, device_types))
         return device_hashes_type_dict
