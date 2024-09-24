@@ -11,6 +11,7 @@ fpath_countrycrimeindex = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 
 fpath_countrieseurope = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'Countries-Europe.csv')
 fpath_firstnames = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'first-names.txt')
 fpath_lastnames = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'last-names.txt')
+fpath_smartphones = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'smartphones.csv')
 fpath_unittest_user_data = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'unittest', 'user_data.pickle')
 fpath_unittest_transaction_data = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'unittest', 'transaction_data.pickle')
 
