@@ -29,10 +29,12 @@ if __name__ == '__main__':
     # start timer
     t0 = time()
     if input_params_dict['n_itr'] > 1:
+        logging.info("Running multi-thread.")
         # generate random telecom data via multiprocess call
         args = [(input_params_dict['n_users'], None if input_params_dict['use_random_seed'] == 0 else itr) for itr in range(input_params_dict['n_itr'])]
         results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     else:
+        logging.info("Running single thread.")
         results = [gen_random_telecom_data(n_users=input_params_dict['n_users'], random_seed=input_params_dict['use_random_seed'])]
     # concatenate random telecom datasets into a single file
     user_data = pd.concat(objs = [result['user_data'] for result in results], axis = 0, ignore_index = True)
