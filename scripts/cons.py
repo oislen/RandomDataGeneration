@@ -29,7 +29,7 @@ unittest_debug_mode = True
 
 # set data model constants
 data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
-data_model_poisson_lambda_params = {'user':20, 'device':0.3, 'card':0.1, 'ip':1.3, 'application':3, 'transaction':5}
+data_model_poisson_params = {'user':{'lambda':20, 'power':1}, 'device':{'lambda':0.2, 'power':2}, 'card':{'lambda':0.1, 'power':2}, 'ip':{'lambda':1.3, 'power':2}, 'application':{'lambda':1, 'power':2}, 'transaction':{'lambda':5, 'power':2}}
 data_model_shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
 data_model_null_rates = {'card':0.05}
 data_model_card_types_dict = {'visa':0.5, 'mastercard':0.5}
