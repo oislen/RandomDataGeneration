@@ -55,7 +55,8 @@ class Transaction:
         self.n_transaction_hashes = n_transaction_hashes
         self.start_date = start_date
         self.end_date = end_date
-        self.lam = cons.data_model_poisson_lambda_params["transaction"]
+        self.lam = cons.data_model_poisson_params["transaction"]["lambda"]
+        self.power = cons.data_model_poisson_params["transaction"]["power"]
         self.payment_channels = cons.data_model_payment_channels
         self.transaction_status = cons.data_model_transaction_status
         self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_transaction_hashes, lam=self.lam)

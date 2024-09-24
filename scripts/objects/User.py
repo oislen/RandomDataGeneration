@@ -49,7 +49,8 @@ class User:
         self.n_user_ids = n_user_ids
         self.start_date = start_date
         self.end_date = end_date
-        self.lam = cons.data_model_poisson_lambda_params["user"]
+        self.lam = cons.data_model_poisson_params["application"]["lambda"]
+        self.power = cons.data_model_poisson_params["application"]["power"]
         self.user_ids_cnts_dict = gen_idhash_cnt_dict(idhash_type="id", n=self.n_user_ids, lam=self.lam)
         self.user_ids_props_dict = cnt2prop_dict(self.user_ids_cnts_dict)
         self.user_ids_firstname_dict = self.gen_user_firstname(cons)
