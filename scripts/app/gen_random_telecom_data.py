@@ -11,17 +11,15 @@ from objects.Transaction import Transaction
 from objects.User import User
 from utilities.gen_random_entity_counts import gen_random_entity_counts
 
-def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
+def gen_random_telecom_data(n_users=1, random_seed=None):
     """Generates random telecommunications data
 
     Parameters
     ----------
-    factor : float
-        The controls the number of users and corresponding number of data model entities to generate
-    randomseed : int
-        A random seed for reproducible results, default is None
-    debug_mode : bool
-        Whether to run in debug mode
+    n_users : float
+        The number of users to generate random telecom payments data for
+    random_seed : int
+        A set random seed for reproducible results, default is None
 
     Returns
     -------
@@ -30,11 +28,11 @@ def gen_random_telecom_data(factor=1, randomseed=None, debug_mode=False):
     """
 
     # initalise programme parameters
-    programmeparams = ProgrammeParams(factor=factor, randomseed=randomseed, debug_mode=debug_mode)
+    programmeparams = ProgrammeParams(n_users=n_users, random_seed=random_seed)
 
     # set random seed
-    random.seed(programmeparams.randomseed)
-    np.random.seed(seed=programmeparams.randomseed)
+    random.seed(programmeparams.random_seed)
+    np.random.seed(seed=programmeparams.random_seed)
 
     # generate random users
     user_obj = User(n_user_ids=programmeparams.n_users, start_date=programmeparams.registration_start_date, end_date=programmeparams.registration_end_date)

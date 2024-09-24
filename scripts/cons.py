@@ -1,9 +1,6 @@
 import os
 import platform
 
-# set debug mode
-debug_mode = False
-
 # set file paths and locations with repo
 fpath_root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
 fpath_randomtelecomtransdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomPayments.csv')
@@ -22,18 +19,6 @@ url_european_populations = 'https://raw.githubusercontent.com/ajturner/acetate/m
 url_country_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries.csv'
 url_first_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/first-names.txt'
 url_last_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/last-names.txt'
-
-# set programme parameters
-programme_parameters_factor = 0.5
-programme_parameters_randomseed = 1
-programme_parameters_nitr = 1
-programme_parameters_n_users = 1372
-programme_parameters_n_device_types = 53
-programme_parameters_n_applications = 1642
-programme_parameters_registration_start_date = '2020-01-01'
-programme_parameters_registration_end_date = '2020-12-31'
-programme_parameters_transaction_start_date = '2021-01-01'
-programme_parameters_transaction_end_date = '2021-12-31'
 
 # set unittest constants
 unittest_seed = 42

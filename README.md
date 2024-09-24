@@ -26,15 +26,16 @@ For a more detailed account of each column in the dataset see the data dictionar
 
 The following command can be used to execute the application:
 
-     python3 RandomTelecomPayments/scripts/main.py --factor 0.5 --randomseed 1 --nitr 3
+     python3 RandomTelecomPayments/scripts/main.py --n_users 5000 --randomseed 1 --nitr 2
 
 The application works by first generating user level telecom payments data. Once generated, the user level data is exploded to transaction level, and any inconsistencies within the data model are removed. Finally, the transaction status and error codes are generated using underlying features within the transaction level data.
 
 ### Parameters
 
-* **factor** - float, the factor to increase or decrease the number of randomly generated users by; a factor of 1.0 denotes a standard size of randomly generated users
-* **randomseed** - integer, whether to run the random telecom payments data generation with or without a random seed set for reproducible results; must be 0 or 1.
-* **nitr** - integer, the number of random telecom payments data batches to generate; must be at least 1. The python multiprocessing library is used to run each in parallel across all available cores.
+* **n_users** - integer, the number of users to generate random telecom payments data for, default is 100.
+* **use_random_seed** - integer, whether to run the random telecom payments data generation with or without a random seed set for reproducible results; must be 0 or 1.
+* **n_itr** - integer, the number of random telecom payments data batches to generate; must be at least 1. The python multiprocessing library is used to run each in parallel across all available cores.
+
 ### Docker Image
 
 The latests image can be found on dockerhub here:

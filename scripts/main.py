@@ -4,11 +4,9 @@ import logging
 from time import time
 import pandas as pd
 
-# set file path for custom python modules
 sys.path.append(os.path.join(os.getcwd(), 'scripts'))
-# import cons
+
 import cons
-# load utility functions
 from utilities.commandline_interface import commandline_interface
 from utilities.input_error_handling import input_error_handling
 from utilities.multiprocess import multiprocess
@@ -20,15 +18,8 @@ if __name__ == '__main__':
     lgr = logging.getLogger()
     lgr.setLevel(logging.INFO)
 
-    if cons.debug_mode:
-        logging.info(f'Debug Mode: {cons.debug_mode}')
-        # set user parameters
-        input_params_dict = {}
-        input_params_dict['factor'] = cons.programme_parameters_factor
-        input_params_dict['randomseed'] = cons.programme_parameters_randomseed
-        input_params_dict['nitr'] = cons.programme_parameters_nitr
-    else:
-        input_params_dict = commandline_interface()
+    # set user parameters
+    input_params_dict = commandline_interface()
 
     # run input error handling
     res = input_error_handling(input_params_dict)
@@ -37,15 +28,12 @@ if __name__ == '__main__':
 
     # start timer
     t0 = time()
-    # generate random telecom data via multiprocess call
-    # factor = input_params_dict['factor']
-    # randomseed = input_params_dict['randomseed']
-    # debug_mode = cons.debug_mode
-    if input_params_dict['nitr'] > 1:
-        args = [(input_params_dict['factor'], None if input_params_dict['randomseed'] == 0 else itr, cons.debug_mode) for itr in range(input_params_dict['nitr'])]
+    if input_params_dict['n_itr'] > 1:
+        # generate random telecom data via multiprocess call
+        args = [(input_params_dict['n_users'], None if input_params_dict['use_random_seed'] == 0 else itr) for itr in range(input_params_dict['n_itr'])]
         results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     else:
-        results = [gen_random_telecom_data(factor=input_params_dict['factor'], randomseed=input_params_dict['randomseed'], debug_mode=cons.debug_mode)]
+        results = [gen_random_telecom_data(n_users=input_params_dict['n_users'], random_seed=input_params_dict['use_random_seed'])]
     # concatenate random telecom datasets into a single file
     user_data = pd.concat(objs = [result['user_data'] for result in results], axis = 0, ignore_index = True)
     trans_data = pd.concat(objs = [result['trans_data'] for result in results], axis = 0, ignore_index = True)
