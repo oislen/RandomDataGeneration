@@ -4,7 +4,17 @@ import cons
 from utilities.gen_random_poisson_power import gen_random_poisson_power
 
 def gen_random_entity_counts(user_obj):
-    """
+    """Generates a dataframe of entity counts for all users from a given user object
+
+    Parameters
+    ----------
+    user_obj : User Class
+        The User class object
+
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe of entity counts for all users from the specified user object
     """
     # create an empty pandas dataframe to hold the random aggregated data
     random_entity_counts = pd.DataFrame()
