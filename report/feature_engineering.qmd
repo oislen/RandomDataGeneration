@@ -81,5 +81,5 @@ feat_data = merge_features(feat_objs)
 ```{python}
 #| label: write data
 feat_data_fpath=os.path.join('..', 'data', 'report', 'user_feat_data.csv')
-
+feat_data.to_csv(feat_data_fpath, index=False)
 ```
