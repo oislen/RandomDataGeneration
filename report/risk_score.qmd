@@ -1,0 +1,48 @@
+
+```{python}
+#| label: set-up
+import os
+import numpy as np
+import pandas as pd
+import sklearn as sk
+import shap
+import os
+import sys
+from datetime import datetime
+from sklearn.ensemble import RandomForestClassifier
+
+sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(os.getcwd()))
+
+import scripts.cons as cons
+```
+
+# Data Load
+
+```{python}
+#| label: data-load
+# load random telecom payments data
+user_feat_foath = os.path.join('..', 'data', 'report', 'user_feat_data.csv')
+feat_data = pd.read_csv(user_feat_foath)
+# split into train, valid and test sets
+train_data = feat_data.loc[feat_data['transaction_week'].isin(range(0, 40)), :]
+valid_data = feat_data.loc[feat_data['transaction_week'].isin(range(40, 46)), :]
+test_data = feat_data.loc[feat_data['transaction_week'].isin(range(46, 53)), :]
+```
+
+# Random Forests Model
+
+```{python}
+#| label: score-data
+# train isolation forests
+id_cols = ['userid', 'transaction_week']
+X_cols = ['device_hash_size', 'card_hash_size', 'ip_hash_size', 'pending_size]
+y_col = 'E901_size'
+X_data = train_data[X_cols]
+y_data = train_data[y_col]
+rgr = RandomForestRegressor(max_depth=2, random_state=0)
+# score data
+score_data = feat_data[id_cols+X_cols].copy()
+score_data['score'] = clf.decision_function(train_data)
+score_data = score_data.sort_values(by='score')
+```
