@@ -1,0 +1,85 @@
+```{python}
+#| label: set-up
+import os
+import numpy as np
+import pandas as pd
+import sklearn as sk
+import shap
+import os
+import sys
+from datetime import datetime
+from sklearn.ensemble import IsolationForest
+
+sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(os.getcwd()))
+
+import scripts.cons as cons
+```
+
+```{python}
+#| label: data-load
+# load random telecom payments data
+filepath_or_buffer=os.path.join('..', 'data', 'arch', 'RandomTelecomPaymentsV1.1.csv')
+parse_dates = ['registration_date', 'transaction_date']
+date_parser = lambda x: datetime.strptime(x, '%Y-%m-%d')
+data = pd.read_csv(filepath_or_buffer=filepath_or_buffer,  parse_dates=parse_dates)
+
+# determine the week number for all transaction dates
+data['transaction_week'] = data['transaction_date'].dt.isocalendar().week
+```
+
+```{python}
+#| label: function-definitions
+def feature_engineer(data, ids, groups, target, func):
+    """
+    """
+    # aggregate across the ids and group, applying the function to the target
+    data_agg = data.copy().groupby(by=ids+groups, as_index=False).agg({target:func})
+    # pivot the target results across each group
+    data_pivot = pd.pivot_table(data=data_agg, index=ids, values=target, columns=groups)
+    # rename and format the columns
+    data_pivot.columns = data_pivot.columns.str.split(':').str[0] + f'_{func}'
+    data_pivot = data_pivot.reset_index()
+    data_pivot.columns.name = None
+    return data_pivot
+
+
+def merge_features(feat_objs):
+    """
+    """
+    feat_data = pd.DataFrame(columns=['userid', 'transaction_week'])
+    # join objects
+    for feat_obj in feat_objs:
+        feat_data = pd.merge(left=feat_data, right=feat_obj, how='outer', on=['userid', 'transaction_week'])
+    # fill for missing values
+    feat_data = feat_data.fillna(0)
+    return feat_data
+```
+
+```{python}
+#| label: feature-engineering
+
+# user trans error counts and sums
+userid_error_cnt_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=['transaction_error_code'], target='transaction_amount', func='size')
+userid_error_sum_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=['transaction_error_code'], target='transaction_amount', func='sum')
+
+# user trans status counts and sums
+userid_status_cnt_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=['transaction_status'], target='transaction_amount', func='size')
+userid_status_sum_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=['transaction_status'], target='transaction_amount', func='sum')
+
+# user entity counts
+userid_device_cnt_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=[], target='device_hash', func='size')
+userid_card_cnt_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=[], target='card_hash', func='size')
+userid_ip_cnt_data = feature_engineer(data=data, ids=['userid', 'transaction_week'], groups=[], target='ip_hash', func='size')
+
+# join all user feature datasets together
+feat_objs = [userid_device_cnt_data, userid_card_cnt_data, userid_ip_cnt_data, userid_status_cnt_data, userid_status_sum_data, userid_error_cnt_data, userid_error_sum_data]
+feat_data = merge_features(feat_objs)
+```
+
+
+```{python}
+#| label: write data
+feat_data_fpath=os.path.join('..', 'data', 'report', 'user_feat_data.csv')
+
+```
