@@ -17,7 +17,7 @@ import scripts.cons as cons
 
 ```{python}
 #| label: data-load
-# load random telecom payments data
+# load user feature data
 user_feat_foath = os.path.join('..', 'data', 'report', 'user_feat_data.csv')
 feat_data = pd.read_csv(user_feat_foath)
 feat_data.head()
@@ -45,54 +45,51 @@ def gen_weekly_user_scores(group):
     # define score and id columns
     id_cols = ['userid', 'transaction_week']
     score_cols=['successful_size_pct', 'successful_sum_pct']
-    value_cols = ['customer_value_score', 'customer_value_score_cumsum']
+    value_cols = ['customer_value_score']
     # calcualte the customer value score
     group['customer_value_score'] = group[score_cols].mean(axis=1)
-    # sort and apply cumsum
-    group_sort = group.sort_values(by='transaction_week')
-    group_sort['customer_value_score_cumsum'] = group_sort['customer_value_score'].cumsum()
-    return group_sort[id_cols+cumsum_cols+value_cols]
+    return group[id_cols+score_cols+value_cols]
 
+# only conder users who made at least one transaction in any given week
+score_data_week = feat_data.loc[feat_data['successful_size'] > 0, :].copy()
 # score each user across each week for their percentile score in number of successfull transactions counts and acounts
-score_data_week = feat_data.groupby(by=['transaction_week'], group_keys=False).apply(lambda group: week_pct_score(group))
+score_data_week = score_data_week.groupby(by=['transaction_week'], group_keys=False).apply(lambda group: week_pct_score(group))
 # group by each user and apply a cumulative sum to determine weekly values scores over time
 score_data_week = score_data_week.groupby(by=['userid'], group_keys=False).apply(lambda group: gen_weekly_user_scores(group))
 score_data_week.head(10)
 ```
 
+# Create Base Value Score Dataset
+
 ```{python}
 #| label: base-data
+def apply_cumsum(group):
+    """
+    """
+    # define score and id columns
+    id_cols = ['userid', 'transaction_week']
+    score_cols=['successful_size_pct', 'successful_sum_pct']
+    value_cols = ['customer_value_score', 'customer_value_score_cumsum']
+    # sort and apply cumsum
+    group_sort = group.sort_values(by='transaction_week')
+    group_sort['customer_value_score_cumsum'] = group_sort['customer_value_score'].cumsum()
+    return group_sort[id_cols+score_cols+value_cols]
+
 # create base data
 base_user_data = feat_data[['userid']].drop_duplicates().reset_index(drop=True).assign(key = 1).sort_values(by='userid')
 base_transweek_data = feat_data[['transaction_week']].drop_duplicates().reset_index(drop=True).assign(key = 1).sort_values(by='transaction_week')
 base_data = pd.merge(left=base_user_data, right=base_transweek_data, on='key', how='inner').drop(columns=['key'])
 base_score_data = pd.merge(left=base_data, right=score_data_week, on=['userid','transaction_week'], how='left')
-# apply forward fill and then backward filll of weekly scores cumulative value scores
-base_score_data['customer_value_score_cumsum'] = base_score_data['customer_value_score_cumsum'].ffill().bfill()
+# fill missing pct and score values as 0
 base_score_data = base_score_data.fillna(0)
+# apply cumulative sum to generate value scores cumulative increase over time
+base_score_data = base_score_data.groupby(by=['userid'], group_keys=False).apply(lambda group: apply_cumsum(group))
 ```
+
+# Write Data to Disk
 
 ```{python}
 #| label: write data
 user_score_data_fpath=os.path.join('..', 'data', 'report', 'customer_value_score.csv')
 base_score_data.to_csv(user_score_data_fpath, index=False)
 ```
-
-# High Value Users
-
-Identify the high value users as the customers with a customer value score in the top 10%. Calculate transaction stats of the high value users.
-
-```{python}
-#| label: high-value-users
-# create the high value user identifier
-high_value_data = base_score_data.loc[base_score_data['transaction_week'] == 52, ['userid', 'transaction_week', 'customer_value_score_cumsum']].copy()
-high_value_data['customer_value_score_cumsum_pct'] = high_value_data['customer_value_score_cumsum'].rank(method='average', ascending=True, pct=True, axis=0)
-high_value_data['high_value_user'] = (high_value_data['customer_value_score_cumsum_pct'] >= 0.9).astype(int)
-# sum across the 
-groupby_col=['high_value_user']
-agg_dict={'customer_value_score_cumsum':'mean', 'customer_value_score_cumsum_pct':'mean'}
-high_value_data = high_value_data.groupby(by=groupby_col).agg(agg_dict)
-high_value_data
-```
-
-# Data Write
