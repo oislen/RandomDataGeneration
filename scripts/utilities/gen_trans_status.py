@@ -3,7 +3,7 @@ import numpy as np
 import cons
 
 
-def gen_trans_status(series, rejection_rates_dict, rejection_scaling_factor=1):
+def gen_trans_status(series, rejection_rates_dict, rejection_scaling_factor=2):
     """Generates the transaction status for a pandas series from the transaction level telecom payments data given the rejection rates dictionary from the same data
 
     Parameters
