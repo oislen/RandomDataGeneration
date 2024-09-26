@@ -1,0 +1,58 @@
+```{python}
+#| label: set-up
+import os
+import numpy as np
+import pandas as pd
+import os
+import sys
+
+sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(os.getcwd()))
+
+import scripts.cons as cons
+```
+
+# Data Load
+
+```{python}
+#| label: data-load
+
+# load user feature data
+user_feat_foath = os.path.join('..', 'data', 'report', 'user_feat_data.csv')
+user_feat_data = pd.read_csv(user_feat_foath)
+# load customer value score data
+customer_value_score_foath = os.path.join('..', 'data', 'report', 'customer_value_score.csv')
+customer_value_score = pd.read_csv(customer_value_score_foath)
+# create the base data by joining user feature data and customer value score
+base_data = pd.merge(left=user_feat_data, right=customer_value_score, on=['userid', 'transaction_week'], how='inner')
+base_data.head()
+```
+
+
+# High Value Users
+
+Identify the high value users as the customers with a customer value score in the top 10%. Calculate transaction stats of the high value users.
+
+```{python}
+#| label: high-value-users
+# create the high value user identifier
+sub_cols = ['userid', 'transaction_week', 'successful_size',  'successful_sum', 'customer_value_score_cumsum']
+high_value_data = base_data.loc[base_data['transaction_week'] == 52, sub_cols].copy()
+high_value_data['customer_value_score_cumsum_pct'] = high_value_data['customer_value_score_cumsum'].rank(method='average', ascending=True, pct=True, axis=0)
+high_value_data['high_value_user'] = (high_value_data['customer_value_score_cumsum_pct'] >= 0.9).astype(int)
+# sum across the 
+groupby_col=['high_value_user']
+agg_dict={'successful_size':'sum', 'successful_sum':'sum', 'customer_value_score_cumsum':'mean', 'customer_value_score_cumsum_pct':'mean'}
+high_value_data = high_value_data.groupby(by=groupby_col).agg(agg_dict)
+# add total row
+total_agg={'successful_size':'sum', 'successful_sum':'sum', 'customer_value_score_cumsum':'mean', 'customer_value_score_cumsum_pct':'mean'}
+total_value_data = high_value_data.agg(agg_dict).rename('total').to_frame().T
+high_value_data = pd.concat(objs=[high_value_data, total_value_data], axis=0)
+high_value_data
+```
+
+# White List Users
+
+```{python}
+
+```
