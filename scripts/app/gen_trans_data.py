@@ -56,8 +56,9 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=ip_obj.ip_hashes_country_code_dict, idhash_key_name='ip_hash', idhash_val_name='ip_country_code_alpha')
     # add transaction data
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_amounts_dict, idhash_key_name='transaction_hash', idhash_val_name='transaction_amount')
-    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_payment_channel_dict, idhash_key_name='transaction_hash', idhash_val_name='card_payment_channel')
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=transaction_obj.transaction_hashes_dates_dict, idhash_key_name='transaction_hash', idhash_val_name='transaction_date')
+    # add application data
+    trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=application_obj.application_hashes_payment_channel_dict, idhash_key_name='application_hash', idhash_val_name='card_payment_channel')
 
     # TODO: wrap this logic up into a separate function
     # align payment channel with missing card hashes and 0 transaction amounts
