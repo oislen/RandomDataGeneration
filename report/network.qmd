@@ -1,43 +1,90 @@
 
 ```{python}
+#| label: set-up
+import os
+import numpy as np
 import pandas as pd
+import sklearn as sk
 import networkx as nx
-import matplotlib.pyplot as plt
+import shap
+import os
+import sys
+from datetime import datetime
+from sklearn.ensemble import IsolationForest
 
-# load csv data
-data=pd.read_csv('../data/RandomTelecomPayments.csv')
+sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(os.getcwd()))
+
+import scripts.cons as cons
+```
+
+# Load Random Telecom Payments Data
+
+```{python}
+#| label: data-load
+# load random telecom payments data
+data_fpath=os.path.join('..', 'data', 'arch', 'RandomTelecomPaymentsV1.1.csv')
+parse_dates = ['registration_date', 'transaction_date']
+date_parser = lambda x: datetime.strptime(x, '%Y-%m-%d')
+data = pd.read_csv(filepath_or_buffer=data_fpath,  parse_dates=parse_dates)
+
+# determine the week number for all transaction dates
+data['transaction_week'] = data['transaction_date'].dt.isocalendar().week
 ```
 
 # Data Preparation
 
 ```{python}
-# extract out the unique userids and device hashes
-user_device_data = data[['userid', 'device_hash']].dropna().drop_duplicates()
+#| label: data-preparation
 
-# inner join users to users based on shared device hash
-user_device_network_data = pd.merge(left = user_device_data, right = user_device_data, on = 'device_hash', how = 'inner')
+def gen_entity_network_data(data, entity, userid = 'userid'):
+    """
+    """
+    # extract out the unique userids and device hashes
+    user_entity_data = data[[userid, entity]].dropna().drop_duplicates()
+    # inner join users to users based on shared device hash
+    user_entity_network_data = pd.merge(left = user_entity_data, right = user_entity_data, on = entity, how = 'inner')
+    # drop rows where userid_x = userid_y
+    user_entity_network_data = user_entity_network_data.loc[user_entity_network_data[f'{userid}_x'] != user_entity_network_data[f'{userid}_y'], :]
+    # set col order
+    col_order = [f'{userid}_x', f'{userid}_y', entity]
+    user_entity_network_data = user_entity_network_data[col_order]
+    return user_entity_data, user_entity_network_data
 
-# drop rows where userid_x = userid_y
-user_device_network_data = user_device_network_data.loc[user_device_network_data['userid_x'] != user_device_network_data['userid_y'], :]
+def gen_base_network_data(entity_networks, user_cols=['userid_x','userid_y']):
+    """
+    """
+    # create a base data of users from all entity networks
+    base_data = pd.concat(objs=[df[user_cols] for df in entity_networks], ignore_index=True, axis=0).drop_duplicates().reset_index(drop=True)
+    # generate full base data by joining on all entity networks
+    for entity_network in entity_networks:
+        base_data = pd.merge(left=base_data, right=entity_network, on=user_cols, how='left')
+    return base_data
 
+# generate share user entity networks
+user_device_data, user_device_network_data = gen_entity_network_data(data=data, entity='device_hash', userid = 'userid')
+user_ip_data, user_ip_network_data = gen_entity_network_data(data=data, entity='ip_hash', userid = 'userid')
+user_card_data, user_card_network_data = gen_entity_network_data(data=data, entity='card_hash', userid = 'userid')
+# generate base entity network data
+entity_networks = [user_device_network_data, user_ip_network_data, user_card_network_data]
+base_data = gen_base_network_data(entity_networks=entity_networks, user_cols=['userid_x','userid_y'])
 ```
 
 # Network Analysis
 
 ```{python}
+#| label: network-analysis
+
 # generate graph from edgelist
 G = nx.from_pandas_edgelist(df = user_device_network_data, source = 'userid_x', target = 'userid_y', edge_attr = ['device_hash'])
 
 # extract connect components from graph
 CC = pd.DataFrame([{'compid':i, 'userid':cc} for i, cc in enumerate(nx.connected_components(G))]).explode('userid').reset_index(drop = True)
-
 # calculate compid size
 comp_size = CC.groupby(by = 'compid', as_index = False).agg({'userid':'nunique'}).rename(columns={'userid':'compsize'})
-
 # generate the component data
 comp_data = pd.merge(left = user_device_data, right = CC, left_on = 'userid', right_on = 'userid', how = 'inner')
 comp_data = pd.merge(left = comp_data, right = comp_size, on = 'compid', how = 'inner')
-
 # order by comp size
 comp_data = comp_data.sort_values(by = 'compsize', ascending = False)
 
@@ -50,6 +97,8 @@ G = nx.from_pandas_edgelist(df = comp_data, source = 'userid', target = 'device_
 # Connect Component
 
 ```{python}
+#| label: connected-component
+
 # define node colours
 node_color_map = {
 **{user:'blue' for user in list(comp_data['userid'].unique())},
