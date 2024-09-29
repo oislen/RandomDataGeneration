@@ -54,5 +54,18 @@ high_value_data_agg.head()
 # White List Users
 
 ```{python}
+#| label: white-list-users
+# identify any users with a previous suspected fraud transaction error
+high_value_data['hasE901'] = (high_value_data['E901_size'] > 1).astype(int)
+# identiy any high value users with no suspected fraud transaction errors
+white_list_users = high_value_data.loc[(high_value_data['hasE901'] == 0) & (high_value_data['high_value_user'] == 1), :]
+```
 
+# Write White List Users
+
+```{python}
+#| label: write-data
+# save white list users to disk
+white_list_users_fpath=os.path.join('..', 'data', 'report', 'white_list_user_data.csv')
+white_list_users.to_csv(white_list_users_fpath, index=False)
 ```
