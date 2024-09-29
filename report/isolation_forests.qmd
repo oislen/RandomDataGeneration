@@ -33,15 +33,17 @@ feat_data.head()
 #| label: score-data
 # train isolation forests
 id_cols = ['userid', 'transaction_week']
-X_cols = ['E901_size', 'E901_sum']
+X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum']
 train_data = feat_data[X_cols].copy()
 clf = IsolationForest(random_state=0).fit(train_data)
 # score data
 score_data = feat_data[id_cols+X_cols].copy()
 score_data['score'] = clf.decision_function(train_data)
-score_data = score_data.sort_values(by='score')
 ```
 
+```{python}
+score_data = score_data.sort_values(by='score').head(10)
+```
 
 ```{python}
 # count up the number of fraudulent transactions
