@@ -57,42 +57,12 @@ class Transaction:
         self.end_date = end_date
         self.lam = cons.data_model_poisson_params["transaction"]["lambda"]
         self.power = cons.data_model_poisson_params["transaction"]["power"]
-        self.payment_channels = cons.data_model_payment_channels
         self.transaction_status = cons.data_model_transaction_status
         self.transaction_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_transaction_hashes, lam=self.lam)
         self.transaction_hashes_props_dict = cnt2prop_dict(self.transaction_hashes_cnts_dict)
         self.transaction_hashes_dates_dict = gen_dates_dict(self.transaction_hashes_cnts_dict,start_date=self.start_date,end_date=self.end_date,)
-        self.transaction_hashes_payment_channel_dict = self.gen_transaction_payment_channel(list(self.transaction_hashes_cnts_dict.keys()), self.payment_channels)
         self.transaction_hashes_status_dict = self.gen_transaction_status(list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status)
         self.transaction_hashes_amounts_dict = self.gen_transaction_amounts(list(self.transaction_hashes_cnts_dict.keys()))
-
-    def gen_transaction_payment_channel(self, transaction_hashes, payment_channels):
-        """Generates a dictionary of random transaction payment channels
-
-        Parameters
-        ----------
-        transaction_hashes : list
-            The transaction hashes
-        payment_channels : dict
-            The population proportion of payment channels
-
-        Returns
-        -------
-        dict
-            A dictionary of transaction payment channels
-        """
-        # randomly sample payment channels based on population proportions
-        transactoin_payment_channels = list(
-            np.random.choice(
-                a=list(payment_channels.keys()),
-                p=list(payment_channels.values()),
-                replace=True,
-                size=len(transaction_hashes),
-            )
-        )
-        # return payment channels and transaction hashes
-        transaction_hashes_payment_channels_dict = dict(zip(transaction_hashes, transactoin_payment_channels))
-        return transaction_hashes_payment_channels_dict
 
     def gen_transaction_status(self, transaction_hashes, transaction_status):
         """Generates a dictionary of random transaction statuses
@@ -101,7 +71,7 @@ class Transaction:
         ----------
         transaction_hashes : list
             The transaction hashes
-        payment_channels : dict
+        transaction_status : dict
             The population proportion of transaction statuses
 
         Returns
