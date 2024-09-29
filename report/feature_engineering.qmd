@@ -96,10 +96,3 @@ base_feat_data = base_feat_data.fillna(0)
 feat_data_fpath=os.path.join('..', 'data', 'report', 'user_feat_data.csv')
 base_feat_data.to_csv(feat_data_fpath, index=False)
 ```
-
-# Transaction Errors
-
-```{python}
-data['transaction_error_code'].value_counts()/data.shape[0]*100
-base_feat_data['E901_size'].value_counts()#/base_feat_data[['successful_size', 'pending_size', 'rejected_size']].sum().sum()
-```
