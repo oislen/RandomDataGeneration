@@ -80,6 +80,7 @@ feat_data = merge_features(feat_objs)
 # Create the Base User Feature Dataset
 
 ```{python}
+#| label: base-data
 # create base data
 base_user_data = data[['userid']].drop_duplicates().reset_index(drop=True).assign(key = 1).sort_values(by='userid')
 base_transweek_data = data[['transaction_week']].drop_duplicates().reset_index(drop=True).assign(key = 1).sort_values(by='transaction_week')
