@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import sklearn as sk
 import networkx as nx
+import matplotlib.pyplot as plt
 import shap
 import os
 import sys
@@ -89,7 +90,7 @@ comp_data = pd.merge(left = comp_data, right = comp_size, on = 'compid', how = '
 comp_data = comp_data.sort_values(by = 'compsize', ascending = False)
 
 # generate grpah from component data
-compids = comp_data['compid'].unique()[:1]
+compids = comp_data['compid'].unique()
 comp_data = comp_data.loc[comp_data['compid'].isin(compids), :]
 G = nx.from_pandas_edgelist(df = comp_data, source = 'userid', target = 'device_hash', edge_attr = ['compid'])
 ```
