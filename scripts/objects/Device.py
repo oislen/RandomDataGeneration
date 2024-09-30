@@ -41,7 +41,7 @@ class Device:
         self.device_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_device_hashes, lam=self.lam)
         self.device_hashes_props_dict = cnt2prop_dict(self.device_hashes_cnts_dict)
         self.device_hashes_type_dict = self.gen_device_type(list(self.device_hashes_cnts_dict.keys()))
-        self.device_hashes_shared_props_dict = gen_shared_idhashes(self.device_hashes_cnts_dict, self.prop_shared_device_hashes)
+        self.device_shared_idhash_map_dict = gen_shared_idhashes(self.device_hashes_cnts_dict, self.prop_shared_device_hashes)
 
     def gen_device_type(self, device_hashes):
         """Generates a dictionary of random device types
