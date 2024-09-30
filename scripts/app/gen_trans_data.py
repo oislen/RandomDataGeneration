@@ -45,9 +45,9 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     # add null values card hashes
     trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.nan if random.uniform(0, 1) <= cons.data_model_null_rates['card'] else x)
     # add shared hashed entities between users
-    trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: np.random.choice(a = list(ip_obj.ip_hashes_shared_props_dict.keys()), p = list(ip_obj.ip_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['ip'] and ip_obj.ip_hashes_shared_props_dict != {} else x)
-    trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: np.random.choice(a = list(card_obj.card_hashes_shared_props_dict.keys()), p = list(card_obj.card_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['card'] and card_obj.card_hashes_shared_props_dict != {} else x)
-    trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: np.random.choice(a = list(device_obj.device_hashes_shared_props_dict.keys()), p = list(device_obj.device_hashes_shared_props_dict.values()), size = 1)[0] if random.uniform(0, 1) <= cons.data_model_shared_entities_dict['device'] and device_obj.device_hashes_shared_props_dict != {} else x)
+    trans_data['ip_hash'] = trans_data['ip_hash'].apply(lambda x: ip_obj.ip_shared_idhash_map_dict[x] if x in ip_obj.ip_shared_idhash_map_dict.keys() else x)
+    trans_data['card_hash'] = trans_data['card_hash'].apply(lambda x: card_obj.card_shared_idhash_map_dict[x] if x in card_obj.card_shared_idhash_map_dict.keys() else x)
+    trans_data['device_hash'] = trans_data['device_hash'].apply(lambda x: device_obj.device_shared_idhash_map_dict[x] if x in device_obj.device_shared_idhash_map_dict.keys() else x)
     # add card and device entity types
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=device_obj.device_hashes_type_dict, idhash_key_name='device_hash', idhash_val_name='device_type')
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=card_obj.card_hashes_type_dict, idhash_key_name='card_hash', idhash_val_name='card_type')
