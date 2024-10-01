@@ -21,10 +21,16 @@ import scripts.cons as cons
 
 ```{python}
 #| label: data-load
-# load random telecom payments data
+# load user feature data
 user_feat_foath = os.path.join('..', 'data', 'report', 'user_feat_data.csv')
 feat_data = pd.read_csv(user_feat_foath)
-feat_data.head()
+
+# load network data
+comp_data_fpath=os.path.join('..', 'data', 'report', 'user_comp_data.csv')
+comp_data = pd.read_csv(comp_data_fpath)
+
+# join feature and component data
+model_data = pd.merge(left=feat_data, right=comp_data, on=['userid', 'transaction_week'], how='left').fillna(0)
 ```
 
 # Isolation Forests Model
@@ -33,19 +39,12 @@ feat_data.head()
 #| label: score-data
 # train isolation forests
 id_cols = ['userid', 'transaction_week']
-X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum']
-train_data = feat_data[X_cols].copy()
+X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum', 'n_comps', 'total_comp_size']
+train_data = model_data[X_cols].copy()
 clf = IsolationForest(random_state=0).fit(train_data)
 # score data
-score_data = feat_data[id_cols+X_cols].copy()
+score_data = model_data[id_cols+X_cols].copy()
 score_data['score'] = clf.decision_function(train_data)
-```
-
-```{python}
+# sort data by most anaomalious
 score_data = score_data.sort_values(by='score').head(10)
-```
-
-```{python}
-# count up the number of fraudulent transactions
-feat_data['E901_size'].value_counts()/feat_data['E901_size'].value_counts().sum()
 ```
