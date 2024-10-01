@@ -38,17 +38,17 @@ data['transaction_week'] = data['transaction_date'].dt.isocalendar().week
 ```{python}
 #| label: data-preparation
 
-def gen_entity_network_data(data, entity, userid = 'userid'):
+def gen_entity_network_data(data, entity, userid = 'userid', trans_week = 'transaction_week'):
     """
     """
     # extract out the unique userids and device hashes
-    user_entity_data = data[[userid, entity]].dropna().drop_duplicates()
+    user_entity_data = data[[userid, entity, trans_week]].dropna().drop_duplicates()
     # inner join users to users based on shared device hash
-    user_entity_network_data = pd.merge(left = user_entity_data, right = user_entity_data, on = entity, how = 'inner')
+    user_entity_network_data = pd.merge(left = user_entity_data, right = user_entity_data, on = [entity, trans_week], how = 'inner')
     # drop rows where userid_x = userid_y
     user_entity_network_data = user_entity_network_data.loc[user_entity_network_data[f'{userid}_x'] != user_entity_network_data[f'{userid}_y'], :]
     # set col order
-    col_order = [f'{userid}_x', f'{userid}_y', entity]
+    col_order = [f'{userid}_x', f'{userid}_y', entity, trans_week]
     user_entity_network_data = user_entity_network_data[col_order]
     return user_entity_data, user_entity_network_data
 
@@ -76,40 +76,78 @@ base_data = gen_base_network_data(entity_networks=entity_networks, user_cols=['u
 ```{python}
 #| label: network-analysis
 
-# generate graph from edgelist
-G = nx.from_pandas_edgelist(df = user_device_network_data, source = 'userid_x', target = 'userid_y', edge_attr = ['device_hash'])
+def gen_comp_data(network_data, entity_data, edge_attr):
+    """
+    """
+    # apply graphs for each week
+    trans_week_graphs = network_data.groupby(by='transaction_week').apply(lambda group: nx.from_pandas_edgelist(df = group, source = 'userid_x', target = 'userid_y', edge_attr = [edge_attr])).rename('G').reset_index()
+    # extract connected components for each week
+    trans_week_comps = trans_week_graphs.apply(lambda series: pd.DataFrame([{'transaction_week':series['transaction_week'], 'compid':i, 'userid':cc} for i, cc in enumerate(nx.connected_components(series['G']))]).explode('userid').reset_index(drop = True), axis=1).to_list()
+    trans_week_comps = pd.concat(trans_week_comps, axis=0)
+    # calculate compid sizes across each week
+    trans_week_comps_size = trans_week_comps.groupby(by = ['transaction_week', 'compid'], as_index = False).agg({'userid':'nunique'}).rename(columns={'userid':'compsize'})
+    # generate the component data
+    comp_data = pd.merge(left = entity_data, right = trans_week_comps, left_on = ['transaction_week', 'userid'], right_on = ['transaction_week', 'userid'], how = 'inner')
+    comp_data = pd.merge(left = comp_data, right = trans_week_comps_size, on = ['transaction_week', 'compid'], how = 'inner')
+    # order by comp size
+    comp_data = comp_data.sort_values(by = ['transaction_week', 'compid', 'userid', edge_attr]).reset_index(drop=True)
+    # normalise data with respect to edge attribute
+    comp_data = comp_data.rename(columns={edge_attr:'idhashes'})
+    comp_data['type'] = edge_attr
+    return comp_data
 
-# extract connect components from graph
-CC = pd.DataFrame([{'compid':i, 'userid':cc} for i, cc in enumerate(nx.connected_components(G))]).explode('userid').reset_index(drop = True)
-# calculate compid size
-comp_size = CC.groupby(by = 'compid', as_index = False).agg({'userid':'nunique'}).rename(columns={'userid':'compsize'})
-# generate the component data
-comp_data = pd.merge(left = user_device_data, right = CC, left_on = 'userid', right_on = 'userid', how = 'inner')
-comp_data = pd.merge(left = comp_data, right = comp_size, on = 'compid', how = 'inner')
-# order by comp size
-comp_data = comp_data.sort_values(by = 'compsize', ascending = False)
+# generate components for all entities
+user_device_comp_data = gen_comp_data(network_data=user_device_network_data, entity_data = user_device_data, edge_attr='device_hash')
+user_ip_comp_data = gen_comp_data(network_data=user_ip_network_data, entity_data = user_ip_data, edge_attr='ip_hash')
+user_card_comp_data = gen_comp_data(network_data=user_card_network_data, entity_data = user_card_data, edge_attr='card_hash')
+# concatenate component data together
+concat_objs = [user_device_comp_data, user_ip_comp_data, user_card_comp_data]
+user_entity_comp_data = pd.concat(objs=concat_objs, axis=0, ignore_index=True)
+```
+
+# Graph Connected Component
+
+```{python}
+#| label: connected-component
+type_filter = user_entity_comp_data['type'].isin(['device_hash', 'card_hash', 'ip_hash'])
+trans_week_filter = user_entity_comp_data['transaction_week'].isin([52])
+comp_data = user_entity_comp_data.loc[type_filter & trans_week_filter, :].copy()
 
 # generate grpah from component data
 compids = comp_data['compid'].unique()
 comp_data = comp_data.loc[comp_data['compid'].isin(compids), :]
-G = nx.from_pandas_edgelist(df = comp_data, source = 'userid', target = 'device_hash', edge_attr = ['compid'])
-```
-
-# Connect Component
-
-```{python}
-#| label: connected-component
+G = nx.from_pandas_edgelist(df = comp_data, source = 'userid', target = 'idhashes', edge_attr = ['compid', 'compsize', 'type'])
 
 # define node colours
-node_color_map = {
-**{user:'blue' for user in list(comp_data['userid'].unique())},
-**{device:'orange' for device in list(comp_data['device_hash'].unique())}
-}
-node_colors = [node_color_map[node] for node in list(G)]
+idhash_colours = comp_data.drop_duplicates(subset=['idhashes', 'type']).set_index('idhashes')['type'].replace({'device_hash':'orange', 'ip_hash':'yellow', 'card_hash':'red'})
+userid_colours = comp_data.drop_duplicates(subset=['userid']).set_index('userid').assign(colour='blue')['colour']
+colours_df = pd.concat(objs = [userid_colours, idhash_colours], axis=0).rename('colours').to_frame().reset_index().rename(columns={'index':'nodes'})
+# join color to nodes
+node_colours_df = pd.Series(list(G), name='nodes').to_frame().merge(colours_df, on='nodes', how='left')
 
 # plot network
 fig, ax = plt.subplots()
-nx.draw_networkx(G, pos = nx.spring_layout(G), with_labels = True, node_size = 30, font_size = 1, node_color=node_colors, ax=ax)
+nx.draw_networkx(G, pos = nx.spring_layout(G), with_labels = True, node_size = 30, font_size = 1, node_color=node_colours_df['colours'].to_list(), ax=ax)
 ax.set(title="Connected Component")
 plt.show()
+```
+
+# Feature Data
+
+```{python}
+# generate user network feature data
+groupby_cols = ['userid', 'transaction_week']
+agg_dict = {'type':'nunique', 'compsize':'sum'}
+rename_dict = {'type':'n_comps', 'compsize':'total_comp_size'}
+feat_data = user_entity_comp_data.groupby(by=groupby_cols, as_index=False).agg(agg_dict).rename(columns=rename_dict)
+# sort by n comps
+feat_data = feat_data.sort_values(by=['transaction_week', 'userid']).reset_index(drop=True)
+```
+
+# Write Data
+
+```{python}
+#| label: write data
+feat_data_fpath=os.path.join('..', 'data', 'report', 'user_comp_data.csv')
+feat_data.to_csv(feat_data_fpath, index=False)
 ```
