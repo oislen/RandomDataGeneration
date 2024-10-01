@@ -48,3 +48,9 @@ score_data['score'] = clf.decision_function(train_data)
 # sort data by most anaomalious
 score_data = score_data.sort_values(by='score').head(10)
 ```
+
+# Anomalious Users
+
+```{python}
+score_data.head()
+```
