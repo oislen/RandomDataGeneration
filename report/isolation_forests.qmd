@@ -72,5 +72,5 @@ anomaly_data = anomaly_data.sort_values(by=['userid', 'transaction_week']).reset
 #| label: write-data
 # save user anaomly data to disk
 score_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
-score_data.to_csv(score_data_users_fpath, index=False)
+anomaly_data.to_csv(score_data_users_fpath, index=False)
 ```
