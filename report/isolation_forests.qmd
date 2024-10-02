@@ -61,7 +61,7 @@ class IsolationForestsModel():
 # initiate isolation forest model
 model = IsolationForestsModel(n_estimators=5, random_state=None, n_jobs=2, warm_start=True)
 
-if True:
+if False:
     # write load to disk
     model_fpath = os.path.join('..', 'data', 'report', 'isolation_forests_model.pickle')
     model.write(model_fpath)
@@ -97,7 +97,7 @@ def gen_anomaly_score(group):
     group_sort['anomaly_score'] = group_sort['score'].cumsum()
     return group_sort
 
-if True:
+if False:
     # apply isolation forests model across each transaction week
     score_data = model_data.groupby(by=['transaction_week'], group_keys=False, as_index=False).apply(lambda group: apply_isolation_forests(group, model_fpath=model_fpath))
     # generate anomaly score
@@ -124,4 +124,11 @@ model = model.read(model_fpath)
 # load scored data
 score_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
 anomaly_data = pd.read_csv(score_data_users_fpath)
+eval_data = anomaly_data.loc[anomaly_data['transaction_week'] == 52, :].copy()
+# generate shap beeswarm plot
+pred = (eval_data['anomaly_score'] < 0).astype(int)
+explainer = shap.TreeExplainer(model.model)
+X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum', 'n_comps', 'total_comp_size']
+explanation = explainer(eval_data[X_cols])
+shap.plots.beeswarm(explanation)
 ```
