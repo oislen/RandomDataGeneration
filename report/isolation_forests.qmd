@@ -51,10 +51,19 @@ def apply_isolation_forests(group):
     score_group['score'] = clf.decision_function(train_group)
     return score_group
 
+def gen_anomaly_score(group):
+    """
+    """
+    group_sort = group.sort_values('transaction_week')
+    group_sort['anomaly_score'] = group_sort['score'].cumsum()
+    return group_sort
+
 # apply isolation forests model across each transaction week
 score_data = model_data.groupby(by=['transaction_week'], group_keys=False, as_index=False).apply(lambda group: apply_isolation_forests(group))
+# generate anomaly score
+anomaly_data = score_data.groupby(by=['userid'], group_keys=False, as_index=False).apply(lambda group: gen_anomaly_score(group))
 # sort data by most anaomalious
-score_data = score_data.sort_values(by='transaction_week').reset_index(drop=True)
+anomaly_data = anomaly_data.sort_values(by=['userid', 'transaction_week']).reset_index(drop=True)
 ```
 
 # Write Anomalious Data
