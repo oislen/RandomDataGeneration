@@ -104,6 +104,7 @@ if False:
     anomaly_data = score_data.groupby(by=['userid'], group_keys=False, as_index=False).apply(lambda group: gen_anomaly_score(group))
     # sort data by most anaomalious
     anomaly_data = anomaly_data.sort_values(by=['userid', 'transaction_week']).reset_index(drop=True)
+    anomaly_data['black_list_users'] = (anomaly_data['anomaly_score'] < 0).astype(int)
 ```
 
 # Write Anomalious Data
@@ -120,6 +121,7 @@ anomaly_data.to_csv(score_data_users_fpath, index=False)
 ```{python}
 # initiate and load isolation forest model
 model = IsolationForestsModel()
+model_fpath = os.path.join('..', 'data', 'report', 'isolation_forests_model.pickle')
 model = model.read(model_fpath)
 # load scored data
 score_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
