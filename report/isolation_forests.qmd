@@ -37,20 +37,31 @@ model_data = pd.merge(left=feat_data, right=comp_data, on=['userid', 'transactio
 
 ```{python}
 #| label: score-data
-# train isolation forests
-id_cols = ['userid', 'transaction_week']
-X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum', 'n_comps', 'total_comp_size']
-train_data = model_data[X_cols].copy()
-clf = IsolationForest(random_state=0).fit(train_data)
-# score data
-score_data = model_data[id_cols+X_cols].copy()
-score_data['score'] = clf.decision_function(train_data)
+def apply_isolation_forests(group):
+    """
+    """
+    # split data
+    id_cols = ['userid', 'transaction_week']
+    X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum', 'n_comps', 'total_comp_size']
+    train_group = group[X_cols]
+    score_group = group[id_cols+X_cols]
+    # train isolation forests
+    clf = IsolationForest(random_state=0).fit(train_group)
+    # score data
+    score_group['score'] = clf.decision_function(train_group)
+    return score_group
+
+# apply isolation forests model across each transaction week
+score_data = model_data.groupby(by=['transaction_week'], group_keys=False, as_index=False).apply(lambda group: apply_isolation_forests(group))
 # sort data by most anaomalious
-score_data = score_data.sort_values(by='score').head(10)
+score_data = score_data.sort_values(by='transaction_week').reset_index(drop=True)
 ```
 
-# Anomalious Users
+# Write Anomalious Data
 
 ```{python}
-score_data.head()
+#| label: write-data
+# save user anaomly data to disk
+score_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
+score_data.to_csv(score_data_users_fpath, index=False)
 ```
