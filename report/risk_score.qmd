@@ -17,32 +17,78 @@ sys.path.append(os.path.dirname(os.getcwd()))
 import scripts.cons as cons
 ```
 
-# Data Load
+# Data Prep
+
+## Data Load
 
 ```{python}
 #| label: data-load
 # load random telecom payments data
 user_feat_foath = os.path.join('..', 'data', 'report', 'user_feat_data.csv')
 feat_data = pd.read_csv(user_feat_foath)
+# load component data
+user_comp_data_fpath=os.path.join('..', 'data', 'report', 'user_comp_data.csv')
+user_comp_data = pd.read_csv(user_comp_data_fpath)
+# load customer value score
+customer_value_score_foath = os.path.join('..', 'data', 'report', 'customer_value_score.csv')
+customer_value_score = pd.read_csv(customer_value_score_foath)
+# load white list users
+white_list_users_fpath=os.path.join('..', 'data', 'report', 'white_list_user_data.csv')
+white_list_users = pd.read_csv(white_list_users_fpath)
+# load anomaly scored data
+anomaly_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
+usecols =['userid', 'transaction_week', 'score', 'anomaly_score', 'black_list_users']
+anomaly_data = pd.read_csv(anomaly_data_users_fpath, usecols=usecols)
+```
+
+## Base Data
+
+```{python}
+base_data = pd.DataFrame(columns=['userid', 'transaction_week'])
+merge_data = [feat_data, user_comp_data, customer_value_score, white_list_users, anomaly_data]
+for data in merge_data:
+    base_data = base_data.merge(data, on=['userid', 'transaction_week'], how='outer')
+# fill zero for missing values
+base_data = base_data.fillna(0)
+```
+
+## Model Data
+
+```{python}
+# extract out black list and white list users
+model_data = base_data.loc[(base_data['white_list_users'] == 1) | (base_data['black_list_users'] == 1), :].copy()
+pd.crosstab(index=model_data['white_list_users'], columns=model_data['black_list_users'])
+```
+
+## Data Split
+
+```{python}
 # split into train, valid and test sets
-train_data = feat_data.loc[feat_data['transaction_week'].isin(range(0, 40)), :]
-valid_data = feat_data.loc[feat_data['transaction_week'].isin(range(40, 46)), :]
-test_data = feat_data.loc[feat_data['transaction_week'].isin(range(46, 53)), :]
+train_data = model_data.loc[model_data['transaction_week'].isin(range(0, 40)), :].copy()
+valid_data = model_data.loc[model_data['transaction_week'].isin(range(40, 46)), :].copy()
+test_data = model_data.loc[model_data['transaction_week'].isin(range(46, 53)), :].copy()
 ```
 
 # Random Forests Model
+
+## Train
 
 ```{python}
 #| label: score-data
 # train isolation forests
 id_cols = ['userid', 'transaction_week']
-X_cols = ['device_hash_size', 'card_hash_size', 'ip_hash_size', 'pending_size]
-y_col = 'E901_size'
+X_cols = ['device_hash_size', 'card_hash_size', 'ip_hash_size', 'successful_size', 'E900_size', 'E901_size', 'E902_size', 'E903_size', 'E904_size', 'n_comps', 'total_comp_size', 'customer_value_score', 'score']
+y_col = 'black_list_users'
 X_data = train_data[X_cols]
 y_data = train_data[y_col]
-rgr = RandomForestRegressor(max_depth=2, random_state=0)
-# score data
-score_data = feat_data[id_cols+X_cols].copy()
-score_data['score'] = clf.decision_function(train_data)
-score_data = score_data.sort_values(by='score')
+clf = RandomForestClassifier(max_depth=2, random_state=0)
+clf.fit(X_data, y_data)
+```
+
+## Evaluate
+
+```{python}
+# make valid and test predictions
+valid_data['predict_proba'] = clf.predict_proba(valid_data[X_cols])[:, 1]
+valid_data.sort_values(by=['predict_proba'])
 ```
