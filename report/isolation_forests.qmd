@@ -10,6 +10,7 @@ import os
 import sys
 from datetime import datetime
 from sklearn.ensemble import IsolationForest
+import pickle
 
 sys.path.append(os.getcwd())
 sys.path.append(os.path.dirname(os.getcwd()))
@@ -31,24 +32,62 @@ comp_data = pd.read_csv(comp_data_fpath)
 
 # join feature and component data
 model_data = pd.merge(left=feat_data, right=comp_data, on=['userid', 'transaction_week'], how='left').fillna(0)
+# order model date by transaction week and userids
+model_data = model_data.sort_values(by=['transaction_week', 'userid']).reset_index(drop=True)
 ```
 
 # Isolation Forests Model
 
 ```{python}
+
+class IsolationForestsModel():
+    def __init__(self, n_estimators=20, random_state=None, warm_start=False, n_jobs=None):
+        self.model = IsolationForest(n_estimators=n_estimators, random_state=random_state, warm_start=warm_start)
+        self.n_estimators = n_estimators
+    def fit(self, X):
+        if self.model.warm_start:
+            self.model.n_estimators += self.n_estimators
+        self.model = self.model.fit(X)
+        return self
+    def decision_function(self, X):
+        return self.model.decision_function(X)
+    def write(self, model_fpath):
+        with open(model_fpath,'wb') as f:
+            pickle.dump(self,f)
+    def read(self, model_fpath):
+        with open(model_fpath, 'rb') as f:
+            return pickle.load(f)
+
+# initiate isolation forest model
+model = IsolationForestsModel(n_estimators=5, random_state=None, n_jobs=2, warm_start=True)
+
+if True:
+    # write load to disk
+    model_fpath = os.path.join('..', 'data', 'report', 'isolation_forests_model.pickle')
+    model.write(model_fpath)
+```
+
+# Score Data
+
+```{python}
 #| label: score-data
-def apply_isolation_forests(group):
+
+def apply_isolation_forests(group, model_fpath):
     """
     """
+    # initiate and load isolation forest model
+    model = IsolationForestsModel()
+    model = model.read(model_fpath)
     # split data
     id_cols = ['userid', 'transaction_week']
     X_cols = ['E901_size', 'E901_sum', 'E902_size', 'E902_sum', 'n_comps', 'total_comp_size']
     train_group = group[X_cols]
     score_group = group[id_cols+X_cols]
-    # train isolation forests
-    clf = IsolationForest(random_state=0).fit(train_group)
-    # score data
-    score_group['score'] = clf.decision_function(train_group)
+    # train isolation forests and score data
+    model = model.fit(train_group)
+    score_group['score'] = model.decision_function(train_group)
+    # write model to disk
+    model.write(model_fpath)
     return score_group
 
 def gen_anomaly_score(group):
@@ -58,12 +97,13 @@ def gen_anomaly_score(group):
     group_sort['anomaly_score'] = group_sort['score'].cumsum()
     return group_sort
 
-# apply isolation forests model across each transaction week
-score_data = model_data.groupby(by=['transaction_week'], group_keys=False, as_index=False).apply(lambda group: apply_isolation_forests(group))
-# generate anomaly score
-anomaly_data = score_data.groupby(by=['userid'], group_keys=False, as_index=False).apply(lambda group: gen_anomaly_score(group))
-# sort data by most anaomalious
-anomaly_data = anomaly_data.sort_values(by=['userid', 'transaction_week']).reset_index(drop=True)
+if True:
+    # apply isolation forests model across each transaction week
+    score_data = model_data.groupby(by=['transaction_week'], group_keys=False, as_index=False).apply(lambda group: apply_isolation_forests(group, model_fpath=model_fpath))
+    # generate anomaly score
+    anomaly_data = score_data.groupby(by=['userid'], group_keys=False, as_index=False).apply(lambda group: gen_anomaly_score(group))
+    # sort data by most anaomalious
+    anomaly_data = anomaly_data.sort_values(by=['userid', 'transaction_week']).reset_index(drop=True)
 ```
 
 # Write Anomalious Data
@@ -73,4 +113,15 @@ anomaly_data = anomaly_data.sort_values(by=['userid', 'transaction_week']).reset
 # save user anaomly data to disk
 score_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
 anomaly_data.to_csv(score_data_users_fpath, index=False)
+```
+
+# Evaluate Model
+
+```{python}
+# initiate and load isolation forest model
+model = IsolationForestsModel()
+model = model.read(model_fpath)
+# load scored data
+score_data_users_fpath=os.path.join('..', 'data', 'report', 'user_anomaly_data.csv')
+anomaly_data = pd.read_csv(score_data_users_fpath)
 ```
