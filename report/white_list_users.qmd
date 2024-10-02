@@ -35,11 +35,22 @@ Identify the high value users as the customers with a customer value score in th
 
 ```{python}
 #| label: high-value-users
-# create the high value user identifier
-sub_cols = ['userid', 'transaction_week', 'successful_size',  'successful_sum', 'E901_size', 'E901_sum', 'customer_value_score_cumsum']
-high_value_data = base_data.loc[base_data['transaction_week'] == 52, sub_cols].copy()
-high_value_data['customer_value_score_cumsum_pct'] = high_value_data['customer_value_score_cumsum'].rank(method='average', ascending=True, pct=True, axis=0)
-high_value_data['high_value_user'] = (high_value_data['customer_value_score_cumsum_pct'] >= 0.9).astype(int)
+
+def gen_white_list(group):
+    # create the high value user identifier
+    sub_cols = ['userid', 'transaction_week', 'successful_size',  'successful_sum', 'E901_size', 'E901_sum', 'customer_value_score_cumsum']
+    high_value_data = group.loc[:, sub_cols].copy()
+    high_value_data['customer_value_score_cumsum_pct'] = high_value_data['customer_value_score_cumsum'].rank(method='average', ascending=True, pct=True, axis=0)
+    high_value_data['high_value_user'] = (high_value_data['customer_value_score_cumsum_pct'] >= 0.9).astype(int)
+    return high_value_data
+
+# identify white list users for each week
+high_value_data = base_data.groupby(by='transaction_week', group_keys=False, as_index=False).apply(lambda group: gen_white_list(group))
+```
+
+# Statistics
+
+```{python}
 # sum across the 
 groupby_col=['high_value_user']
 agg_dict={'successful_size':'sum', 'successful_sum':'sum', 'customer_value_score_cumsum':'mean', 'customer_value_score_cumsum_pct':'mean'}
@@ -58,7 +69,10 @@ high_value_data_agg.head()
 # identify any users with a previous suspected fraud transaction error
 high_value_data['hasE901'] = (high_value_data['E901_size'] > 1).astype(int)
 # identiy any high value users with no suspected fraud transaction errors
-white_list_users = high_value_data.loc[(high_value_data['hasE901'] == 0) & (high_value_data['high_value_user'] == 1), :]
+high_value_data['white_list_users'] = ((high_value_data['hasE901'] == 0) & (high_value_data['high_value_user'] == 1)).astype(int)
+# subset out white list users
+sub_cols = ['userid', 'customer_value_score_cumsum_pct', 'transaction_week', 'high_value_user', 'hasE901', 'white_list_users']
+white_list_users = high_value_data[sub_cols]
 ```
 
 # Write White List Users
