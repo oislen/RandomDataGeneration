@@ -27,6 +27,11 @@ unittest_n_entities = 4
 unittest_n_device_types = 10
 unittest_gen_test_dfs = False
 unittest_debug_mode = True
+unittest_n_users = 100
+unittest_registration_start_date = '2020-01-01'
+unittest_registration_end_date = '2020-12-31'
+unittest_transaction_start_date = '2021-01-01'
+unittest_transaction_end_date = '2021-12-31'
 
 # set data model constants
 data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
