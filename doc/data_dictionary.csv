@@ -18,6 +18,6 @@ transaction_hash,String,FALSE,ced72c91695a15c6,The hashed id of the transaction.
 transaction_date,Date,FALSE,2021-01-20,The date of the transaction.
 transaction_amount,Float,FALSE,1.44,The transaction amount.
 transaction_payment_method,String,TRUE,card,"The payment method used to complete the transaction; one of ['card', 'wallet', 'points']"
-card_payment_channel,String,TRUE,paypal,"The payment channel the user used to complete the transaction; one of ['paypal', 'adyen', 'worldpay', 'docomo']."
+card_payment_channel,String,TRUE,paypal,"The payment channel the user used to complete the transaction; one of ['paypal', 'adyen', 'appstore', 'worldpay', 'docomo']."
 transaction_status,String,FALSE,successful,"The status of the transaction; one of ['successful', 'pending',  'rejected']."
 transaction_error_code,String,TRUE,E902:AuthenicationFailure,"The associated error code if the transaction was rejected; one of ['E900:ConnectionTimeout', 'E901:SuspectedFraud', 'E902:AuthenicationFailure', 'E903:UserCancelled', 'E904:InsufficientFunds']."
