@@ -6,13 +6,13 @@ registration_date,Date,FALSE,2021-01-13,The date the user registered on.
 registration_country_code,String,FALSE,FR,The user registered country code of residence.
 uid,Integer,FALSE,2127333684657263,A unique incremental id for the user.
 email_domain,String,FALSE,gmail.com,The domain of the registered user email address.
-device_hash,String,TRUE,5b386290c91e553e,The hashed device id the user used in the transaction.
-device_type,String,TRUE,DXD-171,The device type of the hashed device id the user used in the transaction.
+device_hash,String,FALSE,5b386290c91e553e,The hashed device id the user used in the transaction.
+device_type,String,FALSE,Samsung Galaxy A32,The device type of the hashed device id the user used in the transaction.
 card_hash,String,TRUE,e00643bdd845feba,The hashed card id the user used in the transaction.
 card_type,String,TRUE,visa,The card type of the hashed card id the user used in the transaction.
 card_country_code,String,TRUE,ES,The card country code of the hashed card id the user used in the transaction.
-ip_hash,String,TRUE,1775d41b3788a941,The hashed ip address the user used in the transaction.
-ip_country_code,String,TRUE,PL,The ip address country code of the hashed ip address the user used in the transaction.
+ip_hash,String,FALSE,1775d41b3788a941,The hashed ip address the user used in the transaction.
+ip_country_code,String,FALSE,PL,The ip address country code of the hashed ip address the user used in the transaction.
 application_hash,String,FALSE,a726fea0a21cfb47,The hashed application id the transaction relates to.
 transaction_hash,String,FALSE,ced72c91695a15c6,The hashed id of the transaction.
 transaction_date,Date,FALSE,2021-01-20,The date of the transaction.
