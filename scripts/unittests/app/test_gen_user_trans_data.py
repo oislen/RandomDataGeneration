@@ -17,39 +17,31 @@ from objects.Device import Device
 from objects.Ip import Ip
 from objects.Transaction import Transaction
 from objects.User import User
+from utilities.gen_random_entity_counts import gen_random_entity_counts
 
 # initalise programme parameters
-programmeparams = ProgrammeParams(
-    factor=cons.programme_parameters_factor,
-    randomseed=cons.programme_parameters_randomseed,
-    debug_mode=cons.unittest_debug_mode,
-)
+programmeparams = ProgrammeParams(n_users=cons.unittest_n_users, random_seed=cons.unittest_seed)
 
 # set random seed
-random.seed(programmeparams.randomseed)
-np.random.seed(seed=programmeparams.randomseed)
+random.seed(programmeparams.random_seed)
+np.random.seed(seed=programmeparams.random_seed)
 
-# generate random data model objects
+# generate random users
+user_obj = User(n_user_ids=programmeparams.n_users, start_date=programmeparams.registration_start_date, end_date=programmeparams.registration_end_date)
+
+# generate random entity counts for each user
+random_entity_counts = gen_random_entity_counts(user_obj)
+
+# generate random entity values
+device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum())
+card_obj = Card(n_card_hashes=random_entity_counts['n_cards'].sum())
+ip_obj = Ip(n_ip_hashes=random_entity_counts['n_ips'].sum())
+transaction_obj = Transaction(n_transaction_hashes=random_entity_counts['n_transactions'].sum(), start_date=programmeparams.transaction_start_date, end_date=programmeparams.transaction_end_date)
 application_obj = Application(n_application_hashes=programmeparams.n_applications)
-card_obj = Card(n_card_hashes=programmeparams.n_cards)
-device_obj = Device(
-    n_device_hashes=programmeparams.n_devices,
-    n_device_types=programmeparams.n_device_types,
-)
-ip_obj = Ip(n_ip_hashes=programmeparams.n_ips)
-transaction_obj = Transaction(
-    n_transaction_hashes=programmeparams.n_transactions,
-    start_date=programmeparams.transaction_start_date,
-    end_date=programmeparams.transaction_end_date,
-)
-user_obj = User(
-    n_user_ids=programmeparams.n_users,
-    start_date=programmeparams.registration_start_date,
-    end_date=programmeparams.registration_end_date,
-)
 
 # generate expected user and transaction level data
 obs_user_data = gen_user_data(
+    random_entity_counts=random_entity_counts,
     user_obj=user_obj,
     device_obj=device_obj,
     card_obj=card_obj,
@@ -76,8 +68,7 @@ if cons.unittest_gen_test_dfs:
 exp_user_data = pd.read_pickle(cons.fpath_unittest_user_data)
 exp_trans_data = pd.read_pickle(cons.fpath_unittest_transaction_data)
 
-
-class Test_gen_user_data(unittest.TestCase):
+class Test_gen_user_trans_data(unittest.TestCase):
     """"""
 
     def setUp(self):
@@ -96,32 +87,18 @@ class Test_gen_user_data(unittest.TestCase):
 
     def test_dtypes(self):
         self.assertTrue((self.obs_user_data.dtypes == self.exp_user_data.dtypes).all())
-        self.assertTrue(
-            (self.obs_trans_data.dtypes == self.exp_trans_data.dtypes).all()
-        )
+        self.assertTrue((self.obs_trans_data.dtypes == self.exp_trans_data.dtypes).all())
 
     def test_isnull(self):
-        self.assertTrue(
-            (self.obs_user_data.isnull() == self.exp_user_data.isnull()).all().all()
-        )
-        self.assertTrue(
-            (self.obs_trans_data.isnull() == self.exp_trans_data.isnull()).all().all()
-        )
+        self.assertTrue((self.obs_user_data.isnull() == self.exp_user_data.isnull()).all().all())
+        self.assertTrue((self.obs_trans_data.isnull() == self.exp_trans_data.isnull()).all().all())
 
     def test_notnull(self):
-        self.assertTrue(
-            (self.obs_user_data.notnull() == self.exp_user_data.notnull()).all().all()
-        )
-        self.assertTrue(
-            (self.obs_trans_data.notnull() == self.exp_trans_data.notnull()).all().all()
-        )
+        self.assertTrue((self.obs_user_data.notnull() == self.exp_user_data.notnull()).all().all())
+        self.assertTrue((self.obs_trans_data.notnull() == self.exp_trans_data.notnull()).all().all())
 
     def test_object(self):
-        self.assertTrue(
-            (self.obs_trans_data.fillna(-999.0) == self.exp_trans_data.fillna(-999.0))
-            .all()
-            .all()
-        )
+        self.assertTrue((self.obs_trans_data.fillna(-999.0) == self.exp_trans_data.fillna(-999.0)).all().all())
 
 
 if __name__ == "__main__":

@@ -12,51 +12,51 @@ from utilities.align_country_codes import align_country_codes
 
 random.seed(cons.unittest_seed)
 
-input_data_df = pd.DataFrame(
+input_data_df = pd.DataFrame.from_records(
     [
         {
-            "registration_country_code": 353,
-            "ip_country_code": 42.0,
-            "card_country_code": 42.0,
+            "registration_country_code_alpha": 353,
+            "ip_country_code_alpha": 42.0,
+            "card_country_code_alpha": 42.0,
         },
         {
-            "registration_country_code": 353,
-            "ip_country_code": 42.0,
-            "card_country_code": np.nan,
+            "registration_country_code_alpha": 353,
+            "ip_country_code_alpha": 42.0,
+            "card_country_code_alpha": np.nan,
         },
         {
-            "registration_country_code": 42,
-            "ip_country_code": 42.0,
-            "card_country_code": 42,
+            "registration_country_code_alpha": 42,
+            "ip_country_code_alpha": 42.0,
+            "card_country_code_alpha": 42,
         },
         {
-            "registration_country_code": 42,
-            "ip_country_code": np.nan,
-            "card_country_code": np.nan,
+            "registration_country_code_alpha": 42,
+            "ip_country_code_alpha": np.nan,
+            "card_country_code_alpha": np.nan,
         },
     ]
 )
-exp_data_df = pd.DataFrame(
+exp_data_df = pd.DataFrame.from_records(
     [
         {
-            "registration_country_code": 353.0,
-            "ip_country_code": 353,
-            "card_country_code": 353,
+            "registration_country_code_alpha": 353.0,
+            "ip_country_code_alpha": 353,
+            "card_country_code_alpha": 353,
         },
         {
-            "registration_country_code": 353,
-            "ip_country_code": 353.0,
-            "card_country_code": np.nan,
+            "registration_country_code_alpha": 353,
+            "ip_country_code_alpha": 353.0,
+            "card_country_code_alpha": np.nan,
         },
         {
-            "registration_country_code": 42,
-            "ip_country_code": 42.0,
-            "card_country_code": 42.0,
+            "registration_country_code_alpha": 42,
+            "ip_country_code_alpha": 42.0,
+            "card_country_code_alpha": 42.0,
         },
         {
-            "registration_country_code": 42,
-            "ip_country_code": np.nan,
-            "card_country_code": np.nan,
+            "registration_country_code_alpha": 42,
+            "ip_country_code_alpha": np.nan,
+            "card_country_code_alpha": np.nan,
         },
     ]
 )
