@@ -2,7 +2,7 @@ import pandas as pd
 import cons
 
 
-def gen_trans_rejection_rates(trans_data):
+def gen_trans_rejection_rates(trans_data, fpath_countrieseurope=cons.fpath_countrieseurope, fpath_countrycrimeindex=cons.fpath_countrycrimeindex):
     """Generates the transaction rejection rates based on features within the transaction level telecom payments data
 
     Parameters
@@ -19,8 +19,8 @@ def gen_trans_rejection_rates(trans_data):
     rejection_rates_dict = {}
 
     # generate country code rejection based rates
-    countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols=["ISO numeric", "ISO alpha 2"])
-    countrycrimeindex = pd.read_csv(cons.fpath_countrycrimeindex, usecols=["country_code", "crime_index"])
+    countrieseurope = pd.read_csv(fpath_countrieseurope, usecols=["ISO numeric", "ISO alpha 2"])
+    countrycrimeindex = pd.read_csv(fpath_countrycrimeindex, usecols=["country_code", "crime_index"])
     europecountrycrimeindex = pd.merge(left=countrieseurope, right=countrycrimeindex, left_on="ISO alpha 2", right_on="country_code", how="left",)
     europecountrycrimeindex["trans_reject_rate"] = europecountrycrimeindex["crime_index"].divide(europecountrycrimeindex["crime_index"].sum())
     country_code_trans_reject_rate_dict = europecountrycrimeindex.set_index("ISO alpha 2")["trans_reject_rate"].to_dict()
@@ -43,7 +43,7 @@ def gen_trans_rejection_rates(trans_data):
     rejection_rates_dict["shared_ips_reject_rate_dict"] = shared_ips_reject_rate_dict
     rejection_rates_dict["shared_cards_reject_rate_dict"] = shared_cards_reject_rate_dict
 
-    # generate occurence based rejection rates
+    # generate occurrence based rejection rates
     count_devices = (trans_data.groupby(by="userid").agg({"device_hash": "nunique"}).sort_values(by="device_hash"))
     count_ips = (trans_data.groupby(by="userid").agg({"ip_hash": "nunique"}).sort_values(by="ip_hash"))
     count_cards = (trans_data.groupby(by="userid").agg({"card_hash": "nunique"}).sort_values(by="card_hash"))
