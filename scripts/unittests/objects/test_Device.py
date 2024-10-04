@@ -35,7 +35,9 @@ exp_lam = cons.data_model_poisson_params["device"]["lambda"]
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)
-device_object = Device(exp_n_device_hashes)
+
+fpath_smartphones = '.' + cons.fpath_smartphones.split(cons.fpath_repo_dir)[1]
+device_object = Device(exp_n_device_hashes, fpath_smartphones=fpath_smartphones)
 
 obs_device_hashes_cnts_dict = device_object.device_hashes_cnts_dict
 obs_device_hashes_props_dict = device_object.device_hashes_props_dict
