@@ -12,8 +12,8 @@ np.random.seed(cons.unittest_seed)
 
 cnt_data = {"a": 1, "b": 2, "c": 3, "d": 4}
 exp_prop_dict = {"a": 276, "b": 756, "c": 642, "d": 826}
-obs_prop_dict = gen_country_codes_dict(cnt_data)
-
+fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
+obs_prop_dict = gen_country_codes_dict(cnt_data, fpath_countrieseurope=fpath_countrieseurope)
 
 class Test_gen_country_codes_dict(unittest.TestCase):
     """"""
