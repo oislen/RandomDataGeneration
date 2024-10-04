@@ -28,3 +28,4 @@ jobs:
     - name: Test with unittest
       run: |
         python -m unittest discover ./scripts/unittests/utilities
+        python -m unittest discover ./scripts/unittests/objects
