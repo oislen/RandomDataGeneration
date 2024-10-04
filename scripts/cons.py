@@ -3,17 +3,18 @@ import platform
 
 # set file paths and locations with repo
 fpath_root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
-fpath_randomtelecomtransdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomPayments.csv')
-fpath_randomtelecomusersdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data','RandomTelecomUsers.parquet')
-fpath_arch_randomtelecomdata = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'arch', 'RandomTelecomPayments.csv')
-fpath_domain_email = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'email-domains.csv')
-fpath_countrycrimeindex = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'country_crime_index.csv')
-fpath_countrieseurope = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'Countries-Europe.csv')
-fpath_firstnames = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'first-names.txt')
-fpath_lastnames = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'last-names.txt')
-fpath_smartphones = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'scripts', 'ref', 'smartphones.csv')
-fpath_unittest_user_data = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'unittest', 'user_data.pickle')
-fpath_unittest_transaction_data = os.path.join(fpath_root_dir, 'RandomTelecomPayments', 'data', 'unittest', 'transaction_data.pickle')
+fpath_repo_dir = os.path.join(fpath_root_dir, 'RandomTelecomPayments')
+fpath_randomtelecomtransdata = os.path.join(fpath_repo_dir, 'data','RandomTelecomPayments.csv')
+fpath_randomtelecomusersdata = os.path.join(fpath_repo_dir, 'data','RandomTelecomUsers.parquet')
+fpath_arch_randomtelecomdata = os.path.join(fpath_repo_dir, 'data', 'arch', 'RandomTelecomPayments.csv')
+fpath_domain_email = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'email-domains.csv')
+fpath_countrycrimeindex = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'country_crime_index.csv')
+fpath_countrieseurope = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'Countries-Europe.csv')
+fpath_firstnames = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'first-names.txt')
+fpath_lastnames = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'last-names.txt')
+fpath_smartphones = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'smartphones.csv')
+fpath_unittest_user_data = os.path.join(fpath_repo_dir, 'data', 'unittest', 'user_data.pickle')
+fpath_unittest_transaction_data = os.path.join(fpath_repo_dir, 'data', 'unittest', 'transaction_data.pickle')
 
 # set url links to files available online
 url_european_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries-Europe.csv'
