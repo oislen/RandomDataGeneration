@@ -13,6 +13,8 @@ class Card:
     ----------
     n_card_hashes : int
         The number of card hashes to generate
+    fpath_countrieseurope : str
+        The file path to the european countries reference file
 
     Attributes
     ----------
@@ -36,8 +38,9 @@ class Card:
         The shared card hash proportions dictionary
     """
 
-    def __init__(self, n_card_hashes):
+    def __init__(self, n_card_hashes, fpath_countrieseurope=cons.fpath_countrieseurope):
         self.n_card_hashes = n_card_hashes
+        self.fpath_countrieseurope = fpath_countrieseurope
         self.card_types_dict = cons.data_model_card_types_dict
         self.lam = cons.data_model_poisson_params["card"]["lambda"]
         self.power = cons.data_model_poisson_params["card"]["power"]
@@ -45,7 +48,7 @@ class Card:
         self.card_hashes_cnts_dict = gen_idhash_cnt_dict(idhash_type="hash", n=self.n_card_hashes, lam=self.lam)
         self.card_hashes_props_dict = cnt2prop_dict(self.card_hashes_cnts_dict)
         self.card_hashes_type_dict = self.gen_card_type(list(self.card_hashes_cnts_dict.keys()), self.card_types_dict)
-        self.card_hashes_country_code_dict = gen_country_codes_dict(self.card_hashes_cnts_dict)
+        self.card_hashes_country_code_dict = gen_country_codes_dict(self.card_hashes_cnts_dict, self.fpath_countrieseurope)
         self.card_shared_idhash_map_dict = gen_shared_idhashes(self.card_hashes_cnts_dict, self.prop_shared_card_hashes)
 
     def gen_card_type(self, card_hashes, card_types_dict):

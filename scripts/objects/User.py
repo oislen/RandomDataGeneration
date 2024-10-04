@@ -45,27 +45,31 @@ class User:
         The user id dates dictionary
     """
 
-    def __init__(self, n_user_ids, start_date, end_date):
+    def __init__(self, n_user_ids, start_date, end_date, fpath_firstnames=cons.fpath_firstnames, fpath_lastnames=cons.fpath_lastnames, fpath_countrieseurope=cons.fpath_countrieseurope, fpath_domain_email=cons.fpath_domain_email):
         self.n_user_ids = n_user_ids
         self.start_date = start_date
         self.end_date = end_date
+        self.fpath_firstnames = fpath_firstnames
+        self.fpath_lastnames = fpath_lastnames
+        self.fpath_countrieseurope = fpath_countrieseurope
+        self.fpath_domain_email = fpath_domain_email
         self.lam = cons.data_model_poisson_params["user"]["lambda"]
         self.power = cons.data_model_poisson_params["user"]["power"]
         self.user_ids_cnts_dict = gen_idhash_cnt_dict(idhash_type="id", n=self.n_user_ids, lam=self.lam)
         self.user_ids_props_dict = cnt2prop_dict(self.user_ids_cnts_dict)
-        self.user_ids_firstname_dict = self.gen_user_firstname(cons)
-        self.user_ids_lastname_dict = self.gen_user_lastname(cons)
-        self.user_ids_country_code_dict = gen_country_codes_dict(self.user_ids_cnts_dict)
-        self.user_ids_email_domain_dict = self.gen_user_email_domain(cons)
+        self.user_ids_firstname_dict = self.gen_user_firstname(self.fpath_firstnames)
+        self.user_ids_lastname_dict = self.gen_user_lastname(self.fpath_lastnames)
+        self.user_ids_country_code_dict = gen_country_codes_dict(self.user_ids_cnts_dict, self.fpath_countrieseurope)
+        self.user_ids_email_domain_dict = self.gen_user_email_domain(self.fpath_domain_email)
         self.user_ids_dates_dict = gen_dates_dict(self.user_ids_cnts_dict, start_date=self.start_date, end_date=self.end_date)
 
-    def gen_user_firstname(self, cons):
+    def gen_user_firstname(self, fpath_firstnames):
         """Generates a dictionary of random user id first names
 
         Parameters
         ----------
-        cons : list
-            The programme cons.py module
+        fpath_firstnames : str
+            The file path to the first names reference file
 
         Returns
         -------
@@ -73,7 +77,7 @@ class User:
             A dictionary of user id first names
         """
         # load in list of first names
-        first_name_data = pd.read_csv(cons.fpath_firstnames, header=None)
+        first_name_data = pd.read_csv(fpath_firstnames, header=None)
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly sample the first name list
@@ -82,13 +86,13 @@ class User:
         user_ids_firstname_dict = dict(zip(user_ids_list, user_firstname_list))
         return user_ids_firstname_dict
 
-    def gen_user_lastname(self, cons):
+    def gen_user_lastname(self, fpath_lastnames):
         """Generates a dictionary of random user id last names
 
         Parameters
         ----------
-        cons : list
-            The programme cons.py module
+        fpath_lastnames : str
+            The file path to the last names reference file
 
         Returns
         -------
@@ -96,7 +100,7 @@ class User:
             A dictionary of user id last names
         """
         # load in list of last names
-        last_name_data = pd.read_csv(cons.fpath_lastnames, header=None)
+        last_name_data = pd.read_csv(fpath_lastnames, header=None)
         # extract the user ids
         user_ids_list = list(self.user_ids_cnts_dict.keys())
         # randomly sample the last name list
@@ -105,13 +109,13 @@ class User:
         user_ids_lastname_dict = dict(zip(user_ids_list, user_lastname_list))
         return user_ids_lastname_dict
 
-    def gen_user_email_domain(self, cons):
+    def gen_user_email_domain(self, fpath_domain_email):
         """Generates a dictionary of random user id email domains
 
         Parameters
         ----------
-        cons : list
-            The programme cons.py module
+        fpath_domain_email : str
+            The file path to the email domains reference file
 
         Returns
         -------
@@ -119,7 +123,7 @@ class User:
             A dictionary of user id email domains
         """
         # load domain names data
-        email_domain_data = pd.read_csv(cons.fpath_domain_email, index_col=0)
+        email_domain_data = pd.read_csv(fpath_domain_email, index_col=0)
         # calculate the proportion of email domains
         email_domain_data["proportion"] = email_domain_data["proportion"].divide(email_domain_data["proportion"].sum())
         # convert email domain proportions to a dictionary

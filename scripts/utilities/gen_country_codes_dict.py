@@ -11,6 +11,8 @@ def gen_country_codes_dict(idhashes_cnts_dict, fpath_countrieseurope = cons.fpat
     ----------
     idhashes_cnts_dict : dict
         A dictionary of idhashes counts
+    fpath_countrieseurope : str
+        The file path to the european countries reference file
 
     Returns
     -------
