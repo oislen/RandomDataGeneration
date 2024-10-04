@@ -2,7 +2,7 @@ import pandas as pd
 import cons
 
 
-def gen_trans_rejection_rates(trans_data, fpath_countrieseurope=cons.fpath_countrieseurope, fpath_countrycrimeindex=cons.fpath_countrycrimeindex):
+def gen_trans_rejection_rates(trans_data, fpath_countrieseurope=cons.fpath_countrieseurope, fpath_countrycrimeindex=cons.fpath_countrycrimeindex, fpath_domain_email=cons.fpath_domain_email):
     """Generates the transaction rejection rates based on features within the transaction level telecom payments data
 
     Parameters
@@ -27,7 +27,7 @@ def gen_trans_rejection_rates(trans_data, fpath_countrieseurope=cons.fpath_count
     rejection_rates_dict["country_code_trans_reject_rate_dict"] = country_code_trans_reject_rate_dict
 
     # generate domain email rejection based rates
-    domain_email = pd.read_csv(cons.fpath_domain_email, usecols=["domain", "proportion"])
+    domain_email = pd.read_csv(fpath_domain_email, usecols=["domain", "proportion"])
     domain_email["trans_reject_rate"] = (1 - domain_email["proportion"]) / (1 - domain_email["proportion"]).sum()
     domain_email_trans_reject_rate_dict = domain_email.set_index("domain")["trans_reject_rate"].to_dict()
     rejection_rates_dict["domain_email_trans_reject_rate_dict"] = domain_email_trans_reject_rate_dict

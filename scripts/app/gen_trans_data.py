@@ -91,7 +91,7 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='ip_country_code_alpha', idhash_val_name='ip_country_code')
 
     # generate transaction status and error code
-    rejection_rates_dict = gen_trans_rejection_rates(trans_data=trans_data, fpath_countrieseurope=user_obj.fpath_countrieseurope, fpath_countrycrimeindex=fpath_countrycrimeindex)
+    rejection_rates_dict = gen_trans_rejection_rates(trans_data=trans_data, fpath_countrieseurope=user_obj.fpath_countrieseurope, fpath_countrycrimeindex=fpath_countrycrimeindex, fpath_domain_email=user_obj.fpath_domain_email)
     trans_data[['transaction_status', 'transaction_error_code']] = trans_data.apply(lambda series: gen_trans_status(series = series, rejection_rates_dict = rejection_rates_dict), result_type = 'expand', axis = 1)
 
     # order columns and sort rows by transaction date
