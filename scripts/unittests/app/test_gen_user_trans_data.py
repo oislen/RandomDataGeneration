@@ -33,6 +33,8 @@ fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_d
 fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
 fpath_smartphones = '.' + cons.fpath_smartphones.split(cons.fpath_repo_dir)[1]
 fpath_countrycrimeindex = '.' + cons.fpath_countrycrimeindex.split(cons.fpath_repo_dir)[1]
+fpath_unittest_user_data = '.' + cons.fpath_unittest_user_data.split(cons.fpath_repo_dir)[1]
+fpath_unittest_transaction_data = '.' + cons.fpath_unittest_transaction_data.split(cons.fpath_repo_dir)[1]
 
 # generate random users
 user_obj = User(
@@ -78,12 +80,12 @@ obs_trans_data = gen_trans_data(
 
 # if writing observed data to unittest data directory
 if cons.unittest_gen_test_dfs:
-    obs_user_data.to_pickle(cons.fpath_unittest_user_data)
-    obs_trans_data.to_pickle(cons.fpath_unittest_transaction_data)
+    obs_user_data.to_pickle(fpath_unittest_user_data)
+    obs_trans_data.to_pickle(fpath_unittest_transaction_data)
 
 # load in expected user level data
-exp_user_data = pd.read_pickle(cons.fpath_unittest_user_data)
-exp_trans_data = pd.read_pickle(cons.fpath_unittest_transaction_data)
+exp_user_data = pd.read_pickle(fpath_unittest_user_data)
+exp_trans_data = pd.read_pickle(fpath_unittest_transaction_data)
 
 class Test_gen_user_trans_data(unittest.TestCase):
     """"""
