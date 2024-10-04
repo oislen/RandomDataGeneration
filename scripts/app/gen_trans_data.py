@@ -85,7 +85,7 @@ def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transactio
         dates_series = pd.date_range(start=datetime.strptime(transaction_obj.start_date, "%Y-%m-%d"), end=datetime.strptime(transaction_obj.end_date, "%Y-%m-%d") - pd.Timedelta(days=1), freq="d")
         trans_data[date_columns] = trans_data[date_columns].apply(lambda s: [s['registration_date'], np.random.choice(a=dates_series[dates_series >= max(s['registration_date'], s['transaction_date'])], size=1)[0]], result_type = 'expand', axis = 1).copy()
     # map iso numeric country codes to iso alpha country codes
-    country_codes_map = gen_country_codes_map()
+    country_codes_map = gen_country_codes_map(fpath_countrieseurope=user_obj.fpath_countrieseurope)
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='registration_country_code_alpha', idhash_val_name='registration_country_code')
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='card_country_code_alpha', idhash_val_name='card_country_code')
     trans_data = join_idhashes_dict(data=trans_data, idhashes_dict=country_codes_map, idhash_key_name='ip_country_code_alpha', idhash_val_name='ip_country_code')
