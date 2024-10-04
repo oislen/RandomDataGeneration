@@ -26,16 +26,34 @@ programmeparams = ProgrammeParams(n_users=cons.unittest_n_users, random_seed=con
 random.seed(programmeparams.random_seed)
 np.random.seed(seed=programmeparams.random_seed)
 
+# create relative file paths
+fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
+fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
+fpath_smartphones = '.' + cons.fpath_smartphones.split(cons.fpath_repo_dir)[1]
+fpath_countrycrimeindex = '.' + cons.fpath_countrycrimeindex.split(cons.fpath_repo_dir)[1]
+fpath_unittest_user_data = '.' + cons.fpath_unittest_user_data.split(cons.fpath_repo_dir)[1]
+fpath_unittest_transaction_data = '.' + cons.fpath_unittest_transaction_data.split(cons.fpath_repo_dir)[1]
+
 # generate random users
-user_obj = User(n_user_ids=programmeparams.n_users, start_date=programmeparams.registration_start_date, end_date=programmeparams.registration_end_date)
+user_obj = User(
+    n_user_ids=programmeparams.n_users, 
+    start_date=programmeparams.registration_start_date, 
+    end_date=programmeparams.registration_end_date, 
+    fpath_firstnames=fpath_firstnames, 
+    fpath_lastnames=fpath_lastnames, 
+    fpath_countrieseurope=fpath_countrieseurope, 
+    fpath_domain_email=fpath_domain_email
+    )
 
 # generate random entity counts for each user
 random_entity_counts = gen_random_entity_counts(user_obj)
 
 # generate random entity values
-device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum())
-card_obj = Card(n_card_hashes=random_entity_counts['n_cards'].sum())
-ip_obj = Ip(n_ip_hashes=random_entity_counts['n_ips'].sum())
+device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum(), fpath_smartphones=fpath_smartphones)
+card_obj = Card(n_card_hashes=random_entity_counts['n_cards'].sum(), fpath_countrieseurope=fpath_countrieseurope)
+ip_obj = Ip(n_ip_hashes=random_entity_counts['n_ips'].sum(), fpath_countrieseurope=fpath_countrieseurope)
 transaction_obj = Transaction(n_transaction_hashes=random_entity_counts['n_transactions'].sum(), start_date=programmeparams.transaction_start_date, end_date=programmeparams.transaction_end_date)
 application_obj = Application(n_application_hashes=programmeparams.n_applications)
 
@@ -57,16 +75,17 @@ obs_trans_data = gen_trans_data(
     ip_obj=ip_obj,
     transaction_obj=transaction_obj,
     application_obj=application_obj,
+    fpath_countrycrimeindex=fpath_countrycrimeindex
 )
 
 # if writing observed data to unittest data directory
 if cons.unittest_gen_test_dfs:
-    obs_user_data.to_pickle(cons.fpath_unittest_user_data)
-    obs_trans_data.to_pickle(cons.fpath_unittest_transaction_data)
+    obs_user_data.to_pickle(fpath_unittest_user_data)
+    obs_trans_data.to_pickle(fpath_unittest_transaction_data)
 
 # load in expected user level data
-exp_user_data = pd.read_pickle(cons.fpath_unittest_user_data)
-exp_trans_data = pd.read_pickle(cons.fpath_unittest_transaction_data)
+exp_user_data = pd.read_pickle(fpath_unittest_user_data)
+exp_trans_data = pd.read_pickle(fpath_unittest_transaction_data)
 
 class Test_gen_user_trans_data(unittest.TestCase):
     """"""

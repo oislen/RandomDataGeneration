@@ -58,7 +58,12 @@ exp_lam = cons.data_model_poisson_params["user"]["lambda"]
 
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)
-user_object = User(exp_n_user_ids, exp_start_date, exp_end_date)
+
+fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
+fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
+user_object = User(exp_n_user_ids, exp_start_date, exp_end_date, fpath_firstnames=fpath_firstnames, fpath_lastnames=fpath_lastnames, fpath_countrieseurope=fpath_countrieseurope, fpath_domain_email=fpath_domain_email)
 
 obs_user_ids_cnts_dict = user_object.user_ids_cnts_dict
 obs_user_ids_props_dict = user_object.user_ids_props_dict
