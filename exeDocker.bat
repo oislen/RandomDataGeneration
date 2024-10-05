@@ -14,6 +14,7 @@ call docker build --no-cache -t %DOCKER_IMAGE% .
 :: run docker container
 SET UBUNTU_DIR=/home/ubuntu
 call docker run --name %DOCKER_CONTAINER_NAME% --volume E:\GitHub\RandomTelecomPayments\data:/home/ubuntu/RandomTelecomPayments/data --rm %DOCKER_IMAGE%  --n_users 100 --use_random_seed 1 --n_itr 1
+:: call docker run --name %DOCKER_CONTAINER_NAME% --volume E:\GitHub\RandomTelecomPayments\data:/home/ubuntu/RandomTelecomPayments/data --rm %DOCKER_IMAGE%  --n_users 13000 --use_random_seed 1 --n_itr 2
 
 :: useful docker commands
 :: docker images
