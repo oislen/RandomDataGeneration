@@ -14,7 +14,7 @@ RUN useradd ${user}
 RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
 
 # clone git repo
-RUN git clone https://github.com/oislen/RandomTelecomPayments.git /home/ubuntu/RandomTelecomPayments
+RUN git clone https://github.com/oislen/RandomTelecomPayments.git --branch randomtelecompayments_dev_1.0 /home/ubuntu/RandomTelecomPayments
 
 # install required python packages
 COPY requirements.txt /tmp/
