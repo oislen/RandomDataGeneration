@@ -23,5 +23,5 @@ RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 RUN /opt/venv/bin/python3 -m pip install -r /tmp/requirements.txt
 
-WORKDIR /home/${user}
+WORKDIR /home/${user}/RandomTelecomPayments
 ENTRYPOINT  ["/opt/venv/bin/python3", "scripts/main.py"]
