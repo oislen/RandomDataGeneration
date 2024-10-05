@@ -6,7 +6,7 @@ SET DOCKER_IMAGE=%DOCKER_USER%/%DOCKER_REPO%:%DOCKER_TAG%
 SET DOCKER_CONTAINER_NAME=rtp
 
 :: remove existing docker containers and images
-docker rm -f %DOCKER_IMAGE%
+docker image rm -f %DOCKER_IMAGE%
 
 :: build docker image
 call docker build --no-cache -t %DOCKER_IMAGE% . 
