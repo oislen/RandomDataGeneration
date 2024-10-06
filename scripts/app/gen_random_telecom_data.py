@@ -11,7 +11,7 @@ from objects.Transaction import Transaction
 from objects.User import User
 from utilities.gen_random_entity_counts import gen_random_entity_counts
 
-def gen_random_telecom_data(n_users=1, random_seed=None):
+def gen_random_telecom_data(n_users=1, random_seed=None, registration_start_date='2020-01-01', registration_end_date='2020-12-31', transaction_start_date='2021-01-01', transaction_end_date='2021-12-31'):
     """Generates random telecommunications data
 
     Parameters
@@ -28,7 +28,14 @@ def gen_random_telecom_data(n_users=1, random_seed=None):
     """
 
     # initalise programme parameters
-    programmeparams = ProgrammeParams(n_users=n_users, random_seed=random_seed)
+    programmeparams = ProgrammeParams(
+        n_users=n_users, 
+        random_seed=random_seed,
+        registration_start_date=registration_start_date, 
+        registration_end_date=registration_end_date,
+        transaction_start_date=transaction_start_date,
+        transaction_end_date=transaction_end_date
+        )
 
     # set random seed
     random.seed(programmeparams.random_seed)
@@ -38,7 +45,7 @@ def gen_random_telecom_data(n_users=1, random_seed=None):
     user_obj = User(n_user_ids=programmeparams.n_users, start_date=programmeparams.registration_start_date, end_date=programmeparams.registration_end_date)
 
     # generate random entity counts for each user
-    random_entity_counts = gen_random_entity_counts(user_obj)
+    random_entity_counts = gen_random_entity_counts(user_obj, transaction_timescale=programmeparams.transaction_timescale)
 
     # generate random entity values
     device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum())
