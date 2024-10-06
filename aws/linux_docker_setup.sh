@@ -1,5 +1,5 @@
 # NOTE:
-# 1. make sure to add ip address to security groups inbound rules
+# 1. make sure to add ip address to security groups inbound rules (https://whatismyipaddress.com/)
 # 2. make sure to increase volume in /dev/nvme0n1 (/dev/xvda) e.g. 100gb
 
 # linux file formatting
@@ -57,20 +57,23 @@ sudo umount /tmp
 # update os
 sudo yum update -y
 # install required base software
-sudo yum install -y htop vim tmux dos2unix docker
+sudo yum install -y htop vim tmux dos2unix docker git
 # remove unneed dependencies
 sudo yum autoremove
 
 #-- Pull and Run Docker Contianer --#
 
+# clone git repo for persistant data and folder structure
+git clone https://github.com/oislen/RandomTelecomPayments.git --branch randomtelecompayments_prod_1.0 /home/$USER/RandomTelecomPayments
 # login to docker
 sudo gpasswd -a $USER 
 sudo systemctl start docker
 sudo chmod 666 /var/run/docker.sock
 cat ~/.creds/docker | docker login --username oislen --password-stdin
+# set docker constants
+export DOCKER_IMAGE=oislen/randomtelecompayments:latest
+export DOCKER_CONTAINER_NAME=rtp
 # pull docker container
-docker pull oislen/randomtelecompayments:latest
+docker pull $DOCKER_IMAGE
 # run pulled docker container
-docker run -it oislen/randomtelecompayments:latest
-#docker run -d oislen/randomtelecompayments:latest
-#docker run -it -d <container_id_or_name> /bin/bash
+docker run --name $DOCKER_CONTAINER_NAME --memory 7GB --volume /home/$USER/RandomTelecomPayments/data:/home/ubuntu/RandomTelecomPayments/data --rm $DOCKER_IMAGE  --n_users 13000 --use_random_seed 1 --n_itr 2
