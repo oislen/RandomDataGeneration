@@ -76,4 +76,4 @@ export DOCKER_CONTAINER_NAME=rtp
 # pull docker container
 docker pull $DOCKER_IMAGE
 # run pulled docker container
-docker run --name $DOCKER_CONTAINER_NAME --memory 7GB --volume /home/$USER/RandomTelecomPayments/data:/home/ubuntu/RandomTelecomPayments/data --rm $DOCKER_IMAGE  --n_users 13000 --use_random_seed 1 --n_itr 2
+docker run --name $DOCKER_CONTAINER_NAME --memory 10GB --volume /home/$USER/RandomTelecomPayments/data:/home/ubuntu/RandomTelecomPayments/data --rm $DOCKER_IMAGE  --n_users 13000 --use_random_seed 1 --n_itr 2
