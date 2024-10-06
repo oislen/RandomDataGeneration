@@ -45,7 +45,7 @@ def gen_random_telecom_data(n_users=1, random_seed=None, registration_start_date
     user_obj = User(n_user_ids=programmeparams.n_users, start_date=programmeparams.registration_start_date, end_date=programmeparams.registration_end_date)
 
     # generate random entity counts for each user
-    random_entity_counts = gen_random_entity_counts(user_obj)
+    random_entity_counts = gen_random_entity_counts(user_obj, transaction_timescale=programmeparams.transaction_timescale)
 
     # generate random entity values
     device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum())
