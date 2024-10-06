@@ -3,7 +3,7 @@ import pandas as pd
 import cons
 from utilities.gen_random_poisson_power import gen_random_poisson_power
 
-def gen_random_entity_counts(user_obj, transaction_timescale=1):
+def gen_random_entity_counts(user_obj, transaction_timescale=1.0):
     """Generates a dataframe of entity counts for all users from a given user object
 
     Parameters
