@@ -60,6 +60,6 @@ if __name__ == '__main__':
 
     # write data to disk
     logging.info(f'Writing intermediate user level random telecoms data to: {cons.fpath_randomtelecomusersdata}')
-    logging.info(f'Writing output trans level random telecoms data to: {cons.fpath_randomtelecomusersdata}')
+    logging.info(f'Writing output trans level random telecoms data to: {cons.fpath_randomtelecomtransdata}')
     user_data.to_parquet(cons.fpath_randomtelecomusersdata, engine='fastparquet')
     trans_data.to_csv(cons.fpath_randomtelecomtransdata, index = False)
