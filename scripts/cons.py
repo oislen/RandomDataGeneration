@@ -35,6 +35,7 @@ unittest_transaction_start_date = '2021-01-01'
 unittest_transaction_end_date = '2021-12-31'
 
 # set data model constants
+date_date_strftime = "%Y-%m-%d"
 data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
 data_model_poisson_params = {'user':{'lambda':20, 'power':1}, 'device':{'lambda':0.2, 'power':2}, 'card':{'lambda':0.1, 'power':2}, 'ip':{'lambda':1.3, 'power':2}, 'application':{'lambda':1, 'power':2}, 'transaction':{'lambda':5, 'power':2}}
 data_model_shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
