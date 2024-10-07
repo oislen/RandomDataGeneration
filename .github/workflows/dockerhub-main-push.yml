@@ -24,3 +24,4 @@ jobs:
         with:
           push: true
           tags: oislen/randomtelecompayments:latest
+          build-args: GIT_BRANCH=main
