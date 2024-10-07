@@ -4,12 +4,13 @@ SET DOCKER_REPO=randomtelecompayments
 SET DOCKER_TAG=latest
 SET DOCKER_IMAGE=%DOCKER_USER%/%DOCKER_REPO%:%DOCKER_TAG%
 SET DOCKER_CONTAINER_NAME=rtp
+SET GIT_BRANCH=v0.0.0
 
 :: remove existing docker containers and images
 docker image rm -f %DOCKER_IMAGE%
 
 :: build docker image
-call docker build --no-cache -t %DOCKER_IMAGE% . 
+call docker build --no-cache -t %DOCKER_IMAGE% . --build-arg GIT_BRANCH=%GIT_BRANCH%
 
 :: run docker container
 SET UBUNTU_DIR=/home/ubuntu
