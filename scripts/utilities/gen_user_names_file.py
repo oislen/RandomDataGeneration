@@ -1,48 +1,47 @@
 import json
-import os
+import boto3
 import sys
+import pandas as pd
 
-# set huggingface hub directory
-huggingface_hub_dir = 'E:\\huggingface\\hub'
-os.environ['HF_HOME'] = huggingface_hub_dir
-os.environ['HF_DATASETS_CACHE'] = huggingface_hub_dir
-os.environ['TORCH_HOME'] = huggingface_hub_dir
+sys.path.append("E:\\GitHub\\RandomTelecomPayments\\scripts")
 
+import cons
+from utilities.Bedrock import Bedrock, prompt, system
 
-import torch
-torch.cuda.is_available()
-# Output should be True
+# load aws config
+with open(cons.fpath_aws_session_token, "r") as j:
+    aws_config = json.loads(j.read())
 
-from transformers import AutoTokenizer, AutoModelForCausalLM
-import transformers
-from huggingface_hub import login
-
-
-# load huggingface access token
-with open('E:\\GitHub\\RandomTelecomPayments\\.creds\\huggingface.json') as f:
-    token = json.load(f)
-# log into huggingface
-login(token = token)
-
-access_token = "Enter your token here"
-model = "meta-llama/Llama-2-7b-chat-hf"
-
-tokenizer = AutoTokenizer.from_pretrained(model, token=access_token)
-
-model = AutoModelForCausalLM.from_pretrained(
-    model, 
-    token=access_token
+# connect to aws boto3
+session = boto3.Session(
+    aws_access_key_id=aws_config['Credentials']["AccessKeyId"],
+    aws_secret_access_key=aws_config['Credentials']["SecretAccessKey"],
+    aws_session_token=aws_config['Credentials']["SessionToken"],
+    region_name="us-east-1"
 )
 
-pipeline = transformers.pipeline(
-    "text-generation",
-    model=model,
-    torch_dtype=torch.float16,
-    device_map="auto",
-)
+# create bedrock instance
+bedrock = Bedrock(session=session, model_id="meta.llama3-8b-instruct-v1:0")
 
-sequences = pipeline(
-    'Hi! Tell me about yourself!',
-    do_sample=True,
-)
-print(sequences[0].get("generated_text"))
+# load countries file
+countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols=['name', 'ISO alpha 2', 'ISO alpha 3'])
+
+user_country_data = []
+n_user_names = 3
+for country in ["France", "Ireland"]:
+    # call bedrock model
+    formatted_prompt = prompt.format(n_user_names=n_user_names, country=country)
+    model_response = bedrock.prompt(prompt=formatted_prompt, system=system)
+    # split out answer
+    text = model_response.split("<answer>")[1].split("</answer>")[0]
+    # parse json
+    record_set = json.loads(text)
+    # generate pandas dataframe
+    user_data = pd.DataFrame.from_records(record_set).set_index('id')
+    # join on country codes
+    tmp_user_country_data = user_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner')
+    # append to user country data
+    user_country_data.append(tmp_user_country_data)
+
+# concatenate user country data together
+user_country_data = pd.concat(user_country_data, axis=0, ignore_index=True)
