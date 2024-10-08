@@ -27,8 +27,9 @@ bedrock = Bedrock(session=session, model_id="meta.llama3-8b-instruct-v1:0")
 countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols=['name', 'ISO alpha 2', 'ISO alpha 3'])
 
 user_country_data = []
-n_user_names = 3
-for country in ["France", "Ireland"]:
+n_user_names = 10
+for country in countrieseurope['name'].to_list():
+    print(country)
     # call bedrock model
     formatted_prompt = prompt.format(n_user_names=n_user_names, country=country)
     model_response = bedrock.prompt(prompt=formatted_prompt, system=system)
@@ -44,4 +45,11 @@ for country in ["France", "Ireland"]:
     user_country_data.append(tmp_user_country_data)
 
 # concatenate user country data together
-user_country_data = pd.concat(user_country_data, axis=0, ignore_index=True)
+user_country_df = pd.concat(user_country_data, axis=0, ignore_index=True).drop(columns=['name'])
+
+# write data to disk
+if False:
+    user_country_df.to_csv("E:\\GitHub\\RandomTelecomPayments\\scripts\\ref\\llama_user_names.csv", index=False)
+# read data from dsk
+if True:
+    user_country_df = pd.read_csv("E:\\GitHub\\RandomTelecomPayments\\scripts\\ref\\llama_user_names.csv")
