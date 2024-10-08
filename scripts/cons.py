@@ -15,6 +15,7 @@ fpath_lastnames = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'last-names.txt
 fpath_smartphones = os.path.join(fpath_repo_dir, 'scripts', 'ref', 'smartphones.csv')
 fpath_unittest_user_data = os.path.join(fpath_repo_dir, 'data', 'unittest', 'user_data.pickle')
 fpath_unittest_transaction_data = os.path.join(fpath_repo_dir, 'data', 'unittest', 'transaction_data.pickle')
+fpath_aws_session_token = os.path.join(fpath_repo_dir, '.creds','sessionToken.json')
 
 # set url links to files available online
 url_european_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries-Europe.csv'
