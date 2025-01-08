@@ -17,6 +17,7 @@ RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
 
 # clone git repo
 RUN git clone https://github.com/oislen/RandomTelecomPayments.git --branch ${GIT_BRANCH} /home/ubuntu/RandomTelecomPayments
+#COPY . /home/ubuntu/RandomTelecomPayments
 
 # install required python packages
 RUN apt-get install -y python3 python3-venv python3-pip
