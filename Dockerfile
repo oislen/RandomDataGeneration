@@ -1,5 +1,5 @@
 # get base image
-FROM ubuntu:20.04
+FROM ubuntu:latest
 
 # set environment variables
 ENV user=ubuntu
@@ -13,7 +13,6 @@ RUN apt-get update
 RUN apt-get install -y apt-utils vim curl wget unzip git python3 python3-pip tree htop
 
 # set up home environment
-RUN useradd ${user}
 RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
 
 # clone git repo
