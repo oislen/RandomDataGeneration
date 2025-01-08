@@ -20,11 +20,10 @@ RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
 RUN git clone https://github.com/oislen/RandomTelecomPayments.git --branch ${GIT_BRANCH} /home/ubuntu/RandomTelecomPayments
 
 # install required python packages
-COPY requirements.txt /tmp/
 RUN apt-get install -y python3 python3-venv python3-pip
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN /opt/venv/bin/python3 -m pip install -r /tmp/requirements.txt
+RUN /opt/venv/bin/python3 -m pip install -r /home/ubuntu/RandomTelecomPayments/requirements.txt
 
 WORKDIR /home/${user}/RandomTelecomPayments
 ENTRYPOINT  ["/opt/venv/bin/python3", "scripts/main.py"]
