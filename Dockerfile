@@ -20,7 +20,7 @@ RUN git clone https://github.com/oislen/RandomTelecomPayments.git --branch ${GIT
 #COPY . /home/ubuntu/RandomTelecomPayments
 
 # install required python packages
-RUN apt-get install -y python3 python3-venv python3-pip
+RUN apt-get install -y python3.11
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 RUN /opt/venv/bin/python3 -m pip install -r /home/ubuntu/RandomTelecomPayments/requirements.txt
