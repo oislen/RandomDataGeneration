@@ -10,7 +10,7 @@ ENV GIT_BRANCH=${GIT_BRANCH}
 
 # install required software and programmes for development environment
 RUN apt-get update 
-RUN apt-get install -y apt-utils vim curl wget unzip git python3 python3-pip tree htop
+RUN apt-get install -y apt-utils vim curl wget unzip git tree htop
 
 # set up home environment
 RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
