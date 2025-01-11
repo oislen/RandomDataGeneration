@@ -1,9 +1,10 @@
 import os
 import platform
+import sys
 
-# set file paths and locations with repo
-fpath_root_dir = 'E:\\GitHub' if platform.system() == 'Windows' else '/home/ubuntu' 
-fpath_repo_dir = os.path.join(fpath_root_dir, 'RandomTelecomPayments')
+fpath_repo_dir = 'E:\\GitHub\\RandomTelecomPayments' if platform.system() == 'Windows' else "/home/runner/work/RandomTelecomPayments/RandomTelecomPayments" if "GITHUB_ACTIONS_UNITTEST_FLAG" in os.environ else '/home/ubuntu/RandomTelecomPayments'
+sys.path.append(fpath_repo_dir)
+# set data files
 fpath_randomtelecomtransdata = os.path.join(fpath_repo_dir, 'data','RandomTelecomPayments.csv')
 fpath_randomtelecomusersdata = os.path.join(fpath_repo_dir, 'data','RandomTelecomUsers.parquet')
 fpath_arch_randomtelecomdata = os.path.join(fpath_repo_dir, 'data', 'arch', 'RandomTelecomPayments.csv')

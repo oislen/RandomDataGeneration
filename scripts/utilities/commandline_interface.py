@@ -5,7 +5,7 @@ def commandline_interface():
     """A commandline interface for parsing input parameters with
 
     Windows
-    python RandomTeleComData\scripts\main.py --n_users 100 --random_seed 1 --n_itr 2
+    python RandomTeleComData\\scripts\\main.py --n_users 100 --random_seed 1 --n_itr 2
 
     Linux
     python3 RandomTeleComData/scripts/main.py --n_users 100 --random_seed 1 --n_itr 2
