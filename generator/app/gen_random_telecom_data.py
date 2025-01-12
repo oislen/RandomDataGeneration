@@ -10,21 +10,39 @@ from objects.Ip import Ip
 from objects.Transaction import Transaction
 from objects.User import User
 from utilities.gen_random_entity_counts import gen_random_entity_counts
+from beartype import beartype
 
-def gen_random_telecom_data(n_users=1, random_seed=None, registration_start_date='2020-01-01', registration_end_date='2020-12-31', transaction_start_date='2021-01-01', transaction_end_date='2021-12-31'):
-    """Generates random telecommunications data
+@beartype
+def gen_random_telecom_data(
+    n_users=1,
+    random_seed=None,
+    registration_start_date='2020-01-01',
+    registration_end_date='2020-12-31',
+    transaction_start_date='2021-01-01',
+    transaction_end_date='2021-12-31'
+    ):
+    """
+    Generates random telecommunications data.
 
     Parameters
     ----------
     n_users : float
-        The number of users to generate random telecom payments data for
+        The number of users to generate random telecom payments data for.
     random_seed : int
-        A set random seed for reproducible results, default is None
+        A set random seed for reproducible results, default is None.
+    registration_start_date : str
+        The user registration start date.
+    registration_end_date : str
+        The user registration end date.
+    transaction_start_date : str
+        The user transaction start date.
+    transaction_end_date : str
+        The user transaction end date.
 
     Returns
     -------
     pandas.DataFrame
-        A random telecommunication payments dataset
+        A random telecommunication payments dataset.
     """
 
     # initalise programme parameters

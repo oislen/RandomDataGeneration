@@ -1,9 +1,20 @@
 import cons
 from datetime import datetime
+from beartype import beartype
 
 class ProgrammeParams():
     
-    def __init__(self, n_users=100, random_seed=None, n_applications=20000, registration_start_date='2020-01-01', registration_end_date='2020-12-31', transaction_start_date='2021-01-01', transaction_end_date='2021-12-31'):
+    @beartype
+    def __init__(
+        self,
+        n_users:int=100,
+        random_seed:int=None,
+        n_applications:int=20000,
+        registration_start_date:str='2020-01-01',
+        registration_end_date:str='2020-12-31',
+        transaction_start_date:str='2021-01-01',
+        transaction_end_date:str='2021-12-31'
+        ):
         # take programme parameters from class parameters
         self.random_seed = random_seed
         self.n_users = n_users

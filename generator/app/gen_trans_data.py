@@ -3,36 +3,56 @@ import pandas as pd
 import numpy as np
 import cons
 from datetime import datetime
+from objects.User import User
+from objects.Device import Device
+from objects.Card import Card
+from objects.Ip import Ip
+from objects.Transaction import Transaction
+from objects.Application import Application
 from utilities.gen_country_codes_map import gen_country_codes_map
 from utilities.align_country_codes import align_country_codes
 from utilities.gen_trans_rejection_rates import gen_trans_rejection_rates
 from utilities.gen_trans_status import gen_trans_status
 from utilities.join_idhashes_dict import join_idhashes_dict
+from beartype import beartype
 
-def gen_trans_data(user_data, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj, fpath_countrycrimeindex=cons.fpath_countrycrimeindex):
-    """Generates random transaction level telecom payments data
+@beartype
+def gen_trans_data(
+    user_data:pd.DataFrame,
+    user_obj:User,
+    device_obj:Device,
+    card_obj:Card,
+    ip_obj:Ip,
+    transaction_obj:Transaction,
+    application_obj:Application,
+    fpath_countrycrimeindex:str=cons.fpath_countrycrimeindex
+    ):
+    """
+    Generates random transaction level telecom payments data.
 
     Parameters
     ----------
     user_data : pandas.DataFrame
-        The random user level data
-    user_obj : class
-        The random user data model object
-    device_obj : class
-        The random device data model object
-    card_obj : class
-        The random card data model object
-    ip_obj : class
-        The random ip data model object
-    transaction_obj : class
-        The random transaction data model object
-    application_obj : class
-        The random application data model object
+        The random user level data.
+    user_obj : User
+        The random user data model object.
+    device_obj : Device
+        The random device data model object.
+    card_obj : Card
+        The random card data model object.
+    ip_obj : Ip
+        The random ip data model object.
+    transaction_obj : Transaction
+        The random transaction data model object.
+    application_obj : Application
+        The random application data model object.
+    fpath_countrycrimeindex : str
+        The full file path to the country crime index reference data, default is cons.fpath_countrycrimeindex.
 
     Returns
     -------
     pandas.DataFrame
-        The random transaction level telecom payments data
+        The random transaction level telecom payments data.
     """
 
     # explode user data to transaction level
