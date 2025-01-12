@@ -26,7 +26,7 @@ For a more detailed account of each column in the dataset see the data dictionar
 
 The following command can be used to execute the application:
 
-     python3 RandomTelecomPayments/scripts/main.py --n_users 5000 --use_random_seed 1 --n_itr 2
+     python3 RandomTelecomPayments/generator/main.py --n_users 5000 --use_random_seed 1 --n_itr 2
 
 The application works by first generating user level telecom payments data. Once generated, the user level data is exploded to transaction level, and any inconsistencies within the data model are removed. Finally, the transaction status and error codes are generated using underlying features within the transaction level data.
 
