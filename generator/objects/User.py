@@ -5,47 +5,66 @@ from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_country_codes_dict import gen_country_codes_dict
 from utilities.gen_dates_dict import gen_dates_dict
-
+from beartype import beartype
 
 class User:
-    """The randomly generated user data model object
 
-    Parameters
-    ----------
-    n_user_ids : int
-        The number of user uids to generate
-    start_date : str
-        The start date to generate users from
-    end_date : str
-        The end date to generate users till
+    @beartype
+    def __init__(
+        self,
+        n_user_ids:int,
+        start_date:str,
+        end_date:str,
+        fpath_firstnames:str=cons.fpath_firstnames,
+        fpath_lastnames:str=cons.fpath_lastnames,
+        fpath_countrieseurope:str=cons.fpath_countrieseurope,
+        fpath_domain_email:str=cons.fpath_domain_email
+        ):
+        """
+        The randomly generated user data model object
 
-    Attributes
-    ----------
-    n_user_ids : int
-        The number of user ids generated
-    start_date : str
-        The date user ids are generated from, must be of the form '%Y-%m-%d'
-    end_date : str
-        The date user ids are generated till, must be of the form '%Y-%m-%d'
-    lam : float
-        The lambda parameter of the squared poisson distribution used to generate the user ids counts
-    user_ids_cnts_dict : dict
-        The user id counts dictionary
-    user_ids_props_dict : dict
-        The user id proportions dictionary
-    user_ids_firstname_dict : dict
-        The user id first names dictionary
-    user_ids_lastname_dict : dict
-        The user id last names dictionary
-    user_ids_country_code_dict : dict
-        The user id country codes dictionary
-    user_ids_email_domain_dict : dict
-        The user id email domains dictionary
-    user_ids_dates_dict : dict
-        The user id dates dictionary
-    """
+        Parameters
+        ----------
+        n_user_ids : int
+            The number of user uids to generate
+        start_date : str
+            The start date to generate users from
+        end_date : str
+            The end date to generate users till
+        fpath_firstnames : str
+            The full file path to the first names reference data, default is cons.fpath_firstnames.
+        fpath_lastnames : str
+            The full file path to the last names reference data, default is cons.fpath_lastnames.
+        fpath_countrieseurope : str
+            The full file path to the europe countries reference data, default is cons.fpath_countrieseurope.
+        fpath_domain_email : str
+            The full file path to the email domain reference daa, default is cons.fpath_domain_email.
 
-    def __init__(self, n_user_ids, start_date, end_date, fpath_firstnames=cons.fpath_firstnames, fpath_lastnames=cons.fpath_lastnames, fpath_countrieseurope=cons.fpath_countrieseurope, fpath_domain_email=cons.fpath_domain_email):
+        Attributes
+        ----------
+        n_user_ids : int
+            The number of user ids generated
+        start_date : str
+            The date user ids are generated from, must be of the form '%Y-%m-%d'
+        end_date : str
+            The date user ids are generated till, must be of the form '%Y-%m-%d'
+        lam : float
+            The lambda parameter of the squared poisson distribution used to generate the user ids counts
+        user_ids_cnts_dict : dict
+            The user id counts dictionary
+        user_ids_props_dict : dict
+            The user id proportions dictionary
+        user_ids_firstname_dict : dict
+            The user id first names dictionary
+        user_ids_lastname_dict : dict
+            The user id last names dictionary
+        user_ids_country_code_dict : dict
+            The user id country codes dictionary
+        user_ids_email_domain_dict : dict
+            The user id email domains dictionary
+        user_ids_dates_dict : dict
+            The user id dates dictionary
+        """
         self.n_user_ids = n_user_ids
         self.start_date = start_date
         self.end_date = end_date
@@ -63,8 +82,13 @@ class User:
         self.user_ids_email_domain_dict = self.gen_user_email_domain(self.fpath_domain_email)
         self.user_ids_dates_dict = gen_dates_dict(self.user_ids_cnts_dict, start_date=self.start_date, end_date=self.end_date)
 
-    def gen_user_firstname(self, fpath_firstnames):
-        """Generates a dictionary of random user id first names
+    @beartype
+    def gen_user_firstname(
+        self,
+        fpath_firstnames:str
+        ) -> dict:
+        """
+        Generates a dictionary of random user id first names
 
         Parameters
         ----------
@@ -86,18 +110,23 @@ class User:
         user_ids_firstname_dict = dict(zip(user_ids_list, user_firstname_list))
         return user_ids_firstname_dict
 
-    def gen_user_lastname(self, fpath_lastnames):
-        """Generates a dictionary of random user id last names
+    @beartype
+    def gen_user_lastname(
+        self,
+        fpath_lastnames:str
+        ) -> dict:
+        """
+        Generates a dictionary of random user id last names.
 
         Parameters
         ----------
         fpath_lastnames : str
-            The file path to the last names reference file
+            The file path to the last names reference file.
 
         Returns
         -------
         dict
-            A dictionary of user id last names
+            A dictionary of user id last names.
         """
         # load in list of last names
         last_name_data = pd.read_csv(fpath_lastnames, header=None)
@@ -109,8 +138,13 @@ class User:
         user_ids_lastname_dict = dict(zip(user_ids_list, user_lastname_list))
         return user_ids_lastname_dict
 
-    def gen_user_email_domain(self, fpath_domain_email):
-        """Generates a dictionary of random user id email domains
+    @beartype
+    def gen_user_email_domain(
+        self,
+        fpath_domain_email:str
+        ) -> dict:
+        """
+        Generates a dictionary of random user id email domains
 
         Parameters
         ----------

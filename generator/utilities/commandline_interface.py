@@ -1,8 +1,10 @@
 import argparse
+from beartype import beartype
 
-
-def commandline_interface():
-    """A commandline interface for parsing input parameters with
+@beartype
+def commandline_interface() -> dict:
+    """
+    A commandline interface for parsing input parameters with
 
     Windows
     python RandomTeleComData\\generator\\main.py --n_users 100 --random_seed 1 --n_itr 2
@@ -16,7 +18,7 @@ def commandline_interface():
     Returns
     -------
     dict
-        A dictionary of key, value pairs where the values are parsed input parameters
+        A dictionary of key, value pairs where the values are parsed input parameters.
     """
     # define argument parser object
     parser = argparse.ArgumentParser(description="Execute Random TeleCom Data Programme.")

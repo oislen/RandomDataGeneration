@@ -5,37 +5,44 @@ import cons
 from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_shared_idhashes import gen_shared_idhashes
-
+from beartype import beartype
+from typing import Union
 
 class Device:
-    """The randomly generated device data model object
 
-    Parameters
-    ----------
-    n_device_hashes : int
-        The number of device hashes to generate
-    fpath_smartphones : str
-        The file path to the smart phones reference file
+    @beartype
+    def __init__(
+        self,
+        n_device_hashes:Union[int,np.int64],
+        fpath_smartphones:str=cons.fpath_smartphones
+        ):
+        """
+        The randomly generated device data model object.
 
-    Attributes
-    ----------
-    n_device_hashes : int
-        The number of device hashes generated
-    lam : float
-        The lambda parameter of the squared poisson distribution used to generate the device hash counts
-    prop_shared_device_hashes : float
-        The population proportion of shared device hashes
-    device_hashes_cnts_dict : dict
-        The device hash counts dictionary
-    device_hashes_props_dict : dict
-        The device hash proportions dictionary
-    device_hashes_type_dict : dict
-        The device hash types dictionary
-    device_hashes_shared_props_dict : dict
-        The shared device hash proportions dictionary
-    """
+        Parameters
+        ----------
+        n_device_hashes : int
+            The number of device hashes to generate.
+        fpath_smartphones : str
+            The file path to the smart phones reference file, default is cons.fpath_smartphones.
 
-    def __init__(self, n_device_hashes, fpath_smartphones=cons.fpath_smartphones):
+        Attributes
+        ----------
+        n_device_hashes : int
+            The number of device hashes generated.
+        lam : float
+            The lambda parameter of the squared poisson distribution used to generate the device hash counts.
+        prop_shared_device_hashes : float
+            The population proportion of shared device hashes.
+        device_hashes_cnts_dict : dict
+            The device hash counts dictionary.
+        device_hashes_props_dict : dict
+            The device hash proportions dictionary.
+        device_hashes_type_dict : dict
+            The device hash types dictionary.
+        device_hashes_shared_props_dict : dict
+            The shared device hash proportions dictionary.
+        """
         self.n_device_hashes = n_device_hashes
         self.fpath_smartphones = fpath_smartphones
         self.lam = cons.data_model_poisson_params["device"]["lambda"]
@@ -46,20 +53,26 @@ class Device:
         self.device_hashes_type_dict = self.gen_device_type(list(self.device_hashes_cnts_dict.keys()), self.fpath_smartphones)
         self.device_shared_idhash_map_dict = gen_shared_idhashes(self.device_hashes_cnts_dict, self.prop_shared_device_hashes)
 
-    def gen_device_type(self, device_hashes, fpath_smartphones):
-        """Generates a dictionary of random device types
+    @beartype
+    def gen_device_type(
+        self,
+        device_hashes:list,
+        fpath_smartphones:str
+        ) -> dict:
+        """
+        Generates a dictionary of random device types
 
         Parameters
         ----------
         device_hashes : list
-            The device hashes
+            The device hashes.
         fpath_smartphones : str
-            The file path to the smart phones reference file
+            The file path to the smart phones reference file.
 
         Returns
         -------
         dict
-            A dictionary of device hash types
+            A dictionary of device hash types.
         """
         # load in smartphone data
         smartphone_data = pd.read_csv(fpath_smartphones, usecols=['model','rating','os'])

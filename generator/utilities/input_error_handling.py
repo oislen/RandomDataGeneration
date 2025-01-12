@@ -1,15 +1,21 @@
-def input_error_handling(input_params_dict):
-    """Runs error handling on the input params dictionary
+from beartype import beartype
+
+@beartype
+def input_error_handling(
+    input_params_dict:dict
+    ) -> int:
+    """
+    Runs error handling on the input params dictionary.
 
     Parameters
     ----------
     input_params_dict : dict
-        A dictionary of input parameters
+        A dictionary of input parameters.
 
     Returns
     -------
     int
-        Returns 0 for successful completion, otherwise returns value errors depending on failed input parameter check
+        Returns 0 for successful completion, otherwise returns value errors depending on failed input parameter check.
     """
     # check if the n users parameter is positive
     if not input_params_dict["n_users"] >= 1:

@@ -1,24 +1,30 @@
 import random
 import numpy as np
 import pandas as pd
+from beartype import beartype
 
-
-def align_country_codes(series, proba_comm_ip=0.95, proba_comm_card=0.99):
-    """Aligns inconsistent registration, ip and card country codes to have mostly common values; with a random chance of inconsistencies.
+@beartype
+def align_country_codes(
+    series:pd.Series,
+    proba_comm_ip:float=0.95,
+    proba_comm_card:float=0.99
+    ) -> pd.Series:
+    """
+    Aligns inconsistent registration, ip and card country codes to have mostly common values; with a random chance of inconsistencies.
 
     Parameters
     ----------
     series : pandas.Series
-        A series from the random transaction dataframe with inconsistent country codes to align
+        A series from the random transaction dataframe with inconsistent country codes to align.
     proba_comm_ip : float
-        The probability of a common / shared registration country code and ip country code
+        The probability of a common / shared registration country code and ip country code.
     proba_comm_card : float
-        The probability of a common / shared registration country code and card country code
+        The probability of a common / shared registration country code and card country code.
 
     Returns
     -------
     pandas.Series
-        A pandas series containing only the aligned country codes; registraction, ip and card.
+        A pandas series containing only the aligned country codes; registration, ip and card.
     """
     # generate random value between 0 and 1
     random_unif = random.uniform(0, 1)

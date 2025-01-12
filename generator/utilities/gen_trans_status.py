@@ -1,22 +1,31 @@
 import random
 import numpy as np
+import pandas as pd
 import cons
+from beartype import beartype
 
-
-def gen_trans_status(series, rejection_rates_dict, rejection_scaling_factor=2):
-    """Generates the transaction status for a pandas series from the transaction level telecom payments data given the rejection rates dictionary from the same data
+@beartype
+def gen_trans_status(
+    series:pd.Series,
+    rejection_rates_dict:dict,
+    rejection_scaling_factor:int=2
+    ) -> list:
+    """
+    Generates the transaction status for a pandas series from the transaction level telecom payments data given the rejection rates dictionary from the same data.
 
     Parameters
     ----------
     series : pandas.Series
-        A pandas series from the transaction level telecom payments data
+        A pandas series from the transaction level telecom payments data.
     rejection_rates_dict : dict
-        Rejection rates generated the transaction level telecom payments data
+        Rejection rates generated the transaction level telecom payments data.
+    rejection_scaling_factor : int
+        A multiplicative scaling factor for rejection rates, default is 2.
 
     Returns
     -------
-    str
-        The transaction status for the pandas series
+    list
+        The transaction status for the pandas series.
     """
     # set country code columns
     country_code_columns = ["registration_country_code","ip_country_code","card_country_code"]

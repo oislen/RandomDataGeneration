@@ -1,22 +1,26 @@
 import numpy as np
 import pandas as pd
-from utilities.cnt2prop_dict import cnt2prop_dict
+from beartype import beartype
 
-
-def gen_shared_idhashes(idhash_cnt_dict, prop_shared_idhashes):
-    """Generates a dictionary of shared idhashes proportions
+@beartype
+def gen_shared_idhashes(
+    idhash_cnt_dict:dict,
+    prop_shared_idhashes:float
+    ) -> dict:
+    """
+    Generates a dictionary of shared idhashes proportions
 
     Parameters
     ----------
     idhashes_cnts_dict : dict
-        A dictionary of idhashes counts
+        A dictionary of idhashes counts.
     prop_shared_idhashes : float
-        The total proportion of shared idhashes
+        The total proportion of shared idhashes.
 
     Returns
     -------
     dict
-        A dictionary of shared idhashes proportion
+        A dictionary of shared idhashes proportion.
     """
     # calculate the total number of idhashes
     n_idhashes = len(idhash_cnt_dict)

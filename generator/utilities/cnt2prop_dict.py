@@ -1,15 +1,21 @@
-def cnt2prop_dict(idhash_cnt_dict):
-    """Converts a dictionary of counts to a dictionary of proportions
+from beartype import beartype
+
+@beartype
+def cnt2prop_dict(
+    idhash_cnt_dict:dict
+    ) -> dict:
+    """
+    Converts a dictionary of counts to a dictionary of proportions.
 
     Parameters
     ----------
     idhash_cnt_dict : dict
-        A dictionary of key, value pairs where the value indicates a count
+        A dictionary of key, value pairs where the value indicates a count.
 
     Returns
     -------
     dict
-        A dictionary of key, value pairs where the value indicates a proportion
+        A dictionary of key, value pairs where the value indicates a proportion.
     """
     # empty dictionary for proportions
     prop_dict = {}

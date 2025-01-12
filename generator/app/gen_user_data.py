@@ -1,11 +1,28 @@
 import pandas as pd
 import numpy as np
+from objects.User import User
+from objects.Device import Device
+from objects.Card import Card
+from objects.Ip import Ip
+from objects.Transaction import Transaction
+from objects.Application import Application
 from utilities.gen_obj_idhash_series import gen_obj_idhash_series
 from utilities.join_idhashes_dict import join_idhashes_dict
 from utilities.gen_random_hash import gen_random_hash
+from beartype import beartype
 
-def gen_user_data(random_entity_counts, user_obj, device_obj, card_obj, ip_obj, transaction_obj, application_obj):
-    """Generates random user level telecom payments data
+@beartype
+def gen_user_data(
+    random_entity_counts:pd.DataFrame,
+    user_obj:User,
+    device_obj:Device,
+    card_obj:Card,
+    ip_obj:Ip,
+    transaction_obj:Transaction,
+    application_obj:Application
+    ) -> pd.DataFrame:
+    """
+    Generates random user level telecom payments data
 
     Parameters
     ----------

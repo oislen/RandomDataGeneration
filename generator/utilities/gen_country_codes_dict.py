@@ -2,22 +2,27 @@ import cons
 import numpy as np
 import pandas as pd
 from utilities.cnt2prop_dict import cnt2prop_dict
+from beartype import beartype
 
-
-def gen_country_codes_dict(idhashes_cnts_dict, fpath_countrieseurope = cons.fpath_countrieseurope):
-    """Generates a dictionary of random country codes for an input dictionary of idhashes counts
+@beartype
+def gen_country_codes_dict(
+    idhashes_cnts_dict:dict,
+    fpath_countrieseurope:str=cons.fpath_countrieseurope
+    ) -> dict:
+    """
+    Generates a dictionary of random country codes for an input dictionary of idhashes counts.
 
     Parameters
     ----------
     idhashes_cnts_dict : dict
-        A dictionary of idhashes counts
+        A dictionary of idhashes counts.
     fpath_countrieseurope : str
-        The file path to the european countries reference file
+        The file path to the european countries reference file, default is cons.fpath_countrieseurope.
 
     Returns
     -------
     dict
-        A dictionary of idhashes country codes
+        A dictionary of idhashes country codes.
     """
 
     # load population data of european countries
