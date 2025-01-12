@@ -2,14 +2,20 @@ import json
 import boto3
 from beartype import beartype
 
-@beartype
 class Bedrock():
-    def __init__(self, session:boto3.Session, model_id:str="meta.llama3-8b-instruct-v1:0"):
+    @beartype
+    def __init__(
+        self, 
+        session:boto3.Session,
+        model_id:str="meta.llama3-8b-instruct-v1:0"
+        ):
         self.client = session.client("bedrock-runtime", region_name="us-east-1")
         self.model_id = "meta.llama3-8b-instruct-v1:0"
     
+    @beartype
     def prompt(
-        self, prompt:str,
+        self,
+        prompt:str,
         system:str="",
         top_p:float=0.5,
         temperature:float=0.5,
