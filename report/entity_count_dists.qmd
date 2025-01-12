@@ -10,8 +10,8 @@ import seaborn as sns
 sys.path.append(os.getcwd())
 sys.path.append(os.path.dirname(os.getcwd()))
 
-import scripts.cons as cons
-from scripts.utilities.gen_random_poisson_power import gen_random_poisson_power
+import generator.cons as cons
+from generator.utilities.gen_random_poisson_power import gen_random_poisson_power
 
 data_model_poisson_params = {
     'user':{'lambda':20, 'power':1}, 

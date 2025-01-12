@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 # set file path for custom python modules
 root_dir = os.path.dirname(os.path.join(os.getcwd()))
-sys.path.append(os.path.join(root_dir, 'scripts'))
+sys.path.append(os.path.join(root_dir, 'generator'))
 
 import cons
 

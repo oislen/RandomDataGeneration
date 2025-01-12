@@ -32,4 +32,4 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN /opt/venv/bin/python3 -m pip install -r /home/ubuntu/RandomTelecomPayments/requirements.txt
 
 WORKDIR /home/${user}/RandomTelecomPayments
-ENTRYPOINT  ["/opt/venv/bin/python3", "scripts/main.py"]
+ENTRYPOINT  ["/opt/venv/bin/python3", "generator/main.py"]
