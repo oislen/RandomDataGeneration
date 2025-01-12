@@ -1,57 +1,63 @@
 import numpy as np
 import pandas as pd
-import pandas as pd
 from datetime import datetime
 import cons
 from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_dates_dict import gen_dates_dict
 from utilities.round_trans_amount import round_trans_amount
-
+from beartype import beartype
 
 class Transaction:
-    """The randomly generated transaction data model object
 
-    Parameters
-    ----------
-    n_transaction_hashes : int
-        The number of transaction hashes to generate
-    start_date : str
-        The start date to generate transactions from
-    end_date : str
-        The end date to generate transaction till
+    @beartype
+    def __init__(
+        self,
+        n_transaction_hashes,
+        start_date,
+        end_date
+        ):
+        """
+        The randomly generated transaction data model object.
 
-    Attributes
-    ----------
-    n_transaction_hashes : int
-        The number of transaction hashes generated
-    start_date : str
-        The date transactions are generated from, must be of the form '%Y-%m-%d'
-    end_date : str
-        The date transactions are generated till, must be of the form '%Y-%m-%d'
-    lam : float
-        The lambda parameter of the squared poisson distribution used to generate the transaction hash counts
-    payment_channels : float
-        The population proportion of payment channels
-    transaction_status : float
-        The population proportion of transaction statuses
-    rejection_codes : float
-        The population proportion of rejection codes
-    transaction_hashes_cnts_dict : dict
-        The transaction hash counts dictionary
-    transaction_hashes_props_dict : dict
-        The transaction hash proportions dictionary
-    transaction_hashes_dates_dict : dict
-        The transaction hash dates dictionary
-    transaction_hashes_payment_channel_dict : dict
-        The transaction hash payment channels dictionary
-    transaction_hashes_status_dict : dict
-        The transaction hash status dictionary
-    transaction_hashes_amounts_dict : dict
-        The transaction hash amount dictionary
-    """
+        Parameters
+        ----------
+        n_transaction_hashes : int
+            The number of transaction hashes to generate.
+        start_date : str
+            The start date to generate transactions from.
+        end_date : str
+            The end date to generate transaction till.
 
-    def __init__(self, n_transaction_hashes, start_date, end_date):
+        Attributes
+        ----------
+        n_transaction_hashes : int
+            The number of transaction hashes generated.
+        start_date : str
+            The date transactions are generated from, must be of the form '%Y-%m-%d'.
+        end_date : str
+            The date transactions are generated till, must be of the form '%Y-%m-%d'.
+        lam : float
+            The lambda parameter of the squared poisson distribution used to generate the transaction hash counts.
+        payment_channels : float
+            The population proportion of payment channels.
+        transaction_status : float
+            The population proportion of transaction statuses.
+        rejection_codes : float
+            The population proportion of rejection codes.
+        transaction_hashes_cnts_dict : dict
+            The transaction hash counts dictionary.
+        transaction_hashes_props_dict : dict
+            The transaction hash proportions dictionary.
+        transaction_hashes_dates_dict : dict
+            The transaction hash dates dictionary.
+        transaction_hashes_payment_channel_dict : dict
+            The transaction hash payment channels dictionary.
+        transaction_hashes_status_dict : dict
+            The transaction hash status dictionary.
+        transaction_hashes_amounts_dict : dict
+            The transaction hash amount dictionary.
+        """
         self.n_transaction_hashes = n_transaction_hashes
         self.start_date = start_date
         self.end_date = end_date
@@ -64,8 +70,14 @@ class Transaction:
         self.transaction_hashes_status_dict = self.gen_transaction_status(list(self.transaction_hashes_cnts_dict.keys()), self.transaction_status)
         self.transaction_hashes_amounts_dict = self.gen_transaction_amounts(list(self.transaction_hashes_cnts_dict.keys()))
 
-    def gen_transaction_status(self, transaction_hashes, transaction_status):
-        """Generates a dictionary of random transaction statuses
+    @beartype
+    def gen_transaction_status(
+        self,
+        transaction_hashes:list,
+        transaction_status:dict
+        ):
+        """
+        Generates a dictionary of random transaction statuses
 
         Parameters
         ----------
@@ -92,13 +104,24 @@ class Transaction:
         transaction_hashes_status_dict = dict(zip(transaction_hashes, transaction_status))
         return transaction_hashes_status_dict
 
-    def gen_transaction_amounts(self, transaction_hashes, loc=0, scale=2):
-        """Generates a dictionary of random transaction hash amounts
+    @beartype
+    def gen_transaction_amounts(
+        self,
+        transaction_hashes:list,
+        loc:float=0,
+        scale:float=2
+        ):
+        """
+        Generates a dictionary of random transaction hash amounts.
 
         Parameters
         ----------
         transaction_hashes : list
-            The transaction hashes
+            The transaction hashes.
+        loc : float
+            The mean of the transaction amount distribution to generate, default is 0.
+        scale : float
+            The scale of the transaction amount distribution to generate, default is 2.
 
         Returns
         -------
