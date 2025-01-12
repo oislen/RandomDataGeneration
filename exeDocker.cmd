@@ -4,7 +4,7 @@ SET DOCKER_REPO=randomtelecompayments
 SET DOCKER_TAG=latest
 SET DOCKER_IMAGE=%DOCKER_USER%/%DOCKER_REPO%:%DOCKER_TAG%
 SET DOCKER_CONTAINER_NAME=rtp
-SET GIT_BRANCH=v0.0.0
+SET GIT_BRANCH=v0.1.0
 
 :: remove existing docker containers and images
 docker image rm -f %DOCKER_IMAGE%
