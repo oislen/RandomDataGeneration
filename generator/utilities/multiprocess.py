@@ -1,9 +1,15 @@
 import os
 from multiprocessing import Pool
+from beartype import beartype
 
-
-def multiprocess(func, args, ncpu=os.cpu_count()):
-    """Generates a dictionary of random dates for an input dictionary of idhashes counts
+@beartype
+def multiprocess(
+    func,
+    args:list,
+    ncpu:int=os.cpu_count()
+    ) -> list:
+    """
+    Generates a dictionary of random dates for an input dictionary of idhashes counts
 
     Parameters
     ----------
@@ -12,7 +18,7 @@ def multiprocess(func, args, ncpu=os.cpu_count()):
     args : list
         The input parameters as a list of tuples to be passed with the function in parallel
     ncpu : int
-        The number of cpus to execute across
+        The number of cpus to execute across, default is os.cpu_count().
 
     Returns
     -------

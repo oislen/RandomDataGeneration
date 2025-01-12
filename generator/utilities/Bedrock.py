@@ -1,11 +1,20 @@
 import json
+import boto3
+from beartype import beartype
 
+@beartype
 class Bedrock():
-    def __init__(self, session, model_id="meta.llama3-8b-instruct-v1:0"):
+    def __init__(self, session:boto3.Session, model_id:str="meta.llama3-8b-instruct-v1:0"):
         self.client = session.client("bedrock-runtime", region_name="us-east-1")
         self.model_id = "meta.llama3-8b-instruct-v1:0"
     
-    def prompt(self, prompt, system="", top_p=0.5, temperature=0.5, max_gen_len=512):
+    def prompt(
+        self, prompt:str,
+        system:str="",
+        top_p:float=0.5,
+        temperature:float=0.5,
+        max_gen_len:int=512
+        ) -> str:
         # generate bedrock request    
         formatted_prompt = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>{system}<|eot_id|><|start_header_id|>user<|end_header_id|>{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"""
         native_request = {"prompt": formatted_prompt, "max_gen_len": max_gen_len, "temperature": temperature, "top_p":top_p}

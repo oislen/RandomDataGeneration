@@ -1,21 +1,26 @@
 import string
 import numpy as np
+from beartype import beartype
 
-
-def gen_random_id(size, nbytes=16):
-    """Generates a list of random ids
+@beartype
+def gen_random_id(
+    size:int,
+    nbytes:int=16
+    ) -> list:
+    """
+    Generates a list of random ids.
 
     Parameters
     ----------
     size : int
-        The total number of ids to generate
+        The total number of ids to generate.
     nbytes : int
-        The number of numeric values in each id
+        The number of numeric values in each id, default is 16.
 
     Returns
     -------
     list
-        A list of random ids
+        A list of random ids.
     """
     # generate a list of digits from string library
     digits = list(string.digits)

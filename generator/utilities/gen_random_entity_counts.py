@@ -1,22 +1,29 @@
 import numpy as np
 import pandas as pd
 import cons
+from objects.User import User
 from utilities.gen_random_poisson_power import gen_random_poisson_power
+from beartype import beartype
 
-def gen_random_entity_counts(user_obj, transaction_timescale=1.0):
-    """Generates a dataframe of entity counts for all users from a given user object
+@beartype
+def gen_random_entity_counts(
+    user_obj:User,
+    transaction_timescale:float=1.0
+    ) -> pd.DataFrame:
+    """
+    Generates a dataframe of entity counts for all users from a given user object.
 
     Parameters
     ----------
-    user_obj : User Class
-        The User class object
+    user_obj : User
+        The User class object.
     transaction_timescale : float
-        The transaction timescale where 1.0 is a single year of transactions, default is 1.0
+        The transaction timescale where 1.0 is a single year of transactions, default is 1.0.
 
     Returns
     -------
     pd.DataFrame
-        A dataframe of entity counts for all users from the specified user object
+        A dataframe of entity counts for all users from the specified user object.
     """
     # create an empty pandas dataframe to hold the random aggregated data
     random_entity_counts = pd.DataFrame()

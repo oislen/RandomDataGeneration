@@ -1,19 +1,32 @@
 import pandas as pd
 import cons
+from beartype import beartype
 
-
-def gen_trans_rejection_rates(trans_data, fpath_countrieseurope=cons.fpath_countrieseurope, fpath_countrycrimeindex=cons.fpath_countrycrimeindex, fpath_domain_email=cons.fpath_domain_email):
-    """Generates the transaction rejection rates based on features within the transaction level telecom payments data
+@beartype
+def gen_trans_rejection_rates(
+    trans_data:pd.DataFrame,
+    fpath_countrieseurope=cons.fpath_countrieseurope,
+    fpath_countrycrimeindex=cons.fpath_countrycrimeindex,
+    fpath_domain_email=cons.fpath_domain_email
+    ) -> dict:
+    """
+    Generates the transaction rejection rates based on features within the transaction level telecom payments data.
 
     Parameters
     ----------
     trans_data : pandas.DataFrame
-        The transaction level telecom payments data
+        The transaction level telecom payments data.
+    fpath_countrieseurope : str
+        The file path to the europe countries reference data, default is cons.fpath_countrieseurope.
+    fpath_countrycrimeindex : str
+        The file path to the country crime index reference data, default is cons.fpath_countrycrimeindex.
+    fpath_domain_email :str
+        The file path to the email domains reference data, default is cons.fpath_domain_email.
 
     Returns
     -------
-    Dictionary
-        The rejection rates based on features within the transaction level telecom payments data
+    dict
+        The rejection rates based on features within the transaction level telecom payments data.
     """
     # create empty dictionary to hold rejection rates
     rejection_rates_dict = {}
