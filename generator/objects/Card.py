@@ -5,13 +5,14 @@ from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_country_codes_dict import gen_country_codes_dict
 from utilities.gen_shared_idhashes import gen_shared_idhashes
 from beartype import beartype
+from typing import Union
 
 class Card:
 
     @beartype
     def __init__(
         self,
-        n_card_hashes:int,
+        n_card_hashes:Union[int,np.int64],
         fpath_countrieseurope:str=cons.fpath_countrieseurope
         ):
         """

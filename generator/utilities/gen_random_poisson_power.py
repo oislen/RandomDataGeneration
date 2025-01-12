@@ -1,10 +1,11 @@
 import numpy as np
 from beartype import beartype
+from typing import Union
 
 @beartype
 def gen_random_poisson_power(
-    lam:int,
-    size:int,
+    lam:Union[int,float],
+    size:Union[int,np.int64],
     power:int
     ) -> np.ndarray:
     """

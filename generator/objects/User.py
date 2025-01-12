@@ -12,8 +12,8 @@ class User:
     @beartype
     def __init__(
         self,
-        n_user_ids,
-        start_date:int,
+        n_user_ids:int,
+        start_date:str,
         end_date:str,
         fpath_firstnames:str=cons.fpath_firstnames,
         fpath_lastnames:str=cons.fpath_lastnames,

@@ -8,8 +8,8 @@ from beartype import beartype
 def gen_trans_status(
     series:pd.Series,
     rejection_rates_dict:dict,
-    rejection_scaling_factor=2
-    ) -> str:
+    rejection_scaling_factor:int=2
+    ) -> list:
     """
     Generates the transaction status for a pandas series from the transaction level telecom payments data given the rejection rates dictionary from the same data.
 
@@ -24,7 +24,7 @@ def gen_trans_status(
 
     Returns
     -------
-    str
+    list
         The transaction status for the pandas series.
     """
     # set country code columns

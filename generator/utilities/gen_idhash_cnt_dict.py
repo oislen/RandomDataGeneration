@@ -3,12 +3,13 @@ from utilities.gen_random_hash import gen_random_hash
 from utilities.gen_random_id import gen_random_id
 from utilities.gen_random_poisson_power import gen_random_poisson_power
 from beartype import beartype
+from typing import Union
 
 @beartype
 def gen_idhash_cnt_dict(
     idhash_type:str,
-    n:int,
-    lam:float,
+    n:Union[int,np.int64],
+    lam:Union[int,float],
     nbytes:int=16,
     power:int=2
     ) -> dict:

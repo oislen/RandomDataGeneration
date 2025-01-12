@@ -6,13 +6,14 @@ from utilities.gen_idhash_cnt_dict import gen_idhash_cnt_dict
 from utilities.cnt2prop_dict import cnt2prop_dict
 from utilities.gen_shared_idhashes import gen_shared_idhashes
 from beartype import beartype
+from typing import Union
 
 class Device:
 
     @beartype
     def __init__(
         self,
-        n_device_hashes:int,
+        n_device_hashes:Union[int,np.int64],
         fpath_smartphones:str=cons.fpath_smartphones
         ):
         """

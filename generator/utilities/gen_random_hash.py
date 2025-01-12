@@ -1,10 +1,11 @@
 import string
 import numpy as np
 from beartype import beartype
+from typing import Union
 
 @beartype
 def gen_random_hash(
-    size:int,
+    size:Union[int,np.int64],
     nbytes:int=16
     ) -> list:
     """
