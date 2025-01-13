@@ -160,5 +160,8 @@ cython_debug/
 #.idea/
 
 # Data Files
-data
+data/arch
+data/report
+data/RandomTelecomPayments.csv
+data/RandomTelecomUsers.parquet
 .creds
