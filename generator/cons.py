@@ -1,6 +1,7 @@
 import os
 import platform
 import sys
+import datetime
 
 fpath_repo_dir = 'E:\\GitHub\\RandomTelecomPayments' if platform.system() == 'Windows' else "/home/runner/work/RandomTelecomPayments/RandomTelecomPayments" if "GITHUB_ACTIONS_UNITTEST_FLAG" in os.environ else '/home/ubuntu/RandomTelecomPayments'
 sys.path.append(fpath_repo_dir)
@@ -24,14 +25,18 @@ url_country_populations = 'https://raw.githubusercontent.com/ajturner/acetate/ma
 url_first_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/first-names.txt'
 url_last_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/last-names.txt'
 
+# set date constants
+date_date_strftime = "%Y-%m-%d"
+date_today = datetime.datetime.today()
+
 # set programme defaults
 default_n_users = 100
 default_use_random_seed = 0
 default_n_itr = 1
-default_registration_start_date = "2020-01-01"
-default_registration_end_date = "2020-12-31"
-default_transaction_start_date = "2021-01-01"
-default_transaction_end_date = "2021-12-31"
+default_registration_start_date = (date_today - datetime.timedelta(days=731)).strftime(date_date_strftime)
+default_registration_end_date = (date_today - datetime.timedelta(days=366)).strftime(date_date_strftime)
+default_transaction_start_date = (date_today - datetime.timedelta(days=365)).strftime(date_date_strftime)
+default_transaction_end_date = date_today.strftime(date_date_strftime)
 
 # set unittest constants
 unittest_seed = 42
@@ -46,7 +51,6 @@ unittest_transaction_start_date = '2021-01-01'
 unittest_transaction_end_date = '2021-12-31'
 
 # set data model constants
-date_date_strftime = "%Y-%m-%d"
 data_model_entity_user_ratios = {'card':1.3, 'device':2.5, 'transaction':5.3, 'ip':4.3}
 data_model_poisson_params = {'user':{'lambda':20, 'power':1}, 'device':{'lambda':0.2, 'power':2}, 'card':{'lambda':0.1, 'power':2}, 'ip':{'lambda':1.3, 'power':2}, 'application':{'lambda':1, 'power':2}, 'transaction':{'lambda':5, 'power':2}}
 data_model_shared_entities_dict = {'ip':0.05, 'card':0.005, 'device':0.01}
