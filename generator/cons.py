@@ -24,6 +24,15 @@ url_country_populations = 'https://raw.githubusercontent.com/ajturner/acetate/ma
 url_first_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/first-names.txt'
 url_last_names = 'https://gist.githubusercontent.com/elifiner/cc90fdd387449158829515782936a9a4/raw/e1a219c33d91b3eecb51ae7b5647d26ed667a11d/last-names.txt'
 
+# set programme defaults
+default_n_users = 100
+default_use_random_seed = 0
+default_n_itr = 1
+default_registration_start_date = "2020-01-01"
+default_registration_end_date = "2020-12-31"
+default_transaction_start_date = "2021-01-01"
+default_transaction_end_date = "2021-12-31"
+
 # set unittest constants
 unittest_seed = 42
 unittest_n_entities = 4

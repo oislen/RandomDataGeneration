@@ -1,5 +1,6 @@
 import argparse
 from beartype import beartype
+import cons
 
 @beartype
 def commandline_interface() -> dict:
@@ -23,13 +24,13 @@ def commandline_interface() -> dict:
     # define argument parser object
     parser = argparse.ArgumentParser(description="Execute Random TeleCom Data Programme.")
     # add input arguments
-    parser.add_argument("--n_users", action="store", dest="n_users", type=int, default=100, help="Integer, the number of users to generate random telecom payments data for",)
-    parser.add_argument("--use_random_seed", action="store", dest="use_random_seed", type=int, default=0, help="Integer, use a set random seed for reproducible results; must be either 0 or 1",)
-    parser.add_argument("--n_itr", action="store", dest="n_itr", type=int, default=1, help="Integer, number of iterations to run",)
-    parser.add_argument("--registration_start_date", action="store", dest="registration_start_date", type=str, default="2020-01-01", help="String, the start date for registrations",)
-    parser.add_argument("--registration_end_date", action="store", dest="registration_end_date", type=str, default="2020-12-31", help="String, the end date for registrations",)
-    parser.add_argument("--transaction_start_date", action="store", dest="transaction_start_date", type=str, default="2021-01-01", help="String, the start date for transactions",)
-    parser.add_argument("--transaction_end_date", action="store", dest="transaction_end_date", type=str, default="2021-12-31", help="String, the end date for transactions",)
+    parser.add_argument("--n_users", action="store", dest="n_users", type=int, default=cons.default_n_users, help="Integer, the number of users to generate random telecom payments data for",)
+    parser.add_argument("--use_random_seed", action="store", dest="use_random_seed", type=int, default=cons.default_use_random_seed, help="Integer, use a set random seed for reproducible results; must be either 0 or 1",)
+    parser.add_argument("--n_itr", action="store", dest="n_itr", type=int, default=cons.default_n_itr, help="Integer, number of iterations to run",)
+    parser.add_argument("--registration_start_date", action="store", dest="registration_start_date", type=str, default=cons.default_registration_start_date, help="String, the start date for registrations",)
+    parser.add_argument("--registration_end_date", action="store", dest="registration_end_date", type=str, default=cons.default_registration_end_date, help="String, the end date for registrations",)
+    parser.add_argument("--transaction_start_date", action="store", dest="transaction_start_date", type=str, default=cons.default_transaction_start_date, help="String, the start date for transactions",)
+    parser.add_argument("--transaction_end_date", action="store", dest="transaction_end_date", type=str, default=cons.default_transaction_end_date, help="String, the end date for transactions",)
     # create an output dictionary to hold the results
     input_params_dict = {}
     # extract input arguments
