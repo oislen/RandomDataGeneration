@@ -29,3 +29,4 @@ jobs:
       run: |
         python -m unittest discover ./generator/unittests/utilities
         python -m unittest discover ./generator/unittests/objects
+        python -m unittest discover ./generator/unittests/app
