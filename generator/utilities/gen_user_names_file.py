@@ -20,14 +20,21 @@ def invoke_bedrock(model, n_user_names, country):
     # parse json
     record_set = json.loads(text)
     # generate pandas dataframe
-    user_data = pd.DataFrame.from_records(record_set)
+    user_firstname_data = pd.Series(record_set["firstnames"], name="firstnames").to_frame().drop_duplicates()
+    user_lastname_data = pd.Series(record_set["lastnames"], name="lastnames").to_frame().drop_duplicates()
     # add country
-    user_data['country'] = country
+    user_firstname_data['country'] = country
+    user_lastname_data['country'] = country
     # join on country codes
-    tmp_user_country_data = user_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
-    tmp_user_country_data.to_csv(f"E:\\GitHub\\RandomTelecomPayments\\data\\temp\\llama_user_names_{country.lower()}.csv", index=False)
-    print(tmp_user_country_data.shape)
-    return tmp_user_country_data
+    tmp_firstname_country_data = user_firstname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
+    tmp_lastname_country_data = user_lastname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
+    # print shapes
+    print(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
+    print(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
+    # save user names data to temp directory
+    tmp_firstname_country_data.to_csv(f"E:\\GitHub\\RandomTelecomPayments\\data\\temp\\llama_firstnames_{country.lower()}.csv", index=False)
+    tmp_lastname_country_data.to_csv(f"E:\\GitHub\\RandomTelecomPayments\\data\\temp\\llama_lastnames_{country.lower()}.csv", index=False)
+    return (tmp_firstname_country_data, tmp_lastname_country_data)
 
 if __name__ == "__main__":
     
@@ -54,29 +61,34 @@ if __name__ == "__main__":
     # determine file size
     orig_filesize = int((orig_firstnames.shape[0] + orig_surnames.shape[0])/2)
     n_countries = countrieseurope.shape[0]
-    n_user_names = min(50, int(orig_filesize / n_countries))
+    n_user_names = min(5, int(orig_filesize / n_countries))
     
     # generate user names
-    user_country_data = []
+    firstname_country_data = []
+    lastname_country_data = []
     for country in countrieseurope['name'].to_list():
         print(country)
         try:
             # call bedrock model and generate user names data
-            tmp_user_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
+            tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
             # append to user country data
-            user_country_data.append(tmp_user_country_data)
+            firstname_country_data.append(tmp_firstname_country_data)
+            lastname_country_data.append(tmp_lastname_country_data)
         except Exception as e:
             print(e)
         print("Waiting ...")
-        # wait 70 seconds before retrying
-        time.sleep(70)
+        # wait 65 seconds before retrying
+        time.sleep(65)
     
     # concatenate user country data together
-    user_country_df = pd.concat(user_country_data, axis=0, ignore_index=True)
+    firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
+    lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
     
     # write data to disk
     if True:
-        user_country_df.to_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_user_names.csv", index=False)
+        firstname_country_df.to_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_firstnames.csv", index=False)
+        lastname_country_df.to_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_lastnames.csv", index=False)
     # read data from dsk
     if False:
-        user_country_df = pd.read_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_user_names.csv")
+        firstname_country_df = pd.read_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_firstnames.csv")
+        lastname_country_df = pd.read_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_lastnames.csv")
