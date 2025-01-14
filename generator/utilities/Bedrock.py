@@ -47,7 +47,7 @@ system = """
 
 You are a random name generator for users from different countries in Europe.
 Your task is to generate an arbitrary number of typical / popular firstname and surname pairs for both male and female users from given a country of origin.
-Do not repeat any first names or surnames, as each individual first name must be unique and each individual surname must be unique.
+Do not repeat any firstnames or surnames, as each individual firstname must be unique and each individual surname must be unique.
 You should return the random user names using a valid JSON record set tagged as <answer></answer>.
 The valid JSON record set should be of the following structure
 
