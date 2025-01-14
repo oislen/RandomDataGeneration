@@ -3,14 +3,18 @@ import boto3
 from beartype import beartype
 
 class Bedrock():
+    """
+    https://docs.aws.amazon.com/general/latest/gr/bedrock.html
+    """
     @beartype
     def __init__(
         self, 
         session:boto3.Session,
+        model_region="us-east-1",
         model_id:str="meta.llama3-8b-instruct-v1:0"
         ):
-        self.client = session.client("bedrock-runtime", region_name="us-east-1")
-        self.model_id = "meta.llama3-8b-instruct-v1:0"
+        self.client = session.client("bedrock-runtime", region_name=model_region)
+        self.model_id = model_id
     
     @beartype
     def prompt(
@@ -41,18 +45,19 @@ system = """
 
 # Task
 
-You are a random name generator for users from different European countries.
-Your task is to generate an arbitrary number of typical or popular firstname and surname pairs for both male and female users from given a country of origin.
+You are a random name generator for users from different countries in Europe.
+Your task is to generate an arbitrary number of typical / popular firstname and surname pairs for both male and female users from given a country of origin.
+Do not repeat any first names or surnames, as each individual first name must be unique and each individual surname must be unique.
 You should return the random user names using a valid JSON record set tagged as <answer></answer>.
 The valid JSON record set should be of the following structure
 
-[{"id":"1", "firstname":"user_firstname_1", "lastname":"user_lastname_1", "sex":"user_sex_1", "country":"user_country_1"},{"id":"2", "firstname":"user_firstname_2", "lastname":"user_lastname_2", "sex":"user_sex_2", "country":"user_country_2"},...,{"id":"n", "firstname":"user_firstname_n", "lastname":"user_lastname_n", "sex":"user_sex_n", "country":"user_country_n"}]
+[{"firstname":"user_firstname_1", "lastname":"user_lastname_1"},{"firstname":"user_firstname_2", "lastname":"user_lastname_2"},...,{"firstname":"user_firstname_n", "lastname":"user_lastname_n"}]
 
 # Example
 
-Generate 3 user names for "United Kingdom"
+Generate 4 user names for "United Kingdom"
 
-<answer>[{"id":"1", "firstname":"George", "lastname":"Adams", "sex":"Male", "country":"United Kingdom"},{"id":"2", "firstname":"Andy", "lastname":"Kirkpatrick", "sex":"Male", "country":"United Kingdom"},{"id":"3", "firstname":"Megan", "lastname":"Allard", "sex":"Female", "country":"United Kingdom"}]</answer>
+<answer>[{"firstname":"George","lastname":"Smith"},{"firstname":"Richard","lastname":"Taylor"},{"firstname":"Katie","lastname":"Jones"},{"firstname":"Mary","lastname":"Brown"}]</answer>
 
 """
 
