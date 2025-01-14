@@ -1,0 +1,1314 @@
+firstnames,country,ISO alpha 2,ISO alpha 3
+Oleksandr,Ukraine,UA,UKR
+Viktoriya,Ukraine,UA,UKR
+Andriy,Ukraine,UA,UKR
+Olena,Ukraine,UA,UKR
+Roman,Ukraine,UA,UKR
+Natalia,Ukraine,UA,UKR
+Volodymyr,Ukraine,UA,UKR
+Iryna,Ukraine,UA,UKR
+Mykola,Ukraine,UA,UKR
+Tetyana,Ukraine,UA,UKR
+Dmytro,Ukraine,UA,UKR
+Kateryna,Ukraine,UA,UKR
+Sergiy,Ukraine,UA,UKR
+Anastasiya,Ukraine,UA,UKR
+Oleh,Ukraine,UA,UKR
+Larysa,Ukraine,UA,UKR
+Ivan,Ukraine,UA,UKR
+Svitlana,Ukraine,UA,UKR
+Vitaliy,Ukraine,UA,UKR
+Yuliya,Ukraine,UA,UKR
+Pavlo,Ukraine,UA,UKR
+Olha,Ukraine,UA,UKR
+Bohdan,Ukraine,UA,UKR
+Nadiya,Ukraine,UA,UKR
+Mykhaylo,Ukraine,UA,UKR
+Lyubov,Ukraine,UA,UKR
+Vasyl,Ukraine,UA,UKR
+Halyna,Ukraine,UA,UKR
+Léa,France,FR,FRA
+Mathieu,France,FR,FRA
+Lola,France,FR,FRA
+Pierre,France,FR,FRA
+Camille,France,FR,FRA
+Antoine,France,FR,FRA
+Anaïs,France,FR,FRA
+Théo,France,FR,FRA
+Alice,France,FR,FRA
+Gabriel,France,FR,FRA
+Louna,France,FR,FRA
+Raphaël,France,FR,FRA
+Chloé,France,FR,FRA
+Étienne,France,FR,FRA
+Julie,France,FR,FRA
+Baptiste,France,FR,FRA
+Sophie,France,FR,FRA
+Alexandre,France,FR,FRA
+Laurie,France,FR,FRA
+Céline,France,FR,FRA
+Matthieu,France,FR,FRA
+Océane,France,FR,FRA
+Florian,France,FR,FRA
+Émilie,France,FR,FRA
+Hugo,France,FR,FRA
+Marine,France,FR,FRA
+Valentin,France,FR,FRA
+Charlotte,France,FR,FRA
+Juan,Spain,ES,ESP
+Cristina,Spain,ES,ESP
+Javier,Spain,ES,ESP
+Julia,Spain,ES,ESP
+Isabel,Spain,ES,ESP
+Alejandro,Spain,ES,ESP
+Sofia,Spain,ES,ESP
+Luis,Spain,ES,ESP
+Ana,Spain,ES,ESP
+Pablo,Spain,ES,ESP
+Laura,Spain,ES,ESP
+Fernando,Spain,ES,ESP
+Elena,Spain,ES,ESP
+Carlos,Spain,ES,ESP
+Nuria,Spain,ES,ESP
+Rafael,Spain,ES,ESP
+Beatriz,Spain,ES,ESP
+Manuel,Spain,ES,ESP
+Carmen,Spain,ES,ESP
+Andres,Spain,ES,ESP
+Valeria,Spain,ES,ESP
+Gonzalo,Spain,ES,ESP
+Marta,Spain,ES,ESP
+Ignacio,Spain,ES,ESP
+Rosa,Spain,ES,ESP
+Francisco,Spain,ES,ESP
+Eva,Spain,ES,ESP
+Hugo,Spain,ES,ESP
+Ines,Spain,ES,ESP
+Lukas,Sweden,SE,SWE
+Astrid,Sweden,SE,SWE
+Erik,Sweden,SE,SWE
+Linnéa,Sweden,SE,SWE
+Sofia,Sweden,SE,SWE
+Kalle,Sweden,SE,SWE
+Maja,Sweden,SE,SWE
+Stina,Sweden,SE,SWE
+Olle,Sweden,SE,SWE
+Viggo,Sweden,SE,SWE
+Ida,Sweden,SE,SWE
+Alva,Sweden,SE,SWE
+Nils,Sweden,SE,SWE
+Elin,Sweden,SE,SWE
+Tobias,Sweden,SE,SWE
+Lova,Sweden,SE,SWE
+Hugo,Sweden,SE,SWE
+Gudrun,Sweden,SE,SWE
+Sven,Sweden,SE,SWE
+Ingrid,Sweden,SE,SWE
+Rasmus,Sweden,SE,SWE
+Eira,Sweden,SE,SWE
+Lars,Sweden,SE,SWE
+Cecilia,Sweden,SE,SWE
+Gabriella,Sweden,SE,SWE
+Axel,Sweden,SE,SWE
+Ester,Sweden,SE,SWE
+Mikael,Sweden,SE,SWE
+Filip,Sweden,SE,SWE
+Lena,Sweden,SE,SWE
+Max,Germany,DE,DEU
+Hannah,Germany,DE,DEU
+Lukas,Germany,DE,DEU
+Sophia,Germany,DE,DEU
+Felix,Germany,DE,DEU
+Lena,Germany,DE,DEU
+Julian,Germany,DE,DEU
+Emilia,Germany,DE,DEU
+Leon,Germany,DE,DEU
+Charlotte,Germany,DE,DEU
+Benjamin,Germany,DE,DEU
+Anna,Germany,DE,DEU
+Alexander,Germany,DE,DEU
+Lea,Germany,DE,DEU
+Erik,Germany,DE,DEU
+Nina,Germany,DE,DEU
+Oliver,Germany,DE,DEU
+Luisa,Germany,DE,DEU
+Tim,Germany,DE,DEU
+Jana,Germany,DE,DEU
+Michael,Germany,DE,DEU
+Sandra,Germany,DE,DEU
+Thomas,Germany,DE,DEU
+Katharina,Germany,DE,DEU
+Sebastian,Germany,DE,DEU
+Marie,Germany,DE,DEU
+Florian,Germany,DE,DEU
+Daniela,Germany,DE,DEU
+Andreas,Germany,DE,DEU
+Vanessa,Germany,DE,DEU
+Aino,Finland,FI,FIN
+Eero,Finland,FI,FIN
+Lotta,Finland,FI,FIN
+Joonas,Finland,FI,FIN
+Sofia,Finland,FI,FIN
+Antti,Finland,FI,FIN
+Emilia,Finland,FI,FIN
+Ville,Finland,FI,FIN
+Olivia,Finland,FI,FIN
+Matti,Finland,FI,FIN
+Aada,Finland,FI,FIN
+Juhani,Finland,FI,FIN
+Lena,Finland,FI,FIN
+Saku,Finland,FI,FIN
+Eeva,Finland,FI,FIN
+Heikki,Finland,FI,FIN
+Saara,Finland,FI,FIN
+Pekka,Finland,FI,FIN
+Nina,Finland,FI,FIN
+Jenna,Finland,FI,FIN
+Tero,Finland,FI,FIN
+Elina,Finland,FI,FIN
+Kalle,Finland,FI,FIN
+Riina,Finland,FI,FIN
+Johannes,Finland,FI,FIN
+Hanna,Finland,FI,FIN
+Mikko,Finland,FI,FIN
+Elias,Finland,FI,FIN
+Andreas,Norway,NO,NOR
+Ingrid,Norway,NO,NOR
+Erik,Norway,NO,NOR
+Lise,Norway,NO,NOR
+Kjetil,Norway,NO,NOR
+Synnøve,Norway,NO,NOR
+Torstein,Norway,NO,NOR
+Astrid,Norway,NO,NOR
+Bjørn,Norway,NO,NOR
+Gudrun,Norway,NO,NOR
+Ole,Norway,NO,NOR
+Helga,Norway,NO,NOR
+Svein,Norway,NO,NOR
+Ragnhild,Norway,NO,NOR
+Kari,Norway,NO,NOR
+Torbjørn,Norway,NO,NOR
+Bente,Norway,NO,NOR
+Einar,Norway,NO,NOR
+Tove,Norway,NO,NOR
+Lars,Norway,NO,NOR
+Gunnhild,Norway,NO,NOR
+Kristian,Norway,NO,NOR
+Marit,Norway,NO,NOR
+Harald,Norway,NO,NOR
+Solveig,Norway,NO,NOR
+Oddvar,Norway,NO,NOR
+Turid,Norway,NO,NOR
+Jørgen,Norway,NO,NOR
+Vigdis,Norway,NO,NOR
+Kacper,Poland,PL,POL
+Aleksandra,Poland,PL,POL
+Maja,Poland,PL,POL
+Piotr,Poland,PL,POL
+Katarzyna,Poland,PL,POL
+Jakub,Poland,PL,POL
+Wiktoria,Poland,PL,POL
+Michał,Poland,PL,POL
+Agnieszka,Poland,PL,POL
+Szymon,Poland,PL,POL
+Julia,Poland,PL,POL
+Krzysztof,Poland,PL,POL
+Emilia,Poland,PL,POL
+Dominik,Poland,PL,POL
+Zuzanna,Poland,PL,POL
+Mateusz,Poland,PL,POL
+Kinga,Poland,PL,POL
+Bartłomiej,Poland,PL,POL
+Natalia,Poland,PL,POL
+Łukasz,Poland,PL,POL
+Oliwia,Poland,PL,POL
+Filip,Poland,PL,POL
+Gabriela,Poland,PL,POL
+Adam,Poland,PL,POL
+Ewa,Poland,PL,POL
+Maciej,Poland,PL,POL
+Kamila,Poland,PL,POL
+Tomasz,Poland,PL,POL
+Sandra,Poland,PL,POL
+Alessandro,Italy,IT,ITA
+Giulia,Italy,IT,ITA
+Lorenzo,Italy,IT,ITA
+Francesca,Italy,IT,ITA
+Matteo,Italy,IT,ITA
+Sofia,Italy,IT,ITA
+Gabriele,Italy,IT,ITA
+Chiara,Italy,IT,ITA
+Andrea,Italy,IT,ITA
+Valentina,Italy,IT,ITA
+Riccardo,Italy,IT,ITA
+Martina,Italy,IT,ITA
+Tommaso,Italy,IT,ITA
+Giada,Italy,IT,ITA
+Leonardo,Italy,IT,ITA
+Aurora,Italy,IT,ITA
+Davide,Italy,IT,ITA
+Ginevra,Italy,IT,ITA
+Emanuele,Italy,IT,ITA
+Beatrice,Italy,IT,ITA
+Luca,Italy,IT,ITA
+Federica,Italy,IT,ITA
+Marco,Italy,IT,ITA
+Cecilia,Italy,IT,ITA
+Stefano,Italy,IT,ITA
+Elisa,Italy,IT,ITA
+Giovanni,Italy,IT,ITA
+Silvia,Italy,IT,ITA
+Ethan,United Kingdom,GB,GBR
+Emily,United Kingdom,GB,GBR
+Alexander,United Kingdom,GB,GBR
+Lily,United Kingdom,GB,GBR
+Oliver,United Kingdom,GB,GBR
+Isabella,United Kingdom,GB,GBR
+Benjamin,United Kingdom,GB,GBR
+Sophia,United Kingdom,GB,GBR
+Charlie,United Kingdom,GB,GBR
+Mia,United Kingdom,GB,GBR
+William,United Kingdom,GB,GBR
+Evie,United Kingdom,GB,GBR
+James,United Kingdom,GB,GBR
+Daisy,United Kingdom,GB,GBR
+Robert,United Kingdom,GB,GBR
+Gracie,United Kingdom,GB,GBR
+Richard,United Kingdom,GB,GBR
+Hannah,United Kingdom,GB,GBR
+Thomas,United Kingdom,GB,GBR
+Florence,United Kingdom,GB,GBR
+Christopher,United Kingdom,GB,GBR
+Poppy,United Kingdom,GB,GBR
+Joseph,United Kingdom,GB,GBR
+Ava,United Kingdom,GB,GBR
+Gabriel,United Kingdom,GB,GBR
+Luna,United Kingdom,GB,GBR
+Michael,United Kingdom,GB,GBR
+Imogen,United Kingdom,GB,GBR
+Daniel,United Kingdom,GB,GBR
+Phoebe,United Kingdom,GB,GBR
+Andrei,Romania,RO,ROU
+Ioana,Romania,RO,ROU
+Mihai,Romania,RO,ROU
+Raluca,Romania,RO,ROU
+Cristian,Romania,RO,ROU
+Andreea,Romania,RO,ROU
+Vlad,Romania,RO,ROU
+Gabriela,Romania,RO,ROU
+Alexandru,Romania,RO,ROU
+Livia,Romania,RO,ROU
+Florin,Romania,RO,ROU
+Denisa,Romania,RO,ROU
+Marian,Romania,RO,ROU
+Razvan,Romania,RO,ROU
+Elena,Romania,RO,ROU
+Catalin,Romania,RO,ROU
+Adina,Romania,RO,ROU
+Bogdan,Romania,RO,ROU
+Iulia,Romania,RO,ROU
+Constantin,Romania,RO,ROU
+Simina,Romania,RO,ROU
+Octavian,Romania,RO,ROU
+Laura,Romania,RO,ROU
+Valentin,Romania,RO,ROU
+Georgiana,Romania,RO,ROU
+Stefan,Romania,RO,ROU
+Oana,Romania,RO,ROU
+Mihnea,Romania,RO,ROU
+Alina,Belarus,BY,BLR
+Vladislav,Belarus,BY,BLR
+Nadzeya,Belarus,BY,BLR
+Pavel,Belarus,BY,BLR
+Anastasiya,Belarus,BY,BLR
+Dzmitry,Belarus,BY,BLR
+Kseniya,Belarus,BY,BLR
+Andrey,Belarus,BY,BLR
+Viktoryia,Belarus,BY,BLR
+Ilya,Belarus,BY,BLR
+Maryia,Belarus,BY,BLR
+Sergey,Belarus,BY,BLR
+Aksana,Belarus,BY,BLR
+Yury,Belarus,BY,BLR
+Nastassia,Belarus,BY,BLR
+Mikhail,Belarus,BY,BLR
+Darya,Belarus,BY,BLR
+Vasil,Belarus,BY,BLR
+Aliaksandr,Belarus,BY,BLR
+Natallia,Belarus,BY,BLR
+Kiryl,Belarus,BY,BLR
+Volha,Belarus,BY,BLR
+Artsiom,Belarus,BY,BLR
+Inna,Belarus,BY,BLR
+Stanislau,Belarus,BY,BLR
+Hanna,Belarus,BY,BLR
+Uladzimir,Belarus,BY,BLR
+Valeryia,Belarus,BY,BLR
+Andreas,Greece,GR,GRC
+Evangelia,Greece,GR,GRC
+Konstantinos,Greece,GR,GRC
+Ioanna,Greece,GR,GRC
+Georgios,Greece,GR,GRC
+Maria,Greece,GR,GRC
+Christos,Greece,GR,GRC
+Eleni,Greece,GR,GRC
+Nikolaos,Greece,GR,GRC
+Sofia,Greece,GR,GRC
+Alexandros,Greece,GR,GRC
+Anna,Greece,GR,GRC
+Dimitris,Greece,GR,GRC
+Eva,Greece,GR,GRC
+Ioannis,Greece,GR,GRC
+Katerina,Greece,GR,GRC
+Panagiotis,Greece,GR,GRC
+Vasiliki,Greece,GR,GRC
+Stavros,Greece,GR,GRC
+Roula,Greece,GR,GRC
+Giorgos,Greece,GR,GRC
+Nikolina,Greece,GR,GRC
+Theodoros,Greece,GR,GRC
+Eirini,Greece,GR,GRC
+Michalis,Greece,GR,GRC
+Aikaterini,Greece,GR,GRC
+Petros,Greece,GR,GRC
+Elpida,Greece,GR,GRC
+Ivan,Bulgaria,BG,BGR
+Viktoriya,Bulgaria,BG,BGR
+Georgi,Bulgaria,BG,BGR
+Desislava,Bulgaria,BG,BGR
+Nikolay,Bulgaria,BG,BGR
+Emiliya,Bulgaria,BG,BGR
+Vladimir,Bulgaria,BG,BGR
+Aleksandra,Bulgaria,BG,BGR
+Martin,Bulgaria,BG,BGR
+Kristina,Bulgaria,BG,BGR
+Plamen,Bulgaria,BG,BGR
+Nadezhda,Bulgaria,BG,BGR
+Stefan,Bulgaria,BG,BGR
+Radoslava,Bulgaria,BG,BGR
+Dimitar,Bulgaria,BG,BGR
+Ivana,Bulgaria,BG,BGR
+Boyan,Bulgaria,BG,BGR
+Evgeniya,Bulgaria,BG,BGR
+Valentin,Bulgaria,BG,BGR
+Liliya,Bulgaria,BG,BGR
+Todor,Bulgaria,BG,BGR
+Svetlana,Bulgaria,BG,BGR
+Krasimir,Bulgaria,BG,BGR
+Mariya,Bulgaria,BG,BGR
+Petar,Bulgaria,BG,BGR
+Gergana,Bulgaria,BG,BGR
+Rumen,Bulgaria,BG,BGR
+Arnar,Iceland,IS,ISL
+Bryndís,Iceland,IS,ISL
+Einar,Iceland,IS,ISL
+Guðrún,Iceland,IS,ISL
+Hafdís,Iceland,IS,ISL
+Haukur,Iceland,IS,ISL
+Helga,Iceland,IS,ISL
+Hrefna,Iceland,IS,ISL
+Ingólfur,Iceland,IS,ISL
+Jóhann,Iceland,IS,ISL
+Jón,Iceland,IS,ISL
+Kristín,Iceland,IS,ISL
+Lilja,Iceland,IS,ISL
+Magnús,Iceland,IS,ISL
+Margrét,Iceland,IS,ISL
+Ólafur,Iceland,IS,ISL
+Ragnheiður,Iceland,IS,ISL
+Sara,Iceland,IS,ISL
+Sigurður,Iceland,IS,ISL
+Snorri,Iceland,IS,ISL
+Sólveig,Iceland,IS,ISL
+Steinunn,Iceland,IS,ISL
+Þóra,Iceland,IS,ISL
+Þórður,Iceland,IS,ISL
+Valgerður,Iceland,IS,ISL
+Vigdís,Iceland,IS,ISL
+Vilhjálmur,Iceland,IS,ISL
+Luís,Portugal,PT,PRT
+Mariana,Portugal,PT,PRT
+Ricardo,Portugal,PT,PRT
+Ana,Portugal,PT,PRT
+Pedro,Portugal,PT,PRT
+Sofia,Portugal,PT,PRT
+João,Portugal,PT,PRT
+Inês,Portugal,PT,PRT
+Tiago,Portugal,PT,PRT
+Margarida,Portugal,PT,PRT
+Filipe,Portugal,PT,PRT
+Catarina,Portugal,PT,PRT
+Gonçalo,Portugal,PT,PRT
+Francisca,Portugal,PT,PRT
+Rui,Portugal,PT,PRT
+Lúcia,Portugal,PT,PRT
+Nuno,Portugal,PT,PRT
+Beatriz,Portugal,PT,PRT
+André,Portugal,PT,PRT
+Raquel,Portugal,PT,PRT
+Hugo,Portugal,PT,PRT
+Cláudia,Portugal,PT,PRT
+Mário,Portugal,PT,PRT
+Teresa,Portugal,PT,PRT
+Vasco,Portugal,PT,PRT
+Patrícia,Portugal,PT,PRT
+Fernando,Portugal,PT,PRT
+Sandra,Portugal,PT,PRT
+Leonardo,Portugal,PT,PRT
+Joana,Portugal,PT,PRT
+Lukáš,Czech Republic,CZ,CZE
+Eva,Czech Republic,CZ,CZE
+Tomáš,Czech Republic,CZ,CZE
+Kateřina,Czech Republic,CZ,CZE
+Jan,Czech Republic,CZ,CZE
+Alena,Czech Republic,CZ,CZE
+Martin,Czech Republic,CZ,CZE
+Veronika,Czech Republic,CZ,CZE
+Petr,Czech Republic,CZ,CZE
+Tereza,Czech Republic,CZ,CZE
+Ondřej,Czech Republic,CZ,CZE
+Lucie,Czech Republic,CZ,CZE
+Michal,Czech Republic,CZ,CZE
+Hana,Czech Republic,CZ,CZE
+David,Czech Republic,CZ,CZE
+Jana,Czech Republic,CZ,CZE
+Jakub,Czech Republic,CZ,CZE
+Šárka,Czech Republic,CZ,CZE
+Filip,Czech Republic,CZ,CZE
+Adéla,Czech Republic,CZ,CZE
+Vojtěch,Czech Republic,CZ,CZE
+Markéta,Czech Republic,CZ,CZE
+Radek,Czech Republic,CZ,CZE
+Ivana,Czech Republic,CZ,CZE
+Karel,Czech Republic,CZ,CZE
+Zuzana,Czech Republic,CZ,CZE
+Aleš,Czech Republic,CZ,CZE
+Gabriela,Czech Republic,CZ,CZE
+Dominik,Czech Republic,CZ,CZE
+Nikol,Czech Republic,CZ,CZE
+Lukas,Denmark,DK,DNK
+Astrid,Denmark,DK,DNK
+Mikkel,Denmark,DK,DNK
+Sofie,Denmark,DK,DNK
+Andreas,Denmark,DK,DNK
+Camilla,Denmark,DK,DNK
+Frederik,Denmark,DK,DNK
+Lise,Denmark,DK,DNK
+Christian,Denmark,DK,DNK
+Josefine,Denmark,DK,DNK
+Mads,Denmark,DK,DNK
+Nadia,Denmark,DK,DNK
+Oliver,Denmark,DK,DNK
+Sara,Denmark,DK,DNK
+Thea,Denmark,DK,DNK
+Emil,Denmark,DK,DNK
+Ida,Denmark,DK,DNK
+Kasper,Denmark,DK,DNK
+Lærke,Denmark,DK,DNK
+Mathias,Denmark,DK,DNK
+Nikolaj,Denmark,DK,DNK
+Rasmus,Denmark,DK,DNK
+Sofia,Denmark,DK,DNK
+Tobias,Denmark,DK,DNK
+Viktoria,Denmark,DK,DNK
+William,Denmark,DK,DNK
+Xenia,Denmark,DK,DNK
+Yvonne,Denmark,DK,DNK
+Zoe,Denmark,DK,DNK
+Szabolcs,Hungary,HU,HUN
+Viktória,Hungary,HU,HUN
+Gábor,Hungary,HU,HUN
+Réka,Hungary,HU,HUN
+Zoltán,Hungary,HU,HUN
+Eszter,Hungary,HU,HUN
+Tamás,Hungary,HU,HUN
+Kinga,Hungary,HU,HUN
+László,Hungary,HU,HUN
+Judit,Hungary,HU,HUN
+Attila,Hungary,HU,HUN
+Fanni,Hungary,HU,HUN
+István,Hungary,HU,HUN
+Csilla,Hungary,HU,HUN
+György,Hungary,HU,HUN
+Beatrix,Hungary,HU,HUN
+Péter,Hungary,HU,HUN
+Andrea,Hungary,HU,HUN
+Zsolt,Hungary,HU,HUN
+Éva,Hungary,HU,HUN
+Ferenc,Hungary,HU,HUN
+Katalin,Hungary,HU,HUN
+Máté,Hungary,HU,HUN
+Orsolya,Hungary,HU,HUN
+József,Hungary,HU,HUN
+Erzsébet,Hungary,HU,HUN
+Béla,Hungary,HU,HUN
+Tímea,Hungary,HU,HUN
+Gergely,Hungary,HU,HUN
+Milan,Serbia,RS,SRB
+Jelena,Serbia,RS,SRB
+Nikola,Serbia,RS,SRB
+Ana,Serbia,RS,SRB
+Marko,Serbia,RS,SRB
+Ivana,Serbia,RS,SRB
+Vladimir,Serbia,RS,SRB
+Katarina,Serbia,RS,SRB
+Stefan,Serbia,RS,SRB
+Jovana,Serbia,RS,SRB
+Dragan,Serbia,RS,SRB
+Sofija,Serbia,RS,SRB
+Luka,Serbia,RS,SRB
+Tamara,Serbia,RS,SRB
+Bojan,Serbia,RS,SRB
+Nina,Serbia,RS,SRB
+Aleksandar,Serbia,RS,SRB
+Sanja,Serbia,RS,SRB
+Miloš,Serbia,RS,SRB
+Jasmina,Serbia,RS,SRB
+Radoslav,Serbia,RS,SRB
+Vesna,Serbia,RS,SRB
+Goran,Serbia,RS,SRB
+Marija,Serbia,RS,SRB
+Dejan,Serbia,RS,SRB
+Slavica,Serbia,RS,SRB
+Zoran,Serbia,RS,SRB
+Ivanka,Serbia,RS,SRB
+Lukas,Austria,AT,AUT
+Anna,Austria,AT,AUT
+Felix,Austria,AT,AUT
+Sophie,Austria,AT,AUT
+Maximilian,Austria,AT,AUT
+Julia,Austria,AT,AUT
+Elias,Austria,AT,AUT
+Laura,Austria,AT,AUT
+Alexander,Austria,AT,AUT
+Nina,Austria,AT,AUT
+Gabriel,Austria,AT,AUT
+Sarah,Austria,AT,AUT
+Leonhard,Austria,AT,AUT
+Marie,Austria,AT,AUT
+Matthias,Austria,AT,AUT
+Katharina,Austria,AT,AUT
+Jakob,Austria,AT,AUT
+Helena,Austria,AT,AUT
+Benjamin,Austria,AT,AUT
+Rebecca,Austria,AT,AUT
+Christoph,Austria,AT,AUT
+Daniela,Austria,AT,AUT
+Florian,Austria,AT,AUT
+Eva,Austria,AT,AUT
+Andreas,Austria,AT,AUT
+Monika,Austria,AT,AUT
+Sebastian,Austria,AT,AUT
+Theresa,Austria,AT,AUT
+Michael,Austria,AT,AUT
+Cornelia,Austria,AT,AUT
+Aidan,Ireland,IE,IRL
+Saoirse,Ireland,IE,IRL
+Cian,Ireland,IE,IRL
+Fiona,Ireland,IE,IRL
+Liam,Ireland,IE,IRL
+Grainne,Ireland,IE,IRL
+Connor,Ireland,IE,IRL
+Aisling,Ireland,IE,IRL
+Darragh,Ireland,IE,IRL
+Oonagh,Ireland,IE,IRL
+Eamon,Ireland,IE,IRL
+Roisin,Ireland,IE,IRL
+Killian,Ireland,IE,IRL
+Niamh,Ireland,IE,IRL
+Cormac,Ireland,IE,IRL
+Orla,Ireland,IE,IRL
+Ronan,Ireland,IE,IRL
+Cliona,Ireland,IE,IRL
+Finn,Ireland,IE,IRL
+Eilish,Ireland,IE,IRL
+Cathal,Ireland,IE,IRL
+Muireann,Ireland,IE,IRL
+Sean,Ireland,IE,IRL
+Dearbhla,Ireland,IE,IRL
+Barry,Ireland,IE,IRL
+Aoife,Ireland,IE,IRL
+Tadhg,Ireland,IE,IRL
+Eoin,Ireland,IE,IRL
+Agnė,Lithuania,LT,LTU
+Gintaras,Lithuania,LT,LTU
+Rasa,Lithuania,LT,LTU
+Tadas,Lithuania,LT,LTU
+Lukas,Lithuania,LT,LTU
+Giedrė,Lithuania,LT,LTU
+Rimvydas,Lithuania,LT,LTU
+Vaida,Lithuania,LT,LTU
+Mantas,Lithuania,LT,LTU
+Aurimas,Lithuania,LT,LTU
+Lina,Lithuania,LT,LTU
+Rimantas,Lithuania,LT,LTU
+Goda,Lithuania,LT,LTU
+Darius,Lithuania,LT,LTU
+Inga,Lithuania,LT,LTU
+Eglė,Lithuania,LT,LTU
+Rytas,Lithuania,LT,LTU
+Linas,Lithuania,LT,LTU
+Gintautas,Lithuania,LT,LTU
+Rūta,Lithuania,LT,LTU
+Vygantas,Lithuania,LT,LTU
+Asta,Lithuania,LT,LTU
+Rokas,Lithuania,LT,LTU
+Gražina,Lithuania,LT,LTU
+Tomas,Lithuania,LT,LTU
+Erika,Lithuania,LT,LTU
+Laurynas,Lithuania,LT,LTU
+Ainars,Latvia,LV,LVA
+Līva,Latvia,LV,LVA
+Mārtiņš,Latvia,LV,LVA
+Alise,Latvia,LV,LVA
+Jānis,Latvia,LV,LVA
+Linda,Latvia,LV,LVA
+Rihards,Latvia,LV,LVA
+Inga,Latvia,LV,LVA
+Edgars,Latvia,LV,LVA
+Dina,Latvia,LV,LVA
+Andris,Latvia,LV,LVA
+Baiba,Latvia,LV,LVA
+Kaspars,Latvia,LV,LVA
+Sandra,Latvia,LV,LVA
+Māris,Latvia,LV,LVA
+Ilze,Latvia,LV,LVA
+Gints,Latvia,LV,LVA
+Laila,Latvia,LV,LVA
+Vladimirs,Latvia,LV,LVA
+Aiva,Latvia,LV,LVA
+Juris,Latvia,LV,LVA
+Inese,Latvia,LV,LVA
+Ralfs,Latvia,LV,LVA
+Agnese,Latvia,LV,LVA
+Edvīns,Latvia,LV,LVA
+Līga,Latvia,LV,LVA
+Viktors,Latvia,LV,LVA
+Santa,Latvia,LV,LVA
+Ivan,Croatia,HR,HRV
+Ana,Croatia,HR,HRV
+Marko,Croatia,HR,HRV
+Lana,Croatia,HR,HRV
+Tomislav,Croatia,HR,HRV
+Nina,Croatia,HR,HRV
+Luka,Croatia,HR,HRV
+Ivana,Croatia,HR,HRV
+Petar,Croatia,HR,HRV
+Katarina,Croatia,HR,HRV
+Matej,Croatia,HR,HRV
+Sandra,Croatia,HR,HRV
+Dario,Croatia,HR,HRV
+Jelena,Croatia,HR,HRV
+Ante,Croatia,HR,HRV
+Maja,Croatia,HR,HRV
+Krešimir,Croatia,HR,HRV
+Tina,Croatia,HR,HRV
+Vedran,Croatia,HR,HRV
+Andrea,Croatia,HR,HRV
+Goran,Croatia,HR,HRV
+Valentina,Croatia,HR,HRV
+Roko,Croatia,HR,HRV
+Ivona,Croatia,HR,HRV
+Dražen,Croatia,HR,HRV
+Nikolina,Croatia,HR,HRV
+Bojan,Croatia,HR,HRV
+Sara,Croatia,HR,HRV
+Zoran,Croatia,HR,HRV
+Lidija,Croatia,HR,HRV
+Amina,Bosnia and Herzegovina,BA,BIH
+Ivan,Bosnia and Herzegovina,BA,BIH
+Lejla,Bosnia and Herzegovina,BA,BIH
+Marko,Bosnia and Herzegovina,BA,BIH
+Adna,Bosnia and Herzegovina,BA,BIH
+Dino,Bosnia and Herzegovina,BA,BIH
+Emina,Bosnia and Herzegovina,BA,BIH
+Boris,Bosnia and Herzegovina,BA,BIH
+Ajla,Bosnia and Herzegovina,BA,BIH
+Nikola,Bosnia and Herzegovina,BA,BIH
+Sanela,Bosnia and Herzegovina,BA,BIH
+Dragan,Bosnia and Herzegovina,BA,BIH
+Larisa,Bosnia and Herzegovina,BA,BIH
+Vedran,Bosnia and Herzegovina,BA,BIH
+Maja,Bosnia and Herzegovina,BA,BIH
+Igor,Bosnia and Herzegovina,BA,BIH
+Nermina,Bosnia and Herzegovina,BA,BIH
+Dejan,Bosnia and Herzegovina,BA,BIH
+Ivana,Bosnia and Herzegovina,BA,BIH
+Slavko,Bosnia and Herzegovina,BA,BIH
+Jasmina,Bosnia and Herzegovina,BA,BIH
+Mladen,Bosnia and Herzegovina,BA,BIH
+Sandra,Bosnia and Herzegovina,BA,BIH
+Zoran,Bosnia and Herzegovina,BA,BIH
+Dijana,Bosnia and Herzegovina,BA,BIH
+Milan,Bosnia and Herzegovina,BA,BIH
+Svetlana,Bosnia and Herzegovina,BA,BIH
+Nenad,Bosnia and Herzegovina,BA,BIH
+Tanja,Bosnia and Herzegovina,BA,BIH
+Dominik,Slovakia,SK,SVK
+Lucia,Slovakia,SK,SVK
+Matej,Slovakia,SK,SVK
+Katarina,Slovakia,SK,SVK
+Jakub,Slovakia,SK,SVK
+Eva,Slovakia,SK,SVK
+Filip,Slovakia,SK,SVK
+Natalia,Slovakia,SK,SVK
+Michal,Slovakia,SK,SVK
+Barbora,Slovakia,SK,SVK
+Lukas,Slovakia,SK,SVK
+Petra,Slovakia,SK,SVK
+Oliver,Slovakia,SK,SVK
+Simona,Slovakia,SK,SVK
+Adam,Slovakia,SK,SVK
+Tereza,Slovakia,SK,SVK
+Roman,Slovakia,SK,SVK
+Kamila,Slovakia,SK,SVK
+Martin,Slovakia,SK,SVK
+Veronika,Slovakia,SK,SVK
+Juraj,Slovakia,SK,SVK
+Monika,Slovakia,SK,SVK
+Patrik,Slovakia,SK,SVK
+Zuzana,Slovakia,SK,SVK
+Marek,Slovakia,SK,SVK
+Jana,Slovakia,SK,SVK
+Tomáš,Slovakia,SK,SVK
+Alena,Slovakia,SK,SVK
+František,Slovakia,SK,SVK
+Daniela,Slovakia,SK,SVK
+Kaspar,Estonia,EE,EST
+Evelin,Estonia,EE,EST
+Rasmus,Estonia,EE,EST
+ Getter,Estonia,EE,EST
+Kristjan,Estonia,EE,EST
+Kadri,Estonia,EE,EST
+Jaan,Estonia,EE,EST
+Liisa,Estonia,EE,EST
+Andres,Estonia,EE,EST
+Kertu,Estonia,EE,EST
+Marten,Estonia,EE,EST
+Kairi,Estonia,EE,EST
+Erik,Estonia,EE,EST
+Helen,Estonia,EE,EST
+Tanel,Estonia,EE,EST
+Merili,Estonia,EE,EST
+Juri,Estonia,EE,EST
+Katriin,Estonia,EE,EST
+Rene,Estonia,EE,EST
+Kerli,Estonia,EE,EST
+Marek,Estonia,EE,EST
+Aino,Estonia,EE,EST
+Kaarel,Estonia,EE,EST
+Rein,Estonia,EE,EST
+Eva,Estonia,EE,EST
+Siim,Estonia,EE,EST
+Kristiina,Estonia,EE,EST
+Raul,Estonia,EE,EST
+Triinu,Estonia,EE,EST
+Daan,Netherlands,NL,NLD
+Sanne,Netherlands,NL,NLD
+Stijn,Netherlands,NL,NLD
+Lisanne,Netherlands,NL,NLD
+Ruben,Netherlands,NL,NLD
+Tessa,Netherlands,NL,NLD
+Luuk,Netherlands,NL,NLD
+Femke,Netherlands,NL,NLD
+Sander,Netherlands,NL,NLD
+Lotte,Netherlands,NL,NLD
+Thijs,Netherlands,NL,NLD
+Daphne,Netherlands,NL,NLD
+Joris,Netherlands,NL,NLD
+Eva,Netherlands,NL,NLD
+Bart,Netherlands,NL,NLD
+Liesbeth,Netherlands,NL,NLD
+Michel,Netherlands,NL,NLD
+Nina,Netherlands,NL,NLD
+Rutger,Netherlands,NL,NLD
+Saskia,Netherlands,NL,NLD
+Tim,Netherlands,NL,NLD
+Marit,Netherlands,NL,NLD
+Jelle,Netherlands,NL,NLD
+Inge,Netherlands,NL,NLD
+Hans,Netherlands,NL,NLD
+Maud,Netherlands,NL,NLD
+Pieter,Netherlands,NL,NLD
+Jasmijn,Netherlands,NL,NLD
+Lukas,Switzerland,CH,CHE
+Nina,Switzerland,CH,CHE
+Reto,Switzerland,CH,CHE
+Lara,Switzerland,CH,CHE
+Fabian,Switzerland,CH,CHE
+Alessia,Switzerland,CH,CHE
+Noah,Switzerland,CH,CHE
+Livia,Switzerland,CH,CHE
+Jan,Switzerland,CH,CHE
+Melina,Switzerland,CH,CHE
+Matthias,Switzerland,CH,CHE
+Sandra,Switzerland,CH,CHE
+Cédric,Switzerland,CH,CHE
+Nadine,Switzerland,CH,CHE
+Dario,Switzerland,CH,CHE
+Giulia,Switzerland,CH,CHE
+Michael,Switzerland,CH,CHE
+Rahel,Switzerland,CH,CHE
+Andrin,Switzerland,CH,CHE
+Lorenza,Switzerland,CH,CHE
+Florian,Switzerland,CH,CHE
+Vanessa,Switzerland,CH,CHE
+Tim,Switzerland,CH,CHE
+Laura,Switzerland,CH,CHE
+Silvan,Switzerland,CH,CHE
+Nicole,Switzerland,CH,CHE
+Urs,Switzerland,CH,CHE
+Yannick,Switzerland,CH,CHE
+Eva,Switzerland,CH,CHE
+Vlad,Moldova,MD,MDA
+Ana,Moldova,MD,MDA
+Ion,Moldova,MD,MDA
+Natalia,Moldova,MD,MDA
+Vasile,Moldova,MD,MDA
+Ecaterina,Moldova,MD,MDA
+Mihai,Moldova,MD,MDA
+Ludmila,Moldova,MD,MDA
+Andrei,Moldova,MD,MDA
+Marina,Moldova,MD,MDA
+Sergiu,Moldova,MD,MDA
+Irina,Moldova,MD,MDA
+Vitalie,Moldova,MD,MDA
+Alina,Moldova,MD,MDA
+Gheorghe,Moldova,MD,MDA
+Nicolae,Moldova,MD,MDA
+Diana,Moldova,MD,MDA
+Alexandru,Moldova,MD,MDA
+Raisa,Moldova,MD,MDA
+Vadim,Moldova,MD,MDA
+Elena,Moldova,MD,MDA
+Mihail,Moldova,MD,MDA
+Larisa,Moldova,MD,MDA
+Vladimir,Moldova,MD,MDA
+Oleg,Moldova,MD,MDA
+Tamara,Moldova,MD,MDA
+Igor,Moldova,MD,MDA
+Nadejda,Moldova,MD,MDA
+Lena,Belgium,BE,BEL
+Matthias,Belgium,BE,BEL
+Aurélie,Belgium,BE,BEL
+Bram,Belgium,BE,BEL
+Liesbeth,Belgium,BE,BEL
+Koen,Belgium,BE,BEL
+Eva,Belgium,BE,BEL
+Stijn,Belgium,BE,BEL
+Fien,Belgium,BE,BEL
+Jens,Belgium,BE,BEL
+Lore,Belgium,BE,BEL
+Gilles,Belgium,BE,BEL
+Ine,Belgium,BE,BEL
+Wouter,Belgium,BE,BEL
+Hanne,Belgium,BE,BEL
+Sander,Belgium,BE,BEL
+Lynn,Belgium,BE,BEL
+Bert,Belgium,BE,BEL
+Nina,Belgium,BE,BEL
+Tim,Belgium,BE,BEL
+Kaat,Belgium,BE,BEL
+Joris,Belgium,BE,BEL
+Lotte,Belgium,BE,BEL
+Michiel,Belgium,BE,BEL
+Anouk,Belgium,BE,BEL
+Ruben,Belgium,BE,BEL
+Fleur,Belgium,BE,BEL
+Karel,Belgium,BE,BEL
+Sofie,Belgium,BE,BEL
+Era,Albania,AL,ALB
+Fatbardh,Albania,AL,ALB
+Ermal,Albania,AL,ALB
+Eli,Albania,AL,ALB
+Eva,Albania,AL,ALB
+Albana,Albania,AL,ALB
+Klevis,Albania,AL,ALB
+Eldina,Albania,AL,ALB
+Gjergji,Albania,AL,ALB
+Elsi,Albania,AL,ALB
+Fatlum,Albania,AL,ALB
+Ermira,Albania,AL,ALB
+Ertan,Albania,AL,ALB
+Evis,Albania,AL,ALB
+Alket,Albania,AL,ALB
+Eldar,Albania,AL,ALB
+Eraa,Albania,AL,ALB
+Fatmir,Albania,AL,ALB
+Elsina,Albania,AL,ALB
+Erti,Albania,AL,ALB
+Evi,Albania,AL,ALB
+Albena,Albania,AL,ALB
+Fatjon,Albania,AL,ALB
+Aleksandar,Macedonia,MK,MKD
+Ivana,Macedonia,MK,MKD
+Stojan,Macedonia,MK,MKD
+Milica,Macedonia,MK,MKD
+Darko,Macedonia,MK,MKD
+Sara,Macedonia,MK,MKD
+Vlatko,Macedonia,MK,MKD
+Jovana,Macedonia,MK,MKD
+Gjorgji,Macedonia,MK,MKD
+Ana,Macedonia,MK,MKD
+Bojan,Macedonia,MK,MKD
+Elena,Macedonia,MK,MKD
+Dejan,Macedonia,MK,MKD
+Katarina,Macedonia,MK,MKD
+Zoran,Macedonia,MK,MKD
+Nikolina,Macedonia,MK,MKD
+Lazar,Macedonia,MK,MKD
+Teodora,Macedonia,MK,MKD
+Saso,Macedonia,MK,MKD
+Jelena,Macedonia,MK,MKD
+Goran,Macedonia,MK,MKD
+Vesna,Macedonia,MK,MKD
+Igor,Macedonia,MK,MKD
+Sanja,Macedonia,MK,MKD
+Boris,Macedonia,MK,MKD
+Dragana,Macedonia,MK,MKD
+Marko,Macedonia,MK,MKD
+Tamara,Macedonia,MK,MKD
+Luka,Slovenia,SI,SVN
+Eva,Slovenia,SI,SVN
+Matej,Slovenia,SI,SVN
+Nina,Slovenia,SI,SVN
+Jan,Slovenia,SI,SVN
+Tina,Slovenia,SI,SVN
+Aleš,Slovenia,SI,SVN
+Urška,Slovenia,SI,SVN
+Jure,Slovenia,SI,SVN
+Katarina,Slovenia,SI,SVN
+Rok,Slovenia,SI,SVN
+Lara,Slovenia,SI,SVN
+Nejc,Slovenia,SI,SVN
+Živa,Slovenia,SI,SVN
+Mitja,Slovenia,SI,SVN
+Nika,Slovenia,SI,SVN
+Gregor,Slovenia,SI,SVN
+Tjaša,Slovenia,SI,SVN
+Simon,Slovenia,SI,SVN
+Ema,Slovenia,SI,SVN
+Tadej,Slovenia,SI,SVN
+Vesna,Slovenia,SI,SVN
+Bojan,Slovenia,SI,SVN
+Ivana,Slovenia,SI,SVN
+David,Slovenia,SI,SVN
+Sara,Slovenia,SI,SVN
+Marko,Slovenia,SI,SVN
+Ana,Slovenia,SI,SVN
+Andraž,Slovenia,SI,SVN
+Maja,Slovenia,SI,SVN
+Milica,Montenegro,ME,MNE
+Vladan,Montenegro,ME,MNE
+Jelena,Montenegro,ME,MNE
+Nikola,Montenegro,ME,MNE
+Ivan,Montenegro,ME,MNE
+Ana,Montenegro,ME,MNE
+Marko,Montenegro,ME,MNE
+Marija,Montenegro,ME,MNE
+Dragan,Montenegro,ME,MNE
+Luka,Montenegro,ME,MNE
+Sofija,Montenegro,ME,MNE
+Vojislav,Montenegro,ME,MNE
+Jovana,Montenegro,ME,MNE
+Bojan,Montenegro,ME,MNE
+Katarina,Montenegro,ME,MNE
+Stefan,Montenegro,ME,MNE
+Nina,Montenegro,ME,MNE
+Aleksandar,Montenegro,ME,MNE
+Tamara,Montenegro,ME,MNE
+Dejan,Montenegro,ME,MNE
+Ivana,Montenegro,ME,MNE
+Risto,Montenegro,ME,MNE
+Sanja,Montenegro,ME,MNE
+Goran,Montenegro,ME,MNE
+Milan,Montenegro,ME,MNE
+Slavko,Montenegro,ME,MNE
+Jelisaveta,Montenegro,ME,MNE
+Veljko,Montenegro,ME,MNE
+Andreas,Cyprus,CY,CYP
+Eleni,Cyprus,CY,CYP
+Christos,Cyprus,CY,CYP
+Maria,Cyprus,CY,CYP
+Giorgos,Cyprus,CY,CYP
+Nadia,Cyprus,CY,CYP
+Kyriakos,Cyprus,CY,CYP
+Andri,Cyprus,CY,CYP
+Evangelia,Cyprus,CY,CYP
+Marios,Cyprus,CY,CYP
+Roula,Cyprus,CY,CYP
+Panayiotis,Cyprus,CY,CYP
+Efi,Cyprus,CY,CYP
+Stavros,Cyprus,CY,CYP
+Lia,Cyprus,CY,CYP
+Charis,Cyprus,CY,CYP
+Nikolas,Cyprus,CY,CYP
+Elena,Cyprus,CY,CYP
+Giannis,Cyprus,CY,CYP
+Despina,Cyprus,CY,CYP
+Christina,Cyprus,CY,CYP
+Vasilis,Cyprus,CY,CYP
+Andriana,Cyprus,CY,CYP
+Sofia,Cyprus,CY,CYP
+Kostas,Cyprus,CY,CYP
+Elpida,Cyprus,CY,CYP
+Alexandros,Cyprus,CY,CYP
+Rena,Cyprus,CY,CYP
+Lena,Luxembourg,LU,LUX
+Gilles,Luxembourg,LU,LUX
+Laura,Luxembourg,LU,LUX
+Tom,Luxembourg,LU,LUX
+Mia,Luxembourg,LU,LUX
+Alex,Luxembourg,LU,LUX
+Léa,Luxembourg,LU,LUX
+Ben,Luxembourg,LU,LUX
+Emma,Luxembourg,LU,LUX
+Olivier,Luxembourg,LU,LUX
+Charlie,Luxembourg,LU,LUX
+Julie,Luxembourg,LU,LUX
+Raphaël,Luxembourg,LU,LUX
+Laurie,Luxembourg,LU,LUX
+Théo,Luxembourg,LU,LUX
+Camille,Luxembourg,LU,LUX
+Gabriel,Luxembourg,LU,LUX
+Anaïs,Luxembourg,LU,LUX
+Maxime,Luxembourg,LU,LUX
+Luna,Luxembourg,LU,LUX
+Vincent,Luxembourg,LU,LUX
+Aurélie,Luxembourg,LU,LUX
+Tim,Luxembourg,LU,LUX
+Céline,Luxembourg,LU,LUX
+Mathias,Luxembourg,LU,LUX
+Nina,Luxembourg,LU,LUX
+Lucas,Luxembourg,LU,LUX
+Stéphanie,Luxembourg,LU,LUX
+François,Luxembourg,LU,LUX
+Andrias,Faroe Is.,FO,FRO
+Jóhannes,Faroe Is.,FO,FRO
+Bjørg,Faroe Is.,FO,FRO
+Hans,Faroe Is.,FO,FRO
+Jonna,Faroe Is.,FO,FRO
+Elin,Faroe Is.,FO,FRO
+Mikkjal,Faroe Is.,FO,FRO
+Ragnhild,Faroe Is.,FO,FRO
+Tórur,Faroe Is.,FO,FRO
+Gunnhild,Faroe Is.,FO,FRO
+Jákup,Faroe Is.,FO,FRO
+Oddvør,Faroe Is.,FO,FRO
+Sólgerð,Faroe Is.,FO,FRO
+Bárður,Faroe Is.,FO,FRO
+Jógvan,Faroe Is.,FO,FRO
+Hjálmar,Faroe Is.,FO,FRO
+Katrin,Faroe Is.,FO,FRO
+Jóannes,Faroe Is.,FO,FRO
+Eir,Faroe Is.,FO,FRO
+Tóra,Faroe Is.,FO,FRO
+Gudmund,Faroe Is.,FO,FRO
+Ragnvald,Faroe Is.,FO,FRO
+Bjarni,Faroe Is.,FO,FRO
+Oddbjørg,Faroe Is.,FO,FRO
+Sverri,Faroe Is.,FO,FRO
+Gudrun,Faroe Is.,FO,FRO
+Jóhannus,Faroe Is.,FO,FRO
+Hjörtur,Faroe Is.,FO,FRO
+Pere,Andorra,AD,AND
+Meritxell,Andorra,AD,AND
+Xavier,Andorra,AD,AND
+Núria,Andorra,AD,AND
+Marc,Andorra,AD,AND
+Eva,Andorra,AD,AND
+Adrià,Andorra,AD,AND
+Laia,Andorra,AD,AND
+Bernat,Andorra,AD,AND
+Clàudia,Andorra,AD,AND
+Guillem,Andorra,AD,AND
+Aina,Andorra,AD,AND
+Lluís,Andorra,AD,AND
+Sílvia,Andorra,AD,AND
+Miquel,Andorra,AD,AND
+Júlia,Andorra,AD,AND
+Pau,Andorra,AD,AND
+Nadia,Andorra,AD,AND
+Ramon,Andorra,AD,AND
+Ester,Andorra,AD,AND
+Oriol,Andorra,AD,AND
+Gemma,Andorra,AD,AND
+Sergi,Andorra,AD,AND
+Ivana,Andorra,AD,AND
+Quim,Andorra,AD,AND
+Mariona,Andorra,AD,AND
+David,Andorra,AD,AND
+Montserrat,Andorra,AD,AND
+Aurélien,Liechtenstein,LI,LIE
+Lukas,Liechtenstein,LI,LIE
+Nadja,Liechtenstein,LI,LIE
+Fabian,Liechtenstein,LI,LIE
+Lara,Liechtenstein,LI,LIE
+Marcel,Liechtenstein,LI,LIE
+Sandra,Liechtenstein,LI,LIE
+Andreas,Liechtenstein,LI,LIE
+Rebecca,Liechtenstein,LI,LIE
+Markus,Liechtenstein,LI,LIE
+Nina,Liechtenstein,LI,LIE
+Thomas,Liechtenstein,LI,LIE
+Simone,Liechtenstein,LI,LIE
+Patrick,Liechtenstein,LI,LIE
+Julia,Liechtenstein,LI,LIE
+Benjamin,Liechtenstein,LI,LIE
+Sarah,Liechtenstein,LI,LIE
+Michael,Liechtenstein,LI,LIE
+Daniela,Liechtenstein,LI,LIE
+Florian,Liechtenstein,LI,LIE
+Laura,Liechtenstein,LI,LIE
+Stefan,Liechtenstein,LI,LIE
+Tina,Liechtenstein,LI,LIE
+Oliver,Liechtenstein,LI,LIE
+Corina,Liechtenstein,LI,LIE
+Alexander,Liechtenstein,LI,LIE
+Nicole,Liechtenstein,LI,LIE
+Christian,Liechtenstein,LI,LIE
+Monika,Liechtenstein,LI,LIE
+Oliver,Guernsey,GG,GGY
+Emily,Guernsey,GG,GGY
+Alexander,Guernsey,GG,GGY
+Charlotte,Guernsey,GG,GGY
+Benjamin,Guernsey,GG,GGY
+Harriet,Guernsey,GG,GGY
+Lucas,Guernsey,GG,GGY
+Abigail,Guernsey,GG,GGY
+Ethan,Guernsey,GG,GGY
+Lily,Guernsey,GG,GGY
+Logan,Guernsey,GG,GGY
+Ava,Guernsey,GG,GGY
+Gabriel,Guernsey,GG,GGY
+Isabella,Guernsey,GG,GGY
+Julian,Guernsey,GG,GGY
+Sophia,Guernsey,GG,GGY
+Caleb,Guernsey,GG,GGY
+Mia,Guernsey,GG,GGY
+Jaxon,Guernsey,GG,GGY
+Evie,Guernsey,GG,GGY
+Kai,Guernsey,GG,GGY
+Daisy,Guernsey,GG,GGY
+Finn,Guernsey,GG,GGY
+Poppy,Guernsey,GG,GGY
+Riley,Guernsey,GG,GGY
+Lola,Guernsey,GG,GGY
+Cameron,Guernsey,GG,GGY
+Gracie,Guernsey,GG,GGY
+Cooper,Guernsey,GG,GGY
+Alessandro,San Marino,SM,SMR
+Giulia,San Marino,SM,SMR
+Lorenzo,San Marino,SM,SMR
+Francesca,San Marino,SM,SMR
+Matteo,San Marino,SM,SMR
+Chiara,San Marino,SM,SMR
+Andrea,San Marino,SM,SMR
+Elisa,San Marino,SM,SMR
+Gabriele,San Marino,SM,SMR
+Sara,San Marino,SM,SMR
+Marco,San Marino,SM,SMR
+Valentina,San Marino,SM,SMR
+Tommaso,San Marino,SM,SMR
+Giada,San Marino,SM,SMR
+Federico,San Marino,SM,SMR
+Aurora,San Marino,SM,SMR
+Riccardo,San Marino,SM,SMR
+Luisa,San Marino,SM,SMR
+Stefano,San Marino,SM,SMR
+Ginevra,San Marino,SM,SMR
+Davide,San Marino,SM,SMR
+Beatrice,San Marino,SM,SMR
+Luca,San Marino,SM,SMR
+Cinzia,San Marino,SM,SMR
+Massimo,San Marino,SM,SMR
+Giuliana,San Marino,SM,SMR
+Nicola,San Marino,SM,SMR
+Roberta,San Marino,SM,SMR
+Cristiano,San Marino,SM,SMR
+Silvia,San Marino,SM,SMR
+Aidan,Gibraltar,GI,GIB
+Liam,Gibraltar,GI,GIB
+Emily,Gibraltar,GI,GIB
+Olivia,Gibraltar,GI,GIB
+Michael,Gibraltar,GI,GIB
+Hannah,Gibraltar,GI,GIB
+Benjamin,Gibraltar,GI,GIB
+Isabella,Gibraltar,GI,GIB
+Alexander,Gibraltar,GI,GIB
+Sophia,Gibraltar,GI,GIB
+Gabriel,Gibraltar,GI,GIB
+Mia,Gibraltar,GI,GIB
+Julian,Gibraltar,GI,GIB
+Charlotte,Gibraltar,GI,GIB
+Ethan,Gibraltar,GI,GIB
+Amelia,Gibraltar,GI,GIB
+Lucas,Gibraltar,GI,GIB
+Harriet,Gibraltar,GI,GIB
+Oliver,Gibraltar,GI,GIB
+Evie,Gibraltar,GI,GIB
+Logan,Gibraltar,GI,GIB
+Lily,Gibraltar,GI,GIB
+Caleb,Gibraltar,GI,GIB
+Ava,Gibraltar,GI,GIB
+Jaxon,Gibraltar,GI,GIB
+Piper,Gibraltar,GI,GIB
+Gideon,Gibraltar,GI,GIB
+Remi,Gibraltar,GI,GIB
+Aurélie,Monaco,MC,MCO
+Léon,Monaco,MC,MCO
+Camille,Monaco,MC,MCO
+Pierre,Monaco,MC,MCO
+Alexandre,Monaco,MC,MCO
+Lola,Monaco,MC,MCO
+Gabriel,Monaco,MC,MCO
+Charlotte,Monaco,MC,MCO
+Mathieu,Monaco,MC,MCO
+Anaïs,Monaco,MC,MCO
+Benoît,Monaco,MC,MCO
+Sophie,Monaco,MC,MCO
+Raphaël,Monaco,MC,MCO
+Léa,Monaco,MC,MCO
+Étienne,Monaco,MC,MCO
+Julie,Monaco,MC,MCO
+Nicolas,Monaco,MC,MCO
+Alice,Monaco,MC,MCO
+François,Monaco,MC,MCO
+Céline,Monaco,MC,MCO
+Hugo,Monaco,MC,MCO
+Marie,Monaco,MC,MCO
+Thierry,Monaco,MC,MCO
+Stéphanie,Monaco,MC,MCO
+Christophe,Monaco,MC,MCO
+Laetitia,Monaco,MC,MCO
+Olivier,Monaco,MC,MCO
+Valérie,Monaco,MC,MCO
+Philippe,Monaco,MC,MCO
+Alessandro,Vatican City,VA,VAT
+Gabriella,Vatican City,VA,VAT
+Lorenzo,Vatican City,VA,VAT
+Francesca,Vatican City,VA,VAT
+Matteo,Vatican City,VA,VAT
+Giulia,Vatican City,VA,VAT
+Andrea,Vatican City,VA,VAT
+Sofia,Vatican City,VA,VAT
+Giovanni,Vatican City,VA,VAT
+Chiara,Vatican City,VA,VAT
+Raffaele,Vatican City,VA,VAT
+Elisabetta,Vatican City,VA,VAT
+Marco,Vatican City,VA,VAT
+Valentina,Vatican City,VA,VAT
+Tommaso,Vatican City,VA,VAT
+Aurora,Vatican City,VA,VAT
+Leonardo,Vatican City,VA,VAT
+Giada,Vatican City,VA,VAT
+Cristiano,Vatican City,VA,VAT
+Beatrice,Vatican City,VA,VAT
+Filippo,Vatican City,VA,VAT
+Luisa,Vatican City,VA,VAT
+Daniele,Vatican City,VA,VAT
+Rosa,Vatican City,VA,VAT
+Massimo,Vatican City,VA,VAT
+Silvia,Vatican City,VA,VAT
+Paolo,Vatican City,VA,VAT
+Cinzia,Vatican City,VA,VAT
