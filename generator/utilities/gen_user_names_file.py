@@ -51,7 +51,7 @@ if __name__ == "__main__":
     )
     
     # create bedrock instance
-    bedrock = Bedrock(session=session, model_region="us-east-1", model_id="meta.llama3-8b-instruct-v1:0")
+    bedrock = Bedrock(session=session, model_region="us-east-1", model_id="meta.llama3-70b-instruct-v1:0")
     
     # load countries, firstnames and surnames files
     countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols=['name', 'ISO alpha 2', 'ISO alpha 3'])
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # determine file size
     orig_filesize = int((orig_firstnames.shape[0] + orig_surnames.shape[0])/2)
     n_countries = countrieseurope.shape[0]
-    n_user_names = min(5, int(orig_filesize / n_countries))
+    n_user_names = min(30, int(orig_filesize / n_countries))
     
     # generate user names
     firstname_country_data = []
@@ -77,8 +77,8 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
         print("Waiting ...")
-        # wait 65 seconds before retrying
-        time.sleep(65)
+        # wait 30 seconds before retrying
+        time.sleep(30)
     
     # concatenate user country data together
     firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
