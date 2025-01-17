@@ -80,6 +80,7 @@ obs_trans_data = gen_trans_data(
 
 # if writing observed data to unittest data directory
 if cons.unittest_gen_test_dfs:
+    print(f"WARNING: cons.unittest_gen_test_dfs == {cons.unittest_gen_test_dfs}")
     obs_user_data.to_pickle(fpath_unittest_user_data)
     obs_trans_data.to_pickle(fpath_unittest_transaction_data)
 
