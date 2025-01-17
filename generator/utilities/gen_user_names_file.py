@@ -3,6 +3,7 @@ import boto3
 import sys
 import pandas as pd
 import time
+import logging
 
 sys.path.append("E:\\GitHub\\RandomTelecomPayments\\generator")
 
@@ -29,15 +30,19 @@ def invoke_bedrock(model, n_user_names, country):
     tmp_firstname_country_data = user_firstname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
     tmp_lastname_country_data = user_lastname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
     # print shapes
-    print(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
-    print(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
+    logging.info(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
+    logging.info(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
     # save user names data to temp directory
-    tmp_firstname_country_data.to_csv(f"E:\\GitHub\\RandomTelecomPayments\\data\\temp\\llama_firstnames_{country.lower()}.csv", index=False)
-    tmp_lastname_country_data.to_csv(f"E:\\GitHub\\RandomTelecomPayments\\data\\temp\\llama_lastnames_{country.lower()}.csv", index=False)
+    tmp_firstname_country_data.to_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()), index=False)
+    tmp_lastname_country_data.to_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()), index=False)
     return (tmp_firstname_country_data, tmp_lastname_country_data)
 
 if __name__ == "__main__":
-    
+
+    # set up logging
+    lgr = logging.getLogger()
+    lgr.setLevel(logging.INFO)
+
     # load aws config
     with open(cons.fpath_aws_session_token, "r") as j:
         aws_config = json.loads(j.read())
@@ -54,7 +59,7 @@ if __name__ == "__main__":
     bedrock = Bedrock(session=session, model_region="us-east-1", model_id="meta.llama3-70b-instruct-v1:0")
     
     # load countries, firstnames and surnames files
-    countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols=['name', 'ISO alpha 2', 'ISO alpha 3'])
+    countrieseurope = pd.read_csv(cons.fpath_countrieseurope, usecols=['name', 'ISO numeric'])
     orig_firstnames = pd.read_csv(cons.fpath_firstnames)
     orig_surnames = pd.read_csv(cons.fpath_lastnames)
     
@@ -67,7 +72,7 @@ if __name__ == "__main__":
     firstname_country_data = []
     lastname_country_data = []
     for country in countrieseurope['name'].to_list():
-        print(country)
+        logging.info(country)
         try:
             # call bedrock model and generate user names data
             tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
@@ -75,8 +80,8 @@ if __name__ == "__main__":
             firstname_country_data.append(tmp_firstname_country_data)
             lastname_country_data.append(tmp_lastname_country_data)
         except Exception as e:
-            print(e)
-        print("Waiting ...")
+            logging.info(e)
+        logging.info("Waiting ...")
         # wait 30 seconds before retrying
         time.sleep(30)
     
@@ -85,10 +90,5 @@ if __name__ == "__main__":
     lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
     
     # write data to disk
-    if True:
-        firstname_country_df.to_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_firstnames.csv", index=False)
-        lastname_country_df.to_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_lastnames.csv", index=False)
-    # read data from dsk
-    if False:
-        firstname_country_df = pd.read_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_firstnames.csv")
-        lastname_country_df = pd.read_csv("E:\\GitHub\\RandomTelecomPayments\\generator\\ref\\llama_lastnames.csv")
+    firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False)
+    lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False)
