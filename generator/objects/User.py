@@ -76,9 +76,9 @@ class User:
         self.power = cons.data_model_poisson_params["user"]["power"]
         self.user_ids_cnts_dict = gen_idhash_cnt_dict(idhash_type="id", n=self.n_user_ids, lam=self.lam)
         self.user_ids_props_dict = cnt2prop_dict(self.user_ids_cnts_dict)
+        self.user_ids_country_code_dict = gen_country_codes_dict(self.user_ids_cnts_dict, self.fpath_countrieseurope)
         self.user_ids_firstname_dict = self.gen_user_firstname(self.fpath_firstnames)
         self.user_ids_lastname_dict = self.gen_user_lastname(self.fpath_lastnames)
-        self.user_ids_country_code_dict = gen_country_codes_dict(self.user_ids_cnts_dict, self.fpath_countrieseurope)
         self.user_ids_email_domain_dict = self.gen_user_email_domain(self.fpath_domain_email)
         self.user_ids_dates_dict = gen_dates_dict(self.user_ids_cnts_dict, start_date=self.start_date, end_date=self.end_date)
 
