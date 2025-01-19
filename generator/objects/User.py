@@ -101,13 +101,15 @@ class User:
             A dictionary of user id first names
         """
         # load in list of first names
-        first_name_data = pd.read_csv(fpath_firstnames, header=None)
-        # extract the user ids
-        user_ids_list = list(self.user_ids_cnts_dict.keys())
-        # randomly sample the first name list
-        user_firstname_list = first_name_data[0].sample(n=self.n_user_ids, replace=True)
-        # return the user ids first names
-        user_ids_firstname_dict = dict(zip(user_ids_list, user_firstname_list))
+        first_name_data = pd.read_csv(fpath_firstnames)
+        # randomly sample names firstnames according to country code and counts
+        country_code_dataframe = pd.Series(self.user_ids_country_code_dict, name="country_code").to_frame().reset_index().rename(columns={"index":"user_ids"}).assign(count=1)
+        country_codes_cnt = country_code_dataframe.groupby(by="country_code").agg({"user_ids":list,"count":"sum"}).reset_index()
+        country_codes_cnt["names"] = country_codes_cnt.apply(lambda series: first_name_data.loc[(first_name_data["ISO numeric"] == series["country_code"]), "firstnames"].sample(n=series["count"], replace=True).to_list(), axis=1)
+        # create the key value pairs mapping user id to firstname
+        user_ids_names_pairs = country_codes_cnt.apply(lambda series: dict(zip(series["user_ids"], series["names"])), axis=1).to_list()
+        # convert key value pairs to dict
+        user_ids_firstname_dict = pd.concat([pd.Series(d) for d in user_ids_names_pairs])[country_code_dataframe["user_ids"]].to_dict()
         return user_ids_firstname_dict
 
     @beartype
@@ -129,13 +131,15 @@ class User:
             A dictionary of user id last names.
         """
         # load in list of last names
-        last_name_data = pd.read_csv(fpath_lastnames, header=None)
-        # extract the user ids
-        user_ids_list = list(self.user_ids_cnts_dict.keys())
-        # randomly sample the last name list
-        user_lastname_list = last_name_data[0].sample(n=self.n_user_ids, replace=True)
-        # return the user ids last names
-        user_ids_lastname_dict = dict(zip(user_ids_list, user_lastname_list))
+        last_name_data = pd.read_csv(fpath_lastnames)
+        # randomly sample names firstnames according to country code and counts
+        country_code_dataframe = pd.Series(self.user_ids_country_code_dict, name="country_code").to_frame().reset_index().rename(columns={"index":"user_ids"}).assign(count=1)
+        country_codes_cnt = country_code_dataframe.groupby(by="country_code").agg({"user_ids":list,"count":"sum"}).reset_index()
+        country_codes_cnt["names"] = country_codes_cnt.apply(lambda series: last_name_data.loc[(last_name_data["ISO numeric"] == series["country_code"]), "lastnames"].sample(n=series["count"], replace=True).to_list(), axis=1)
+        # create the key value pairs mapping user id to firstname
+        user_ids_names_pairs = country_codes_cnt.apply(lambda series: dict(zip(series["user_ids"], series["names"])), axis=1).to_list()
+        # convert key value pairs to dict
+        user_ids_lastname_dict = pd.concat([pd.Series(d) for d in user_ids_names_pairs])[country_code_dataframe["user_ids"]].to_dict()
         return user_ids_lastname_dict
 
     @beartype
