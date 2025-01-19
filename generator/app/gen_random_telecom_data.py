@@ -67,8 +67,8 @@ def gen_random_telecom_data(
         n_user_ids=programmeparams.n_users,
         start_date=programmeparams.registration_start_date,
         end_date=programmeparams.registration_end_date,
-        fpath_firstnames=cons.fpath_firstnames,
-        fpath_lastnames=cons.fpath_lastnames,
+        fpath_firstnames=cons.fpath_llama_firstnames,
+        fpath_lastnames=cons.fpath_llama_lastnames,
         fpath_countrieseurope=cons.fpath_countrieseurope,
         fpath_domain_email=cons.fpath_domain_email
         )
