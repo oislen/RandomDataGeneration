@@ -34,8 +34,8 @@ def invoke_bedrock(model, n_user_names, country):
     logging.info(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
     logging.info(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
     # save user names data to temp directory
-    tmp_firstname_country_data.to_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()), index=False)
-    tmp_lastname_country_data.to_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()), index=False)
+    tmp_firstname_country_data.to_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()), index=False, encoding="latin1")
+    tmp_lastname_country_data.to_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()), index=False, encoding="latin1")
     return (tmp_firstname_country_data, tmp_lastname_country_data)
 
 if __name__ == "__main__":
@@ -82,8 +82,8 @@ if __name__ == "__main__":
                 # wait 30 seconds before retrying
                 time.sleep(20)
             else:
-                tmp_firstname_country_data = pd.read_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()))
-                tmp_lastname_country_data = pd.read_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()))
+                tmp_firstname_country_data = pd.read_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()), encoding="latin1")
+                tmp_lastname_country_data = pd.read_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()), encoding="latin1")
             # append to user country data
             firstname_country_data.append(tmp_firstname_country_data)
             lastname_country_data.append(tmp_lastname_country_data)
@@ -95,5 +95,5 @@ if __name__ == "__main__":
     lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
     
     # write data to disk
-    firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False)
-    lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False)
+    firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False, encoding="latin1")
+    lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False, encoding="latin1")
