@@ -15,6 +15,7 @@ def invoke_bedrock(model, n_user_names, country):
     """
     # call bedrock model
     formatted_prompt = prompt.format(n_user_names=n_user_names, country=country)
+    logging.info(formatted_prompt)
     model_response = model.prompt(prompt=formatted_prompt, system=system, max_gen_len=2048)
     # split out answer
     text = model_response.split("<answer>")[1].split("</answer>")[0]
@@ -66,13 +67,13 @@ if __name__ == "__main__":
     # determine file size
     orig_filesize = int((orig_firstnames.shape[0] + orig_surnames.shape[0])/2)
     n_countries = countrieseurope.shape[0]
-    n_user_names = min(30, int(orig_filesize / n_countries))
+    n_user_names = min(50, int(orig_filesize / n_countries))
     
     # generate user names
     firstname_country_data = []
     lastname_country_data = []
     for country in countrieseurope['name'].to_list():
-        logging.info(country)
+        logging.info(f"{country} ...")
         try:
             # call bedrock model and generate user names data
             tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
@@ -83,7 +84,7 @@ if __name__ == "__main__":
             logging.info(e)
         logging.info("Waiting ...")
         # wait 30 seconds before retrying
-        time.sleep(30)
+        time.sleep(20)
     
     # concatenate user country data together
     firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
