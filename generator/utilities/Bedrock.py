@@ -43,22 +43,21 @@ class Bedrock():
 
 system = """# Task
 
-You are a name generator for users from different countries in Europe.
-Your task is to generate an arbitrary N number of distinct and varied firstnames and lastnames, for both male and female users, from a given European country of origin.
+You are a name generator for people from different countries in Europe. Your task is to generate an arbitrary N number of distinct and varied first names and last names for people from a given European country of origin.
 
 # Requirements
 
-Do not repeat any firstnames or lastnames more than once. Each individual firstname must be unique and each individual lastname must be unique.
-You should return the random user names using a valid JSON record set tagged as <answer></answer>.
-The valid JSON record set should be of the following structure
-
-{"firstnames":["firstname 1","firstname 2",...,"firstname N"], "lastnames":["lastname 1","lastname 2",...,"lastname N"]}
+- Generate typical names for both male and female people.
+- Do not repeat any first names or last names more than once. Each individual first name must be unique and each individual last name must be unique.
+- You should return the first names and last names using a valid JSON object tagged as <answer></answer>.
+- The valid JSON object should be of the following structure; {"firstnames":["first name 1","first name 2",...,"first name N"], "lastnames":["last name 1","last name 2",...,"last name N"]}
 
 # Examples
 
-- Generate 2 firstnames and 2 lastnames, for both male and female users, for the country "Germany" -> <answer>{"firstnames":["Max","Hannah"], "lastnames":["Müller","Schmidt"]}</answer>
-- Generate 4 firstnames and 4 lastnames, for both male and female users, for the country "United Kingdom" -> <answer>{"firstnames":["George","Richard","Katie","Mary"], "lastnames":["Smith","Taylor","Jones","Brown"]}</answer>
-- Generate 3 firstnames and 3 lastnames, for both male and female users, for the country "France" -> <answer>{"firstnames":["Lola","Mathieu","Léa"], "lastnames":["Benoît","Pierre","Lefort"]}</answer>
-- Generate 5 firstnames and 5 lastnames, for both male and female users, for the country "Spain" -> <answer>{"firstnames":["Juan","Cristina","Javier","Julia","Isabel"], "lastnames":["Garcia","Martinez","Rodriguez","Lopez","Gomez"]}</answer>"""
+- Generate 2 first names and 2 last names for people from the country "Germany" -> <answer>{"firstnames":["Max","Hannah"], "lastnames":["Müller","Schmidt"]}</answer>
+- Generate 4 first names and 4 last names for people from the country "United Kingdom" -> <answer>{"firstnames":["George","Richard","Katie","Mary"], "lastnames":["Smith","Taylor","Jones","Brown"]}</answer>
+- Generate 3 first names and 3 last names for people from the country "France" -> <answer>{"firstnames":["Lola","Mathieu","Léa"], "lastnames":["Benoît","Pierre","Lefort"]}</answer>
+- Generate 5 first names and 5 last names for people from the country "Spain" -> <answer>{"firstnames":["Juan","Cristina","Javier","Julia","Isabel"], "lastnames":["Garcia","Martinez","Rodriguez","Lopez","Gomez"]}</answer>
+- Generate 6 first names and 6 last names for people from the country "Sweden" -> <answer>{"firstnames":["Tova","Alva","Casper","Märta","Axel","Elsa"], "lastnames":["Andersson","Johansson","Lundberg","Svensson","Pettersson","Nilsson"]}</answer>"""
 
-prompt = 'Generate {n_user_names} firstnames and {n_user_names} lastnames, for both male and female users, for the country "{country}"'
+prompt = 'Generate {n_user_names} first names and {n_user_names} last names for people from the country "{country}"'
