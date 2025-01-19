@@ -75,16 +75,20 @@ if __name__ == "__main__":
     for country in countrieseurope['name'].to_list():
         logging.info(f"{country} ...")
         try:
-            # call bedrock model and generate user names data
-            tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
+            if True:
+                # call bedrock model and generate user names data
+                tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
+                logging.info("Waiting ...")
+                # wait 30 seconds before retrying
+                time.sleep(20)
+            else:
+                tmp_firstname_country_data = pd.read_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()))
+                tmp_lastname_country_data = pd.read_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()))
             # append to user country data
             firstname_country_data.append(tmp_firstname_country_data)
             lastname_country_data.append(tmp_lastname_country_data)
         except Exception as e:
             logging.info(e)
-        logging.info("Waiting ...")
-        # wait 30 seconds before retrying
-        time.sleep(20)
     
     # concatenate user country data together
     firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
