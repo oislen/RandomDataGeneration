@@ -102,6 +102,7 @@ if __name__ == "__main__":
     # generate user names
     firstname_country_data = []
     lastname_country_data = []
+    error_countries = []
 
     # set countries list
     countries_list = countrieseurope['name'].to_list()
@@ -123,7 +124,12 @@ if __name__ == "__main__":
             lastname_country_data.append(tmp_lastname_country_data)
         except Exception as e:
             logging.info(e)
+            error_countries.append(country)
     
+    # log if any countries failed to generate data
+    if len(error_countries) > 0:
+        logging.info(f"Failed to generated data for countries: {error_countries}")
+
     # concatenate user country data together
     firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
     lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
