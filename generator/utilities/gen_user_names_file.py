@@ -1,9 +1,12 @@
+import os
 import json
 import boto3
 import sys
-import pandas as pd
 import time
 import logging
+import unidecode
+import pandas as pd
+import numpy as np
 
 sys.path.append("E:\\GitHub\\RandomTelecomPayments\\generator")
 
@@ -13,6 +16,7 @@ from utilities.Bedrock import Bedrock, prompt, system
 def invoke_bedrock(model, n_user_names, country):
     """
     """
+    logging.info("Calling Bedrock ...")
     # call bedrock model
     formatted_prompt = prompt.format(n_user_names=n_user_names, country=country)
     logging.info(formatted_prompt)
@@ -21,6 +25,7 @@ def invoke_bedrock(model, n_user_names, country):
     text = model_response.split("<answer>")[1].split("</answer>")[0]
     # parse json
     record_set = json.loads(text)
+    logging.info("Processing results ...")
     # generate pandas dataframe
     user_firstname_data = pd.Series(record_set["firstnames"], name="firstnames").to_frame().drop_duplicates()
     user_lastname_data = pd.Series(record_set["lastnames"], name="lastnames").to_frame().drop_duplicates()
@@ -28,14 +33,39 @@ def invoke_bedrock(model, n_user_names, country):
     user_firstname_data['country'] = country
     user_lastname_data['country'] = country
     # join on country codes
-    tmp_firstname_country_data = user_firstname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
-    tmp_lastname_country_data = user_lastname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
+    llama_firstname_country_data = user_firstname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
+    llama_lastname_country_data = user_lastname_data.merge(right=countrieseurope, left_on='country', right_on='name', how='inner').drop(columns=['name'])
+    # print shapes
+    logging.info(f"llama_firstname_country_data.shape: {llama_firstname_country_data.shape}")
+    logging.info(f"llama_lastname_country_data.shape: {llama_lastname_country_data.shape}")
+    # format output file paths
+    fpath_temp_llama_firstnames = cons.fpath_temp_llama_firstnames.format(country=country.lower())
+    fpath_temp_llama_lastnames = cons.fpath_temp_llama_lastnames.format(country=country.lower())
+    # check against previous iterations
+    tmp_firstname_country_data = pd.DataFrame()
+    tmp_lastname_country_data = pd.DataFrame()
+    if os.path.exists(fpath_temp_llama_firstnames):
+        tmp_firstname_country_data = pd.read_csv(fpath_temp_llama_firstnames, encoding="latin1")
+    if os.path.exists(fpath_temp_llama_lastnames):
+        tmp_lastname_country_data = pd.read_csv(fpath_temp_llama_lastnames, encoding="latin1")
+    # concatenate results
+    tmp_firstname_country_data = pd.concat(objs=[tmp_firstname_country_data, llama_firstname_country_data], axis=0, ignore_index=True).drop_duplicates()
+    tmp_lastname_country_data = pd.concat(objs=[tmp_lastname_country_data, llama_lastname_country_data], axis=0, ignore_index=True).drop_duplicates()
+    # standardise names formatting
+    standardise_text_lambda = lambda x: unidecode.unidecode(" ".join(x.lower().strip().split())) if x not in [None, "", np.nan] else x
+    tmp_firstname_country_data["firstnames"] = tmp_firstname_country_data["firstnames"].apply(lambda x: standardise_text_lambda(x))
+    tmp_lastname_country_data["lastnames"] = tmp_lastname_country_data["lastnames"].apply(lambda x: standardise_text_lambda(x))
     # print shapes
     logging.info(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
     logging.info(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
-    # save user names data to temp directory
-    tmp_firstname_country_data.to_csv(cons.fpath_temp_llama_firstnames.format(country=country.lower()), index=False, encoding="latin1")
-    tmp_lastname_country_data.to_csv(cons.fpath_temp_llama_lastnames.format(country=country.lower()), index=False, encoding="latin1")
+    # save firstnames names data to temp directory
+    if tmp_firstname_country_data.shape[0] > llama_firstname_country_data.shape[0]:
+        tmp_firstname_country_data.to_csv(fpath_temp_llama_firstnames, index=False, encoding="latin1")
+        logging.info(f"Wrote {fpath_temp_llama_firstnames} ...")
+    # save lastnames data to temp directory
+    if tmp_lastname_country_data.shape[0] > llama_lastname_country_data.shape[0]:
+        tmp_lastname_country_data.to_csv(fpath_temp_llama_lastnames, index=False, encoding="latin1")
+        logging.info(f"Wrote {fpath_temp_llama_lastnames} ...")
     return (tmp_firstname_country_data, tmp_lastname_country_data)
 
 if __name__ == "__main__":
