@@ -22,16 +22,16 @@ exp_user_ids_props_dict = {
     "6720317315593519": 0.28268809349890434,
 }
 exp_user_ids_firstname_dict = {
-    "6374692674377254": "beth",
-    "1751409580926382": "lorenzo",
-    "4264861381989413": "beatriz",
-    "6720317315593519": "jefrey",
+    "6374692674377254": "raphael",
+    "1751409580926382": "anatoliy",
+    "4264861381989413": "isabel",
+    "6720317315593519": "catalina",
 }
 exp_user_ids_lastname_dict = {
-    "6374692674377254": "speidel",
-    "1751409580926382": "lorena",
-    "4264861381989413": "presidente",
-    "6720317315593519": "kreitman",
+    "6374692674377254": "forster",
+    "1751409580926382": "romanenko",
+    "4264861381989413": "gonzalez",
+    "6720317315593519": "tudorache",
 }
 exp_user_ids_country_code_dict = {
     "6374692674377254": 276,
@@ -40,16 +40,16 @@ exp_user_ids_country_code_dict = {
     "6720317315593519": 642,
 }
 exp_user_ids_email_domain_dict = {
-    "6374692674377254": "live.co.uk",
-    "1751409580926382": "free.fr",
-    "4264861381989413": "yahoo.com",
-    "6720317315593519": "gmail.com",
+    "6374692674377254": "hotmail.com",
+    "1751409580926382": "yahoo.com",
+    "4264861381989413": "gmail.com",
+    "6720317315593519": "yahoo.com",
 }
 exp_user_ids_dates_dict = {
-    "6374692674377254": np.datetime64("2020-03-02T00:00:00.000000000"),
-    "1751409580926382": np.datetime64("2020-08-03T00:00:00.000000000"),
-    "4264861381989413": np.datetime64("2020-10-19T00:00:00.000000000"),
-    "6720317315593519": np.datetime64("2020-04-08T00:00:00.000000000"),
+    "6374692674377254": np.datetime64("2020-08-03T00:00:00.000000000"),
+    "1751409580926382": np.datetime64("2020-10-19T00:00:00.000000000"),
+    "4264861381989413": np.datetime64("2020-04-08T00:00:00.000000000"),
+    "6720317315593519": np.datetime64("2020-06-20T00:00:00.000000000"),
 }
 exp_start_date = cons.unittest_registration_start_date
 exp_end_date = cons.unittest_registration_end_date
@@ -59,8 +59,8 @@ exp_lam = cons.data_model_poisson_params["user"]["lambda"]
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)
 
-fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
-fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_firstnames = '.' + cons.fpath_llama_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_llama_lastnames.split(cons.fpath_repo_dir)[1]
 fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
 fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
 user_object = User(n_user_ids=exp_n_user_ids, start_date=exp_start_date, end_date=exp_end_date, fpath_firstnames=fpath_firstnames, fpath_lastnames=fpath_lastnames, fpath_countrieseurope=fpath_countrieseurope, fpath_domain_email=fpath_domain_email)
