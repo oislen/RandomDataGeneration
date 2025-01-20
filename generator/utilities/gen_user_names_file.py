@@ -59,11 +59,11 @@ def invoke_bedrock(model, n_user_names, country):
     logging.info(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
     logging.info(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
     # save firstnames names data to temp directory
-    if tmp_firstname_country_data.shape[0] > llama_firstname_country_data.shape[0]:
+    if tmp_firstname_country_data.shape[0] >= llama_firstname_country_data.shape[0]:
         tmp_firstname_country_data.to_csv(fpath_temp_llama_firstnames, index=False, encoding="latin1")
         logging.info(f"Wrote {fpath_temp_llama_firstnames} ...")
     # save lastnames data to temp directory
-    if tmp_lastname_country_data.shape[0] > llama_lastname_country_data.shape[0]:
+    if tmp_lastname_country_data.shape[0] >= llama_lastname_country_data.shape[0]:
         tmp_lastname_country_data.to_csv(fpath_temp_llama_lastnames, index=False, encoding="latin1")
         logging.info(f"Wrote {fpath_temp_llama_lastnames} ...")
     return (tmp_firstname_country_data, tmp_lastname_country_data)
@@ -102,10 +102,14 @@ if __name__ == "__main__":
     # generate user names
     firstname_country_data = []
     lastname_country_data = []
-    for country in countrieseurope['name'].to_list():
+
+    # set countries list
+    countries_list = countrieseurope['name'].to_list()
+
+    for country in countries_list:
         logging.info(f"{country} ...")
         try:
-            if True:
+            if False:
                 # call bedrock model and generate user names data
                 tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
                 logging.info("Waiting ...")
@@ -125,5 +129,11 @@ if __name__ == "__main__":
     lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
     
     # write data to disk
-    firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False, encoding="latin1")
-    lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False, encoding="latin1")
+    if firstname_country_df['country'].nunique() == n_countries:
+        firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False, encoding="latin1")
+    else:
+        logging.info("WARNING Insufficient first name data generated.")
+    if lastname_country_df['country'].nunique() == n_countries:
+        lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False, encoding="latin1")
+    else:
+        logging.info("WARNING Insufficient last name data generated.")
