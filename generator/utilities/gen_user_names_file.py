@@ -27,8 +27,8 @@ def invoke_bedrock(model, n_user_names, country):
     record_set = json.loads(text)
     logging.info("Processing results ...")
     # generate pandas dataframe
-    user_firstname_data = pd.Series(record_set["firstnames"], name="firstnames").to_frame().drop_duplicates()
-    user_lastname_data = pd.Series(record_set["lastnames"], name="lastnames").to_frame().drop_duplicates()
+    user_firstname_data = pd.Series(record_set["firstnames"], name="firstnames").to_frame().drop_duplicates(subset=["firstnames"])
+    user_lastname_data = pd.Series(record_set["lastnames"], name="lastnames").to_frame().drop_duplicates(subset=["lastnames"])
     # add country
     user_firstname_data['country'] = country
     user_lastname_data['country'] = country
@@ -49,12 +49,15 @@ def invoke_bedrock(model, n_user_names, country):
     if os.path.exists(fpath_temp_llama_lastnames):
         tmp_lastname_country_data = pd.read_csv(fpath_temp_llama_lastnames, encoding="latin1")
     # concatenate results
-    tmp_firstname_country_data = pd.concat(objs=[tmp_firstname_country_data, llama_firstname_country_data], axis=0, ignore_index=True).drop_duplicates()
-    tmp_lastname_country_data = pd.concat(objs=[tmp_lastname_country_data, llama_lastname_country_data], axis=0, ignore_index=True).drop_duplicates()
+    tmp_firstname_country_data = pd.concat(objs=[tmp_firstname_country_data, llama_firstname_country_data], axis=0, ignore_index=True)
+    tmp_lastname_country_data = pd.concat(objs=[tmp_lastname_country_data, llama_lastname_country_data], axis=0, ignore_index=True)
     # standardise names formatting
     standardise_text_lambda = lambda x: unidecode.unidecode(" ".join(x.lower().strip().split())) if x not in [None, "", np.nan] else x
     tmp_firstname_country_data["firstnames"] = tmp_firstname_country_data["firstnames"].apply(lambda x: standardise_text_lambda(x))
     tmp_lastname_country_data["lastnames"] = tmp_lastname_country_data["lastnames"].apply(lambda x: standardise_text_lambda(x))
+    # deduplicate data
+    tmp_firstname_country_data = tmp_firstname_country_data.drop_duplicates(subset=["firstnames"])
+    tmp_lastname_country_data = tmp_lastname_country_data.drop_duplicates(subset=["lastnames"])
     # print shapes
     logging.info(f"tmp_firstname_country_data.shape: {tmp_firstname_country_data.shape}")
     logging.info(f"tmp_lastname_country_data.shape: {tmp_lastname_country_data.shape}")
@@ -103,14 +106,16 @@ if __name__ == "__main__":
     firstname_country_data = []
     lastname_country_data = []
     error_countries = []
+    run_bedrock = False
 
     # set countries list
     countries_list = countrieseurope['name'].to_list()
+    #countries_list = ['Cyprus']
 
     for country in countries_list:
         logging.info(f"{country} ...")
         try:
-            if False:
+            if run_bedrock:
                 # call bedrock model and generate user names data
                 tmp_firstname_country_data, tmp_lastname_country_data = invoke_bedrock(model=bedrock, n_user_names=n_user_names, country=country)
                 logging.info("Waiting ...")
@@ -131,8 +136,8 @@ if __name__ == "__main__":
         logging.info(f"Failed to generated data for countries: {error_countries}")
 
     # concatenate user country data together
-    firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
-    lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
+    firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["firstnames","country"])
+    lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["lastnames","country"])
     
     # write data to disk
     if firstname_country_df['country'].nunique() == n_countries:
