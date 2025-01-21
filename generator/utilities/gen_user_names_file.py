@@ -135,16 +135,24 @@ if __name__ == "__main__":
     if len(error_countries) > 0:
         logging.info(f"Failed to generated data for countries: {error_countries}")
 
-    # concatenate user country data together
-    firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["firstnames","country"])
-    lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["lastnames","country"])
-    
+    # load existing reference data
+    firstname_country_df = pd.read_csv(cons.fpath_llama_firstnames, encoding="latin1")
+    lastname_country_df = pd.read_csv(cons.fpath_llama_lastnames, encoding="latin1")
+    # append to country data lists
+    firstname_country_data.append(firstname_country_df)
+    lastname_country_data.append(lastname_country_df)
+    # concatenate user country data together and deduplicate across firstnames and countries
+    output_firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["firstnames","country"])
+    output_lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["lastnames","country"])
+
     # write data to disk
-    if firstname_country_df['country'].nunique() == n_countries:
-        firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False, encoding="latin1")
+    if output_firstname_country_df['country'].nunique() == n_countries:
+        logging.info(f"output_firstname_country_df.shape: {output_firstname_country_df.shape}")
+        output_firstname_country_df.to_csv(cons.fpath_llama_firstnames, index=False, encoding="latin1")
     else:
         logging.info("WARNING Insufficient first name data generated.")
-    if lastname_country_df['country'].nunique() == n_countries:
-        lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False, encoding="latin1")
+    if output_lastname_country_df['country'].nunique() == n_countries:
+        logging.info(f"output_lastname_country_df.shape: {output_lastname_country_df.shape}")
+        output_lastname_country_df.to_csv(cons.fpath_llama_lastnames, index=False, encoding="latin1")
     else:
         logging.info("WARNING Insufficient last name data generated.")
