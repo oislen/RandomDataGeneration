@@ -38,7 +38,7 @@ device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum(), fpa
 #  generate user data and device hashes
 user_data = random_entity_counts.copy()
 obs_obj_idhash_series = gen_obj_idhash_series(idhashes_props_dict=device_obj.device_hashes_props_dict, n_counts_series=user_data['n_devices'])
-exp_obj_idhash_series = pd.Series([['2ff23757073a0735'], ['73d2fd828c1fd115'], ['2fc83030d4f37f76', '20f0fba2565dd55c', '257aa14d0bef04bc'], ['f232f0f0bbdcd452']])
+exp_obj_idhash_series = pd.Series([['2ff23757073a0735'], ['73d2fd828c1fd115', '2fc83030d4f37f76', '20f0fba2565dd55c'], ['257aa14d0bef04bc'], ['f232f0f0bbdcd452']])
 
 class Test_gen_idhash_cnt_dict(unittest.TestCase):
     """"""

@@ -22,16 +22,16 @@ exp_user_ids_props_dict = {
     "6720317315593519": 0.28268809349890434,
 }
 exp_user_ids_firstname_dict = {
-    "6374692674377254": "raphael",
-    "1751409580926382": "anatoliy",
-    "4264861381989413": "isabel",
-    "6720317315593519": "catalina",
+    "6374692674377254": "andreas",
+    "1751409580926382": "mykhaylo",
+    "4264861381989413": "adriana",
+    "6720317315593519": "razvan",
 }
 exp_user_ids_lastname_dict = {
-    "6374692674377254": "forster",
-    "1751409580926382": "romanenko",
-    "4264861381989413": "gonzalez",
-    "6720317315593519": "tudorache",
+    "6374692674377254": "wagner",
+    "1751409580926382": "lysenko",
+    "4264861381989413": "sanchez",
+    "6720317315593519": "mateescu",
 }
 exp_user_ids_country_code_dict = {
     "6374692674377254": 276,
@@ -40,16 +40,16 @@ exp_user_ids_country_code_dict = {
     "6720317315593519": 642,
 }
 exp_user_ids_email_domain_dict = {
-    "6374692674377254": "hotmail.com",
-    "1751409580926382": "yahoo.com",
-    "4264861381989413": "gmail.com",
+    "6374692674377254": "yahoo.com",
+    "1751409580926382": "gmail.com",
+    "4264861381989413": "yahoo.com",
     "6720317315593519": "yahoo.com",
 }
 exp_user_ids_dates_dict = {
-    "6374692674377254": np.datetime64("2020-08-03T00:00:00.000000000"),
-    "1751409580926382": np.datetime64("2020-10-19T00:00:00.000000000"),
-    "4264861381989413": np.datetime64("2020-04-08T00:00:00.000000000"),
-    "6720317315593519": np.datetime64("2020-06-20T00:00:00.000000000"),
+    "6374692674377254": np.datetime64("2020-04-08T00:00:00.000000000"),
+    "1751409580926382": np.datetime64("2020-06-20T00:00:00.000000000"),
+    "4264861381989413": np.datetime64("2020-12-25T00:00:00.000000000"),
+    "6720317315593519": np.datetime64("2020-08-01T00:00:00.000000000"),
 }
 exp_start_date = cons.unittest_registration_start_date
 exp_end_date = cons.unittest_registration_end_date
