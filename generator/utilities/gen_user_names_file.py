@@ -142,8 +142,11 @@ if __name__ == "__main__":
     firstname_country_data.append(firstname_country_df)
     lastname_country_data.append(lastname_country_df)
     # concatenate user country data together and deduplicate across firstnames and countries
-    output_firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["firstnames","country"])
-    output_lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True).drop_duplicates(subset=["lastnames","country"])
+    output_firstname_country_df = pd.concat(firstname_country_data, axis=0, ignore_index=True)
+    output_lastname_country_df = pd.concat(lastname_country_data, axis=0, ignore_index=True)
+    # sort and deduplicate output data
+    output_firstname_country_df = output_firstname_country_df.drop_duplicates(subset=["country","firstnames"]).sort_values(by=["country","firstnames"])
+    output_lastname_country_df = output_lastname_country_df.drop_duplicates(subset=["country","lastnames"]).sort_values(by=["country","lastnames"])
 
     # write data to disk
     if output_firstname_country_df['country'].nunique() == n_countries:
