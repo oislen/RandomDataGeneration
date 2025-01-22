@@ -22,34 +22,34 @@ exp_user_ids_props_dict = {
     "6720317315593519": 0.28268809349890434,
 }
 exp_user_ids_firstname_dict = {
-    "6374692674377254": "mikel",
-    "1751409580926382": "haas",
-    "4264861381989413": "rachelle",
-    "6720317315593519": "erika",
+    "6374692674377254": "ernst",
+    "1751409580926382": "mykhaylo",
+    "4264861381989413": "hugo",
+    "6720317315593519": "alexandra",
 }
 exp_user_ids_lastname_dict = {
-    "6374692674377254": "gpp",
-    "1751409580926382": "moraitis",
-    "4264861381989413": "bibiana",
-    "6720317315593519": "herrera",
+    "6374692674377254": "buchmann",
+    "1751409580926382": "lyashenko",
+    "4264861381989413": "diaz",
+    "6720317315593519": "mariana",
 }
 exp_user_ids_country_code_dict = {
-    "6374692674377254": 620,
-    "1751409580926382": 826,
-    "4264861381989413": 528,
-    "6720317315593519": 826,
+    "6374692674377254": 276,
+    "1751409580926382": 804,
+    "4264861381989413": 724,
+    "6720317315593519": 642,
 }
 exp_user_ids_email_domain_dict = {
-    "6374692674377254": "live.co.uk",
-    "1751409580926382": "free.fr",
-    "4264861381989413": "yahoo.com",
-    "6720317315593519": "gmail.com",
+    "6374692674377254": "gmail.com",
+    "1751409580926382": "yahoo.com",
+    "4264861381989413": "aol.com",
+    "6720317315593519": "hotmail.com",
 }
 exp_user_ids_dates_dict = {
-    "6374692674377254": np.datetime64("2020-03-02T00:00:00.000000000"),
-    "1751409580926382": np.datetime64("2020-08-03T00:00:00.000000000"),
-    "4264861381989413": np.datetime64("2020-10-19T00:00:00.000000000"),
-    "6720317315593519": np.datetime64("2020-04-08T00:00:00.000000000"),
+    "6374692674377254": np.datetime64("2020-06-20T00:00:00.000000000"),
+    "1751409580926382": np.datetime64("2020-12-25T00:00:00.000000000"),
+    "4264861381989413": np.datetime64("2020-08-01T00:00:00.000000000"),
+    "6720317315593519": np.datetime64("2020-02-04T00:00:00.000000000"),
 }
 exp_start_date = cons.unittest_registration_start_date
 exp_end_date = cons.unittest_registration_end_date
@@ -59,11 +59,11 @@ exp_lam = cons.data_model_poisson_params["user"]["lambda"]
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)
 
-fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
-fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_firstnames = '.' + cons.fpath_llama_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_llama_lastnames.split(cons.fpath_repo_dir)[1]
 fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
 fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
-user_object = User(exp_n_user_ids, exp_start_date, exp_end_date, fpath_firstnames=fpath_firstnames, fpath_lastnames=fpath_lastnames, fpath_countrieseurope=fpath_countrieseurope, fpath_domain_email=fpath_domain_email)
+user_object = User(n_user_ids=exp_n_user_ids, start_date=exp_start_date, end_date=exp_end_date, fpath_firstnames=fpath_firstnames, fpath_lastnames=fpath_lastnames, fpath_countrieseurope=fpath_countrieseurope, fpath_domain_email=fpath_domain_email)
 
 obs_user_ids_cnts_dict = user_object.user_ids_cnts_dict
 obs_user_ids_props_dict = user_object.user_ids_props_dict

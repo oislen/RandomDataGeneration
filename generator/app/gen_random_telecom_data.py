@@ -1,5 +1,7 @@
 import numpy as np
 import random
+from beartype import beartype
+
 from app.ProgrammeParams import ProgrammeParams
 from app.gen_user_data import gen_user_data
 from app.gen_trans_data import gen_trans_data
@@ -10,7 +12,7 @@ from objects.Ip import Ip
 from objects.Transaction import Transaction
 from objects.User import User
 from utilities.gen_random_entity_counts import gen_random_entity_counts
-from beartype import beartype
+import cons
 
 @beartype
 def gen_random_telecom_data(
@@ -49,6 +51,7 @@ def gen_random_telecom_data(
     programmeparams = ProgrammeParams(
         n_users=n_users, 
         random_seed=random_seed,
+        n_applications=20000,
         registration_start_date=registration_start_date, 
         registration_end_date=registration_end_date,
         transaction_start_date=transaction_start_date,
@@ -60,10 +63,21 @@ def gen_random_telecom_data(
     np.random.seed(seed=programmeparams.random_seed)
 
     # generate random users
-    user_obj = User(n_user_ids=programmeparams.n_users, start_date=programmeparams.registration_start_date, end_date=programmeparams.registration_end_date)
+    user_obj = User(
+        n_user_ids=programmeparams.n_users,
+        start_date=programmeparams.registration_start_date,
+        end_date=programmeparams.registration_end_date,
+        fpath_firstnames=cons.fpath_llama_firstnames,
+        fpath_lastnames=cons.fpath_llama_lastnames,
+        fpath_countrieseurope=cons.fpath_countrieseurope,
+        fpath_domain_email=cons.fpath_domain_email
+        )
 
     # generate random entity counts for each user
-    random_entity_counts = gen_random_entity_counts(user_obj, transaction_timescale=programmeparams.transaction_timescale)
+    random_entity_counts = gen_random_entity_counts(
+        user_obj=user_obj,
+        transaction_timescale=programmeparams.transaction_timescale
+        )
 
     # generate random entity values
     device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum())
@@ -92,6 +106,7 @@ def gen_random_telecom_data(
         ip_obj=ip_obj,
         transaction_obj=transaction_obj,
         application_obj=application_obj,
+        fpath_countrycrimeindex=cons.fpath_countrycrimeindex
     )
 
     return {"user_data":user_data, "trans_data":trans_data}

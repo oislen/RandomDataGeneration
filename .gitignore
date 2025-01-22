@@ -164,4 +164,5 @@ data/arch
 data/report
 data/RandomTelecomPayments.csv
 data/RandomTelecomUsers.parquet
+data/temp
 .creds

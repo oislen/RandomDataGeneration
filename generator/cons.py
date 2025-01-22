@@ -5,19 +5,28 @@ import datetime
 
 fpath_repo_dir = 'E:\\GitHub\\RandomTelecomPayments' if platform.system() == 'Windows' else "/home/runner/work/RandomTelecomPayments/RandomTelecomPayments" if "GITHUB_ACTIONS_UNITTEST_FLAG" in os.environ else '/home/ubuntu/RandomTelecomPayments'
 sys.path.append(fpath_repo_dir)
+# set sub directories
+subdir_data = os.path.join(fpath_repo_dir, 'data')
+subdir_generator = os.path.join(fpath_repo_dir, 'generator')
+subdir_unittest = os.path.join(subdir_data, 'unittest')
+subdir_creds = os.path.join(fpath_repo_dir, '.creds')
 # set data files
-fpath_randomtelecomtransdata = os.path.join(fpath_repo_dir, 'data','RandomTelecomPayments.csv')
-fpath_randomtelecomusersdata = os.path.join(fpath_repo_dir, 'data','RandomTelecomUsers.parquet')
-fpath_arch_randomtelecomdata = os.path.join(fpath_repo_dir, 'data', 'arch', 'RandomTelecomPayments.csv')
-fpath_domain_email = os.path.join(fpath_repo_dir, 'generator', 'ref', 'email-domains.csv')
-fpath_countrycrimeindex = os.path.join(fpath_repo_dir, 'generator', 'ref', 'country_crime_index.csv')
-fpath_countrieseurope = os.path.join(fpath_repo_dir, 'generator', 'ref', 'Countries-Europe.csv')
-fpath_firstnames = os.path.join(fpath_repo_dir, 'generator', 'ref', 'first-names.txt')
-fpath_lastnames = os.path.join(fpath_repo_dir, 'generator', 'ref', 'last-names.txt')
-fpath_smartphones = os.path.join(fpath_repo_dir, 'generator', 'ref', 'smartphones.csv')
-fpath_unittest_user_data = os.path.join(fpath_repo_dir, 'data', 'unittest', 'user_data.pickle')
-fpath_unittest_transaction_data = os.path.join(fpath_repo_dir, 'data', 'unittest', 'transaction_data.pickle')
-fpath_aws_session_token = os.path.join(fpath_repo_dir, '.creds','sessionToken.json')
+fpath_randomtelecomtransdata = os.path.join(subdir_data,'RandomTelecomPayments.csv')
+fpath_randomtelecomusersdata = os.path.join(subdir_data,'RandomTelecomUsers.parquet')
+fpath_arch_randomtelecomdata = os.path.join(subdir_data, 'arch', 'RandomTelecomPayments.csv')
+fpath_temp_llama_firstnames = os.path.join(subdir_data, 'temp', 'llama_firstnames_{country}.csv')
+fpath_temp_llama_lastnames = os.path.join(subdir_data, 'temp', 'llama_lastnames_{country}.csv')
+fpath_domain_email = os.path.join(subdir_data, 'ref', 'email-domains.csv')
+fpath_countrycrimeindex = os.path.join(subdir_data, 'ref', 'country_crime_index.csv')
+fpath_countrieseurope = os.path.join(subdir_data, 'ref', 'Countries-Europe.csv')
+fpath_firstnames = os.path.join(subdir_data, 'ref', 'first-names.txt')
+fpath_lastnames = os.path.join(subdir_data, 'ref', 'last-names.txt')
+fpath_llama_firstnames = os.path.join(subdir_data, 'ref', 'llama_firstnames.csv')
+fpath_llama_lastnames = os.path.join(subdir_data, 'ref', 'llama_lastnames.csv')
+fpath_smartphones = os.path.join(subdir_data, 'ref', 'smartphones.csv')
+fpath_unittest_user_data = os.path.join(subdir_unittest, 'user_data.pickle')
+fpath_unittest_transaction_data = os.path.join(subdir_unittest, 'transaction_data.pickle')
+fpath_aws_session_token = os.path.join(subdir_creds,'sessionToken.json')
 
 # set url links to files available online
 url_european_populations = 'https://raw.githubusercontent.com/ajturner/acetate/master/places/Countries-Europe.csv'
@@ -43,8 +52,7 @@ unittest_seed = 42
 unittest_n_entities = 4
 unittest_n_device_types = 10
 unittest_gen_test_dfs = False
-unittest_debug_mode = True
-unittest_n_users = 100
+unittest_n_users = 10
 unittest_registration_start_date = '2020-01-01'
 unittest_registration_end_date = '2020-12-31'
 unittest_transaction_start_date = '2021-01-01'

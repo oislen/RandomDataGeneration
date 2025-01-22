@@ -19,19 +19,19 @@ exp_lam = cons.data_model_poisson_params["user"]["lambda"]
 random.seed(cons.unittest_seed)
 np.random.seed(cons.unittest_seed)
 
-fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
-fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_firstnames = '.' + cons.fpath_llama_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_llama_lastnames.split(cons.fpath_repo_dir)[1]
 fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
 fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
-user_object = User(exp_n_user_ids, exp_start_date, exp_end_date, fpath_firstnames=fpath_firstnames, fpath_lastnames=fpath_lastnames, fpath_countrieseurope=fpath_countrieseurope, fpath_domain_email=fpath_domain_email)
+user_object = User(n_user_ids=exp_n_user_ids, start_date=exp_start_date, end_date=exp_end_date, fpath_firstnames=fpath_firstnames, fpath_lastnames=fpath_lastnames, fpath_countrieseurope=fpath_countrieseurope, fpath_domain_email=fpath_domain_email)
 
 exp_randomentity_counts_dict = {
-    'uid': ['4264861381989413', '6374692674377254', '1751409580926382', '6720317315593519'], 
-    'n_devices': [1, 1, 3, 1], 
+    'uid': ['1751409580926382', '6720317315593519', '4264861381989413', '6374692674377254'], 
+    'n_devices': [3, 1, 1, 1], 
     'n_cards': [1, 1, 1, 1], 
-    'n_ips': [6, 5, 6, 3], 
-    'n_transactions': [14, 41, 68, 55], 
-    'n_applications': [1, 7, 20, 3]
+    'n_ips': [5, 6, 3, 4], 
+    'n_transactions': [55, 69, 54, 54], 
+    'n_applications': [3, 10, 28, 6]
     }
 
 exp_randomentity_counts_df = pd.DataFrame.from_dict(exp_randomentity_counts_dict)

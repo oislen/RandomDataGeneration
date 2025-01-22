@@ -27,8 +27,8 @@ random.seed(programmeparams.random_seed)
 np.random.seed(seed=programmeparams.random_seed)
 
 # create relative file paths
-fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
-fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_firstnames = '.' + cons.fpath_llama_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_llama_lastnames.split(cons.fpath_repo_dir)[1]
 fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
 fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
 fpath_smartphones = '.' + cons.fpath_smartphones.split(cons.fpath_repo_dir)[1]
@@ -80,6 +80,7 @@ obs_trans_data = gen_trans_data(
 
 # if writing observed data to unittest data directory
 if cons.unittest_gen_test_dfs:
+    print(f"WARNING: cons.unittest_gen_test_dfs == {cons.unittest_gen_test_dfs}")
     obs_user_data.to_pickle(fpath_unittest_user_data)
     obs_trans_data.to_pickle(fpath_unittest_transaction_data)
 

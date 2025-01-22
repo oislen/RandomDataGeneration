@@ -20,8 +20,8 @@ from objects.Device import Device
 start_date = cons.unittest_registration_start_date
 end_date = cons.unittest_registration_end_date
 n_user_ids = cons.unittest_n_entities
-fpath_firstnames = '.' + cons.fpath_firstnames.split(cons.fpath_repo_dir)[1]
-fpath_lastnames = '.' + cons.fpath_lastnames.split(cons.fpath_repo_dir)[1]
+fpath_firstnames = '.' + cons.fpath_llama_firstnames.split(cons.fpath_repo_dir)[1]
+fpath_lastnames = '.' + cons.fpath_llama_lastnames.split(cons.fpath_repo_dir)[1]
 fpath_countrieseurope = '.' + cons.fpath_countrieseurope.split(cons.fpath_repo_dir)[1]
 fpath_domain_email = '.' + cons.fpath_domain_email.split(cons.fpath_repo_dir)[1]
 fpath_smartphones = '.' + cons.fpath_smartphones.split(cons.fpath_repo_dir)[1]
@@ -38,7 +38,7 @@ device_obj = Device(n_device_hashes=random_entity_counts['n_devices'].sum(), fpa
 #  generate user data and device hashes
 user_data = random_entity_counts.copy()
 obs_obj_idhash_series = gen_obj_idhash_series(idhashes_props_dict=device_obj.device_hashes_props_dict, n_counts_series=user_data['n_devices'])
-exp_obj_idhash_series = pd.Series([['2ff23757073a0735'], ['73d2fd828c1fd115'], ['2fc83030d4f37f76', '20f0fba2565dd55c', '257aa14d0bef04bc'], ['f232f0f0bbdcd452']])
+exp_obj_idhash_series = pd.Series([['8c1fd1152fc83030', 'd4f37f7620f0fba2', '565dd55c257aa14d'], ['0bef04bcf232f0f0'], ['bbdcd452b847c0d4'], ['e2b03ec4f60f2f18']])
 
 class Test_gen_idhash_cnt_dict(unittest.TestCase):
     """"""
