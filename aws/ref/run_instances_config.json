@@ -1,7 +1,7 @@
 {
     "DryRun": false,
     "LaunchTemplate": {
-        "LaunchTemplateName": "catclassifier",
+        "LaunchTemplateName": "randomtelecompayments",
         "Version": "$Latest"
     },
     "InstanceMarketOptions": {

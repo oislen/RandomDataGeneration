@@ -7,7 +7,7 @@
     "LaunchTemplateConfigs": [
         {
             "LaunchTemplateSpecification": {
-                "LaunchTemplateName": "catclassifier",
+                "LaunchTemplateName": "randomtelecompayments",
                 "Version": "$Latest"
             },
             "Overrides": [

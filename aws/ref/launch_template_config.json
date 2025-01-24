@@ -1,6 +1,6 @@
 {
     "DryRun": false,
-    "LaunchTemplateName": "catclassifier",
+    "LaunchTemplateName": "randomtelecompayments",
     "VersionDescription": "Initial version",
     "LaunchTemplateData": {
         "BlockDeviceMappings": [
