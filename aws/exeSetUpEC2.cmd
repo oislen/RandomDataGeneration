@@ -17,5 +17,6 @@ call scp -i %EC2_PEM_FPATH% -r %EC2_CREDS_FDIR% %EC2_USER%@%EC2_DNS%:~/.
 call scp -i %EC2_PEM_FPATH% %EC2_SETUP_FPATH% %EC2_USER%@%EC2_DNS%:~/linux_docker_setup.sh
 :: ssh to EC2
 call ssh -i %EC2_PEM_FPATH% %EC2_USER%@%EC2_DNS%
+::call ssh -v -i %EC2_PEM_FPATH% %EC2_USER%@%EC2_DNS% "sed -i 's/\r$//' ~/linux_docker_setup.sh; bash ~/linux_docker_setup.sh"
 ::call ssh -i %EC2_PEM_FPATH% -T %EC2_USER%@%EC2_DNS% "bash ~/linux_docker_setup.sh '%KAGGLE_COMP%'"
 ENDLOCAL

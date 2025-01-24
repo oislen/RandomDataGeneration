@@ -31,11 +31,29 @@ if __name__ == '__main__':
     if input_params_dict['n_itr'] > 1:
         logging.info("Running multi-thread.")
         # generate random telecom data via multiprocess call
-        args = [(input_params_dict['n_users'], None if input_params_dict['use_random_seed'] == 0 else itr) for itr in range(input_params_dict['n_itr'])]
+        args = [
+            (
+                input_params_dict['n_users'],
+                None if input_params_dict['use_random_seed'] == 0 else itr,
+                input_params_dict['registration_start_date'],
+                input_params_dict['registration_end_date'],
+                input_params_dict['transaction_start_date'],
+                input_params_dict['transaction_end_date']
+            ) for itr in range(input_params_dict['n_itr'])
+            ]
         results = multiprocess(func = gen_random_telecom_data, args = args, ncpu = os.cpu_count())
     else:
         logging.info("Running single thread.")
-        results = [gen_random_telecom_data(n_users=input_params_dict['n_users'], random_seed=input_params_dict['use_random_seed'])]
+        results = [
+            gen_random_telecom_data(
+                n_users=input_params_dict['n_users'],
+                random_seed=input_params_dict['use_random_seed'],
+                registration_start_date=input_params_dict['registration_start_date'],
+                registration_end_date=input_params_dict['registration_end_date'],
+                transaction_start_date=input_params_dict['transaction_start_date'],
+                transaction_end_date=input_params_dict['transaction_end_date']
+                )
+            ]
     # concatenate random telecom datasets into a single file
     user_data = pd.concat(objs = [result['user_data'] for result in results], axis = 0, ignore_index = True)
     trans_data = pd.concat(objs = [result['trans_data'] for result in results], axis = 0, ignore_index = True)

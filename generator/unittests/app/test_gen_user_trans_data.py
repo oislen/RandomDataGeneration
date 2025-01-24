@@ -20,7 +20,14 @@ from objects.User import User
 from utilities.gen_random_entity_counts import gen_random_entity_counts
 
 # initalise programme parameters
-programmeparams = ProgrammeParams(n_users=cons.unittest_n_users, random_seed=cons.unittest_seed)
+programmeparams = ProgrammeParams(
+    n_users=cons.unittest_n_users,
+    random_seed=cons.unittest_seed,
+    registration_start_date=cons.unittest_registration_start_date,
+    registration_end_date=cons.unittest_registration_end_date,
+    transaction_start_date=cons.unittest_transaction_start_date,
+    transaction_end_date=cons.unittest_transaction_end_date
+    )
 
 # set random seed
 random.seed(programmeparams.random_seed)

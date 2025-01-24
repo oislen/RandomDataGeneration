@@ -3,8 +3,7 @@
 # 2. make sure to increase volume in /dev/nvme0n1 (/dev/xvda) e.g. 100gb
 
 # linux file formatting
-# sudo yum install -y dos2unix 
-# dos2unix ~/linux_docker_setup.sh 
+# sed -i 's/\r$//' ~/linux_docker_setup.sh
 # bash ~/linux_docker_setup.sh 
 
 #-- EC2 Spot Instance Checks --#
