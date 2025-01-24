@@ -10,10 +10,10 @@ class ProgrammeParams():
         n_users:int=100,
         random_seed:int=None,
         n_applications:int=20000,
-        registration_start_date:str='2020-01-01',
-        registration_end_date:str='2020-12-31',
-        transaction_start_date:str='2021-01-01',
-        transaction_end_date:str='2021-12-31'
+        registration_start_date:str=cons.default_registration_start_date,
+        registration_end_date:str=cons.default_registration_end_date,
+        transaction_start_date:str=cons.default_transaction_start_date,
+        transaction_end_date:str=cons.default_transaction_end_date
         ):
         # take programme parameters from class parameters
         self.random_seed = random_seed
