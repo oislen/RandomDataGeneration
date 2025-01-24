@@ -63,7 +63,7 @@ sudo yum autoremove
 #-- Pull and Run Docker Contianer --#
 
 # clone git repo for persistant data and folder structure
-git clone https://github.com/oislen/RandomTelecomPayments.git --branch randomtelecompayments_prod_1.0 /home/$USER/RandomTelecomPayments
+git clone https://github.com/oislen/RandomTelecomPayments.git --branch main /home/$USER/RandomTelecomPayments
 # login to docker
 sudo gpasswd -a $USER 
 sudo systemctl start docker
