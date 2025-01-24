@@ -19,8 +19,8 @@ RUN apt-get install -y apt-utils vim curl wget unzip git tree htop
 RUN mkdir -p /home/${user} && chown -R ${user}: /home/${user}
 
 # clone git repo
-RUN git clone https://github.com/oislen/RandomTelecomPayments.git --branch ${GIT_BRANCH} /home/ubuntu/RandomTelecomPayments
-#COPY . /home/ubuntu/RandomTelecomPayments
+#RUN git clone https://github.com/oislen/RandomTelecomPayments.git --branch ${GIT_BRANCH} /home/ubuntu/RandomTelecomPayments
+COPY . /home/ubuntu/RandomTelecomPayments
 
 # add deadsnakes ppa
 RUN apt-get install -y software-properties-common
