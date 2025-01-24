@@ -18,10 +18,10 @@ import cons
 def gen_random_telecom_data(
     n_users=1,
     random_seed=None,
-    registration_start_date='2020-01-01',
-    registration_end_date='2020-12-31',
-    transaction_start_date='2021-01-01',
-    transaction_end_date='2021-12-31'
+    registration_start_date=cons.default_registration_start_date,
+    registration_end_date=cons.default_registration_end_date,
+    transaction_start_date=cons.default_transaction_start_date,
+    transaction_end_date=cons.default_transaction_end_date
     ):
     """
     Generates random telecommunications data.
@@ -29,17 +29,17 @@ def gen_random_telecom_data(
     Parameters
     ----------
     n_users : float
-        The number of users to generate random telecom payments data for.
+        The number of users to generate random telecom payments data for, default is 1.
     random_seed : int
         A set random seed for reproducible results, default is None.
     registration_start_date : str
-        The user registration start date.
+        The user registration start date, default is cons.default_registration_start_date.
     registration_end_date : str
-        The user registration end date.
+        The user registration end date, default is cons.default_registration_end_date.
     transaction_start_date : str
-        The user transaction start date.
+        The user transaction start date, default is cons.default_transaction_start_date.
     transaction_end_date : str
-        The user transaction end date.
+        The user transaction end date, default is cons.default_transaction_end_date.
 
     Returns
     -------
