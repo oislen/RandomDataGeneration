@@ -24,8 +24,8 @@ fpath_lastnames = os.path.join(subdir_data, 'ref', 'last-names.txt')
 fpath_llama_firstnames = os.path.join(subdir_data, 'ref', 'llama_firstnames.csv')
 fpath_llama_lastnames = os.path.join(subdir_data, 'ref', 'llama_lastnames.csv')
 fpath_smartphones = os.path.join(subdir_data, 'ref', 'smartphones.csv')
-fpath_unittest_user_data = os.path.join(subdir_unittest, 'user_data.pickle')
-fpath_unittest_transaction_data = os.path.join(subdir_unittest, 'transaction_data.pickle')
+fpath_unittest_user_data = os.path.join(subdir_unittest, 'user_data.parquet')
+fpath_unittest_transaction_data = os.path.join(subdir_unittest, 'transaction_data.parquet')
 fpath_aws_session_token = os.path.join(subdir_creds,'sessionToken.json')
 
 # set url links to files available online
