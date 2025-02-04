@@ -1,9 +1,10 @@
 import os
+import re
 import platform
 import sys
 import datetime
 
-fpath_repo_dir = 'E:\\GitHub\\RandomTelecomPayments' if platform.system() == 'Windows' else "/home/runner/work/RandomTelecomPayments/RandomTelecomPayments" if "GITHUB_ACTIONS_UNITTEST_FLAG" in os.environ else '/home/ubuntu/RandomTelecomPayments'
+fpath_repo_dir = re.findall(string=os.getcwd(), pattern="^.+RandomTelecomPayments")[0] if platform.system() == 'Windows' else "/home/runner/work/RandomTelecomPayments/RandomTelecomPayments" if "GITHUB_ACTIONS_UNITTEST_FLAG" in os.environ else '/home/ubuntu/RandomTelecomPayments'
 sys.path.append(fpath_repo_dir)
 # set sub directories
 subdir_data = os.path.join(fpath_repo_dir, 'data')
