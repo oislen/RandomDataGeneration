@@ -1,1 +1,0 @@
-call python -m pdb generator\utilities\gen_user_names_file.py

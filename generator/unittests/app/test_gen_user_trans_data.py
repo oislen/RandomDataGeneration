@@ -88,12 +88,12 @@ obs_trans_data = gen_trans_data(
 # if writing observed data to unittest data directory
 if cons.unittest_gen_test_dfs:
     print(f"WARNING: cons.unittest_gen_test_dfs == {cons.unittest_gen_test_dfs}")
-    obs_user_data.to_pickle(fpath_unittest_user_data)
-    obs_trans_data.to_pickle(fpath_unittest_transaction_data)
+    obs_user_data.to_parquet(fpath_unittest_user_data)
+    obs_trans_data.to_parquet(fpath_unittest_transaction_data)
 
 # load in expected user level data
-exp_user_data = pd.read_pickle(fpath_unittest_user_data)
-exp_trans_data = pd.read_pickle(fpath_unittest_transaction_data)
+exp_user_data = pd.read_parquet(fpath_unittest_user_data)
+exp_trans_data = pd.read_parquet(fpath_unittest_transaction_data)
 
 class Test_gen_user_trans_data(unittest.TestCase):
     """"""
