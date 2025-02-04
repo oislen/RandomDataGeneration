@@ -5,7 +5,7 @@ call conda env list
 call conda deactivate
 call conda env remove --name RandomTelecomPayments --yes
 call conda env list
-call conda create --name RandomTelecomPayments python=3 --yes
+call conda create --name RandomTelecomPayments python=3.12 --yes
 call conda activate RandomTelecomPayments
 call conda list
 

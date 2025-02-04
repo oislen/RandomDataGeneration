@@ -26,9 +26,31 @@ For a more detailed account of each column in the dataset see the data dictionar
 
 ## Running the Application (Windows)
 
-### Docker Image
+### Anaconda
 
-The latest version of the Random Telecom Payments app can be found as a docker image on dockerhub here:
+Create a local conda environment for the Random Telecom Payments app using [anaconda](https://www.anaconda.com/):
+
+```
+conda create --name RandomTelecomPayments python=3.12 --yes
+conda activate RandomTelecomPayments
+pip install -r requirements.txt
+```
+
+Execute the Random Telecom Payments app to generate data for 2000 users using the following command and the local conda environment:
+
+```
+python generator\\main.py --n_users 1000 --use_random_seed 1 --n_itr 2
+```
+
+View the generated Random Telecom Payments data using the following command:
+
+```
+type data\\RandomTelecomPayments.csv | more
+```
+
+### Docker
+
+The latest version of the Random Telecom Payments app can be found as a [docker](https://www.docker.com/) image on dockerhub here:
 
 * https://hub.docker.com/repository/docker/oislen/randomtelecompayments/general
 
